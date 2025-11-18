@@ -3,60 +3,98 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<title>Integritetspolicy & Data-radering – C / A Beats Publisher</title>
+<title>Integritetspolicy & Villkor – C/A Beats Publisher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, sans-serif; max-width: 800px; margin:auto; line-height: 1.6; padding: 20px; }
-h1, h2, h3 { font-weight: 600; }
-code { background:#eee; padding:3px 6px; border-radius:4px; }
+body {
+  font-family: Arial, sans-serif;
+  background: #000000;
+  color: #FFFFFF;
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  line-height: 1.7;
+}
+
+h1, h2 {
+  color: #0A73FF;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h3 { color: #FFFFFF; font-weight: 600; margin-top: 30px; }
+
+.container {
+  background: #111111;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #0A73FF22;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.logo img {
+  width: 140px;
+  border-radius: 5px;
+}
+
+ul { margin-left: 20px; }
+li { margin-bottom: 8px; }
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #B4B4B4;
+  font-size: 14px;
+}
+code {
+  background: #0A73FF33;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
 </style>
 </head>
+
 <body>
+<div class="logo">
+  <img src="https://caspergrenander.github.io/meta-policy/ca-logo.png" alt="C/A Beats Logo">
+</div>
 
-<h1>Integritetspolicy & Användarvillkor</h1>
-<h2>C / A Beats Publisher – Facebook & Instagram Automation</h2>
+<div class="container">
+<h1>Integritetspolicy & användarvillkor</h1>
+<h2>C/A Beats Publisher – Meta Automation</h2>
 
-<p>Detta system används internt för schemalagd publicering av videoinnehåll till Instagram och Facebook via Meta Graph API. Systemet är endast avsett för intern användning av C / A Beats & Productions.</p>
+<p>Detta system används internt för schemalagd publicering av videoinnehåll till Facebook och Instagram via Meta Graph API. Systemet är endast avsett för internt bruk inom C/A Beats & Productions.</p>
 
 <h3>Integritetspolicy</h3>
 <ul>
 <li>Systemet samlar inte in eller lagrar personuppgifter från externa användare.</li>
-<li>Systemet lagrar endast tekniska åtkomsttokens kopplade till våra egna företagskonton.</li>
-<li>Inga data analyseras, delas eller säljs till tredje part.</li>
+<li>Endast tekniska åtkomsttokens kopplade till våra egna företagskonton sparas.</li>
+<li>Inga uppgifter delas, analyseras eller säljs till tredje part.</li>
 <li>Alla anslutningar hanteras via säker OAuth-autentisering.</li>
-<li>Åtkomsttokens kan när som helst återkallas av Meta eller av ansvarig systemadministratör.</li>
+<li>Åtkomst kan när som helst återkallas av Meta eller systemadministratör.</li>
 </ul>
 
-<h3>Vilken data hanteras?</h3>
-<p>Systemet hanterar enbart den metadata som krävs för att publicera innehåll via API, t.ex.:</p>
-<ul>
-<li>Filnamn och videostorlek</li>
-<li>Bild- eller videofiler som användaren själv laddar upp</li>
-<li>Tid för schemalagd publicering</li>
-<li>Publiceringsresultat (t.ex. status OK eller felmeddelande)</li>
-</ul>
-<p><strong>Inga personuppgifter samlas in från andra användare eller följare.</strong></p>
+<h3>Dataradering (Meta Data Deletion Request)</h3>
+<p>Begäran om dataradering skickas till:</p>
+<p><strong>E-post:</strong> <a href="mailto:contact@cabeats.com" style="color:#0A73FF;">contact@cabeats.com</a></p>
 
-<h3>Data-radering</h3>
-<p>Om du vill att systemdata raderas eller att åtkomst tas bort kan du begära borttagning här:</p>
-
-<p><strong>Begäran om dataradering:</strong><br>
-E-post: <a href="mailto:contact@cabeats.com">contact@cabeats.com</a></p>
-
-<p>När Meta begär radering automatiskt kommer vi att ta emot en webhook-signal från Meta och omedelbart ta bort tokens och tillhörande publikationer.</p>
-
-<p><strong>Data Deletion Callback URL (för Meta-systemet):</strong><br>
+<p><strong>Meta Data Deletion Callback URL:</strong><br>
 <code>https://caspergrenander.github.io/meta-policy/</code></p>
 
 <h3>Användarvillkor</h3>
 <ul>
 <li>Systemet får endast användas av behörig personal.</li>
-<li>Ej avsett för offentlig användning eller kommersiell licensiering.</li>
-<li>Obehörigt intrång, manipulering eller försök att ändra systemet är förbjudet.</li>
+<li>Otillåten åtkomst eller manipulering är förbjuden.</li>
+<li>Systemet är inte tillgängligt för allmänheten.</li>
 </ul>
 
-<p>Kontaktperson: <strong>Casper Grenander</strong> – Produktionsansvarig<br>
-© 2025 C / A Beats & Productions</p>
+<footer>
+© 2025 C/A Beats & Productions • Alla rättigheter reserverade
+</footer>
 
+</div>
 </body>
 </html>
