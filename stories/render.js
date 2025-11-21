@@ -1,4 +1,3 @@
-
 name: Render HBM Story
 
 on:
