@@ -20,15 +20,12 @@ jobs:
       - name: Install Puppeteer in templates folder
         working-directory: stories/templates
         run: |
-          # create package.json if missing so npm can install into this folder
           if [ ! -f package.json ]; then
             npm init -y
           fi
-          # install puppeteer locally next to render.js
           npm install puppeteer@latest --no-audit --no-fund
 
       - name: Run render script
-        # run from repository root, referencing the script path explicitly
         run: node ./stories/templates/render.js
 
       - name: Upload rendered story PNG
