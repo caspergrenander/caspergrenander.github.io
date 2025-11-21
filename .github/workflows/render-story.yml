@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: story_output
-          path: story_output.png
+          path: story_output.png 
