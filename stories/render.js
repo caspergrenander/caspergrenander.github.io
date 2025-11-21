@@ -1,39 +1,34 @@
-name: Render HBM Story
+const puppeteer = require("puppeteer");
+const fs = require("fs");
+const path = require("path");
 
-on:
-  workflow_dispatch:
+(async () => {
+  try {
+    console.log("🚀 Starting Puppeteer renderer...");
 
-jobs:
-  render:
-    runs-on: ubuntu-latest
+    const browser = await puppeteer.launch({
+      headless: "new",
+      defaultViewport: { width: 1080, height: 1920 },
+      args: ["--no-sandbox", "--disable-setuid-sandbox"]
+    });
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    const page = await browser.newPage();
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+    const htmlPath = path.join(__dirname, "story_template.html");
+    const html = fs.readFileSync(htmlPath, "utf-8");
 
-      - name: Install Puppeteer dependencies (Chrome)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libatk-bridge2.0-0 libgtk-3-0 libnss3 libxss1 libasound2
+    await page.setContent(html, { waitUntil: "networkidle0" });
 
-      - name: Install Puppeteer
-        run: npm install puppeteer
+    await page.screenshot({
+      path: "story_output.png",
+      fullPage: true
+    });
 
-      - name: Render Story PNG
-        run: |
-          npx puppeteer browsers install chrome
-          node stories/templates/render.js
-        env:
-          PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome"
-          PUPPETEER_SKIP_DOWNLOAD: "true"
+    console.log("🎉 PNG successfully generated: story_output.png");
 
-      - name: Upload result artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: rendered-story
-          path: story_output.png
+    await browser.close();
+  } catch (err) {
+    console.error("❌ Renderer failed:", err);
+    process.exit(1);
+  }
+})();
