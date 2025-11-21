@@ -1,4 +1,5 @@
-name: Render HBM Story
+- name: Render Story PNG
+  run: node stories/templates/templates/render.js
 
 on:
   workflow_dispatch:
