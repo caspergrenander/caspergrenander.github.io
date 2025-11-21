@@ -6,6 +6,7 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -18,12 +19,7 @@ jobs:
       - name: Install Puppeteer dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            libatk-bridge2.0-0 \
-            libgtk-3-0 \
-            libnss3 \
-            libxss1 \
-            libasound2t64
+          sudo apt-get install -y libatk-bridge2.0-0 libgtk-3-0 libnss3 libxss1 libasound2t64
 
       - name: Install Puppeteer
         run: npm install puppeteer
@@ -35,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: story_output
-          path: story_output.png
+          path: ./stories/story_*.png
