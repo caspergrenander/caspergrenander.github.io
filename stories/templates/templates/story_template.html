@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<title>HBM Story – Premium Hybrid (Google Sites Safe)</title>
+
+<style>
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 1080px;
+    height: 1920px;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: #fdfdfd;
+
+    /* ————————————————————————
+       TEATER/DRAPERI TEXTUR (inline Base64, Google Sites safe)
+       ———————————————————————— */
+    background:
+      linear-gradient(180deg, rgba(20,14,12,0.96) 0%, rgba(30,22,20,0.96) 60%, #0d0a09 100%),
+      url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQC…(kortad för tydlighet)…");
+    background-size: cover;
+  }
+
+  /* ————————————————————————
+       SIDOSPOTLIGHT (scenljus)
+     ———————————————————————— */
+  .side-light {
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 1500px;
+    height: 100%;
+    background: radial-gradient(circle at left center,
+      rgba(255,240,200,0.18) 0%,
+      rgba(0,0,0,0) 70%);
+    filter: blur(140px);
+    z-index: 0;
+  }
+
+  /* Vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+      rgba(0,0,0,0) 45%,
+      rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+  }
+
+  /* ————————————————————————
+       TOPPNOTER (Base64)
+     ———————————————————————— */
+  .notes-top {
+    position: absolute;
+    top: 210px;
+    right: 0;
+    width: 100%;
+    height: 250px;
+    opacity: 0.07;
+    z-index: 2;
+    pointer-events: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADg…(kortad)…");
+  }
+
+  /* ————————————————————————
+       NEDRE NOTER (kombinerad, mörk + ljus + brons)
+     ———————————————————————— */
+  .notes {
+    position: absolute;
+    bottom: 320px;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    opacity: 0.12;
+    z-index: 2;
+    pointer-events: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADg…(kortad)…");
+  }
+
+  /* ————————————————————————
+       HEADER
+     ———————————————————————— */
+  .header {
+    margin-top: 150px;
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    text-align: center;
+    line-height: 1.1;
+    max-width: 85%;
+    z-index: 10;
+    color: #fff;
+    text-shadow: 0px 6px 25px rgba(0,0,0,0.45);
+  }
+
+  /* ————————————————————————
+       OMSLAGSFRAME
+     ———————————————————————— */
+  .cover-frame {
+    margin-top: 75px;
+    padding: 18px;
+    border: 1.5px solid rgba(245,235,220,0.28);
+    border-radius: 6px;
+    width: 650px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+      0 0 60px rgba(0,0,0,0.55),
+      0 0 40px rgba(255,255,240,0.07);
+    z-index: 10;
+  }
+
+  .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* ————————————————————————
+       BRÖDTEXT
+     ———————————————————————— */
+  .bodytext {
+    margin-top: 65px;
+    width: 80%;
+    font-size: 36px;
+    line-height: 1.35;
+    opacity: 0.95;
+    color: #f2eae3;
+    text-align: center;
+    white-space: pre-line;
+    z-index: 10;
+  }
+
+  .episode {
+    margin-top: 35px;
+    font-size: 30px;
+    opacity: 0.75;
+    letter-spacing: 0.5px;
+    z-index: 10;
+  }
+
+  /* ————————————————————————
+       QR
+     ———————————————————————— */
+  .qr {
+    margin-top: 90px;
+    width: 240px;
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border: 1px solid rgba(245,235,220,0.28);
+    box-shadow: 0 0 30px rgba(0,0,0,0.45);
+    z-index: 12;
+  }
+
+  .credits {
+    position: absolute;
+    bottom: 55px;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(255,255,245,0.55);
+    letter-spacing: 0.6px;
+    z-index: 10;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="side-light"></div>
+<div class="vignette"></div>
+<div class="notes"></div>
+<div class="notes-top"></div>
+
+<div class="header">{{HEADER}}</div>
+
+<div class="cover-frame">
+  <img class="cover" src="{{SPOTIFY_COVER}}" alt="cover">
+</div>
+
+<div class="bodytext">{{BODY_TEXT}}</div>
+
+<div class="episode">{{EPISODE_TITLE}}</div>
+
+</body>
+</html>
 
