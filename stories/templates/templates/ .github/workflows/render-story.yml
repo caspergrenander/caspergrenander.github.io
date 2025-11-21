@@ -1,0 +1,32 @@
+name: Render HBM Story
+
+on:
+  repository_dispatch:
+    types: [render_story]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Render story to PNG
+        run: node render.js
+
+      - name: Commit generated PNG
+        run: |
+          git config user.name "HBM-Automation"
+          git config user.email "bot@hbm.ai"
+          git add ./stories/*.png
+          git commit -m "HBM auto story $(date)"
+          git push
