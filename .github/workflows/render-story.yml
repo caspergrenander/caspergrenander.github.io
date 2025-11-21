@@ -6,9 +6,8 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Set up Node.js
@@ -25,15 +24,10 @@ jobs:
         run: npm install puppeteer
 
       - name: Render Story PNG
-        run: |
-          npx puppeteer browsers install chrome
-          node stories/templates/render.js
-        env:
-          PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome"
-          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: node stories/templates/render.js
 
-      - name: Upload result artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: rendered-story
+          name: story_output
           path: story_output.png
