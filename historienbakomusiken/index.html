@@ -75,7 +75,7 @@ code {
 
 <body>
 <div class="logo">
-  <!-- Ändra till din uppladdade logotyp-URL på GitHub Pages -->
+  <!-- Byt ut länken nedan till din uppladdade logotyp på GitHub Pages -->
   <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" 
        alt="Historien Bakom Musiken Logo">
 </div>
@@ -86,20 +86,30 @@ code {
 
 <h2>Historien Bakom Musiken AutoPublisher</h2>
 
-<p><strong>Historien Bakom Musiken AutoPublisher</strong> är ett privat utvecklingsverktyg som används av mig, <strong>Casper Grenander</strong>, för att publicera videoinnehåll till mitt eget TikTok-konto genom TikToks <strong>Content Posting API</strong>.  
-Systemet används enbart av mig och är inte tillgängligt för någon annan användare eller organisation.</p>
+<p><strong>Historien Bakom Musiken AutoPublisher</strong> är ett personligt utvecklingsverktyg skapat och använt av <strong>Casper Grenander</strong>.  
+Syftet med systemet är att automatiskt publicera videoklipp från podden <em>Historien Bakom Musiken</em> till ett enda TikTok-konto, via <strong>TikTok Content Posting API</strong>.  
+Systemet är privat, används endast av utvecklaren själv, och är inte tillgängligt för allmänheten.</p>
+
+<h3>API-användning och behörigheter</h3>
+<p>Tjänsten använder endast de behörigheter (scopes) som krävs för att fungera korrekt via TikToks officiella API:</p>
+<ul>
+  <li><code>user.info.basic</code> – används för att identifiera det autentiserade TikTok-kontot.</li>
+  <li><code>video.upload</code> – används för att ladda upp videofiler till TikTok.</li>
+  <li><code>video.publish</code> – används för att publicera uppladdade videoklipp.</li>
+</ul>
+<p>Alla interaktioner sker genom TikToks säkra OAuth-flöde och följer TikToks utvecklarvillkor.</p>
 
 <h3>Integritetspolicy</h3>
 <ul>
-<li>Systemet lagrar inga personuppgifter utöver nödvändiga åtkomsttokens som genereras av TikToks OAuth-flöde.</li>
-<li>Tokens används endast för att möjliggöra autentiserad publicering till mitt eget konto och delas aldrig med tredje part.</li>
-<li>All kommunikation sker via säkra HTTPS-anslutningar och följer TikToks utvecklar- och API-policyer.</li>
-<li>Inga data analyseras, delas eller säljs vidare.</li>
-<li>Jag kan när som helst återkalla åtkomst via TikToks utvecklarkonsol eller kontoinställningar.</li>
+<li>Systemet lagrar inga personuppgifter utöver de autentiseringstokens som TikTok tillhandahåller vid inloggning.</li>
+<li>Tokens används endast för att publicera innehåll till det egna TikTok-kontot och sparas inte permanent på externa servrar.</li>
+<li>Ingen data delas, analyseras eller säljs till tredje part.</li>
+<li>All kommunikation sker via krypterade anslutningar (HTTPS).</li>
+<li>Åtkomst kan när som helst återkallas av utvecklaren via TikTok Developers-portalen.</li>
 </ul>
 
 <h3>Dataradering (TikTok Data Deletion Request)</h3>
-<p>Om du av någon anledning behöver begära dataradering relaterad till detta utvecklarprojekt, kan du kontakta mig via:</p>
+<p>Om du behöver begära radering av data relaterad till detta utvecklarprojekt kan du kontakta:</p>
 <p><strong>E-post:</strong> <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
 
 <p><strong>Data Deletion Callback URL:</strong><br>
@@ -107,14 +117,15 @@ Systemet används enbart av mig och är inte tillgängligt för någon annan anv
 
 <h3>Användarvillkor</h3>
 <ul>
-<li>Systemet är privat och används endast av utvecklaren (Casper Grenander).</li>
-<li>Ingen extern åtkomst, distribution eller delning av inloggningsuppgifter tillåts.</li>
-<li>Systemet används i enlighet med TikToks utvecklarvillkor och lokala lagar.</li>
-<li>Automatisering sker endast inom ramen för godkända användningsfall i TikToks API.</li>
+<li>Tjänsten används endast av utvecklaren själv för privat innehållshantering.</li>
+<li>Ingen extern åtkomst eller användning är tillåten.</li>
+<li>All användning sker i enlighet med TikToks API-regler, användarvillkor och tillämplig lagstiftning.</li>
+<li>Systemet får inte användas för att kringgå TikToks riktlinjer, automatisera olämpligt innehåll eller på annat sätt missbruka plattformen.</li>
 </ul>
 
 <h3>Ändringar av policy</h3>
-<p>Denna policy kan uppdateras vid behov, exempelvis vid ändringar i TikToks API-villkor eller utvecklarplattform. Datum för senaste uppdatering anges alltid högst upp på sidan.</p>
+<p>Denna policy kan uppdateras vid behov, exempelvis vid förändringar i TikToks API eller utvecklarvillkor.  
+Datum för senaste uppdatering anges alltid högst upp på sidan.</p>
 
 <footer>
 © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
