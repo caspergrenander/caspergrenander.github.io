@@ -2,62 +2,53 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<title>Integritetspolicy & Villkor – Historien Bakom Musiken AutoPublisher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Historien Bakom Musiken – Projekt & Autentisering</title>
 <style>
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background: #000;
   color: #FFFFFF;
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
 
-h1, h2 {
-  color: #F5B041;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-h3 { 
-  color: #FFFFFF; 
-  font-weight: 600; 
-  margin-top: 30px; 
-}
-
-.container {
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
   background: #111;
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #F5B04133;
+  border-bottom: 1px solid #F5B04133;
   box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
 
-.logo {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.logo img {
+header img {
   width: 180px;
   border-radius: 6px;
+  margin-bottom: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-ul { 
-  margin-left: 20px; 
-}
-li { 
-  margin-bottom: 8px; 
+h1 {
+  color: #F5B041;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #B4B4B4;
-  font-size: 14px;
+h2 {
+  color: #F5B041;
+  font-weight: 700;
+  margin-top: 50px;
 }
+
+p {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 0 20px;
+  color: #E0E0E0;
+}
+
 a {
   color: #F5B041;
   text-decoration: none;
@@ -65,73 +56,91 @@ a {
 a:hover {
   text-decoration: underline;
 }
-code {
-  background: #F5B04122;
-  padding: 4px 6px;
-  border-radius: 6px;
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111;
+  padding: 40px 30px;
+  border-radius: 10px;
+  border: 1px solid #F5B04122;
+  box-shadow: 0 0 15px rgba(245,176,65,0.1);
+  margin-top: 40px;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #333;
 }
 </style>
 </head>
 
 <body>
-<div class="logo">
-  <!-- Byt ut länken nedan till din uppladdade logotyp på GitHub Pages -->
+
+<header>
   <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" 
        alt="Historien Bakom Musiken Logo">
-</div>
+  <h1>Historien Bakom Musiken</h1>
+  <p>Ett kreativt projekt av Casper Grenander</p>
+</header>
 
 <div class="container">
-<h1>Integritetspolicy & användarvillkor</h1>
-<p><em>Senast uppdaterad: 2025-01-01</em></p>
+  <h2>Om Projektet</h2>
+  <p>
+    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag, <strong>Casper Grenander</strong>, 
+    utforskar och delar berättelser, musikskapande och bakgrundsarbetet bakom podden och musiken. 
+    Syftet är att ge insyn i det kreativa arbetet och skapa en plattform för inspiration och utveckling.
+  </p>
 
-<h2>Historien Bakom Musiken AutoPublisher</h2>
+  <h2>Om AutoPublisher-verktyget</h2>
+  <p>
+    <em>Historien Bakom Musiken AutoPublisher</em> är ett internt verktyg jag byggt för att 
+    automatiskt publicera utvalda klipp från podden till mitt officiella TikTok-konto. 
+    Det använder TikToks <strong>Content Posting API</strong> för att schemalägga och hantera videouppladdningar.  
+    Verktyget är helt privat och används enbart av mig som utvecklare.
+  </p>
 
-<p><strong>Historien Bakom Musiken AutoPublisher</strong> är ett personligt utvecklingsverktyg skapat och använt av <strong>Casper Grenander</strong>.  
-Syftet med systemet är att automatiskt publicera videoklipp från podden <em>Historien Bakom Musiken</em> till ett enda TikTok-konto, via <strong>TikTok Content Posting API</strong>.  
-Systemet är privat, används endast av utvecklaren själv, och är inte tillgängligt för allmänheten.</p>
+  <h2>Autentisering via TikTok</h2>
+  <p>
+    För att möjliggöra säker uppladdning används TikToks officiella <strong>OAuth-autentisering</strong>.  
+    Den används enbart för att bekräfta min identitet som innehållsskapare och ge tillfällig åtkomst 
+    till mitt eget konto.  
+    Systemet begär följande behörigheter (scopes):
+  </p>
+  <ul style="max-width:800px;margin:auto;text-align:left;padding-left:40px;">
+    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
+    <li><code>video.upload</code> – laddar upp videofiler</li>
+    <li><code>video.publish</code> – publicerar videor</li>
+  </ul>
 
-<h3>API-användning och behörigheter</h3>
-<p>Tjänsten använder endast de behörigheter (scopes) som krävs för att fungera korrekt via TikToks officiella API:</p>
-<ul>
-  <li><code>user.info.basic</code> – används för att identifiera det autentiserade TikTok-kontot.</li>
-  <li><code>video.upload</code> – används för att ladda upp videofiler till TikTok.</li>
-  <li><code>video.publish</code> – används för att publicera uppladdade videoklipp.</li>
-</ul>
-<p>Alla interaktioner sker genom TikToks säkra OAuth-flöde och följer TikToks utvecklarvillkor.</p>
+  <p>
+    Ingen information delas, lagras eller används utanför detta syfte.  
+    Alla anrop sker via TikToks säkra API enligt deras utvecklarpolicy.
+  </p>
 
-<h3>Integritetspolicy</h3>
-<ul>
-<li>Systemet lagrar inga personuppgifter utöver de autentiseringstokens som TikTok tillhandahåller vid inloggning.</li>
-<li>Tokens används endast för att publicera innehåll till det egna TikTok-kontot och sparas inte permanent på externa servrar.</li>
-<li>Ingen data delas, analyseras eller säljs till tredje part.</li>
-<li>All kommunikation sker via krypterade anslutningar (HTTPS).</li>
-<li>Åtkomst kan när som helst återkallas av utvecklaren via TikTok Developers-portalen.</li>
-</ul>
+  <h2>Policy & Information</h2>
+  <p>
+    För fullständig information om datahantering och användning, se:
+    <br><br>
+    🔗 <a href="https://caspergrenander.github.io/hbm-policy/integritetspolicy.html">Integritetspolicy</a><br>
+    🔗 <a href="https://caspergrenander.github.io/hbm-policy/anvandarvillkor.html">Användarvillkor</a>
+  </p>
 
-<h3>Dataradering (TikTok Data Deletion Request)</h3>
-<p>Om du behöver begära radering av data relaterad till detta utvecklarprojekt kan du kontakta:</p>
-<p><strong>E-post:</strong> <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
-
-<p><strong>Data Deletion Callback URL:</strong><br>
-<code>https://caspergrenander.github.io/hbm-policy/</code></p>
-
-<h3>Användarvillkor</h3>
-<ul>
-<li>Tjänsten används endast av utvecklaren själv för privat innehållshantering.</li>
-<li>Ingen extern åtkomst eller användning är tillåten.</li>
-<li>All användning sker i enlighet med TikToks API-regler, användarvillkor och tillämplig lagstiftning.</li>
-<li>Systemet får inte användas för att kringgå TikToks riktlinjer, automatisera olämpligt innehåll eller på annat sätt missbruka plattformen.</li>
-</ul>
-
-<h3>Ändringar av policy</h3>
-<p>Denna policy kan uppdateras vid behov, exempelvis vid förändringar i TikToks API eller utvecklarvillkor.  
-Datum för senaste uppdatering anges alltid högst upp på sidan.</p>
+  <h2>Kontakt</h2>
+  <p>
+    För frågor kring projektet, teknik eller policy:
+    <br>
+    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
+  </p>
+</div>
 
 <footer>
-© 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  © 2025 Casper Grenander – Historien Bakom Musiken
 </footer>
 
-</div>
 </body>
 </html>
-
