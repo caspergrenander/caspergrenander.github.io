@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <!-- build trigger -->
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Historien Bakom Musiken – Projekt & Autentisering</title>
-
 <style>
 body {
   margin: 0;
@@ -82,7 +81,6 @@ footer {
 </head>
 
 <body>
-
 <header>
   <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png"
        alt="Historien Bakom Musiken Logo">
@@ -126,28 +124,63 @@ footer {
     Alla API-anrop sker enligt TikToks säkerhetskrav.
   </p>
 
-  <!-- ÅTERS KAPAD POLICY & INFORMATION-SEKTION -->
-  <h2>Policy & Information</h2>
+
+  <!-- NYA SEKTIONER HÄR -->
+  <h2>Information</h2>
   <p>
-    För detaljerad information om datahantering, villkor och användning av verktyget:
-    <br><br>
-    🔗 <a href="https://caspergrenander.github.io/historienbakommusiken/integritetspolicy">Integritetspolicy</a><br>
-    🔗 <a href="https://caspergrenander.github.io/historienbakommusiken/anvandarvillkor">Användarvillkor</a>
+    AutoPublisher används för att ladda upp och publicera videor på TikTok via TikToks officiella API.
+    Verktyget körs inte som en publik konsumentapp och samlar inte in personuppgifter utanför
+    den autentisering som TikTok självt hanterar i OAuth-flödet.
   </p>
 
-  <h2>Kontakt</h2>
   <p>
-    Vid frågor om projektet eller tekniken:
-    <br>
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
+    Endast de behörigheter som är nödvändiga för att ladda upp och publicera videor begärs.
+    Ingen information sparas permanent på servernivå och inga användardata säljs, delas
+    eller skickas vidare till tredje part.
   </p>
 
+  <h2>Policy</h2>
+  <p>
+    AutoPublisher följer TikToks utvecklarpolicy och är byggt för att:
+  </p>
+
+  <ul style="max-width:800px;margin:auto;text-align:left;padding-left:40px;">
+    <li>enbart begära minimalt nödvändiga scopes</li>
+    <li>inte samla in eller lagra information som inte krävs för uppladdning</li>
+    <li>inte agera som ett verktyg för masspublicering, automatiserad spam eller liknande</li>
+    <li>respektera TikToks riktlinjer för integritet, användardata och API-säkerhet</li>
+  </ul>
+
+  <p>
+    Det är användaren som via TikTok OAuth bestämmer om och när åtkomst ges. Åtkomsten kan när som helst
+    återkallas via TikToks egna kontoinställningar.
+  </p>
+
+  <h2>Data & Deletion</h2>
+  <p>
+    AutoPublisher lagrar inte persondata utanför de tokens som TikTok genererar i samband med uppladdning.
+    Dessa tokens används enbart för att genomföra den aktiva uppladdningen och sparas inte efteråt.
+  </p>
+
+  <p>
+    Om du vill radera tokens, återkalla åtkomst eller granska vilken data TikTok hanterar, kan detta göras via:
+  </p>
+
+  <ul style="max-width:800px;margin:auto;text-align:left;padding-left:40px;">
+    <li><a href="https://www.tiktok.com/setting" target="_blank">TikTok Account Settings</a></li>
+    <li><a href="https://www.tiktok.com/legal/page/global-privacy-policy" target="_blank">TikTok Privacy Policy</a></li>
+    <li><a href="mailto:casper.grenander5@gmail.com">Kontakt: Casper Grenander</a></li>
+  </ul>
+
+  <p>
+    Inga kopior av uppladdningar, tokens eller profilinformation lagras av AutoPublisher
+    när uppladdningen är slutförd.
+  </p>
 </div>
 
 <footer>
   © 2025 Casper Grenander  
   Historien Bakom Musiken
 </footer>
-
 </body>
 </html>
