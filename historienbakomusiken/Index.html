@@ -1,154 +1,58 @@
 <!DOCTYPE html>
-<!-- build trigger -->
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historien Bakom Musiken – Projekt & Autentisering</title>
-
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  color: #FFFFFF;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.7;
-}
-
-header {
-  padding: 60px 20px 40px;
-  text-align: center;
-  background: #111;
-  border-bottom: 1px solid #F5B04133;
-  box-shadow: 0 0 15px rgba(245,176,65,0.15);
-}
-
-header img {
-  width: 180px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-h1 {
-  color: #F5B041;
-  margin-bottom: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-h2 {
-  color: #F5B041;
-  font-weight: 700;
-  margin-top: 50px;
-}
-
-p {
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0 20px;
-  color: #E0E0E0;
-}
-
-a {
-  color: #F5B041;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  background: #111;
-  padding: 40px 30px;
-  border-radius: 10px;
-  border: 1px solid #F5B04122;
-  box-shadow: 0 0 15px rgba(245,176,65,0.1);
-  margin-top: 40px;
-}
-
-footer {
-  margin-top: 60px;
-  padding: 30px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #B4B4B4;
-  border-top: 1px solid #333;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historien Bakom Musiken – C / A Beats & Productions</title>
+  <style>
+    :root{--bg:#000;--card:#111;--accent:#F5B041;--muted:#B4B4B4}
+    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Segoe UI, Roboto, Arial, sans-serif}
+    .wrap{max-width:980px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;gap:18px}
+    header img{width:84px;border-radius:8px}
+    h1{color:var(--accent);margin:0;font-size:1.6rem;text-transform:uppercase}
+    p.lead{color:#e0e0e0;margin-top:6px}
+    .card{background:var(--card);padding:22px;border-radius:10px;border:1px solid rgba(245,176,65,0.12);box-shadow:0 6px 18px rgba(0,0,0,0.6);margin-top:20px}
+    ul.links{list-style:none;padding:0;margin:0}
+    ul.links li{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{color:var(--muted);text-align:center;margin:30px 0 10px;font-size:0.9rem}
+    @media (max-width:600px){.wrap{margin:16px;padding:16px}header{flex-direction:column;align-items:flex-start}header img{width:110px}}
+  </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <header>
+      <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken">
+      <div>
+        <h1>Historien Bakom Musiken</h1>
+        <p class="lead">Projekt och verktyg för att skapa, publicera och hantera videoinnehåll. Utvecklat av Casper Grenander / C &ndash; A Beats & Productions.</p>
+      </div>
+    </header>
 
-<header>
-  <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png"
-       alt="Historien Bakom Musiken Logo">
-  <h1>Historien Bakom Musiken</h1>
-  <p>Ett kreativt projekt av Casper Grenander</p>
-</header>
+    <section class="card">
+      <h2 style="color:var(--accent);margin-top:0">Snabb-länkar</h2>
+      <ul class="links">
+        <li><a href="/historienbakomusiken/Index.html">Startsida (Historien Bakom Musiken)</a></li>
+        <li><a href="/historienbakomusiken/integritetspolicy.html">Integritetspolicy</a></li>
+        <li><a href="/historienbakomusiken/anvandarvillkor.html">Användarvillkor</a></li>
+        <li><a href="/historienbakomusiken/data-radering.html">Data Radering</a></li>
+        <li><a href="/historienbakomusiken/redirect.html">TikTok Redirect (OAuth)</a></li>
+        <li><a href="/meta-policy/">Meta Policy (Facebook/Instagram integration)</a></li>
+      </ul>
 
-<div class="container">
+      <p style="margin-top:14px;color:#ddd">Sidan publiceras via GitHub Pages. Om du inte ser ändringarna direkt: rensa cache eller vänta någon minut.</p>
+    </section>
 
-  <h2>Om Projektet</h2>
-  <p>
-    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag, <strong>Casper Grenander</strong>,
-    delar insikter från musikskapande, poddproduktion och den kreativa processen. Målet är att ge transparens,
-    inspiration och kontext till hur musiken och berättelserna växer fram.
-  </p>
+    <section class="card" style="margin-top:18px">
+      <h2 style="color:var(--accent);margin-top:0">Kontakt & Support</h2>
+      <p style="color:#e0e0e0;margin:0">Frågor om innehåll eller tekniska problem: <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+    </section>
 
-  <h2>Om AutoPublisher-verktyget</h2>
-  <p>
-    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att schemalägga och publicera videoklipp via
-    TikToks <strong>Content Posting API</strong>.
-    Verktyget följer TikToks utvecklarpolicy och kan användas av alla som loggar in och autentiserar sig via TikToks
-    officiella OAuth-system.
-    Funktionen används i mitt eget skapande, men är inte begränsad till en enda användare.
-  </p>
-
-  <h2>Autentisering via TikTok</h2>
-  <p>
-    För uppladdning och publicering används TikToks officiella <strong>OAuth-autentisering</strong>.
-    Systemet begär endast de rättigheter som krävs för att hantera videouppladdningar.
-    Följande scopes används:
-  </p>
-
-  <ul style="max-width:800px;margin:auto;text-align:left;padding-left:40px;">
-    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
-    <li><code>video.upload</code> – laddar upp videofiler</li>
-    <li><code>video.publish</code> – publicerar videor</li>
-  </ul>
-
-  <p>
-    Ingen personlig information lagras utanför TikToks system och inga uppgifter sparas permanent.
-    Alla API-anrop sker enligt TikToks säkerhetskrav.
-  </p>
-
-  <!-- POLICY & INFORMATION -->
-  <h2>Policy & Information</h2>
-  <p>
-    För detaljerad information om datahantering, villkor och användning av verktyget:
-    <br><br>
-    🔗 <a href="https://caspergrenander.github.io/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
-    🔗 <a href="https://caspergrenander.github.io/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
-    🔗 <a href="https://caspergrenander.github.io/historienbakomusiken/data-deletion">Data Deletion</a>
-  </p>
-
-  <h2>Kontakt</h2>
-  <p>
-    Vid frågor om projektet eller tekniken:
-    <br>
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
-  </p>
-
-</div>
-
-<footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken
-</footer>
-
+    <footer>
+      © 2025 Casper Grenander • C / A Beats & Productions
+    </footer>
+  </main>
 </body>
 </html>
