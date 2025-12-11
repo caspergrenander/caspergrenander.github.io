@@ -20,24 +20,71 @@ header {
   border-bottom: 1px solid #F5B04133;
   box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
-header a { color: inherit; text-decoration: none; display: inline-block; text-align: center; }
-header img { width: 180px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
-h1 { color: #F5B041; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
-h2 { color: #F5B041; font-weight: 700; margin-top: 40px; }
-p { max-width: 900px; margin: 10px auto; padding: 0 20px; color: #E0E0E0; }
-a { color: #F5B041; text-decoration: none; }
+header a { 
+  color: inherit; 
+  text-decoration: none; 
+  display: inline-block; 
+  text-align: center; 
+}
+header img { 
+  width: 180px; 
+  border-radius: 6px; 
+  margin-bottom: 20px; 
+  box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+}
+h1 { 
+  color: #F5B041; 
+  margin-bottom: 10px; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+}
+h2 { 
+  color: #F5B041; 
+  font-weight: 700; 
+  margin-top: 40px; 
+}
+p { 
+  max-width: 900px; 
+  margin: 10px auto; 
+  padding: 0 20px; 
+  color: #E0E0E0; 
+}
+a { 
+  color: #F5B041; 
+  text-decoration: none; 
+}
 a:hover { text-decoration: underline; }
-.container { max-width: 1000px; margin: auto; background: #111; padding: 40px 30px; border-radius: 10px; border: 1px solid #F5B04122; box-shadow: 0 0 15px rgba(245,176,65,0.1); margin-top: 40px; }
-footer { margin-top: 60px; padding: 30px; text-align: center; font-size: 0.9rem; color: #B4B4B4; border-top: 1px solid #333; }
+.container { 
+  max-width: 1000px; 
+  margin: auto; 
+  background: #111; 
+  padding: 40px 30px; 
+  border-radius: 10px; 
+  border: 1px solid #F5B04122; 
+  box-shadow: 0 0 15px rgba(245,176,65,0.1); 
+  margin-top: 40px; 
+}
+footer { 
+  margin-top: 60px; 
+  padding: 30px; 
+  text-align: center; 
+  font-size: 0.9rem; 
+  color: #B4B4B4; 
+  border-top: 1px solid #333; 
+}
 ul { margin-left: 28px; }
-code { background: #F5B04122; padding: 4px 6px; border-radius: 6px; }
+code { 
+  background: #F5B04122; 
+  padding: 4px 6px; 
+  border-radius: 6px; 
+}
 </style>
 </head>
 <body>
 
 <header>
   <a href="/historienbakomusiken/projekt-info">
-    <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
+    <img src="/historienbakommusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
   <p>Ett kreativt projekt av Casper Grenander</p>
@@ -48,10 +95,10 @@ code { background: #F5B04122; padding: 4px 6px; border-radius: 6px; }
   <p><em>Senast uppdaterad: 2025-01-01</em></p>
 
   <h2>Vad kan raderas</h2>
-  <p>AutoPublisher lagrar inte videofiler eller personuppgifter lokalt i systemet. Systemet använder temporära autentiseringstokens som tillhandahålls av TikTok för att genomföra uppladdningar. Följande typer av uppgifter hanteras eller kan påverkas:</p>
+  <p>AutoPublisher lagrar inte videofiler eller personuppgifter lokalt i systemet. Systemet använder temporära autentiseringstokens som tillhandahålls av TikTok för att möjliggöra uppladdning och publicering. Följande typer av uppgifter kan hanteras:</p>
   <ul>
     <li>Tillfälliga autentiseringstokens från TikTok som används för sessioner vid uppladdning.</li>
-    <li>Metadata och loggar som behövs för att genomföra och spåra uppladdningsförfrågningar.</li>
+    <li>Teknisk metadata som behövs för att hantera uppladdningsförfrågningar i realtid.</li>
   </ul>
 
   <h2>Hur du begär radering</h2>
@@ -60,17 +107,17 @@ code { background: #F5B04122; padding: 4px 6px; border-radius: 6px; }
 
   <p>I din begäran ange:</p>
   <ul>
-    <li>Ditt TikTok-användarnamn eller den identifiering som du använt vid inloggning</li>
-    <li>Vilken typ av åtgärd du önskar (t.ex. radering, åtkomstbegäran)</li>
+    <li>Ditt TikTok-användarnamn eller annan identifiering som användes vid inloggning</li>
+    <li>Vilken typ av åtgärd du önskar (till exempel radering eller åtkomstförfrågan)</li>
     <li>Kontaktuppgifter för bekräftelse</li>
   </ul>
 
   <h2>Callback URL för TikToks Data Deletion</h2>
-  <p>Om TikTok initierar en formell data-deletion-begäran använder vi följande publika URL som callback för verifiering:</p>
-  <p><code>https://caspergrenander.github.io/historienbakomusiken/data-radering</code></p>
+  <p>Om TikTok initierar en formell raderingsförfrågan använder Tjänsten följande publika callback-URL:</p>
+  <p><code>https://caspergrenander.github.io/historienbakommusiken/data-radering</code></p>
 
   <h2>Tidsram</h2>
-  <p>När en raderingsbegäran mottagits kommer vi att bekräfta mottagandet via e-post och påbörja raderingsprocessen. Eftersom viss data hanteras av TikTok kan slutlig radering ta längre tid beroende på TikToks egna processer. Vi strävar efter att bekräfta och slutföra raderingen inom 7 kalenderdagar när det är möjligt.</p>
+  <p>När en raderingsbegäran mottagits kommer vi att bekräfta mottagandet via e-post och påbörja raderingsprocessen. Då en del data hanteras av TikTok kan slutlig radering ta längre tid, beroende på TikToks egna rutiner. Vi strävar efter att slutföra vår del inom 7 kalenderdagar.</p>
 
   <h2>Kontakt och frågor</h2>
   <p>Vid frågor om dataradering eller andra datarelaterade förfrågningar, kontakta: <br>
