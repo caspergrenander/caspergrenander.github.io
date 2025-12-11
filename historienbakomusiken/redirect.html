@@ -103,7 +103,7 @@ footer {
   </svg>
 
   <h1 id="status-text">Inloggning lyckades</h1>
-  <p id="info-text">Autentisering via TikTok har slutförts.</p>
+  <p id="info-text">Autentisering via TikTok har slutförts. Du kan nu återvända till applikationen.</p>
 
   <footer>
     © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
@@ -116,10 +116,39 @@ footer {
   const code = params.get('code');
   console.log("TikTok auth code:", code);
 
+  // Om sidan öppnades som en popup av en annan sida, skicka koden via postMessage och försök stänga popup
+  function notifyOpenerAndClose() {
+    try {
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage({ source: 'hbm-autopublisher', code }, window.location.origin);
+        document.getElementById('info-text').textContent = 'Autentiseringen är klar. Fönstret stängs automatiskt.';
+        setTimeout(() => { window.close(); }, 1200);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Kunde inte kommunicera med öppnaren:', e);
+    }
+    return false;
+  }
+
   // Växla text efter 2 sekunder
   setTimeout(() => {
-    document.getElementById('status-text').textContent = "Du kan nu stänga den här sidan";
-    document.getElementById('info-text').textContent = "Autentiseringen är klar.";
+    if (!notifyOpenerAndClose()) {
+      document.getElementById('status-text').textContent = "Du kan nu stänga den här sidan";
+      document.getElementById('info-text').textContent = "Autentiseringen är klar. Kopiera eventuellt koden om din applikation behöver den.";
+      if (code) {
+        // Visa en enkel ruta med koden så användaren kan kopiera om popuppen inte kan stängas
+        const p = document.createElement('p');
+        p.style.marginTop = '12px';
+        p.style.wordBreak = 'break-all';
+        p.style.background = '#111';
+        p.style.padding = '10px';
+        p.style.borderRadius = '6px';
+        p.style.border = '1px solid #333';
+        p.textContent = 'Kod: ' + code;
+        document.querySelector('.container').appendChild(p);
+      }
+    }
   }, 2000);
 </script>
 </body>
