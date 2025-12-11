@@ -2,76 +2,92 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<title>Användarvillkor – Historien Bakom Musiken AutoPublisher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Användarvillkor – Historien Bakom Musiken AutoPublisher</title>
 <style>
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background: #000;
   color: #FFFFFF;
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
-h1, h2 {
-  color: #F5B041;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-h3 { color: #FFFFFF; font-weight: 600; margin-top: 30px; }
-.container {
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
   background: #111;
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #F5B04133;
+  border-bottom: 1px solid #F5B04133;
   box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
-.logo { text-align: center; margin-bottom: 20px; }
-.logo img {
-  width: 180px; border-radius: 6px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-ul { margin-left: 20px; }
-li { margin-bottom: 8px; }
-footer {
-  margin-top: 40px; text-align: center;
-  color: #B4B4B4; font-size: 14px;
-}
+header a { color: inherit; text-decoration: none; display: inline-block; text-align: center; }
+header img { width: 180px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+h1 { color: #F5B041; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
+h2 { color: #F5B041; font-weight: 700; margin-top: 40px; }
+p { max-width: 900px; margin: 10px auto; padding: 0 20px; color: #E0E0E0; }
 a { color: #F5B041; text-decoration: none; }
 a:hover { text-decoration: underline; }
+.container { max-width: 1000px; margin: auto; background: #111; padding: 40px 30px; border-radius: 10px; border: 1px solid #F5B04122; box-shadow: 0 0 15px rgba(245,176,65,0.1); margin-top: 40px; }
+footer { margin-top: 60px; padding: 30px; text-align: center; font-size: 0.9rem; color: #B4B4B4; border-top: 1px solid #333; }
+ul { margin-left: 28px; }
+code { background: #F5B04122; padding: 4px 6px; border-radius: 6px; }
 </style>
 </head>
-
 <body>
-<div class="logo">
-  <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
-</div>
+
+<header>
+  <a href="/historienbakomusiken/projekt-info">
+    <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p>Ett kreativt projekt av Casper Grenander</p>
+</header>
 
 <div class="container">
-<h1>Användarvillkor</h1>
-<p><em>Senast uppdaterad: 2025-01-01</em></p>
+  <h1>Användarvillkor</h1>
+  <p><em>Senast uppdaterad: 2025-01-01</em></p>
 
-<h2>Om tjänsten</h2>
-<p><strong>Historien Bakom Musiken AutoPublisher</strong> är ett privat system utvecklat av <strong>Casper Grenander</strong> för att automatiskt publicera videoklipp från podden <em>Historien Bakom Musiken</em> till TikTok. Verktyget är avsett för personligt bruk och inte för bred kommersiell distribution.</p>
+  <h2>1. Tillämpning</h2>
+  <p>Dessa användarvillkor ("Villkoren") gäller för din användning av <strong>Historien Bakom Musiken AutoPublisher</strong> (”Tjänsten”). Genom att logga in och använda Tjänsten godkänner du dessa villkor. Tjänsten erbjuds som ett creator-verktyg och är tillgänglig för användare som autentiserar sig via TikToks officiella OAuth-system.</p>
 
-<h3>Begränsningar</h3>
-<ul>
-<li>Systemet används endast av utvecklaren själv eller av personer med uttryckligt tillstånd.</li>
-<li>Otillåten användning, delning eller modifiering av systemet är förbjuden utan skriftligt godkännande.</li>
-<li>Tjänsten får inte användas för att kringgå TikToks regler eller för att automatisera publicering av olämpligt innehåll.</li>
-<li>Systemet är inte avsett för kommersiell eller publik användning utan separat avtal.</li>
-</ul>
+  <h2>2. Vad Tjänsten gör</h2>
+  <p>AutoPublisher möjliggör uppladdning och publicering av videoklipp till ett TikTok-konto via TikToks Content Posting API. Användaren initierar inloggning via TikTok, väljer material och styr publiceringen genom Tjänstens gränssnitt. Tjänsten automatiserar inte publicering utan användaren bekräftar uppladdning/publicering i det normala användarflödet.</p>
 
-<h3>Ansvar</h3>
-<p>Utvecklaren ansvarar för att all publicering följer TikToks villkor och tillämplig lag. Användaren ansvarar för att allt publicerat material inte bryter mot upphovsrätt eller andra rättigheter.</p>
+  <h2>3. Åtkomst och autentisering</h2>
+  <p>För att använda Tjänsten krävs en TikTok-inloggning via OAuth. Endast de scopes som är nödvändiga för funktionaliteten begärs (<code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>). Användaren kan när som helst återkalla åtkomst via sina TikTok-kontoinställningar.</p>
 
-<h3>Ändringar av villkoren</h3>
-<p>Dessa användarvillkor kan uppdateras vid behov, exempelvis när TikTok uppdaterar sina API-regler. Datum för senaste uppdatering anges alltid högst upp på sidan.</p>
+  <h2>4. Ansvar för innehåll</h2>
+  <p>Användaren ansvarar för allt innehåll som laddas upp och publiceras via Tjänsten. Du bekräftar att du har rätt att publicera materialet och att det inte bryter mot upphovsrätt, personliga rättigheter eller tillämplig lag. Utvecklaren kan inte hållas ansvarig för innehåll som publiceras av användaren.</p>
+
+  <h2>5. Begränsningar</h2>
+  <ul>
+    <li>Tjänsten får inte användas för att kringgå TikToks regler eller för att automatisera masspublicering i strid med plattformens policy.</li>
+    <li>Användning i kommersiella tredjepartstjänster eller vidareförsäljning av Tjänsten är inte tillåten utan skriftligt avtal med utvecklaren.</li>
+    <li>Utvecklaren förbehåller sig rätten att stänga av åtkomst för användare som missbrukar Tjänsten eller bryter mot dessa villkor.</li>
+  </ul>
+
+  <h2>6. Personuppgifter och säkerhet</h2>
+  <p>AutoPublisher begär endast de behörigheter som krävs för funktionaliteten. Ingen användardata eller tokens sparas permanent i systemet utöver kortlivade autentiseringsuppgifter som krävs för att genomföra en uppladdning. All kommunikation sker över krypterade anslutningar (HTTPS).</p>
+
+  <h2>7. Dataradering</h2>
+  <p>Instruktioner för begäran om radering finns på sidan för Data Radering: <a href="/historienbakomusiken/data-radering">Data Radering</a>. Observera att en del data hanteras av TikTok och slutlig radering kan kräva åtgärd från TikTok.</p>
+
+  <h2>8. Ansvarsbegränsning</h2>
+  <p>I den utsträckning lagen tillåter är utvecklarens ansvar begränsat till direkta skador som orsakats av grov vårdslöshet eller uppsåt. Utvecklaren ansvarar inte för indirekta skador, förlorad vinst eller följdskador orsakade av användning av Tjänsten.</p>
+
+  <h2>9. Ändringar av villkoren</h2>
+  <p>Dessa villkor kan uppdateras vid behov. Vid väsentliga ändringar meddelas detta via webbplatsen. Den version som är publicerad på webbplatsen vid tidpunkten för din användning gäller.</p>
+
+  <h2>10. Kontakt</h2>
+  <p>Vid frågor om villkoren eller om din användning kontakta: <br>
+  <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+
+</div>
 
 <footer>
-© 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  © 2025 Casper Grenander  
+  Historien Bakom Musiken
 </footer>
-</div>
+
 </body>
 </html>
