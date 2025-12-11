@@ -2,84 +2,86 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<title>Data Radering – Historien Bakom Musiken AutoPublisher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Radering – Historien Bakom Musiken AutoPublisher</title>
 <style>
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background: #000;
   color: #FFFFFF;
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
-h1, h2 {
-  color: #F5B041;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-h3 { color: #FFFFFF; font-weight: 600; margin-top: 30px; }
-.container {
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
   background: #111;
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #F5B04133;
+  border-bottom: 1px solid #F5B04133;
   box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
-.logo { text-align: center; margin-bottom: 20px; }
-.logo img {
-  width: 180px; border-radius: 6px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-ul { margin-left: 20px; }
-li { margin-bottom: 8px; }
-footer {
-  margin-top: 40px; text-align: center;
-  color: #B4B4B4; font-size: 14px;
-}
+header a { color: inherit; text-decoration: none; display: inline-block; text-align: center; }
+header img { width: 180px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+h1 { color: #F5B041; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
+h2 { color: #F5B041; font-weight: 700; margin-top: 40px; }
+p { max-width: 900px; margin: 10px auto; padding: 0 20px; color: #E0E0E0; }
 a { color: #F5B041; text-decoration: none; }
 a:hover { text-decoration: underline; }
-code {
-  background: #F5B04122; padding: 4px 6px;
-  border-radius: 6px;
-}
+.container { max-width: 1000px; margin: auto; background: #111; padding: 40px 30px; border-radius: 10px; border: 1px solid #F5B04122; box-shadow: 0 0 15px rgba(245,176,65,0.1); margin-top: 40px; }
+footer { margin-top: 60px; padding: 30px; text-align: center; font-size: 0.9rem; color: #B4B4B4; border-top: 1px solid #333; }
+ul { margin-left: 28px; }
+code { background: #F5B04122; padding: 4px 6px; border-radius: 6px; }
 </style>
 </head>
 <body>
-<div class="logo">
-  <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
-</div>
+
+<header>
+  <a href="/historienbakomusiken/projekt-info">
+    <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p>Ett kreativt projekt av Casper Grenander</p>
+</header>
+
 <div class="container">
   <h1>Data Radering</h1>
   <p><em>Senast uppdaterad: 2025-01-01</em></p>
-  <h2>Begäran om dataradering</h2>
-  <p>
-    <strong>Historien Bakom Musiken AutoPublisher</strong> lagrar inte några personuppgifter
-    eller filer utanför TikToks egna system.
-    Eventuella tokens som tillfälligt används vid autentisering raderas automatiskt och lagras
-    aldrig permanent.
-  </p>
-  <p>
-    Om du vill begära radering av data kopplad till denna app via TikToks Data Deletion-process
-    kan du använda följande kontaktinformation:
-  </p>
-  <h3>Kontakt för dataradering</h3>
-  <p><strong>E-post:</strong> <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
-  <p><strong>Oficiell Data Deletion Callback URL:</strong><br>
-  <code>https://caspergrenander.github.io/hbm-policy/</code></p>
-  <h3>Vad som kan raderas</h3>
+
+  <h2>Vad kan raderas</h2>
+  <p>AutoPublisher lagrar inte videofiler eller personuppgifter lokalt i systemet. Systemet använder temporära autentiseringstokens som tillhandahålls av TikTok för att genomföra uppladdningar. Följande typer av uppgifter hanteras eller kan påverkas:</p>
   <ul>
-    <li>Tillfälliga autentiseringsdata som skapas av TikTok vid inloggning.</li>
-    <li>Eventuell metadata som TikTok själv lagrar i samband med användning av dess API.</li>
+    <li>Tillfälliga autentiseringstokens från TikTok som används för sessioner vid uppladdning.</li>
+    <li>Metadata och loggar som behövs för att genomföra och spåra uppladdningsförfrågningar.</li>
   </ul>
-  <p>
-    Observera att denna app inte lagrar några filer, videor eller tokens lokalt och därför finns det
-    ingen lagrad data i systemet att radera. All faktisk dataradering hanteras av TikTok enligt deras riktlinjer.
-  </p>
-  <footer>
-    © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
-  </footer>
+
+  <h2>Hur du begär radering</h2>
+  <p>För att begära radering av data som hanteras i samband med användning av Tjänsten, skicka ett e-postmeddelande till:</p>
+  <p><strong>E-post:</strong> <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+
+  <p>I din begäran ange:</p>
+  <ul>
+    <li>Ditt TikTok-användarnamn eller den identifiering som du använt vid inloggning</li>
+    <li>Vilken typ av åtgärd du önskar (t.ex. radering, åtkomstbegäran)</li>
+    <li>Kontaktuppgifter för bekräftelse</li>
+  </ul>
+
+  <h2>Callback URL för TikToks Data Deletion</h2>
+  <p>Om TikTok initierar en formell data-deletion-begäran använder vi följande publika URL som callback för verifiering:</p>
+  <p><code>https://caspergrenander.github.io/historienbakomusiken/data-radering</code></p>
+
+  <h2>Tidsram</h2>
+  <p>När en raderingsbegäran mottagits kommer vi att bekräfta mottagandet via e-post och påbörja raderingsprocessen. Eftersom viss data hanteras av TikTok kan slutlig radering ta längre tid beroende på TikToks egna processer. Vi strävar efter att bekräfta och slutföra raderingen inom 7 kalenderdagar när det är möjligt.</p>
+
+  <h2>Kontakt och frågor</h2>
+  <p>Vid frågor om dataradering eller andra datarelaterade förfrågningar, kontakta: <br>
+  <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+
 </div>
+
+<footer>
+  © 2025 Casper Grenander  
+  Historien Bakom Musiken
+</footer>
+
 </body>
 </html>
