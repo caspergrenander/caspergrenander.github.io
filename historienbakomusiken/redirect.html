@@ -118,9 +118,10 @@ footer {
 
 <body>
 
+<!-- SAMMA HEADER SOM ALLA ANDRA SIDOR -->
 <header>
   <a href="/historienbakomusiken/projekt-info">
-    <img src="/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
   <p>Ett kreativt projekt av Casper Grenander</p>
@@ -128,7 +129,7 @@ footer {
 
 <div class="container">
 
-  <!-- CHECKMARK -->
+  <!-- ANIMATION -->
   <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
     <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
     <path class="checkmark__check" fill="none" d="M14 27l7 7 16-16"/>
@@ -145,41 +146,41 @@ footer {
 </footer>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const code = params.get('code');
-console.log("TikTok auth code:", code);
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  console.log("TikTok auth code:", code);
 
-function notifyOpenerAndClose() {
-  try {
-    if (window.opener && !window.opener.closed) {
-      window.opener.postMessage({ source: 'hbm-autopublisher', code }, window.location.origin);
-      document.getElementById('info-text').textContent = 'Autentiseringen är klar. Fönstret stängs automatiskt.';
-      setTimeout(() => { window.close(); }, 1200);
-      return true;
+  function notifyOpenerAndClose() {
+    try {
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage({ source: 'hbm-autopublisher', code }, window.location.origin);
+        document.getElementById('info-text').textContent = 'Autentiseringen är klar. Fönstret stängs automatiskt.';
+        setTimeout(() => { window.close(); }, 1200);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Kunde inte kommunicera med öppnaren:', e);
     }
-  } catch (e) {
-    console.warn('Kunde inte kommunicera med öppnaren:', e);
+    return false;
   }
-  return false;
-}
 
-setTimeout(() => {
-  if (!notifyOpenerAndClose()) {
-    document.getElementById('status-text').textContent = "Du kan nu stänga den här sidan";
-    document.getElementById('info-text').textContent = "Autentiseringen är klar. Kopiera eventuellt koden om din applikation behöver den.";
-    if (code) {
-      const p = document.createElement('p');
-      p.style.marginTop = '12px';
-      p.style.wordBreak = 'break-all';
-      p.style.background = '#111';
-      p.style.padding = '10px';
-      p.style.borderRadius = '6px';
-      p.style.border = '1px solid #333';
-      p.textContent = 'Kod: ' + code;
-      document.querySelector('.container').appendChild(p);
+  setTimeout(() => {
+    if (!notifyOpenerAndClose()) {
+      document.getElementById('status-text').textContent = "Du kan nu stänga den här sidan";
+      document.getElementById('info-text').textContent = "Autentiseringen är klar. Kopiera eventuellt koden om din applikation behöver den.";
+      if (code) {
+        const p = document.createElement('p');
+        p.style.marginTop = '12px';
+        p.style.wordBreak = 'break-all';
+        p.style.background = '#111';
+        p.style.padding = '10px';
+        p.style.borderRadius = '6px';
+        p.style.border = '1px solid #333';
+        p.textContent = 'Kod: ' + code;
+        document.querySelector('.container').appendChild(p);
+      }
     }
-  }
-}, 2000);
+  }, 2000);
 </script>
 
 </body>
