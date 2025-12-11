@@ -76,6 +76,12 @@ a:hover {
   margin-top: 40px;
 }
 
+ul {
+  max-width: 800px;
+  margin: auto;
+  padding-left: 40px;
+}
+
 footer {
   margin-top: 60px;
   padding: 30px;
@@ -90,8 +96,8 @@ footer {
 <body>
 
 <header>
-  <a href="https://caspergrenander.github.io/historienbakomusiken/">
-    <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png"
+  <a href="/historienbakomusiken/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
          alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
@@ -110,20 +116,22 @@ footer {
   <h2>Om AutoPublisher-verktyget</h2>
   <p>
     <em>AutoPublisher</em> är ett verktyg som gör det möjligt att schemalägga och publicera videoklipp via
-    TikToks <strong>Content Posting API</strong>.
-    Verktyget följer TikToks utvecklarpolicy och kan användas av alla som loggar in och autentiserar sig via TikToks
-    officiella OAuth-system.
-    Funktionen används i mitt eget skapande, men är inte begränsad till en enda användare.
+    TikToks <strong>Content Posting API</strong>. Verktyget följer TikToks utvecklarpolicy och kan användas av alla
+    som loggar in och autentiserar sig via TikToks officiella OAuth-system.
+  </p>
+
+  <p>
+    Funktionen används i mitt eget kreativa arbete, men är inte begränsad till en enda användare.
+    Alla som autentiserar sig via TikTok kan använda verktyget enligt samma villkor och process.
   </p>
 
   <h2>Autentisering via TikTok</h2>
   <p>
-    För uppladdning och publicering används TikToks officiella <strong>OAuth-autentisering</strong>.
-    Systemet begär endast de rättigheter som krävs för att hantera videouppladdningar.
-    Följande scopes används:
+    TikToks <strong>OAuth-autentisering</strong> används för både uppladdning och publicering.
+    Endast nödvändiga scopes begärs:
   </p>
 
-  <ul style="max-width:800px;margin:auto;text-align:left;padding-left:40px;">
+  <ul>
     <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
     <li><code>video.upload</code> – laddar upp videofiler</li>
     <li><code>video.publish</code> – publicerar videor</li>
@@ -135,14 +143,14 @@ footer {
   </p>
 
   <!-- POLICY & INFORMATION -->
-<h2>Policy & Information</h2>
-<p>
-  För detaljerad information om datahantering, villkor och användning av verktyget:
-  <br><br>
-  🔗 <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
-  🔗 <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
-  🔗 <a href="/historienbakomusiken/data-radering">Data Radering</a>
-</p>
+  <h2>Policy & Information</h2>
+  <p>
+    För detaljerad information om datahantering, villkor och användning:
+    <br><br>
+    🔗 <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
+    🔗 <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
+    🔗 <a href="/historienbakomusiken/data-radering">Data Radering</a>
+  </p>
 
   <h2>Kontakt</h2>
   <p>
