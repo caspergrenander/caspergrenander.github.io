@@ -6,82 +6,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-font-family: "Segoe UI", Roboto, Arial, sans-serif;
-background: #000;
-color: #FFFFFF;
-max-width: 900px;
-margin: auto;
-padding: 40px 20px;
-line-height: 1.7;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #000;
+  color: #FFFFFF;
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  line-height: 1.7;
 }
 h1, h2 {
-color: #F5B041;
-font-weight: 700;
-text-transform: uppercase;
+  color: #F5B041;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 h3 { color: #FFFFFF; font-weight: 600; margin-top: 30px; }
 .container {
-background: #111;
-padding: 30px;
-border-radius: 10px;
-border: 1px solid #F5B04133;
-box-shadow: 0 0 15px rgba(245,176,65,0.15);
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #F5B04133;
+  box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
 .logo { text-align: center; margin-bottom: 20px; }
 .logo img {
-width: 180px; border-radius: 6px;
-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  width: 180px; border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 ul { margin-left: 20px; }
 li { margin-bottom: 8px; }
 footer {
-margin-top: 40px; text-align: center;
-color: #B4B4B4; font-size: 14px;
+  margin-top: 40px; text-align: center;
+  color: #B4B4B4; font-size: 14px;
 }
 a { color: #F5B041; text-decoration: none; }
 a:hover { text-decoration: underline; }
 code {
-background: #F5B04122; padding: 4px 6px;
-border-radius: 6px;
-/style>
-</head>}
-<<body>
+  background: #F5B04122; padding: 4px 6px;
+  border-radius: 6px;
+}
+</style>
+</head>
+<body>
 <div class="logo">
-<img
-src="https:/raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakommusiken-logo.png" alt="Historien Bakom Musiken Logo">
+  <img src="https://raw.githubusercontent.com/caspergrenander/meta-policy/main/historien-bakom-musiken-logo.png" alt="Historien Bakom Musiken Logo">
 </div>
 <div class="container">
-<h1>Data Radering</h1>
-<p><em>Senast uppdaterad: 2025-01-01</em></p>
-<h2>Begäran om dataradering</h2>
-<p>
-<strong>Historien Bakom Musiken AutoPublisher</strong> lagrar inte några personuppgifter
-eller filer utanför TikToks egna system.
-Eventuella tokens som tillfälligt används vid autentisering raderas automatiskt och lagras
-aldrig permanent.
-</p>
-<p>
-Om du vill begära radering av data kopplad till denna app via TikToks Data Deletion-process
-kan du använda följande kontaktinformation:
-</p>
-<h3>Kontakt för dataradering</h3>
-<p><strong>E-post:</strong> <a
-href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
-<p><strong>Oficiell Data Deletion Callback URL:</strong><br>
-<code>https:/caspergrenander.github.io/hbm-policy/</code></p>
-<h3>Vad som kan raderas</h3>
-<ul>
-<li>Tillfälliga autentiseringsdata som skapas av TikTok vid inloggning.</li>
-<li>Eventuell metadata som TikTok själv lagrar i samband med användning av dess
-API.</li>
-</ul>
-<p>
-Observera att denna app inte lagrar några filer, videor eller tokens lokalt och därför finns det
-ingen lagrad data i systemet att radera.
-All faktisk dataradering hanteras av TikTok enligt deras riktlinjer.
-</p>
-<footer>
-© 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
-</footer></div>
+  <h1>Data Radering</h1>
+  <p><em>Senast uppdaterad: 2025-01-01</em></p>
+  <h2>Begäran om dataradering</h2>
+  <p>
+    <strong>Historien Bakom Musiken AutoPublisher</strong> lagrar inte några personuppgifter
+    eller filer utanför TikToks egna system.
+    Eventuella tokens som tillfälligt används vid autentisering raderas automatiskt och lagras
+    aldrig permanent.
+  </p>
+  <p>
+    Om du vill begära radering av data kopplad till denna app via TikToks Data Deletion-process
+    kan du använda följande kontaktinformation:
+  </p>
+  <h3>Kontakt för dataradering</h3>
+  <p><strong>E-post:</strong> <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+  <p><strong>Oficiell Data Deletion Callback URL:</strong><br>
+  <code>https://caspergrenander.github.io/hbm-policy/</code></p>
+  <h3>Vad som kan raderas</h3>
+  <ul>
+    <li>Tillfälliga autentiseringsdata som skapas av TikTok vid inloggning.</li>
+    <li>Eventuell metadata som TikTok själv lagrar i samband med användning av dess
+    API.</li>
+  </ul>
+  <p>
+    Observera att denna app inte lagrar några filer, videor eller tokens lokalt och därför finns det
+    ingen lagrad data i systemet att radera.
+    All faktisk dataradering hanteras av TikTok enligt deras riktlinjer.
+  </p>
+  <footer>
+    © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  </footer>
+</div>
 </body>
 </html>
