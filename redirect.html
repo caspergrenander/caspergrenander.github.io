@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<title>TikTok Redirect – Historien Bakom Musiken AutoPublisher</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #FFFFFF;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* HEADER */
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #111;
+  border-bottom: 1px solid #F5B04133;
+  box-shadow: 0 0 15px rgba(245,176,65,0.15);
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  color: #F5B041;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #E0E0E0;
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 0 20px;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111;
+  padding: 40px 30px;
+  border-radius: 10px;
+  border: 1px solid #F5B04122;
+  box-shadow: 0 0 15px rgba(245,176,65,0.1);
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* CHECKMARK ANIMATION */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  stroke-width: 2;
+  stroke: #28a745;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #28a745;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  margin: 20px auto;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #28a745;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale {
+  0%, 100% { transform: none; }
+  50% { transform: scale3d(1.1, 1.1, 1); }
+}
+
+@keyframes fill {
+  100% { box-shadow: inset 0px 0px 0px 40px #28a745; }
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SAMMA HEADER SOM ALLA ANDRA SIDOR -->
+<header>
+  <a href="/historienbakomusiken/projekt-info">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p>Ett kreativt projekt av Casper Grenander</p>
+</header>
+
+<div class="container">
+
+  <!-- ANIMATION -->
+  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+    <path class="checkmark__check" fill="none" d="M14 27l7 7 16-16"/>
+  </svg>
+
+  <h1 id="status-text">Inloggning lyckades</h1>
+  <p id="info-text">Autentisering via TikTok har slutförts. Du kan nu återvända till applikationen.</p>
+
+</div>
+
+<footer>
+  © 2025 Casper Grenander  
+  Historien Bakom Musiken AutoPublisher
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  console.log("TikTok auth code:", code);
+
+  function notifyOpenerAndClose() {
+    try {
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage({ source: 'hbm-autopublisher', code }, window.location.origin);
+        document.getElementById('info-text').textContent = 'Autentiseringen är klar. Fönstret stängs automatiskt.';
+        setTimeout(() => { window.close(); }, 1200);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Kunde inte kommunicera med öppnaren:', e);
+    }
+    return false;
+  }
+
+  setTimeout(() => {
+    if (!notifyOpenerAndClose()) {
+      document.getElementById('status-text').textContent = "Du kan nu stänga den här sidan";
+      document.getElementById('info-text').textContent = "Autentiseringen är klar. Kopiera eventuellt koden om din applikation behöver den.";
+      if (code) {
+        const p = document.createElement('p');
+        p.style.marginTop = '12px';
+        p.style.wordBreak = 'break-all';
+        p.style.background = '#111';
+        p.style.padding = '10px';
+        p.style.borderRadius = '6px';
+        p.style.border = '1px solid #333';
+        p.textContent = 'Kod: ' + code;
+        document.querySelector('.container').appendChild(p);
+      }
+    }
+  }, 2000);
+</script>
+
+</body>
+</html>
