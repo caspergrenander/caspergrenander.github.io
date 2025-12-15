@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connect with TikTok</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #111;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .tiktok-logo {
+      width: 48px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img
+      class="tiktok-logo"
+      src="https://developers.tiktok.com/assets/img/tiktok-logo-black.svg"
+      alt="TikTok"
+    >
+
+    <h1>Connect your TikTok account</h1>
+
+    <p>
+      This application uses TikTok authentication to enable publishing
+      and account-related features.  
+      You will be redirected to TikTok to authorize access.
+    </p>
+
+    <a href="/oauth" class="btn">
+      Connect with TikTok
+    </a>
+  </div>
+
+</body>
+</html>
