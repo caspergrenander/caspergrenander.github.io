@@ -8,8 +8,9 @@
 <style>
 body {
   margin: 0;
+  padding: 0;
   background: #000;
-  color: #fff;
+  color: #FFFFFF;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   height: 100vh;
   display: flex;
@@ -21,28 +22,35 @@ body {
   text-align: center;
 }
 
-.tiktok-login {
+.tiktok-button {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 32px;
-  background: #ffffff;
+  gap: 14px;
+  padding: 20px 32px;
+  background: #FFFFFF;
   color: #000;
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  transition: all 0.2s ease;
+}
+
+.tiktok-button:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
 }
 
 .tiktok-icon {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
 }
 
 .note {
-  margin-top: 16px;
+  margin-top: 18px;
   font-size: 14px;
-  color: #b4b4b4;
+  color: #B4B4B4;
 }
 </style>
 </head>
@@ -50,28 +58,30 @@ body {
 <body>
 <div class="container">
 
-<a
-  class="tiktok-login"
-  href="https://www.tiktok.com/v2/auth/authorize/
-    ?client_key=DIN_CLIENT_KEY
-    &scope=user.info.basic
-    &response_type=code
-    &redirect_uri=DIN_REDIRECT_URI
-    &state=hbm_login">
+  <!-- ✅ OFFICIELL TIKTOK LOGIN -->
+  <a
+    class="tiktok-button"
+    href="https://www.tiktok.com/v2/auth/authorize/
+      ?client_key=awjt9buhcbapxa9k
+      &response_type=code
+      &scope=user.info.basic,video.upload,video.publish
+      &redirect_uri=https://caspergrenander.github.io/historienbakomusiken/redirect
+      &state=hbm_autopublisher"
+  >
 
-  <!-- Officiell TikTok-logga (orörd) -->
-  <svg class="tiktok-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
-    <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
-    <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
-  </svg>
+    <!-- TikTok-logga (SVG – godkänd) -->
+    <svg class="tiktok-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
+      <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
+      <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
+    </svg>
 
-  <span>Connect with TikTok</span>
-</a>
+    <span>Connect with TikTok</span>
+  </a>
 
-<div class="note">
-  Inloggning sker via TikToks officiella autentisering
-</div>
+  <div class="note">
+    Säker inloggning via TikToks officiella autentisering
+  </div>
 
 </div>
 </body>
