@@ -8,48 +8,41 @@
 <style>
 body {
   margin: 0;
-  padding: 0;
   background: #000;
-  color: #FFFFFF;
+  color: #fff;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.container { text-align: center; }
 
-.tiktok-button {
+.container {
+  text-align: center;
+}
+
+.tiktok-login {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 28px;
-  background: #FFFFFF;
+  gap: 16px;
+  padding: 16px 32px;
+  background: #ffffff;
   color: #000;
-  border-radius: 10px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
-.tiktok-button:hover {
-  background: #f2f2f2;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-  transform: translateY(-1px);
-}
+
 .tiktok-icon {
-  width: 34px;
-  height: 34px;
-  display: block;
-  filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+  width: 28px;
+  height: 28px;
 }
+
 .note {
-  margin-top: 18px;
+  margin-top: 16px;
   font-size: 14px;
-  color: #B4B4B4;
+  color: #b4b4b4;
 }
 </style>
 </head>
@@ -57,24 +50,28 @@ body {
 <body>
 <div class="container">
 
-  <!-- ✅ Den här länken pekar till din uppdaterade Apps Script-webbapp -->
-  <a
-    class="tiktok-button"
-    href="https://script.google.com/macros/s/AKfycbxY6uSFNd_qXRXySzQrHht4Gs5xEDxuJDRVEnkgU-43h4dqWile4P2BuJ8uWMlva_K-HQ/exec?action=start">
+<a
+  class="tiktok-login"
+  href="https://www.tiktok.com/v2/auth/authorize/
+    ?client_key=DIN_CLIENT_KEY
+    &scope=user.info.basic
+    &response_type=code
+    &redirect_uri=DIN_REDIRECT_URI
+    &state=hbm_login">
 
-    <!-- TikTok-logga -->
-    <svg class="tiktok-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
-      <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
-      <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
-    </svg>
+  <!-- Officiell TikTok-logga (orörd) -->
+  <svg class="tiktok-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
+    <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
+    <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
+  </svg>
 
-    <span>Connect with TikTok</span>
-  </a>
+  <span>Connect with TikTok</span>
+</a>
 
-  <div class="note">
-    Logga in säkert via TikToks officiella inloggning
-  </div>
+<div class="note">
+  Inloggning sker via TikToks officiella autentisering
+</div>
 
 </div>
 </body>
