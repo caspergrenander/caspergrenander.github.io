@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TikTok Redirect – Historien Bakom Musiken</title>
+
 <style>
   body {
     margin: 0;
@@ -19,37 +20,26 @@
     text-align: center;
   }
 
-  /* TikTok glow-style gradient */
+  .tiktok-logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+
   .glow {
     font-size: 1.8rem;
     font-weight: 700;
     background: linear-gradient(90deg, #25F4EE, #FE2C55);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: flicker 3s infinite alternate;
   }
 
-  @keyframes flicker {
-    0% { opacity: 0.9; }
-    50% { opacity: 1; }
-    100% { opacity: 0.9; }
-  }
-
-  /* TikTok logo */
-  .tiktok-logo {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 20px;
-  }
-
-  /* Status text */
   #status {
-    font-size: 1.2rem;
-    margin-top: 10px;
+    font-size: 1.1rem;
+    margin-top: 12px;
     color: #ccc;
   }
 
-  /* Code box (if redirect fails) */
   #code-box {
     margin-top: 25px;
     background: #111;
@@ -70,17 +60,18 @@
   }
 </style>
 </head>
+
 <body>
 
-<!-- TikTok SVG logo -->
-<svg class="tiktok-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
-  <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
-  <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
-</svg>
+<!-- ✅ Officiell TikTok Open Platform-logga -->
+<img
+  class="tiktok-logo"
+  src="https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/tt_icon.png"
+  alt="TikTok"
+/>
 
 <h1 class="glow">Historien Bakom Musiken</h1>
-<div id="status">Autentiserar via TikTok...</div>
+<div id="status">Autentiserar via TikTok…</div>
 <div id="code-box"></div>
 
 <footer>© 2025 Casper Grenander – AutoPublisher</footer>
@@ -88,17 +79,26 @@
 <script>
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
-  const appScriptURL = "https://script.google.com/macros/s/AKfycbzreRCbiaucYFQrvf3cOM5yBHOMyLADcj7cNS8ChNSybpuU91eKmlw-IP0UTBVZkYNl/exec";
+
+  const appScriptURL =
+    "https://script.google.com/macros/s/AKfycbzreRCbiaucYFQrvf3cOM5yBHOMyLADcj7cNS8ChNSybpuU91eKmlw-IP0UTBVZkYNl/exec";
 
   if (code) {
-    document.getElementById("status").textContent = "Kod mottagen – omdirigerar...";
+    document.getElementById("status").textContent =
+      "Kod mottagen – slutför inloggning…";
+
     setTimeout(() => {
-      window.location.href = appScriptURL + "?code=" + encodeURIComponent(code);
-    }, 1000);
+      window.location.href =
+        appScriptURL + "?code=" + encodeURIComponent(code);
+    }, 800);
+
   } else {
-    document.getElementById("status").textContent = "Ingen kod mottagen från TikTok.";
+    document.getElementById("status").textContent =
+      "Ingen kod mottagen från TikTok.";
+
     const box = document.getElementById("code-box");
-    box.textContent = "Om detta fel upprepas, kontrollera TikTok redirect URI i Developer Console.";
+    box.textContent =
+      "Om detta fel upprepas, kontrollera TikTok redirect URI i Developer Console.";
     box.style.display = "block";
   }
 </script>
