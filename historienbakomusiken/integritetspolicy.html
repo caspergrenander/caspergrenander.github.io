@@ -24,7 +24,6 @@ header a {
   color: inherit; 
   text-decoration: none; 
   display: inline-block; 
-  text-align: center; 
 }
 header img { 
   width: 180px; 
@@ -103,19 +102,34 @@ code {
 
   <h2>Insamling och användning av data</h2>
   <ul>
-    <li>Tjänsten samlar inte in och lagrar inte personuppgifter i någon permanent databas.</li>
-    <li>Autentisering sker via TikToks OAuth-system och tokens lagras endast temporärt under en aktiv session.</li>
-    <li>Inga videofiler, tokens eller användaruppgifter sparas permanent på servern.</li>
-    <li>Endast de scopes som krävs för funktionaliteten begärs: 
+    <li>Tjänsten lagrar inte personuppgifter i någon extern eller kommersiell databas.</li>
+    <li>
+      Autentisering sker via TikToks OAuth-system. Access tokens och refresh tokens lagras säkert i servermiljö 
+      enbart i syfte att upprätthålla användarens autentiserade session.
+    </li>
+    <li>
+      Tokens används endast för att utföra användarinitierade åtgärder och delas aldrig med tredje part.
+    </li>
+    <li>
+      Inga videofiler eller användarinnehåll lagras permanent av tjänsten.
+    </li>
+    <li>
+      Endast de scopes som krävs för funktionaliteten begärs:
       <code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>.
     </li>
-    <li>All kommunikation mellan användaren, tjänsten och TikTok sker över säkra och krypterade anslutningar (HTTPS).</li>
+    <li>
+      All kommunikation mellan användaren, tjänsten och TikTok sker över säkra och krypterade anslutningar (HTTPS).
+    </li>
   </ul>
 
   <h2>Dataradering</h2>
   <p>
     Användare kan begära radering av data som hanteras i samband med användning av tjänsten. Eftersom majoriteten av 
     all data hanteras av TikTok kan det krävas att användaren även genomför raderingsåtgärder direkt hos TikTok.
+  </p>
+
+  <p>
+    Användare kan även när som helst återkalla åtkomst till tjänsten via sina TikTok-kontoinställningar.
   </p>
 
   <p><strong>E-post för dataradering:</strong><br>
@@ -141,8 +155,7 @@ code {
 </div>
 
 <footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken AutoPublisher
+  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
 </footer>
 
 </body>
