@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dataradering – Historien Bakom Musiken AutoPublisher</title>
+
 <style>
 body {
   margin: 0;
@@ -17,12 +18,30 @@ header {
   padding: 60px 20px 40px;
   text-align: center;
   background: #111;
-  border-bottom: 1px solid #25F4EE33;
+  border-bottom: 1px solid #F5B04133;
+  box-shadow: 0 0 15px rgba(245,176,65,0.15);
+}
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 h1 {
-  color: #25F4EE;
-  font-weight: 700;
+  color: #F5B041;
   margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h2 {
+  color: #F5B041;
+  font-weight: 700;
+  margin-top: 40px;
 }
 .container {
   max-width: 900px;
@@ -30,13 +49,15 @@ h1 {
   background: #111;
   padding: 40px 30px;
   border-radius: 10px;
-  border: 1px solid #25F4EE22;
+  border: 1px solid #F5B04122;
+  box-shadow: 0 0 15px rgba(245,176,65,0.1);
 }
 p {
   color: #E0E0E0;
+  margin: 10px 0;
 }
 a {
-  color: #25F4EE;
+  color: #F5B041;
   text-decoration: none;
 }
 a:hover {
@@ -56,40 +77,48 @@ footer {
 <body>
 
 <header>
-  <h1>Dataradering</h1>
-  <p>Historien Bakom Musiken AutoPublisher</p>
+  <a href="/historienbakomusiken/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p>AutoPublisher</p>
 </header>
 
 <div class="container">
+  <h1>Dataradering</h1>
+
   <p>
     <strong>Historien Bakom Musiken AutoPublisher</strong> använder TikToks officiella
     autentiseringssystem (OAuth) för att tillfälligt få åtkomst till användarens konto
-    i syfte att ladda upp och publicera videor.
+    i syfte att ladda upp och publicera videoinnehåll.
   </p>
 
   <p>
-    Applikationen lagrar <strong>inga personuppgifter permanent</strong>.
-    Endast tillfälliga autentiseringstokens hanteras för att möjliggöra funktionaliteten.
+    Applikationen lagrar <strong>inga personuppgifter i någon permanent databas</strong>.
+    Endast autentiseringstokens (access token och refresh token) hanteras i servermiljö
+    för att möjliggöra användarinitierade åtgärder.
   </p>
 
-  <h2>Hur du begär dataradering</h2>
+  <h2>Begära radering av data</h2>
   <p>
-    Om du ändå vill begära radering av data som behandlats i samband med användning
-    av applikationen kan du kontakta utvecklaren via e-post:
-  </p>
-
-  <p>
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
+    Om du vill begära radering av data som behandlats i samband med användning av
+    applikationen kan du kontakta utvecklaren via e-post:
   </p>
 
   <p>
-    Ange gärna ditt TikTok-användarnamn och att ärendet gäller
+    📧 <a href="mailto:casper.grenander5@gmail.com">
+    casper.grenander5@gmail.com</a>
+  </p>
+
+  <p>
+    Ange ditt TikTok-användarnamn och att ärendet gäller
     <em>Historien Bakom Musiken AutoPublisher</em>.
   </p>
 
   <p>
     Observera att viss data hanteras direkt av TikTok och kan behöva raderas via
-    TikToks egna inställningar.
+    TikToks egna kontoinställningar.
   </p>
 </div>
 
