@@ -26,7 +26,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  padding: 22px 34px;
+  padding: 20px 32px;
   background: #FFFFFF;
   color: #000;
   border-radius: 12px;
@@ -42,8 +42,9 @@ body {
   transform: translateY(-1px);
 }
 
+/* 🔥 ENDA ÄNDRINGEN */
 .tiktok-icon {
-  width: 48px;   /* förstorat – OK enligt TikTok */
+  width: 48px;
   height: 48px;
 }
 
@@ -58,17 +59,16 @@ body {
 <body>
 <div class="container">
 
-  <!-- Login-knapp -->
   <a
     class="tiktok-button"
-    href="https://script.google.com/macros/s/AKfycbxXXXXXXXXXXXX/exec"
+    href="https://www.tiktok.com/v2/auth/authorize/?client_key=sbawpu3i7f23a4nluq&response_type=code&scope=user.info.basic,video.upload,video.publish&redirect_uri=https://caspergrenander.github.io/historienbakomusiken/redirect&state=hbm_autopublisher"
   >
-    <!-- OFFICIELL TikTok-ikon (oförändrad) -->
-    <img
-      class="tiktok-icon"
-      src="https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/tt_icon.png"
-      alt="TikTok"
-    />
+
+    <svg class="tiktok-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#25F4EE" d="M19 18a8 8 0 0 0-2 15v-4a4 4 0 1 1 4-4v-7Z"/>
+      <path fill="#FE2C55" d="M19 26a4 4 0 0 1 4-4v-7a8 8 0 0 0-2 15v-4Z"/>
+      <path fill="#000000" d="M35 15a7 7 0 0 1-4-1v8a12 12 0 1 1-12-12h1v5a7 7 0 1 0 7 7V5h6a7 7 0 0 0 2 5Z"/>
+    </svg>
 
     <span>Connect with TikTok</span>
   </a>
