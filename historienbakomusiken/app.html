@@ -23,31 +23,16 @@ header {
   box-shadow: 0 0 15px rgba(245,176,65,0.15);
 }
 
-header a {
-  color: inherit;
-  text-decoration: none;
-  display: inline-block;
-}
-
 header img {
   width: 180px;
   border-radius: 6px;
   margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #F5B041;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 10px;
-}
-
-p {
-  max-width: 900px;
-  margin: 10px auto;
-  padding: 0 20px;
-  color: #E0E0E0;
 }
 
 .container {
@@ -56,20 +41,10 @@ p {
   background: #111;
   padding: 40px 30px;
   border-radius: 10px;
-  border: 1px solid #F5B04122;
-  box-shadow: 0 0 15px rgba(245,176,65,0.1);
   text-align: center;
 }
 
-.ui-box {
-  margin-top: 30px;
-  padding: 25px;
-  border: 1px dashed #333;
-  border-radius: 8px;
-}
-
 .button {
-  display: inline-block;
   margin: 12px;
   padding: 16px 28px;
   font-size: 16px;
@@ -84,28 +59,13 @@ p {
 .button:disabled {
   background: #333;
   color: #999;
-  cursor: not-allowed;
-}
-
-.note {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #B4B4B4;
 }
 
 #status {
   margin-top: 20px;
   font-size: 14px;
   color: #9FE870;
-}
-
-footer {
-  margin-top: 60px;
-  padding: 30px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #B4B4B4;
-  border-top: 1px solid #333;
+  white-space: pre-line;
 }
 </style>
 </head>
@@ -113,48 +73,42 @@ footer {
 <body>
 
 <header>
-  <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
-         alt="Historien Bakom Musiken Logo">
-    <h1>AutoPublisher</h1>
-  </a>
+  <h1>AutoPublisher</h1>
   <p>Upload & Publish Interface</p>
 </header>
 
 <div class="container">
 
-  <p>
-    This interface is shown after a user logs in with TikTok using the official OAuth flow.
-  </p>
+  <p>Apps Script ↔ HTML diagnostic mode</p>
 
-  <p>
-    Users manually upload and publish videos to <strong>their own TikTok account</strong>.
-    No actions are automated.
-  </p>
+  <input type="file" id="videoFile" accept="video/*" style="display:none">
 
-  <div class="ui-box">
+  <button class="button" id="uploadBtn">Upload Video</button>
+  <button class="button" id="publishBtn" disabled>Publish</button>
+  <button class="button" id="testBtn">Run Test A / B</button>
 
-    <input type="file" id="videoFile" accept="video/*" style="display:none">
-
-    <button class="button" id="uploadBtn">Upload Video</button>
-    <button class="button" id="publishBtn" disabled>Publish</button>
-
-    <div id="status"></div>
-
-    <div class="note">
-      User-initiated upload & publish via Apps Script backend.
-    </div>
-  </div>
+  <div id="status"></div>
 
 </div>
 
-<footer>
-  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
-</footer>
-
 <script>
 let selectedFile = null;
+const statusEl = document.getElementById("status");
 
+/* ========= TEST A ========= */
+console.log("TEST A – google.script =", google.script);
+if (typeof google === "undefined" || !google.script) {
+  statusEl.innerText =
+    "❌ TEST A FAILED\n" +
+    "google.script is NOT available.\n" +
+    "HTML is NOT running in Apps Script context.";
+} else {
+  statusEl.innerText =
+    "✅ TEST A OK\n" +
+    "google.script is available.";
+}
+
+/* ========= FILE PICKER ========= */
 document.getElementById("uploadBtn").onclick = () => {
   document.getElementById("videoFile").click();
 };
@@ -162,30 +116,57 @@ document.getElementById("uploadBtn").onclick = () => {
 document.getElementById("videoFile").onchange = (e) => {
   selectedFile = e.target.files[0];
   if (selectedFile) {
-    document.getElementById("status").innerText =
-      "Video selected: " + selectedFile.name;
+    statusEl.innerText =
+      "Video selected:\n" +
+      selectedFile.name + "\n" +
+      "Size: " + selectedFile.size + " bytes";
     document.getElementById("publishBtn").disabled = false;
   }
 };
 
+/* ========= TEST B ========= */
+document.getElementById("testBtn").onclick = () => {
+  statusEl.innerText = "Running TEST B...\nSending dummy payload";
+
+  google.script.run
+    .withSuccessHandler(res => {
+      statusEl.innerText =
+        "✅ TEST B OK\n" +
+        "Backend responded:\n" +
+        JSON.stringify(res, null, 2);
+    })
+    .withFailureHandler(err => {
+      statusEl.innerText =
+        "❌ TEST B FAILED\n" +
+        err.message;
+    })
+    .receiveVideoFromUI({
+      filename: "test.txt",
+      mimeType: "text/plain",
+      data: btoa("hello from ui")
+    });
+};
+
+/* ========= REAL UPLOAD ========= */
 document.getElementById("publishBtn").onclick = () => {
   if (!selectedFile) return;
 
-  document.getElementById("status").innerText =
-    "Sending video to backend...";
+  statusEl.innerText = "Sending REAL video payload to backend...";
 
   const reader = new FileReader();
   reader.onload = () => {
     const base64Data = reader.result.split(",")[1];
 
     google.script.run
-      .withSuccessHandler(() => {
-        document.getElementById("status").innerText =
-          "Video received by backend. Ready for TikTok upload.";
+      .withSuccessHandler(res => {
+        statusEl.innerText =
+          "✅ VIDEO RECEIVED\n" +
+          JSON.stringify(res, null, 2);
       })
       .withFailureHandler(err => {
-        document.getElementById("status").innerText =
-          "Error: " + err.message;
+        statusEl.innerText =
+          "❌ UPLOAD FAILED\n" +
+          err.message;
       })
       .receiveVideoFromUI({
         filename: selectedFile.name,
