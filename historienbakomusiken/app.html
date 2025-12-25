@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -15,7 +16,6 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
 header {
   padding: 60px 20px 40px;
   text-align: center;
@@ -51,7 +51,6 @@ p {
   color: #E0E0E0;
 }
 
-/* CONTAINER */
 .container {
   max-width: 900px;
   margin: 50px auto;
@@ -63,7 +62,6 @@ p {
   text-align: center;
 }
 
-/* UI ELEMENTS */
 .ui-box {
   margin-top: 30px;
   padding: 25px;
@@ -79,15 +77,27 @@ p {
   font-weight: 600;
   border-radius: 8px;
   border: none;
-  cursor: not-allowed;
+  cursor: pointer;
+  background: #F5B041;
+  color: #000;
+}
+
+.button:disabled {
   background: #333;
   color: #999;
+  cursor: not-allowed;
 }
 
 .note {
   margin-top: 20px;
   font-size: 14px;
   color: #B4B4B4;
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #9FE870;
 }
 
 footer {
@@ -109,7 +119,7 @@ footer {
          alt="Historien Bakom Musiken Logo">
     <h1>AutoPublisher</h1>
   </a>
-  <p>Upload & Publish Interface (Demo)</p>
+  <p>Upload & Publish Interface</p>
 </header>
 
 <div class="container">
@@ -120,24 +130,74 @@ footer {
 
   <p>
     Users manually upload and publish videos to <strong>their own TikTok account</strong>.
-    No actions are automated and no content is shared between users.
+    No actions are automated.
   </p>
 
   <div class="ui-box">
-    <button class="button">Upload Video</button>
-    <button class="button">Publish</button>
+
+    <input type="file" id="videoFile" accept="video/*" style="display:none">
+
+    <button class="button" id="uploadBtn">Upload Video</button>
+    <button class="button" id="publishBtn" disabled>Publish</button>
+
+    <div id="status"></div>
 
     <div class="note">
-      Sandbox / demo interface shown for review purposes.
+      User-initiated upload & publish via Apps Script backend.
     </div>
   </div>
 
 </div>
 
 <footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken AutoPublisher
+  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
 </footer>
+
+<script>
+let selectedFile = null;
+
+document.getElementById("uploadBtn").onclick = () => {
+  document.getElementById("videoFile").click();
+};
+
+document.getElementById("videoFile").onchange = (e) => {
+  selectedFile = e.target.files[0];
+  if (selectedFile) {
+    document.getElementById("status").innerText =
+      "Video selected: " + selectedFile.name;
+    document.getElementById("publishBtn").disabled = false;
+  }
+};
+
+document.getElementById("publishBtn").onclick = () => {
+  if (!selectedFile) return;
+
+  document.getElementById("status").innerText =
+    "Sending video to backend...";
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64Data = reader.result.split(",")[1];
+
+    google.script.run
+      .withSuccessHandler(() => {
+        document.getElementById("status").innerText =
+          "Video received by backend. Ready for TikTok upload.";
+      })
+      .withFailureHandler(err => {
+        document.getElementById("status").innerText =
+          "Error: " + err.message;
+      })
+      .receiveVideoFromUI({
+        filename: selectedFile.name,
+        mimeType: selectedFile.type,
+        data: base64Data
+      });
+  };
+
+  reader.readAsDataURL(selectedFile);
+};
+</script>
 
 </body>
 </html>
