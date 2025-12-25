@@ -33,21 +33,12 @@ header img {
   width: 180px;
   border-radius: 6px;
   margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #F5B041;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 10px;
-}
-
-p {
-  max-width: 900px;
-  margin: 10px auto;
-  padding: 0 20px;
-  color: #E0E0E0;
 }
 
 .container {
@@ -57,7 +48,6 @@ p {
   padding: 40px 30px;
   border-radius: 10px;
   border: 1px solid #F5B04122;
-  box-shadow: 0 0 15px rgba(245,176,65,0.1);
   text-align: center;
 }
 
@@ -68,11 +58,23 @@ p {
   border-radius: 8px;
 }
 
+textarea {
+  width: 100%;
+  min-height: 80px;
+  margin: 10px 0;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  resize: vertical;
+}
+
 .button {
   display: inline-block;
-  margin: 12px;
-  padding: 16px 28px;
-  font-size: 16px;
+  margin: 10px;
+  padding: 14px 24px;
+  font-size: 15px;
   font-weight: 600;
   border-radius: 8px;
   border: none;
@@ -81,22 +83,27 @@ p {
   color: #000;
 }
 
+.button.secondary {
+  background: #444;
+  color: #fff;
+}
+
 .button:disabled {
   background: #333;
   color: #999;
   cursor: not-allowed;
 }
 
-.note {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #B4B4B4;
-}
-
 #status {
   margin-top: 20px;
   font-size: 14px;
   color: #9FE870;
+}
+
+.note {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #B4B4B4;
 }
 
 footer {
@@ -114,18 +121,13 @@ footer {
 
 <header>
   <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
-         alt="Historien Bakom Musiken Logo">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png">
     <h1>AutoPublisher</h1>
   </a>
   <p>Upload & Publish Interface</p>
 </header>
 
 <div class="container">
-
-  <p>
-    This interface is shown after a user logs in with TikTok using the official OAuth flow.
-  </p>
 
   <p>
     Users manually upload and publish videos to <strong>their own TikTok account</strong>.
@@ -137,15 +139,26 @@ footer {
     <input type="file" id="videoFile" accept="video/*" style="display:none">
 
     <button class="button" id="uploadBtn">Upload Video</button>
-    <button class="button" id="publishBtn" disabled>Publish</button>
+
+    <textarea id="caption" placeholder="Write caption..."></textarea>
+    <textarea id="hashtags" placeholder="#music #history"></textarea>
+
+    <button class="button secondary" id="generateBtn">
+      Generate caption & hashtags
+    </button>
+
+    <br>
+
+    <button class="button" id="publishBtn" disabled>Publish now</button>
+    <button class="button secondary" id="scheduleBtn" disabled>Schedule</button>
 
     <div id="status"></div>
 
     <div class="note">
-      User-initiated upload & publish via Apps Script backend.
+      User-initiated publish or scheduling via backend service.
     </div>
-  </div>
 
+  </div>
 </div>
 
 <footer>
@@ -155,46 +168,77 @@ footer {
 <script>
 let selectedFile = null;
 
-document.getElementById("uploadBtn").onclick = () => {
+const uploadBtn = document.getElementById("uploadBtn");
+const publishBtn = document.getElementById("publishBtn");
+const scheduleBtn = document.getElementById("scheduleBtn");
+const generateBtn = document.getElementById("generateBtn");
+
+uploadBtn.onclick = () => {
   document.getElementById("videoFile").click();
 };
 
-document.getElementById("videoFile").onchange = (e) => {
+document.getElementById("videoFile").onchange = e => {
   selectedFile = e.target.files[0];
   if (selectedFile) {
     document.getElementById("status").innerText =
       "Video selected: " + selectedFile.name;
-    document.getElementById("publishBtn").disabled = false;
+    publishBtn.disabled = false;
+    scheduleBtn.disabled = false;
   }
 };
 
-document.getElementById("publishBtn").onclick = () => {
-  if (!selectedFile) return;
-
+generateBtn.onclick = () => {
   document.getElementById("status").innerText =
-    "Sending video to backend...";
+    "Generating caption & hashtags...";
 
+  google.script.run
+    .withSuccessHandler(res => {
+      document.getElementById("caption").value = res.caption || "";
+      document.getElementById("hashtags").value = res.hashtags || "";
+      document.getElementById("status").innerText =
+        "Suggestions generated.";
+    })
+    .withFailureHandler(err => {
+      document.getElementById("status").innerText =
+        "Error: " + err.message;
+    })
+    .generateCaptionAndHashtags();
+};
+
+function readFileAndSend(callbackName) {
   const reader = new FileReader();
   reader.onload = () => {
-    const base64Data = reader.result.split(",")[1];
-
     google.script.run
       .withSuccessHandler(() => {
         document.getElementById("status").innerText =
-          "Video received by backend. Ready for TikTok upload.";
+          "Request sent successfully.";
       })
       .withFailureHandler(err => {
         document.getElementById("status").innerText =
           "Error: " + err.message;
-      })
-      .receiveVideoFromUI({
+      })[callbackName]({
         filename: selectedFile.name,
         mimeType: selectedFile.type,
-        data: base64Data
+        data: reader.result.split(",")[1],
+        caption: document.getElementById("caption").value,
+        hashtags: document.getElementById("hashtags").value
       });
   };
-
   reader.readAsDataURL(selectedFile);
+}
+
+publishBtn.onclick = () => {
+  if (!selectedFile) return;
+  document.getElementById("status").innerText =
+    "Publishing to TikTok...";
+  readFileAndSend("publishToTikTok");
+};
+
+scheduleBtn.onclick = () => {
+  if (!selectedFile) return;
+  document.getElementById("status").innerText =
+    "Saving to scheduler queue...";
+  readFileAndSend("saveToSchedulerQueue");
 };
 </script>
 
