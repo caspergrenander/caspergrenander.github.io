@@ -1,180 +1,177 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historien Bakom Musiken – Projekt & Autentisering</title>
+<!DOCTYPE html>  <html lang="sv">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>AutoPublisher – Upload Interface</title>  <style>  
+body {  
+  margin: 0;  
+  padding: 0;  
+  background: #000;  
+  color: #FFFFFF;  
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;  
+  line-height: 1.6;  
+}  
+  
+header {  
+  padding: 60px 20px 40px;  
+  text-align: center;  
+  background: #111;  
+  border-bottom: 1px solid #F5B04133;  
+  box-shadow: 0 0 15px rgba(245,176,65,0.15);  
+}  
+  
+header a {  
+  color: inherit;  
+  text-decoration: none;  
+  display: inline-block;  
+}  
+  
+header img {  
+  width: 180px;  
+  border-radius: 6px;  
+  margin-bottom: 20px;  
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);  
+}  
+  
+h1 {  
+  color: #F5B041;  
+  text-transform: uppercase;  
+  font-weight: 700;  
+  margin-bottom: 10px;  
+}  
+  
+p {  
+  max-width: 900px;  
+  margin: 10px auto;  
+  padding: 0 20px;  
+  color: #E0E0E0;  
+}  
+  
+.container {  
+  max-width: 900px;  
+  margin: 50px auto;  
+  background: #111;  
+  padding: 40px 30px;  
+  border-radius: 10px;  
+  border: 1px solid #F5B04122;  
+  box-shadow: 0 0 15px rgba(245,176,65,0.1);  
+  text-align: center;  
+}  
+  
+.ui-box {  
+  margin-top: 30px;  
+  padding: 25px;  
+  border: 1px dashed #333;  
+  border-radius: 8px;  
+}  
+  
+.button {  
+  display: inline-block;  
+  margin: 12px;  
+  padding: 16px 28px;  
+  font-size: 16px;  
+  font-weight: 600;  
+  border-radius: 8px;  
+  border: none;  
+  cursor: pointer;  
+  background: #F5B041;  
+  color: #000;  
+}  
+  
+.button:disabled {  
+  background: #333;  
+  color: #999;  
+  cursor: not-allowed;  
+}  
+  
+.note {  
+  margin-top: 20px;  
+  font-size: 14px;  
+  color: #B4B4B4;  
+}  
+  
+#status {  
+  margin-top: 20px;  
+  font-size: 14px;  
+  color: #9FE870;  
+}  
+  
+footer {  
+  margin-top: 60px;  
+  padding: 30px;  
+  text-align: center;  
+  font-size: 0.9rem;  
+  color: #B4B4B4;  
+  border-top: 1px solid #333;  
+}  
+</style>  </head>  <body>  <header>  
+  <a href="/historienbakomusiken/">  
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"  
+         alt="Historien Bakom Musiken Logo">  
+    <h1>AutoPublisher</h1>  
+  </a>  
+  <p>Upload & Publish Interface</p>  
+</header>  <div class="container">    <p>  
+    This interface is shown after a user logs in with TikTok using the official OAuth flow.  
+  </p>    <p>  
+    Users manually upload and publish videos to <strong>their own TikTok account</strong>.  
+    No actions are automated.  
+  </p>    <div class="ui-box">  <input type="file" id="videoFile" accept="video/*" style="display:none">  
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  color: #FFFFFF;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.7;
-}
+<button class="button" id="uploadBtn">Upload Video</button>  
+<button class="button" id="publishBtn" disabled>Publish</button>  
 
-header {
-  padding: 60px 20px 40px;
-  text-align: center;
-  background: #111;
-  border-bottom: 1px solid #F5B04133;
-  box-shadow: 0 0 15px rgba(245,176,65,0.15);
-}
+<div id="status"></div>  
 
-header a {
-  color: inherit;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-}
-
-header img {
-  width: 180px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-h1 {
-  color: #F5B041;
-  margin-bottom: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-h2 {
-  color: #F5B041;
-  font-weight: 700;
-  margin-top: 50px;
-}
-
-p {
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0 20px;
-  color: #E0E0E0;
-}
-
-a {
-  color: #F5B041;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  background: #111;
-  padding: 40px 30px;
-  border-radius: 10px;
-  border: 1px solid #F5B04122;
-  box-shadow: 0 0 15px rgba(245,176,65,0.1);
-  margin-top: 40px;
-}
-
-ul {
-  max-width: 800px;
-  margin: auto;
-  padding-left: 40px;
-}
-
-footer {
-  margin-top: 60px;
-  padding: 30px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #B4B4B4;
-  border-top: 1px solid #333;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
-         alt="Historien Bakom Musiken Logo">
-    <h1>Historien Bakom Musiken</h1>
-  </a>
-  <p>Ett kreativt projekt av Casper Grenander</p>
-</header>
-
-<div class="container">
-
-  <h2>Om Projektet</h2>
-  <p>
-    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,
-    <strong>Casper Grenander</strong>, delar insikter från musikskapande,
-    poddproduktion och den kreativa processen.
-    Projektet syftar till att ge transparens, inspiration och kontext
-    kring hur innehåll skapas och publiceras.
-  </p>
-
-  <h2>Om AutoPublisher-verktyget</h2>
-  <p>
-    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att
-    <strong>ladda upp och publicera videoklipp</strong>
-    till ett TikTok-konto via TikToks officiella
-    <strong>Content Posting API</strong>.
-  </p>
-
-  <p>
-    Alla åtgärder initieras <strong>explicit av användaren</strong>
-    efter inloggning via TikToks OAuth-system.
-    Verktyget utför inga automatiska eller obevakade publiceringar.
-  </p>
-
-  <p>
-    Verktyget används individuellt per autentiserat TikTok-konto och
-    inga användardata delas mellan konton.
-  </p>
-
-  <h2>Autentisering via TikTok</h2>
-  <p>
-    TikToks <strong>OAuth-autentisering</strong> används för att verifiera användaren
-    och möjliggöra uppladdning samt publicering av videoinnehåll.
-    Endast explicit nödvändiga scopes begärs:
-  </p>
-
-  <ul>
-    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
-    <li><code>video.upload</code> – laddar upp videofiler</li>
-    <li><code>video.publish</code> – publicerar videor</li>
-  </ul>
-
-  <p>
-    Inga personuppgifter lagras permanent.
-    Autentiseringstokens används endast för att genomföra
-    användarinitierade åtgärder och hanteras enligt TikToks säkerhetskrav.
-  </p>
-
-  <h2>Policy & Information</h2>
-  <p>
-    För detaljerad information om datahantering, villkor och användning:
-    <br><br>
-    🔗 <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
-    🔗 <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
-    🔗 <a href="/historienbakomusiken/data-radering">Data Radering</a>
-  </p>
-
-  <h2>Kontakt</h2>
-  <p>
-    Vid frågor om projektet eller tekniken:
-    <br>
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
-  </p>
-
+<div class="note">  
+  User-initiated upload & publish via Apps Script backend.  
 </div>
 
-<footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken
-</footer>
-
-</body>
+  </div>  </div>  <footer>  
+  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher  
+</footer>  <script>  
+let selectedFile = null;  
+  
+document.getElementById("uploadBtn").onclick = () => {  
+  document.getElementById("videoFile").click();  
+};  
+  
+document.getElementById("videoFile").onchange = (e) => {  
+  selectedFile = e.target.files[0];  
+  if (selectedFile) {  
+    document.getElementById("status").innerText =  
+      "Video selected: " + selectedFile.name;  
+    document.getElementById("publishBtn").disabled = false;  
+  }  
+};  
+  
+document.getElementById("publishBtn").onclick = () => {  
+  if (!selectedFile) return;  
+  
+  document.getElementById("status").innerText =  
+    "Sending video to backend...";  
+  
+  const reader = new FileReader();  
+  reader.onload = () => {  
+    const base64Data = reader.result.split(",")[1];  
+  
+    google.script.run  
+      .withSuccessHandler(() => {  
+        document.getElementById("status").innerText =  
+          "Video received by backend. Ready for TikTok upload.";  
+      })  
+      .withFailureHandler(err => {  
+        document.getElementById("status").innerText =  
+          "Error: " + err.message;  
+      })  
+      .receiveVideoFromUI({  
+        filename: selectedFile.name,  
+        mimeType: selectedFile.type,  
+        data: base64Data  
+      });  
+  };  
+  
+  reader.readAsDataURL(selectedFile);  
+};  
+</script>  </body>  
 </html>
