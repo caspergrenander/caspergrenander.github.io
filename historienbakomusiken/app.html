@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoPublisher – Upload Interface</title>
+<title>Historien Bakom Musiken – Projekt & Autentisering</title>
 
 <style>
 body {
@@ -12,7 +12,7 @@ body {
   background: #000;
   color: #FFFFFF;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 header {
@@ -27,83 +27,59 @@ header a {
   color: inherit;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 
 header img {
   width: 180px;
   border-radius: 6px;
   margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #F5B041;
-  text-transform: uppercase;
+  margin-bottom: 10px;
   font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #F5B041;
+  font-weight: 700;
+  margin-top: 50px;
+}
+
+p {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 0 20px;
+  color: #E0E0E0;
+}
+
+a {
+  color: #F5B041;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
   max-width: 900px;
-  margin: 50px auto;
+  margin: auto;
   background: #111;
   padding: 40px 30px;
   border-radius: 10px;
   border: 1px solid #F5B04122;
-  text-align: center;
+  box-shadow: 0 0 15px rgba(245,176,65,0.1);
+  margin-top: 40px;
 }
 
-.ui-box {
-  margin-top: 30px;
-  padding: 25px;
-  border: 1px dashed #333;
-  border-radius: 8px;
-}
-
-textarea {
-  width: 100%;
-  min-height: 80px;
-  margin: 10px 0;
-  padding: 12px;
-  background: #000;
-  color: #fff;
-  border: 1px solid #333;
-  border-radius: 6px;
-  resize: vertical;
-}
-
-.button {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: #F5B041;
-  color: #000;
-}
-
-.button.secondary {
-  background: #444;
-  color: #fff;
-}
-
-.button:disabled {
-  background: #333;
-  color: #999;
-  cursor: not-allowed;
-}
-
-#status {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #9FE870;
-}
-
-.note {
-  margin-top: 15px;
-  font-size: 13px;
-  color: #B4B4B4;
+ul {
+  max-width: 800px;
+  margin: auto;
+  padding-left: 40px;
 }
 
 footer {
@@ -121,126 +97,84 @@ footer {
 
 <header>
   <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png">
-    <h1>AutoPublisher</h1>
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
   </a>
-  <p>Upload & Publish Interface</p>
+  <p>Ett kreativt projekt av Casper Grenander</p>
 </header>
 
 <div class="container">
 
+  <h2>Om Projektet</h2>
   <p>
-    Users manually upload and publish videos to <strong>their own TikTok account</strong>.
-    No actions are automated.
+    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,
+    <strong>Casper Grenander</strong>, delar insikter från musikskapande,
+    poddproduktion och den kreativa processen.
+    Projektet syftar till att ge transparens, inspiration och kontext
+    kring hur innehåll skapas och publiceras.
   </p>
 
-  <div class="ui-box">
+  <h2>Om AutoPublisher-verktyget</h2>
+  <p>
+    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att
+    <strong>ladda upp och publicera videoklipp</strong>
+    till ett TikTok-konto via TikToks officiella
+    <strong>Content Posting API</strong>.
+  </p>
 
-    <input type="file" id="videoFile" accept="video/*" style="display:none">
+  <p>
+    Alla åtgärder initieras <strong>explicit av användaren</strong>
+    efter inloggning via TikToks OAuth-system.
+    Verktyget utför inga automatiska eller obevakade publiceringar.
+  </p>
 
-    <button class="button" id="uploadBtn">Upload Video</button>
+  <p>
+    Verktyget används individuellt per autentiserat TikTok-konto och
+    inga användardata delas mellan konton.
+  </p>
 
-    <textarea id="caption" placeholder="Write caption..."></textarea>
-    <textarea id="hashtags" placeholder="#music #history"></textarea>
+  <h2>Autentisering via TikTok</h2>
+  <p>
+    TikToks <strong>OAuth-autentisering</strong> används för att verifiera användaren
+    och möjliggöra uppladdning samt publicering av videoinnehåll.
+    Endast explicit nödvändiga scopes begärs:
+  </p>
 
-    <button class="button secondary" id="generateBtn">
-      Generate caption & hashtags
-    </button>
+  <ul>
+    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
+    <li><code>video.upload</code> – laddar upp videofiler</li>
+    <li><code>video.publish</code> – publicerar videor</li>
+  </ul>
 
+  <p>
+    Inga personuppgifter lagras permanent.
+    Autentiseringstokens används endast för att genomföra
+    användarinitierade åtgärder och hanteras enligt TikToks säkerhetskrav.
+  </p>
+
+  <h2>Policy & Information</h2>
+  <p>
+    För detaljerad information om datahantering, villkor och användning:
+    <br><br>
+    🔗 <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
+    🔗 <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
+    🔗 <a href="/historienbakomusiken/data-radering">Data Radering</a>
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Vid frågor om projektet eller tekniken:
     <br>
+    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
+  </p>
 
-    <button class="button" id="publishBtn" disabled>Publish now</button>
-    <button class="button secondary" id="scheduleBtn" disabled>Schedule</button>
-
-    <div id="status"></div>
-
-    <div class="note">
-      User-initiated publish or scheduling via backend service.
-    </div>
-
-  </div>
 </div>
 
 <footer>
-  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  © 2025 Casper Grenander  
+  Historien Bakom Musiken
 </footer>
-
-<script>
-let selectedFile = null;
-
-const uploadBtn = document.getElementById("uploadBtn");
-const publishBtn = document.getElementById("publishBtn");
-const scheduleBtn = document.getElementById("scheduleBtn");
-const generateBtn = document.getElementById("generateBtn");
-
-uploadBtn.onclick = () => {
-  document.getElementById("videoFile").click();
-};
-
-document.getElementById("videoFile").onchange = e => {
-  selectedFile = e.target.files[0];
-  if (selectedFile) {
-    document.getElementById("status").innerText =
-      "Video selected: " + selectedFile.name;
-    publishBtn.disabled = false;
-    scheduleBtn.disabled = false;
-  }
-};
-
-generateBtn.onclick = () => {
-  document.getElementById("status").innerText =
-    "Generating caption & hashtags...";
-
-  google.script.run
-    .withSuccessHandler(res => {
-      document.getElementById("caption").value = res.caption || "";
-      document.getElementById("hashtags").value = res.hashtags || "";
-      document.getElementById("status").innerText =
-        "Suggestions generated.";
-    })
-    .withFailureHandler(err => {
-      document.getElementById("status").innerText =
-        "Error: " + err.message;
-    })
-    .generateCaptionAndHashtags();
-};
-
-function readFileAndSend(callbackName) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    google.script.run
-      .withSuccessHandler(() => {
-        document.getElementById("status").innerText =
-          "Request sent successfully.";
-      })
-      .withFailureHandler(err => {
-        document.getElementById("status").innerText =
-          "Error: " + err.message;
-      })[callbackName]({
-        filename: selectedFile.name,
-        mimeType: selectedFile.type,
-        data: reader.result.split(",")[1],
-        caption: document.getElementById("caption").value,
-        hashtags: document.getElementById("hashtags").value
-      });
-  };
-  reader.readAsDataURL(selectedFile);
-}
-
-publishBtn.onclick = () => {
-  if (!selectedFile) return;
-  document.getElementById("status").innerText =
-    "Publishing to TikTok...";
-  readFileAndSend("publishToTikTok");
-};
-
-scheduleBtn.onclick = () => {
-  if (!selectedFile) return;
-  document.getElementById("status").innerText =
-    "Saving to scheduler queue...";
-  readFileAndSend("saveToSchedulerQueue");
-};
-</script>
 
 </body>
 </html>
