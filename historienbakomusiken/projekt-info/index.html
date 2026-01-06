@@ -19,7 +19,6 @@ header {
   text-align: center;  
   background: #0D0F15;  
   border-bottom: 1px solid #2A4A4A;  
-  box-shadow: 0 0 15px rgba(42, 74, 74, 0.15);  
 }  
 
 header a {  
@@ -47,11 +46,13 @@ h2 {
   color: #FFFFFF;  
   font-weight: 600;  
   margin-top: 50px;  
+  border-bottom: 1px solid #2A4A4A;  
+  padding-bottom: 10px;  
 }  
 
 p {  
   max-width: 800px;  
-  margin: 10px auto;  
+  margin: 15px auto;  
   padding: 0 20px;  
   color: #F5E5C8;  
 }  
@@ -59,10 +60,11 @@ p {
 a {  
   color: #D88B5C;  
   text-decoration: none;  
+  transition: color 0.2s;  
 }  
 a:hover {  
-  text-decoration: underline;  
   color: #E8B65C;  
+  text-decoration: underline;  
 }  
 
 .container {  
@@ -71,75 +73,119 @@ a:hover {
   background: #0D0F15;  
   padding: 40px 30px;  
   border-radius: 6px;  
-  border: 1px solid #2A4A4A;  
-  box-shadow: 0 0 15px rgba(42, 74, 74, 0.1);  
   margin-top: 40px;  
+  margin-bottom: 40px;  
+  border: 1px solid #2A4A4A;  
 }  
 
 ul {  
   max-width: 800px;  
-  margin: auto;  
+  margin: 20px auto;  
   padding-left: 40px;  
   color: #F5E5C8;  
 }  
 
 li {  
-  margin-bottom: 8px;  
+  margin-bottom: 10px;  
 }  
 
 code {  
   background-color: rgba(42, 74, 74, 0.3);  
-  padding: 2px 6px;  
+  padding: 2px 8px;  
   border-radius: 4px;  
   color: #E8B65C;  
   font-family: monospace;  
+  font-size: 0.95em;  
 }  
 
 footer {  
   margin-top: 60px;  
-  padding: 30px;  
+  padding: 40px 20px;  
   text-align: center;  
   font-size: 0.9rem;  
   color: #2A4A4A;  
   border-top: 1px solid #2A4A4A;  
+  background: #0D0F15;  
 }  
 
-.cta-button {  
-  background-color: #E8B65C;  
-  color: #1A2838;  
-  padding: 12px 22px;  
+.policy-links {  
+  margin: 25px 0;  
+  display: flex;  
+  justify-content: center;  
+  flex-wrap: wrap;  
+  gap: 20px;  
+}  
+
+.policy-links a {  
+  padding: 8px 16px;  
+  background-color: rgba(42, 74, 74, 0.2);  
   border-radius: 4px;  
-  font-weight: 600;  
-  display: inline-block;  
-  margin: 10px 5px;  
-  text-decoration: none;  
-  border: none;  
-  cursor: pointer;  
+  border: 1px solid #2A4A4A;  
 }  
 
-.cta-button:hover {  
-  background-color: #F5C97C;  
+.policy-links a:hover {  
+  background-color: rgba(42, 74, 74, 0.4);  
   text-decoration: none;  
+}  
+
+.contact-info {  
+  background-color: rgba(42, 74, 74, 0.1);  
+  padding: 20px;  
+  border-radius: 6px;  
+  margin: 30px auto;  
+  max-width: 800px;  
+  border-left: 4px solid #D88B5C;  
+}  
+
+.contact-info a {  
+  color: #E8B65C;  
+  font-weight: 500;  
+}  
+
+strong {  
+  color: #FFFFFF;  
+  font-weight: 600;  
+}  
+
+em {  
+  color: #E8B65C;  
+  font-style: italic;  
 }  
 
 .subtitle {  
   color: #2A4A4A;  
-  font-size: 13px;  
-  margin-top: 0;  
+  font-size: 14px;  
+  margin-top: 5px;  
+  letter-spacing: 1px;  
 }  
 
-.separator {  
-  border-top: 1px solid #2A4A4A;  
-  margin: 30px auto;  
+.section-divider {  
+  height: 1px;  
+  background-color: #2A4A4A;  
+  margin: 40px auto;  
   max-width: 800px;  
 }  
 
-.links-row {  
-  margin: 20px 0;  
+.footer-content {  
+  max-width: 800px;  
+  margin: 0 auto;  
 }  
 
-.links-row a {  
-  margin: 0 10px;  
+.footer-links {  
+  margin: 20px 0;  
+  display: flex;  
+  justify-content: center;  
+  flex-wrap: wrap;  
+  gap: 15px;  
+}  
+
+.footer-links a {  
+  color: #2A4A4A;  
+  font-size: 0.85rem;  
+}  
+
+.footer-links a:hover {  
+  color: #D88B5C;  
 }  
 </style>  
 </head>  
@@ -157,8 +203,8 @@ footer {
 <div class="container">  
   <h2>Om Projektet</h2>  
   <p>  
-    <strong style="color: #FFFFFF;">Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,  
-    <strong style="color: #FFFFFF;">Casper Grenander</strong>, delar insikter från musikskapande,  
+    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,  
+    <strong>Casper Grenander</strong>, delar insikter från musikskapande,  
     poddproduktion och den kreativa processen.  
     Projektet syftar till att ge transparens, inspiration och kontext  
     kring hur innehåll skapas och publiceras.  
@@ -166,13 +212,13 @@ footer {
 
   <h2>Om AutoPublisher-verktyget</h2>  
   <p>  
-    <em style="color: #E8B65C;">AutoPublisher</em> är ett verktyg som gör det möjligt att  
-    <strong style="color: #FFFFFF;">ladda upp och publicera videoklipp</strong>  
+    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att  
+    <strong>ladda upp och publicera videoklipp</strong>  
     till ett TikTok-konto via TikToks officiella  
-    <strong style="color: #FFFFFF;">Content Posting API</strong>.  
+    <strong>Content Posting API</strong>.  
   </p>  
   <p>  
-    Alla åtgärder initieras <strong style="color: #FFFFFF;">explicit av användaren</strong>  
+    Alla åtgärder initieras <strong>explicit av användaren</strong>  
     efter inloggning via TikToks OAuth-system.  
     Verktyget utför inga automatiska eller obevakade publiceringar.  
   </p>  
@@ -181,11 +227,11 @@ footer {
     inga användardata delas mellan konton.  
   </p>  
 
-  <div class="separator"></div>  
+  <div class="section-divider"></div>  
 
   <h2>Autentisering via TikTok</h2>  
   <p>  
-    TikToks <strong style="color: #FFFFFF;">OAuth-autentisering</strong> används för att verifiera användaren  
+    TikToks <strong>OAuth-autentisering</strong> används för att verifiera användaren  
     och möjliggöra uppladdning samt publicering av videoinnehåll.  
     Endast explicit nödvändiga scopes begärs:  
   </p>  
@@ -200,34 +246,43 @@ footer {
     användarinitierade åtgärder och hanteras enligt TikToks säkerhetskrav.  
   </p>  
 
-  <div class="separator"></div>  
+  <div class="section-divider"></div>  
 
   <h2>Policy & Information</h2>  
   <p>  
     För detaljerad information om datahantering, villkor och användning:  
   </p>  
-  <div class="links-row">  
-    <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a> |  
-    <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a> |  
+  <div class="policy-links">  
+    <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>  
+    <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>  
     <a href="/historienbakomusiken/data-radering">Data Radering</a>  
   </div>  
 
   <h2>Kontakt</h2>  
-  <p>  
-    Vid frågor om projektet eller tekniken:  
-    <br>  
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>  
-  </p>  
+  <div class="contact-info">  
+    <p>  
+      Vid frågor om projektet eller tekniken:  
+      <br><br>  
+      📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>  
+    </p>  
+  </div>  
 </div>  
 
 <footer>  
-  <p style="margin:0 0 14px; color: #2A4A4A;">  
-    Historien Bakom Musiken – AutoPublisher<br>  
-    © 2025 Casper Grenander  
-  </p>  
-  <p style="margin:0; color: #F5E5C8; opacity:0.75; font-size:11px;">  
-    Det här meddelandet skickas till auktoriserade användare av AutoPublisher-verktyget.  
-  </p>  
+  <div class="footer-content">  
+    <p style="color: #F5E5C8; margin-bottom: 10px;">  
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>  
+    </p>  
+    <p style="color: #2A4A4A; margin-bottom: 20px;">  
+      © 2025 Casper Grenander. Alla rättigheter förbehållna.  
+    </p>  
+    <div class="footer-links">  
+      <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>  
+      <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>  
+      <a href="/historienbakomusiken/data-radering">Dataradering</a>  
+      <a href="mailto:casper.grenander5@gmail.com">Kontakt</a>  
+    </div>  
+  </div>  
 </footer>  
 </body>  
 </html>
