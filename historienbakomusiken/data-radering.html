@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dataradering – Historien Bakom Musiken AutoPublisher</title>
-
 <style>
 body {
   margin: 0;
   padding: 0;
   background: #1A2838;
   color: #F5E5C8;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
 
@@ -26,73 +25,210 @@ header a {
   color: inherit;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 
 header img {
   width: 180px;
-  border-radius: 4px;
-  margin-bottom: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
-  text-transform: uppercase;
+  font-size: 22px;
 }
 
 h2 {
   color: #FFFFFF;
   font-weight: 600;
   margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 40px;
+  font-size: 1.2em;
 }
 
 p {
   max-width: 800px;
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 0 20px;
   color: #F5E5C8;
-  font-size: 15px;
 }
 
 a {
-  color: #E8B65C;
+  color: #D88B5C;
   text-decoration: none;
+  transition: color 0.2s;
 }
 a:hover {
+  color: #E8B65C;
   text-decoration: underline;
 }
 
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: auto;
   background: #0D0F15;
   padding: 40px 30px;
   border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border: 1px solid #2A4A4A;
 }
 
-ul {
+ul, ol {
   max-width: 800px;
-  margin: auto;
-  padding-left: 40px;
+  margin: 20px auto;
+  padding-left: 60px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 10px;
 }
 
 code {
-  background: #1A2838;
+  background-color: rgba(42, 74, 74, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
   color: #E8B65C;
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 13px;
+  font-family: monospace;
+  font-size: 0.95em;
 }
 
 footer {
   margin-top: 60px;
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.9rem;
   color: #2A4A4A;
   border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.contact-info {
+  background-color: rgba(42, 74, 74, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #D88B5C;
+}
+
+.contact-info a {
+  color: #E8B65C;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #E8B65C;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+}
+
+.page-title {
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.update-date {
+  text-align: center;
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.data-section {
+  margin-bottom: 40px;
+}
+
+.data-section:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
+
+.back-link:hover {
+  color: #E8B65C;
+}
+
+.email-link {
+  color: #E8B65C;
+  font-weight: 500;
+}
+
+.email-link:hover {
+  color: #F5C97C;
+}
+
+.note-box {
+  background-color: rgba(42, 74, 74, 0.15);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 25px auto;
+  max-width: 800px;
+  border-left: 4px solid #2A4A4A;
+}
+
+.note-box p:last-child {
+  margin-bottom: 0;
 }
 </style>
 </head>
@@ -100,53 +236,89 @@ footer {
 <body>
 
 <header>
-  <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
-         alt="Historien Bakom Musiken Logo">
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p>AutoPublisher</p>
+  <p class="subtitle">AutoPublisher</p>
 </header>
 
 <div class="container">
-  <h1>Dataradering</h1>
+  <h1 class="page-title">Dataradering</h1>
 
-  <p>
-    <strong>Historien Bakom Musiken AutoPublisher</strong> använder TikToks officiella
-    autentiseringssystem (OAuth) för att tillfälligt få åtkomst till användarens konto
-    i syfte att ladda upp och publicera videoinnehåll.
-  </p>
+  <div class="data-section">
+    <p>
+      <strong>Historien Bakom Musiken AutoPublisher</strong> använder TikToks officiella
+      autentiseringssystem (OAuth) för att tillfälligt få åtkomst till användarens konto
+      i syfte att ladda upp och publicera videoinnehåll.
+    </p>
+    <p>
+      Applikationen lagrar <strong>inga personuppgifter i någon permanent databas</strong>.
+      Endast autentiseringstokens (access token och refresh token) hanteras i servermiljö
+      för att möjliggöra användarinitierade åtgärder.
+    </p>
+  </div>
 
-  <p>
-    Applikationen lagrar <strong>inga personuppgifter i någon permanent databas</strong>.
-    Endast autentiseringstokens (access token och refresh token) hanteras i servermiljö
-    för att möjliggöra användarinitierade åtgärder.
-  </p>
+  <div class="section-divider"></div>
 
-  <h2>Begära radering av data</h2>
-  <p>
-    Om du vill begära radering av data som behandlats i samband med användning av
-    applikationen kan du kontakta utvecklaren via e-post:
-  </p>
+  <div class="data-section">
+    <h2>Begära radering av data</h2>
+    <p>
+      Om du vill begära radering av data som behandlats i samband med användning av
+      applikationen kan du kontakta utvecklaren via e-post:
+    </p>
+    
+    <div class="contact-info">
+      <p>📧 <a href="mailto:casper.grenander5@gmail.com" class="email-link">casper.grenander5@gmail.com</a></p>
+    </div>
+    
+    <p>
+      Ange ditt TikTok-användarnamn och att ärendet gäller
+      <em>Historien Bakom Musiken AutoPublisher</em>.
+    </p>
+    
+    <div class="note-box">
+      <p>
+        <strong>Observera:</strong> Viss data hanteras direkt av TikTok och kan behöva raderas via
+        TikToks egna kontoinställningar.
+      </p>
+    </div>
+  </div>
 
-  <p>
-    📧 <a href="mailto:casper.grenander5@gmail.com">
-    casper.grenander5@gmail.com</a>
-  </p>
+  <div class="section-divider"></div>
 
-  <p>
-    Ange ditt TikTok-användarnamn och att ärendet gäller
-    <em>Historien Bakom Musiken AutoPublisher</em>.
-  </p>
+  <div class="data-section">
+    <h2>Vad som raderas</h2>
+    <p>När du begär dataradering kommer följande att tas bort:</p>
+    <ul>
+      <li>Alla autentiseringstokens kopplade till ditt konto</li>
+      <li>Eventuella temporära filreferenser i tjänsten</li>
+      <li>Alla sessionsdata kopplade till din användning</li>
+    </ul>
+    <p>Processen är vanligtvis slutförd inom 7-10 arbetsdagar efter att begäran mottagits.</p>
+  </div>
 
-  <p>
-    Observera att viss data hanteras direkt av TikTok och kan behöva raderas via
-    TikToks egna kontoinställningar.
-  </p>
+  <div class="back-link">
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Tillbaka till huvudsidan</a>
+  </div>
 </div>
 
 <footer>
-  © 2025 Casper Grenander – Historien Bakom Musiken
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    </p>
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
+      © 2025 Casper Grenander. Alla rättigheter förbehållna.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Startsida</a>
+      <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>
+      <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>
+      <a href="/historienbakomusiken/data-radering">Dataradering</a>
+      <a href="mailto:casper.grenander5@gmail.com">Kontakt</a>
+    </div>
+  </div>
 </footer>
 
 </body>
