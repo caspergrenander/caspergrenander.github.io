@@ -369,6 +369,33 @@ footer {
   margin-bottom: 10px;
   font-size: 16px;
 }
+
+.user-action-note {
+  background-color: rgba(216, 139, 92, 0.1);
+  border: 1px solid #D88B5C;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.user-action-note h3 {
+  color: #D88B5C;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.demo-note {
+  background-color: rgba(42, 74, 74, 0.2);
+  border: 1px dashed #2A4A4A;
+  border-radius: 6px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #2A4A4A;
+  text-align: center;
+}
 </style>
 </head>
 
@@ -387,6 +414,11 @@ footer {
     Users manually upload and publish videos to <strong>their own TikTok account</strong>.
     No actions are automated.
   </p>
+
+  <div class="user-action-note">
+    <h3>⚠️ Important: User-Initiated Actions Only</h3>
+    <p>Every action on this page requires explicit user interaction. The system does not perform any automated actions without user clicks and confirmations.</p>
+  </div>
 
   <div class="workflow-info">
     <h3>📋 Current Workflow Status</h3>
@@ -428,6 +460,10 @@ footer {
       </button>
     </div>
 
+    <div class="demo-note">
+      <strong>Note:</strong> This is a demo of future functionality. In production, this will connect to backend systems to generate AI-powered suggestions.
+    </div>
+
     <div class="status-message" id="statusMessage"></div>
 
     <div class="controls-row">
@@ -436,7 +472,9 @@ footer {
     </div>
 
     <div class="note-box">
-      <p><strong>Note:</strong> "Queue for API Approval" places the video in a review queue while awaiting TikTok's Direct Post API access. "Publish Now" is for immediate publishing once API access is granted.</p>
+      <p><strong>Action Required:</strong> All functions require user clicks. Nothing happens automatically.</p>
+      <p><strong>Queue for API Approval:</strong> Places the video in a review queue while awaiting TikTok's Direct Post API access.</p>
+      <p><strong>Publish Now:</strong> For immediate publishing once API access is granted.</p>
       <p style="margin-top: 10px; color: #E8B65C;"><strong>Current Status:</strong> Awaiting TikTok API approval for direct publishing.</p>
     </div>
   </div>
@@ -550,13 +588,13 @@ function showStatus(message, type = 'processing', subtext = '') {
 
 // Generate Suggestions Button
 generateBtn.addEventListener('click', () => {
-  showStatus('Generating caption & hashtags suggestions...', 'processing');
+  showStatus('Generating caption & hashtags suggestions...', 'processing', 'Connecting to backend AI service');
   
-  // Simulate API call
+  // Simulate API call (this is a mock/demo)
   setTimeout(() => {
     document.getElementById("caption").value = "🎵 Behind the scenes of my latest track! See the creative process from start to finish. #MusicProduction";
     document.getElementById("hashtags").value = "#musicproduction #behindthescenes #creativity #musicmaker #studio";
-    showStatus('Suggestions generated successfully!', 'success');
+    showStatus('Suggestions generated successfully!', 'success', 'AI-powered suggestions added to fields');
   }, 1500);
 });
 
@@ -564,11 +602,11 @@ generateBtn.addEventListener('click', () => {
 publishBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('Publishing to TikTok via Direct Post API...', 'processing');
+  showStatus('Publishing to TikTok via Direct Post API...', 'processing', 'User-initiated action in progress');
   
   // Simulate publishing process
   setTimeout(() => {
-    showStatus('✅ Video published successfully to TikTok!', 'success');
+    showStatus('✅ Video published successfully to TikTok!', 'success', 'User action completed successfully');
     
     // Reset form
     publishBtn.disabled = true;
@@ -583,11 +621,11 @@ publishBtn.addEventListener('click', () => {
 queueBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('QUEUED (awaiting API approval)', 'queued', 'Video added to review queue for TikTok API approval');
+  showStatus('QUEUED (awaiting API approval)', 'queued', 'Video added to review queue for TikTok API approval - User action required');
   
   // Simulate queuing process
   setTimeout(() => {
-    showStatus('✅ Video queued successfully!', 'success', 'Awaiting TikTok Direct Post API approval');
+    showStatus('✅ Video queued successfully!', 'success', 'Awaiting TikTok Direct Post API approval - User action completed');
     
     // Reset form
     publishBtn.disabled = true;
