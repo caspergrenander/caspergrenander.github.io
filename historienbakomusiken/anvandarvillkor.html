@@ -10,7 +10,7 @@ body {
   padding: 0;
   background: #1A2838;
   color: #F5E5C8;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
 
@@ -25,76 +25,192 @@ header a {
   color: inherit;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 
 header img {
   width: 180px;
-  border-radius: 4px;
-  margin-bottom: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
-  text-transform: uppercase;
+  font-size: 22px;
 }
 
 h2 {
   color: #FFFFFF;
   font-weight: 600;
   margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 40px;
+  font-size: 1.2em;
 }
 
 p {
   max-width: 800px;
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 0 20px;
   color: #F5E5C8;
-  font-size: 15px;
 }
 
 a {
-  color: #E8B65C;
+  color: #D88B5C;
   text-decoration: none;
+  transition: color 0.2s;
 }
 a:hover {
+  color: #E8B65C;
   text-decoration: underline;
 }
 
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: auto;
   background: #0D0F15;
   padding: 40px 30px;
   border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border: 1px solid #2A4A4A;
 }
 
-ul {
+ul, ol {
   max-width: 800px;
-  margin: auto;
-  padding-left: 40px;
+  margin: 20px auto;
+  padding-left: 60px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 10px;
 }
 
 code {
-  background: #1A2838;
+  background-color: rgba(42, 74, 74, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
   color: #E8B65C;
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 13px;
+  font-family: monospace;
+  font-size: 0.95em;
 }
 
 footer {
   margin-top: 60px;
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.9rem;
   color: #2A4A4A;
   border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.contact-info {
+  background-color: rgba(42, 74, 74, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #D88B5C;
+}
+
+.contact-info a {
+  color: #E8B65C;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #E8B65C;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+}
+
+.page-title {
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.update-date {
+  text-align: center;
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.terms-section {
+  margin-bottom: 40px;
+}
+
+.terms-section:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
+
+.back-link:hover {
+  color: #E8B65C;
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -102,63 +218,109 @@ footer {
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p>Ett kreativt projekt av Casper Grenander</p>
+  <p class="subtitle">Ett kreativt projekt av Casper Grenander</p>
 </header>
 
 <div class="container">
-  <h1>Användarvillkor</h1>
-  <p><em>Senast uppdaterad: 2025-01-01</em></p>
+  <h1 class="page-title">Användarvillkor</h1>
+  <p class="update-date"><em>Senast uppdaterad: 2025-01-01</em></p>
 
-  <h2>1. Tillämpning</h2>
-  <p>Dessa användarvillkor ("Villkoren") gäller för din användning av <strong>Historien Bakom Musiken AutoPublisher</strong> (”Tjänsten”). Genom att logga in och använda Tjänsten godkänner du dessa villkor. Tjänsten erbjuds som ett creator-verktyg och är tillgänglig för alla användare som autentiserar sig via TikToks officiella OAuth-system.</p>
+  <div class="terms-section">
+    <h2>1. Tillämpning</h2>
+    <p>Dessa användarvillkor ("Villkoren") gäller för din användning av <strong>Historien Bakom Musiken AutoPublisher</strong> (”Tjänsten”). Genom att logga in och använda Tjänsten godkänner du dessa villkor. Tjänsten erbjuds som ett creator-verktyg och är tillgänglig för alla användare som autentiserar sig via TikToks officiella OAuth-system.</p>
+  </div>
 
-  <h2>2. Vad Tjänsten gör</h2>
-  <p>AutoPublisher möjliggör uppladdning och publicering av videoklipp till ett TikTok-konto via TikToks Content Posting API. Användaren initierar inloggning via TikTok, väljer material och styr publiceringen genom Tjänstens gränssnitt. Tjänsten automatiserar inte publicering utan användaren bekräftar själv alla steg.</p>
+  <div class="section-divider"></div>
 
-  <h2>3. Åtkomst och autentisering</h2>
-  <p>För att använda Tjänsten krävs en TikTok-inloggning via OAuth. Endast de scopes som är nödvändiga för funktionaliteten begärs (<code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>). Användaren kan när som helst återkalla åtkomst via sina TikTok-inställningar.</p>
+  <div class="terms-section">
+    <h2>2. Vad Tjänsten gör</h2>
+    <p>AutoPublisher möjliggör uppladdning och publicering av videoklipp till ett TikTok-konto via TikToks Content Posting API. Användaren initierar inloggning via TikTok, väljer material och styr publiceringen genom Tjänstens gränssnitt. Tjänsten automatiserar inte publicering utan användaren bekräftar själv alla steg.</p>
+  </div>
 
-  <h2>4. Ansvar för innehåll</h2>
-  <p>Användaren ansvarar för allt innehåll som laddas upp och publiceras via Tjänsten. Du bekräftar att du har rätt att publicera materialet och att det inte bryter mot upphovsrätt, personliga rättigheter eller lag. Utvecklaren ansvarar inte för innehåll som publiceras av användaren.</p>
+  <div class="section-divider"></div>
 
-  <h2>5. Begränsningar</h2>
-  <ul>
-    <li>
-      Tjänsten får inte användas för att kringgå TikToks regler, villkor eller tekniska begränsningar
-      eller för otillåten automatisering.
-    </li>
-    <li>Tjänsten får inte användas i kommersiella tredjepartstjänster utan avtal.</li>
-    <li>Utvecklaren kan stänga av åtkomst vid missbruk.</li>
-  </ul>
+  <div class="terms-section">
+    <h2>3. Åtkomst och autentisering</h2>
+    <p>För att använda Tjänsten krävs en TikTok-inloggning via OAuth. Endast de scopes som är nödvändiga för funktionaliteten begärs (<code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>). Användaren kan när som helst återkalla åtkomst via sina TikTok-inställningar.</p>
+  </div>
 
-  <h2>6. Personuppgifter och säkerhet</h2>
-  <p>
-    AutoPublisher lagrar inga personuppgifter i någon extern eller kommersiell databas.
-    Autentisering sker via TikToks OAuth-system och access tokens samt refresh tokens
-    hanteras säkert i servermiljö enbart för att upprätthålla användarens autentiserade session
-    och genomföra användarinitierade åtgärder.
-  </p>
-  <p>
-    All kommunikation mellan användaren, tjänsten och TikTok sker via krypterade anslutningar.
-  </p>
+  <div class="section-divider"></div>
 
-  <h2>7. Dataradering</h2>
-  <p>Instruktioner finns här: <a href="/historienbakomusiken/data-radering">Data Radering</a>. Viss data hanteras av TikTok och kan kräva åtgärd från dem.</p>
+  <div class="terms-section">
+    <h2>4. Ansvar för innehåll</h2>
+    <p>Användaren ansvarar för allt innehåll som laddas upp och publiceras via Tjänsten. Du bekräftar att du har rätt att publicera materialet och att det inte bryter mot upphovsrätt, personliga rättigheter eller lag. Utvecklaren ansvarar inte för innehåll som publiceras av användaren.</p>
+  </div>
 
-  <h2>8. Ansvarsbegränsning</h2>
-  <p>Utvecklarens ansvar är begränsat enligt lag och omfattar inte indirekta skador eller följdskador.</p>
+  <div class="section-divider"></div>
 
-  <h2>9. Ändringar av villkoren</h2>
-  <p>Villkoren kan uppdateras. Den publicerade versionen gäller vid användningstillfället.</p>
+  <div class="terms-section">
+    <h2>5. Begränsningar</h2>
+    <ul>
+      <li>Tjänsten får inte användas för att kringgå TikToks regler, villkor eller tekniska begränsningar eller för otillåten automatisering.</li>
+      <li>Tjänsten får inte användas i kommersiella tredjepartstjänster utan avtal.</li>
+      <li>Utvecklaren kan stänga av åtkomst vid missbruk.</li>
+    </ul>
+  </div>
 
-  <h2>10. Kontakt</h2>
-  <p>Vid frågor: <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+  <div class="section-divider"></div>
 
+  <div class="terms-section">
+    <h2>6. Personuppgifter och säkerhet</h2>
+    <p>AutoPublisher lagrar inga personuppgifter i någon extern eller kommersiell databas. Autentisering sker via TikToks OAuth-system och access tokens samt refresh tokens hanteras säkert i servermiljö enbart för att upprätthålla användarens autentiserade session och genomföra användarinitierade åtgärder.</p>
+    <p>All kommunikation mellan användaren, tjänsten och TikTok sker via krypterade anslutningar.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="terms-section">
+    <h2>7. Dataradering</h2>
+    <p>Instruktioner finns här: <a href="/historienbakomusiken/data-radering">Data Radering</a>. Viss data hanteras av TikTok och kan kräva åtgärd från dem.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="terms-section">
+    <h2>8. Ansvarsbegränsning</h2>
+    <p>Utvecklarens ansvar är begränsat enligt lag och omfattar inte indirekta skador eller följdskador.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="terms-section">
+    <h2>9. Ändringar av villkoren</h2>
+    <p>Villkoren kan uppdateras. Den publicerade versionen gäller vid användningstillfället.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="terms-section">
+    <h2>10. Kontakt</h2>
+    <div class="contact-info">
+      <p>Vid frågor: <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a></p>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="/historienbakomusiken/">← Tillbaka till huvudsidan</a>
+  </div>
 </div>
 
 <footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    </p>
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
+      © 2025 Casper Grenander. Alla rättigheter förbehållna.
+    </p>
+    <div class="footer-links">
+      <a href="/historienbakomusiken/">Startsida</a>
+      <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>
+      <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>
+      <a href="/historienbakomusiken/data-radering">Dataradering</a>
+      <a href="mailto:casper.grenander5@gmail.com">Kontakt</a>
+    </div>
+  </div>
 </footer>
 
 </body>
