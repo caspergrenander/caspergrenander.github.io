@@ -138,7 +138,7 @@ footer {
   transition: all 0.3s ease;
   display: inline-block;
   margin: 10px 5px;
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .button:hover {
@@ -396,6 +396,67 @@ footer {
   color: #2A4A4A;
   text-align: center;
 }
+
+.demo-mode-indicator {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 13px;
+  color: #2A4A4A;
+  font-style: italic;
+}
+
+.api-requirement-note {
+  background-color: rgba(216, 139, 92, 0.15);
+  border: 1px solid #D88B5C;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 13px;
+}
+
+.api-requirement-note h4 {
+  color: #D88B5C;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.button-label-small {
+  font-size: 12px;
+  color: #2A4A4A;
+  margin-top: 5px;
+  text-align: center;
+  font-style: italic;
+}
+
+.disabled-feature {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+.disabled-feature:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.scheduling-note {
+  background-color: rgba(42, 74, 74, 0.25);
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.scheduling-note p {
+  margin: 0;
+  color: #7A8C9C;
+}
+
+.scheduling-note strong {
+  color: #F5E5C8;
+}
 </style>
 </head>
 
@@ -467,15 +528,31 @@ footer {
     <div class="status-message" id="statusMessage"></div>
 
     <div class="controls-row">
-      <button class="button" id="publishBtn" disabled>Publish Now</button>
-      <button class="button tertiary" id="queueBtn" disabled>Queue for API Approval</button>
+      <button class="button" id="publishBtn" disabled>Publish (requires Direct Post API approval)</button>
+      <button class="button tertiary" id="queueBtn" disabled>Queue for API approval</button>
+    </div>
+
+    <div class="demo-mode-indicator">
+      Demo mode – Live publishing requires TikTok Direct Post API approval
+    </div>
+
+    <div class="api-requirement-note">
+      <h4>API Requirements Status</h4>
+      <p><strong>Current Status:</strong> Awaiting TikTok Direct Post API approval for live publishing functionality.</p>
+      <p><strong>"Queue for API approval":</strong> Demonstrates the workflow for manual review while API access is pending.</p>
+      <p><strong>"Publish":</strong> Will be enabled only after receiving Direct Post API approval from TikTok.</p>
+    </div>
+
+    <div class="scheduling-note">
+      <p><strong>Scheduling functionality:</strong> Available only after TikTok Direct Post API approval</p>
+      <p style="margin-top: 8px; font-size: 13px;">This feature demonstrates future capabilities and requires explicit user interaction for each scheduled post.</p>
     </div>
 
     <div class="note-box">
       <p><strong>Action Required:</strong> All functions require user clicks. Nothing happens automatically.</p>
-      <p><strong>Queue for API Approval:</strong> Places the video in a review queue while awaiting TikTok's Direct Post API access.</p>
-      <p><strong>Publish Now:</strong> For immediate publishing once API access is granted.</p>
-      <p style="margin-top: 10px; color: #E8B65C;"><strong>Current Status:</strong> Awaiting TikTok API approval for direct publishing.</p>
+      <p><strong>Queue for API approval:</strong> Places the video in a review queue while awaiting TikTok's Direct Post API access.</p>
+      <p><strong>Publish:</strong> For immediate publishing once Direct Post API access is granted.</p>
+      <p style="margin-top: 10px; color: #E8B65C;"><strong>Unified Terminology:</strong> Always using "Queue for API approval" and "Queued for API approval" for consistency.</p>
     </div>
   </div>
 
@@ -557,8 +634,8 @@ function handleFileSelect() {
     publishBtn.disabled = false;
     queueBtn.disabled = false;
     
-    // Show ready status
-    showStatus('Ready to publish!', 'ready');
+    // Show ready status with API approval note
+    showStatus('Ready to publish (awaiting API approval)', 'ready');
   }
 }
 
@@ -602,11 +679,11 @@ generateBtn.addEventListener('click', () => {
 publishBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('Publishing to TikTok via Direct Post API...', 'processing', 'User-initiated action in progress');
+  showStatus('Publishing to TikTok via Direct Post API...', 'processing', 'User-initiated action in progress (Demo mode)');
   
   // Simulate publishing process
   setTimeout(() => {
-    showStatus('✅ Video published successfully to TikTok!', 'success', 'User action completed successfully');
+    showStatus('✅ Video published successfully to TikTok!', 'success', 'User action completed successfully (Demo mode)');
     
     // Reset form
     publishBtn.disabled = true;
@@ -621,11 +698,11 @@ publishBtn.addEventListener('click', () => {
 queueBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('QUEUED (awaiting API approval)', 'queued', 'Video added to review queue for TikTok API approval - User action required');
+  showStatus('Queued for API approval', 'queued', 'Video added to review queue for TikTok Direct Post API approval');
   
   // Simulate queuing process
   setTimeout(() => {
-    showStatus('✅ Video queued successfully!', 'success', 'Awaiting TikTok Direct Post API approval - User action completed');
+    showStatus('✅ Video queued for API approval!', 'success', 'Awaiting TikTok Direct Post API approval - User action completed');
     
     // Reset form
     publishBtn.disabled = true;
