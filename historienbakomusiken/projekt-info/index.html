@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historien Bakom Musiken – Projekt & Autentisering</title>
+<title>AutoPublisher – Upload Interface</title>
 
 <style>
+/* BASE */
 body {
   margin: 0;
   padding: 0;
@@ -15,6 +16,13 @@ body {
   line-height: 1.7;
 }
 
+/* ACCENT BARS (mail-style) */
+.accent-bar {
+  height: 3px;
+  background: #E8B65C;
+}
+
+/* HEADER */
 header {
   padding: 60px 20px 40px;
   text-align: center;
@@ -41,12 +49,6 @@ h1 {
   text-transform: uppercase;
 }
 
-h2 {
-  color: #FFFFFF;
-  font-weight: 600;
-  margin-top: 50px;
-}
-
 p {
   max-width: 800px;
   margin: 10px auto;
@@ -55,6 +57,7 @@ p {
   font-size: 15px;
 }
 
+/* LINKS */
 a {
   color: #E8B65C;
   text-decoration: none;
@@ -63,6 +66,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* CONTAINER */
 .container {
   max-width: 900px;
   margin: 40px auto;
@@ -72,20 +76,71 @@ a:hover {
   border: 1px solid #2A4A4A;
 }
 
-ul {
-  max-width: 800px;
-  margin: auto;
-  padding-left: 40px;
+/* UI BOX */
+.ui-box {
+  margin-top: 30px;
+  text-align: center;
 }
 
-code {
-  background: #1A2838;
+/* BUTTONS */
+.button {
+  background: #E8B65C;
+  color: #1A2838;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.button.secondary {
+  background: transparent;
   color: #E8B65C;
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 13px;
+  border: 1px solid #2A4A4A;
 }
 
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* INPUTS */
+textarea {
+  width: 90%;
+  max-width: 700px;
+  background: #1A2838;
+  color: #F5E5C8;
+  border: 1px solid #2A4A4A;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px auto;
+  display: block;
+  resize: vertical;
+}
+
+/* STATUS */
+#status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #E8B65C;
+}
+
+/* SEPARATOR */
+hr {
+  border: none;
+  border-top: 1px solid #2A4A4A;
+  margin: 30px 0;
+}
+
+/* NOTE */
+.note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #2A4A4A;
+}
+
+/* FOOTER */
 footer {
   margin-top: 60px;
   padding: 30px;
@@ -99,86 +154,99 @@ footer {
 
 <body>
 
+<div class="accent-bar"></div>
+
 <header>
   <a href="/historienbakomusiken/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
-         alt="Historien Bakom Musiken Logo">
-    <h1>Historien Bakom Musiken</h1>
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken">
+    <h1>AutoPublisher</h1>
   </a>
-  <p>Ett kreativt projekt av Casper Grenander</p>
+  <p>Upload & Publish Interface</p>
 </header>
 
 <div class="container">
 
-  <h2>Om Projektet</h2>
   <p>
-    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,
-    <strong>Casper Grenander</strong>, delar insikter från musikskapande,
-    poddproduktion och den kreativa processen.
-    Projektet syftar till att ge transparens, inspiration och kontext
-    kring hur innehåll skapas och publiceras.
+    Users manually upload and publish videos to
+    <strong>their own TikTok account</strong>.
+    No actions are automated.
   </p>
 
-  <h2>Om AutoPublisher-verktyget</h2>
-  <p>
-    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att
-    <strong>ladda upp och publicera videoklipp</strong>
-    till ett TikTok-konto via TikToks officiella
-    <strong>Content Posting API</strong>.
-  </p>
+  <hr>
 
-  <p>
-    Alla åtgärder initieras <strong>explicit av användaren</strong>
-    efter inloggning via TikToks OAuth-system.
-    Verktyget utför inga automatiska eller obevakade publiceringar.
-  </p>
+  <div class="ui-box">
 
-  <p>
-    Verktyget används individuellt per autentiserat TikTok-konto och
-    inga användardata delas mellan konton.
-  </p>
+    <input type="file" id="videoFile" accept="video/*" style="display:none">
 
-  <h2>Autentisering via TikTok</h2>
-  <p>
-    TikToks <strong>OAuth-autentisering</strong> används för att verifiera användaren
-    och möjliggöra uppladdning samt publicering av videoinnehåll.
-    Endast explicit nödvändiga scopes begärs:
-  </p>
+    <button class="button" id="uploadBtn">Upload Video</button>
 
-  <ul>
-    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>
-    <li><code>video.upload</code> – laddar upp videofiler</li>
-    <li><code>video.publish</code> – publicerar videor</li>
-  </ul>
+    <textarea id="caption" placeholder="Write caption..."></textarea>
+    <textarea id="hashtags" placeholder="#music #history"></textarea>
 
-  <p>
-    Inga personuppgifter lagras permanent.
-    Autentiseringstokens används endast för att genomföra
-    användarinitierade åtgärder och hanteras enligt TikToks säkerhetskrav.
-  </p>
+    <button class="button secondary" id="generateBtn">
+      Generate caption & hashtags
+    </button>
 
-  <h2>Policy & Information</h2>
-  <p>
-    För detaljerad information om datahantering, villkor och användning:
-    <br><br>
-    🔗 <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a><br>
-    🔗 <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a><br>
-    🔗 <a href="/historienbakomusiken/data-radering">Data Radering</a>
-  </p>
+    <hr>
 
-  <h2>Kontakt</h2>
-  <p>
-    Vid frågor om projektet eller tekniken:
-    <br>
-    📧 <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
-  </p>
+    <button class="button" id="publishBtn" disabled>Publish now</button>
+    <button class="button secondary" id="scheduleBtn" disabled>Schedule</button>
 
+    <div id="status"></div>
+
+    <div class="note">
+      User-initiated publishing. No automated actions.
+    </div>
+
+  </div>
 </div>
 
 <footer>
-  © 2025 Casper Grenander  
-  Historien Bakom Musiken
+  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
 </footer>
+
+<div class="accent-bar"></div>
+
+<script>
+let selectedFile = null;
+
+const uploadBtn = document.getElementById("uploadBtn");
+const publishBtn = document.getElementById("publishBtn");
+const scheduleBtn = document.getElementById("scheduleBtn");
+const generateBtn = document.getElementById("generateBtn");
+
+uploadBtn.onclick = () => {
+  document.getElementById("videoFile").click();
+};
+
+document.getElementById("videoFile").onchange = e => {
+  selectedFile = e.target.files[0];
+  if (selectedFile) {
+    document.getElementById("status").innerText =
+      "Video selected: " + selectedFile.name + " – Ready to post";
+    publishBtn.disabled = false;
+    scheduleBtn.disabled = false;
+  }
+};
+
+generateBtn.onclick = () => {
+  document.getElementById("status").innerText =
+    "Generating caption & hashtags...";
+
+  google.script.run
+    .withSuccessHandler(res => {
+      document.getElementById("caption").value = res.caption || "";
+      document.getElementById("hashtags").value = res.hashtags || "";
+      document.getElementById("status").innerText =
+        "Suggestions generated. Ready to post.";
+    })
+    .withFailureHandler(err => {
+      document.getElementById("status").innerText =
+        "Error: " + err.message;
+    })
+    .generateCaptionAndHashtags();
+};
+</script>
 
 </body>
 </html>
