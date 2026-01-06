@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -467,7 +467,7 @@ footer {
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>AutoPublisher</h1>
   </a>
-  <p class="subtitle">Upload & Publish Interface</p>
+  <p class="subtitle">User-Initiated Upload & Publishing Interface</p>
 </header>
 
 <div class="container">
@@ -528,7 +528,7 @@ footer {
     <div class="status-message" id="statusMessage"></div>
 
     <div class="controls-row">
-      <button class="button" id="publishBtn" disabled>Publish (requires Direct Post API approval)</button>
+      <button class="button" id="publishBtn" disabled>Publish (API approval required)</button>
       <button class="button tertiary" id="queueBtn" disabled>Queue for API approval</button>
     </div>
 
@@ -635,7 +635,7 @@ function handleFileSelect() {
     queueBtn.disabled = false;
     
     // Show ready status with API approval note
-    showStatus('Ready to publish (awaiting API approval)', 'ready');
+    showStatus('Ready to publish', 'ready', 'Direct Post API approval required to proceed');
   }
 }
 
