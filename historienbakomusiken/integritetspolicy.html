@@ -10,7 +10,7 @@ body {
   padding: 0;
   background: #1A2838;
   color: #F5E5C8;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.7;
 }
 
@@ -25,73 +25,211 @@ header a {
   color: inherit;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 
 header img {
   width: 180px;
-  border-radius: 4px;
-  margin-bottom: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
-  text-transform: uppercase;
+  font-size: 22px;
 }
 
 h2 {
   color: #FFFFFF;
   font-weight: 600;
   margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 40px;
+  font-size: 1.2em;
 }
 
 p {
   max-width: 800px;
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 0 20px;
   color: #F5E5C8;
-  font-size: 15px;
 }
 
 a {
-  color: #E8B65C;
+  color: #D88B5C;
   text-decoration: none;
+  transition: color 0.2s;
 }
 a:hover {
+  color: #E8B65C;
   text-decoration: underline;
 }
 
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: auto;
   background: #0D0F15;
   padding: 40px 30px;
   border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border: 1px solid #2A4A4A;
 }
 
-ul {
+ul, ol {
   max-width: 800px;
-  margin: auto;
-  padding-left: 40px;
+  margin: 20px auto;
+  padding-left: 60px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 10px;
 }
 
 code {
-  background: #1A2838;
+  background-color: rgba(42, 74, 74, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
   color: #E8B65C;
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 13px;
+  font-family: monospace;
+  font-size: 0.95em;
+  display: inline-block;
+  margin: 5px 0;
 }
 
 footer {
   margin-top: 60px;
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.9rem;
   color: #2A4A4A;
   border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.contact-info {
+  background-color: rgba(42, 74, 74, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #D88B5C;
+}
+
+.contact-info a {
+  color: #E8B65C;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #E8B65C;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+}
+
+.page-title {
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.update-date {
+  text-align: center;
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.policy-section {
+  margin-bottom: 40px;
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
+
+.back-link:hover {
+  color: #E8B65C;
+}
+
+.code-block {
+  background-color: rgba(42, 74, 74, 0.2);
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px auto;
+  max-width: 800px;
+  border-left: 4px solid #E8B65C;
+  font-family: monospace;
+  color: #E8B65C;
+  overflow-x: auto;
+}
+
+.email-link {
+  color: #E8B65C;
+  font-weight: 500;
+}
+
+.email-link:hover {
+  color: #F5C97C;
 }
 </style>
 </head>
@@ -99,79 +237,116 @@ footer {
 <body>
 
 <header>
-  <a href="/historienbakommusiken/">
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p>Ett kreativt projekt av Casper Grenander</p>
+  <p class="subtitle">Ett kreativt projekt av Casper Grenander</p>
 </header>
 
 <div class="container">
-  <h1>Integritetspolicy</h1>
-  <p><em>Senast uppdaterad: 2025-01-01</em></p>
+  <h1 class="page-title">Integritetspolicy</h1>
+  <p class="update-date"><em>Senast uppdaterad: 2025-01-01</em></p>
 
-  <p>
-    <strong>Historien Bakom Musiken AutoPublisher</strong> är ett creator-verktyg som möjliggör uppladdning och publicering 
-    av videoklipp via TikToks officiella Content Posting API. Denna integritetspolicy beskriver hur data hanteras 
-    i samband med användning av tjänsten.
-  </p>
+  <div class="policy-section">
+    <p>
+      <strong>Historien Bakom Musiken AutoPublisher</strong> är ett creator-verktyg som möjliggör uppladdning och publicering 
+      av videoklipp via TikToks officiella Content Posting API. Denna integritetspolicy beskriver hur data hanteras 
+      i samband med användning av tjänsten.
+    </p>
+  </div>
 
-  <h2>Insamling och användning av data</h2>
-  <ul>
-    <li>Tjänsten lagrar inte personuppgifter i någon extern eller kommersiell databas.</li>
-    <li>
-      Autentisering sker via TikToks OAuth-system. Access tokens och refresh tokens lagras säkert i servermiljö 
-      enbart i syfte att upprätthålla användarens autentiserade session.
-    </li>
-    <li>
-      Tokens används endast för att utföra användarinitierade åtgärder och delas aldrig med tredje part.
-    </li>
-    <li>
-      Inga videofiler eller användarinnehåll lagras permanent av tjänsten.
-    </li>
-    <li>
-      Endast de scopes som krävs för funktionaliteten begärs:
-      <code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>.
-    </li>
-    <li>
-      All kommunikation mellan användaren, tjänsten och TikTok sker över säkra och krypterade anslutningar (HTTPS).
-    </li>
-  </ul>
+  <div class="section-divider"></div>
 
-  <h2>Dataradering</h2>
-  <p>
-    Användare kan begära radering av data som hanteras i samband med användning av tjänsten. Eftersom majoriteten av 
-    all data hanteras av TikTok kan det krävas att användaren även genomför raderingsåtgärder direkt hos TikTok.
-  </p>
+  <div class="policy-section">
+    <h2>Insamling och användning av data</h2>
+    <ul>
+      <li>Tjänsten lagrar inte personuppgifter i någon extern eller kommersiell databas.</li>
+      <li>
+        Autentisering sker via TikToks OAuth-system. Access tokens och refresh tokens lagras säkert i servermiljö 
+        enbart i syfte att upprätthålla användarens autentiserade session.
+      </li>
+      <li>
+        Tokens används endast för att utföra användarinitierade åtgärder och delas aldrig med tredje part.
+      </li>
+      <li>
+        Inga videofiler eller användarinnehåll lagras permanent av tjänsten.
+      </li>
+      <li>
+        Endast de scopes som krävs för funktionaliteten begärs:
+        <code>user.info.basic</code>, <code>video.upload</code>, <code>video.publish</code>.
+      </li>
+      <li>
+        All kommunikation mellan användaren, tjänsten och TikTok sker över säkra och krypterade anslutningar (HTTPS).
+      </li>
+    </ul>
+  </div>
 
-  <p>
-    Användare kan även när som helst återkalla åtkomst till tjänsten via sina TikTok-kontoinställningar.
-  </p>
+  <div class="section-divider"></div>
 
-  <p><strong>E-post för dataradering:</strong><br>
-    <a href="mailto:casper.grenander5@gmail.com">casper.grenander5@gmail.com</a>
-  </p>
+  <div class="policy-section">
+    <h2>Dataradering</h2>
+    <p>
+      Användare kan begära radering av data som hanteras i samband med användning av tjänsten. Eftersom majoriteten av 
+      all data hanteras av TikTok kan det krävas att användaren även genomför raderingsåtgärder direkt hos TikTok.
+    </p>
+    <p>
+      Användare kan även när som helst återkalla åtkomst till tjänsten via sina TikTok-kontoinställningar.
+    </p>
+    
+    <div class="contact-info">
+      <p><strong>E-post för dataradering:</strong><br>
+        <a href="mailto:casper.grenander5@gmail.com" class="email-link">casper.grenander5@gmail.com</a>
+      </p>
+    </div>
+    
+    <p><strong>Data Deletion Callback URL:</strong></p>
+    <div class="code-block">
+      https://caspergrenander.github.io/historienbakomusiken/data-radering
+    </div>
+  </div>
 
-  <p><strong>Data Deletion Callback URL:</strong><br>
-    <code>https://caspergrenander.github.io/historienbakomusiken/data-radering</code>
-  </p>
+  <div class="section-divider"></div>
 
-  <h2>Rättigheter och kontakt</h2>
-  <p>
-    Användare kan begära information, rättelse eller radering av data genom att kontakta utvecklaren via e-post. 
-    Ange tydligt vilken typ av förfrågan som avses samt relevant identifiering (till exempel TikTok-användarnamn).
-  </p>
+  <div class="policy-section">
+    <h2>Rättigheter och kontakt</h2>
+    <p>
+      Användare kan begära information, rättelse eller radering av data genom att kontakta utvecklaren via e-post. 
+      Ange tydligt vilken typ av förfrågan som avses samt relevant identifiering (till exempel TikTok-användarnamn).
+    </p>
+  </div>
 
-  <h2>Ändringar av Integritetspolicyn</h2>
-  <p>
-    Policyn kan uppdateras vid behov. Eventuella ändringar publiceras på denna sida. 
-    Datum för senaste uppdatering anges högst upp.
-  </p>
+  <div class="section-divider"></div>
 
+  <div class="policy-section">
+    <h2>Ändringar av Integritetspolicyn</h2>
+    <p>
+      Policyn kan uppdateras vid behov. Eventuella ändringar publiceras på denna sida. 
+      Datum för senaste uppdatering anges högst upp.
+    </p>
+  </div>
+
+  <div class="back-link">
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Tillbaka till huvudsidan</a>
+  </div>
 </div>
 
 <footer>
-  © 2025 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    </p>
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
+      © 2025 Casper Grenander. Alla rättigheter förbehållna.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Startsida</a>
+      <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>
+      <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>
+      <a href="/historienbakomusiken/data-radering">Dataradering</a>
+      <a href="mailto:casper.grenander5@gmail.com">Kontakt</a>
+    </div>
+  </div>
 </footer>
 
 </body>
