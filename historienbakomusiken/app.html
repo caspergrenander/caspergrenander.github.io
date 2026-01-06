@@ -138,7 +138,7 @@ footer {
   transition: all 0.3s ease;
   display: inline-block;
   margin: 10px 5px;
-  min-width: 180px;
+  min-width: 200px;
 }
 
 .button:hover {
@@ -167,6 +167,18 @@ footer {
 
 .button.secondary:hover {
   background-color: rgba(216, 139, 92, 0.1);
+  color: #E8B65C;
+}
+
+.button.tertiary {
+  background-color: rgba(42, 74, 74, 0.3);
+  color: #F5E5C8;
+  border: 2px solid #2A4A4A;
+}
+
+.button.tertiary:hover {
+  background-color: rgba(42, 74, 74, 0.5);
+  border-color: #E8B65C;
   color: #E8B65C;
 }
 
@@ -247,6 +259,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .status-message.show {
@@ -258,6 +271,12 @@ footer {
   background-color: rgba(232, 182, 92, 0.15);
   border: 2px solid #E8B65C;
   color: #E8B65C;
+}
+
+.status-queued {
+  background-color: rgba(42, 74, 74, 0.4);
+  border: 2px solid #2A4A4A;
+  color: #F5E5C8;
 }
 
 .status-processing {
@@ -276,6 +295,13 @@ footer {
   background-color: rgba(216, 139, 92, 0.15);
   border: 2px solid #D88B5C;
   color: #D88B5C;
+}
+
+.status-subtext {
+  font-size: 14px;
+  color: #2A4A4A;
+  margin-top: 8px;
+  font-weight: normal;
 }
 
 /* Controls Row */
@@ -327,6 +353,22 @@ footer {
 .back-link:hover {
   color: #E8B65C;
 }
+
+.workflow-info {
+  background-color: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.workflow-info h3 {
+  color: #E8B65C;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
 </style>
 </head>
 
@@ -345,6 +387,12 @@ footer {
     Users manually upload and publish videos to <strong>their own TikTok account</strong>.
     No actions are automated.
   </p>
+
+  <div class="workflow-info">
+    <h3>📋 Current Workflow Status</h3>
+    <p><strong>Direct Post API:</strong> Awaiting approval from TikTok</p>
+    <p><strong>Current Method:</strong> Videos are queued for manual review and API approval</p>
+  </div>
 
   <div class="ui-box">
     <h2>Upload Video</h2>
@@ -384,11 +432,12 @@ footer {
 
     <div class="controls-row">
       <button class="button" id="publishBtn" disabled>Publish Now</button>
-      <button class="button secondary" id="scheduleBtn" disabled>Schedule</button>
+      <button class="button tertiary" id="queueBtn" disabled>Queue for API Approval</button>
     </div>
 
     <div class="note-box">
-      <p><strong>Note:</strong> All actions are user-initiated. Publishing and scheduling are performed through backend services after explicit user confirmation.</p>
+      <p><strong>Note:</strong> "Queue for API Approval" places the video in a review queue while awaiting TikTok's Direct Post API access. "Publish Now" is for immediate publishing once API access is granted.</p>
+      <p style="margin-top: 10px; color: #E8B65C;"><strong>Current Status:</strong> Awaiting TikTok API approval for direct publishing.</p>
     </div>
   </div>
 
@@ -425,7 +474,7 @@ const fileInfo = document.getElementById("fileInfo");
 const fileName = document.getElementById("fileName");
 const fileSize = document.getElementById("fileSize");
 const publishBtn = document.getElementById("publishBtn");
-const scheduleBtn = document.getElementById("scheduleBtn");
+const queueBtn = document.getElementById("queueBtn");
 const generateBtn = document.getElementById("generateBtn");
 const statusMessage = document.getElementById("statusMessage");
 
@@ -466,9 +515,9 @@ function handleFileSelect() {
     fileSize.textContent = formatFileSize(selectedFile.size);
     fileInfo.style.display = 'block';
     
-    // Enable publish buttons
+    // Enable buttons
     publishBtn.disabled = false;
-    scheduleBtn.disabled = false;
+    queueBtn.disabled = false;
     
     // Show ready status
     showStatus('Ready to publish!', 'ready');
@@ -484,12 +533,15 @@ function formatFileSize(bytes) {
 }
 
 // Status Message Function
-function showStatus(message, type = 'processing') {
-  statusMessage.textContent = message;
+function showStatus(message, type = 'processing', subtext = '') {
+  statusMessage.innerHTML = message;
+  if (subtext) {
+    statusMessage.innerHTML += `<div class="status-subtext">${subtext}</div>`;
+  }
   statusMessage.className = `status-message status-${type} show`;
   
   // Auto-hide success messages after 5 seconds
-  if (type === 'success') {
+  if (type === 'success' || type === 'queued') {
     setTimeout(() => {
       statusMessage.classList.remove('show');
     }, 5000);
@@ -500,7 +552,7 @@ function showStatus(message, type = 'processing') {
 generateBtn.addEventListener('click', () => {
   showStatus('Generating caption & hashtags suggestions...', 'processing');
   
-  // Simulate API call (replace with actual Google Apps Script call)
+  // Simulate API call
   setTimeout(() => {
     document.getElementById("caption").value = "🎵 Behind the scenes of my latest track! See the creative process from start to finish. #MusicProduction";
     document.getElementById("hashtags").value = "#musicproduction #behindthescenes #creativity #musicmaker #studio";
@@ -508,38 +560,38 @@ generateBtn.addEventListener('click', () => {
   }, 1500);
 });
 
-// Publish Button
+// Publish Button (for when API is approved)
 publishBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('Publishing to TikTok... This may take a moment.', 'processing');
+  showStatus('Publishing to TikTok via Direct Post API...', 'processing');
   
-  // Simulate publishing process (replace with actual Google Apps Script call)
+  // Simulate publishing process
   setTimeout(() => {
     showStatus('✅ Video published successfully to TikTok!', 'success');
     
     // Reset form
     publishBtn.disabled = true;
-    scheduleBtn.disabled = true;
+    queueBtn.disabled = true;
     fileInfo.style.display = 'none';
     videoFileInput.value = '';
     selectedFile = null;
   }, 3000);
 });
 
-// Schedule Button
-scheduleBtn.addEventListener('click', () => {
+// Queue for API Approval Button
+queueBtn.addEventListener('click', () => {
   if (!selectedFile) return;
   
-  showStatus('Scheduling video for publishing...', 'processing');
+  showStatus('QUEUED (awaiting API approval)', 'queued', 'Video added to review queue for TikTok API approval');
   
-  // Simulate scheduling process (replace with actual Google Apps Script call)
+  // Simulate queuing process
   setTimeout(() => {
-    showStatus('✅ Video scheduled successfully!', 'success');
+    showStatus('✅ Video queued successfully!', 'success', 'Awaiting TikTok Direct Post API approval');
     
     // Reset form
     publishBtn.disabled = true;
-    scheduleBtn.disabled = true;
+    queueBtn.disabled = true;
     fileInfo.style.display = 'none';
     videoFileInput.value = '';
     selectedFile = null;
