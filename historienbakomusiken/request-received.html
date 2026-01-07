@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Received – AutoPublisher</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #1A2838;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #0D0F15;
+  border-bottom: 1px solid #2A4A4A;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #0D0F15;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #2A4A4A;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+/* Success message styling */
+.success-container {
+  max-width: 700px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(232, 182, 92, 0.1);
+  border: 2px solid #E8B65C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  font-size: 40px;
+  color: #E8B65C;
+}
+
+.success-title {
+  color: #E8B65C;
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.success-message {
+  background: rgba(42, 74, 74, 0.1);
+  border-radius: 8px;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 600px;
+  border-left: 4px solid #E8B65C;
+}
+
+.success-message p {
+  text-align: left;
+  margin: 15px 0;
+}
+
+.timeline-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.timeline-box h3 {
+  color: #E8B65C;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+  gap: 15px;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeline-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #E8B65C;
+  color: #1A2838;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.timeline-circle.active {
+  background: #E8B65C;
+  box-shadow: 0 0 0 4px rgba(232, 182, 92, 0.3);
+}
+
+.timeline-circle.completed {
+  background: #2A4A4A;
+  color: #F5E5C8;
+}
+
+.timeline-line {
+  flex-grow: 1;
+  height: 2px;
+  background: #2A4A4A;
+  margin-top: 20px;
+}
+
+.timeline-label {
+  font-size: 14px;
+  color: #F5E5C8;
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  min-width: 180px;
+}
+
+.btn-primary {
+  background: #E8B65C;
+  color: #1A2838;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #D88B5C;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+  border: 1px solid #2A4A4A;
+}
+
+.btn-secondary:hover {
+  background: rgba(42, 74, 74, 0.4);
+  border-color: #D88B5C;
+  transform: translateY(-2px);
+}
+
+/* Footer styling */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+  text-decoration: none;
+}
+
+.footer-copyright {
+  color: #2A4A4A;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-title {
+  color: #F5E5C8;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+/* Checklist styling */
+.checklist {
+  text-align: left;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(42, 74, 74, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid #2A4A4A;
+}
+
+.checklist-item.completed {
+  border-left-color: #E8B65C;
+  background: rgba(232, 182, 92, 0.05);
+}
+
+.checklist-icon {
+  color: #E8B65C;
+  font-size: 20px;
+  margin-top: 2px;
+  min-width: 24px;
+}
+
+.checklist-content h4 {
+  color: #FFFFFF;
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.checklist-content p {
+  text-align: left;
+  margin: 5px 0;
+  color: #F5E5C8;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p class="subtitle">Data Deletion Request – Confirmation</p>
+</header>
+
+<div class="container">
+  <div class="success-container">
+    <div class="success-icon">
+      ✓
+    </div>
+    
+    <h1 class="success-title">Request Received</h1>
+    
+    <p style="font-size: 18px;">
+      Your data deletion request has been successfully submitted.
+    </p>
+    
+    <div class="success-message">
+      <p>
+        <strong>Thank you for submitting your data deletion request.</strong>
+      </p>
+      <p>
+        We have received your request and will begin processing it immediately.
+      </p>
+      <p>
+        <strong>Please allow us 7 to 10 business days to remove your data.</strong>
+      </p>
+      <p>
+        Keep an eye on your email for confirmation once the process is complete.
+      </p>
+    </div>
+    
+    <div class="timeline-box">
+      <h3>Processing Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-circle active">1</div>
+          <div class="timeline-label">Request<br>Received</div>
+        </div>
+        
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-step">
+          <div class="timeline-circle">2</div>
+          <div class="timeline-label">Verification<br>Process</div>
+        </div>
+        
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-step">
+          <div class="timeline-circle">3</div>
+          <div class="timeline-label">Data<br>Removal</div>
+        </div>
+        
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-step">
+          <div class="timeline-circle">4</div>
+          <div class="timeline-label">Confirmation<br>Sent</div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 20px; font-size: 14px;">
+        Estimated completion: <strong>7-10 business days</strong>
+      </p>
+    </div>
+    
+    <div class="checklist">
+      <h3 style="text-align: center; color: #FFFFFF; margin-bottom: 25px;">
+        What happens next?
+      </h3>
+      
+      <div class="checklist-item completed">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-content">
+          <h4>Request Submitted</h4>
+          <p>Your deletion request has been received and logged in our system.</p>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checklist-icon">⏳</div>
+        <div class="checklist-content">
+          <h4>Account Verification</h4>
+          <p>We will verify your account ownership (within 24-48 hours).</p>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checklist-icon">⏳</div>
+        <div class="checklist-content">
+          <h4>Data Removal Process</h4>
+          <p>All associated data will be permanently deleted from our systems.</p>
+        </div>
+      </div>
+      
+      <div class="checklist-item">
+        <div class="checklist-icon">⏳</div>
+        <div class="checklist-content">
+          <h4>Confirmation Email</h4>
+          <p>You will receive an email confirmation once the process is complete.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="btn btn-primary">
+        Return to Home
+      </a>
+      <a href="mailto:app.auto.publisher@gmail.com" class="btn btn-secondary">
+        Contact Support
+      </a>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div style="max-width: 600px; margin: 30px auto; padding: 20px; background: rgba(42, 74, 74, 0.1); border-radius: 8px;">
+      <h3 style="color: #FFFFFF; text-align: center; margin-top: 0;">
+        Need to make changes?
+      </h3>
+      <p style="text-align: center; font-size: 14px;">
+        If you need to modify or cancel your request, please contact us at
+        <a href="mailto:app.auto.publisher@gmail.com" style="color: #E8B65C;">app.auto.publisher@gmail.com</a>
+        as soon as possible.
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p class="footer-title">
+      Historien Bakom Musiken – AutoPublisher
+    </p>
+    
+    <p class="footer-copyright">
+      © 2026 Casper Grenander. All rights reserved.
+    </p>
+    
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Simple animation for timeline
+document.addEventListener('DOMContentLoaded', function() {
+  const timelineCircles = document.querySelectorAll('.timeline-circle');
+  const checklistItems = document.querySelectorAll('.checklist-item');
+  
+  // Animate timeline circles sequentially
+  timelineCircles.forEach((circle, index) => {
+    setTimeout(() => {
+      circle.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        circle.style.transform = 'scale(1)';
+      }, 300);
+    }, index * 500);
+  });
+  
+  // Animate checklist items
+  checklistItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, 50);
+    }, index * 300);
+  });
+});
+</script>
+
+</body>
+</html>
