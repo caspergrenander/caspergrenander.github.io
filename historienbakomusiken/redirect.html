@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TikTok Redirect – Historien Bakom Musiken</title>
+<title>TikTok OAuth Redirect – Historien Bakom Musiken</title>
 
 <style>
   body {
@@ -203,11 +203,11 @@
     .glow {
       font-size: 1.5rem;
     }
-    
+
     #status {
       font-size: 1rem;
     }
-    
+
     #code-box, .error-container {
       padding: 15px;
     }
@@ -219,14 +219,14 @@
   <div class="background-pattern"></div>
 
   <div class="logo-container">
-    <!-- ✅ Officiell TikTok Open Platform-logga -->
+    <!-- ✅ Official TikTok Open Platform logo -->
     <img
       class="tiktok-logo"
       src="https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/tt_icon.png"
       alt="TikTok"
     />
-    
-    <!-- Projektlogga -->
+
+    <!-- Project logo -->
     <img
       class="project-logo"
       src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
@@ -236,41 +236,41 @@
 
   <h1 class="glow">Historien Bakom Musiken</h1>
   <div class="subtitle">AutoPublisher – TikTok OAuth Redirect</div>
-  
-  <div id="status">Autentiserar via TikTok…</div>
-  
+
+  <div id="status">Authenticating via TikTok…</div>
+
   <div class="loading-spinner" id="loadingSpinner"></div>
-  
+
   <div id="code-box"></div>
-  
+
   <div class="error-container" id="errorContainer" style="display: none;">
-    <h3>⚠️ Inloggningsproblem upptäckta</h3>
-    <p>Ingen autentiseringskod kunde hämtas från TikTok. Detta kan bero på:</p>
+    <h3>⚠️ Authentication Issues Detected</h3>
+    <p>No authentication code could be retrieved from TikTok. This could be due to:</p>
     <ul style="text-align: left; padding-left: 20px; color: #F5E5C8;">
-      <li>OAuth-flow avbröts av användaren</li>
-      <li>Ogiltig eller utgången redirect URI i TikTok Developer Console</li>
-      <li>Tillfälligt fel hos TikTok's autentiseringsserver</li>
+      <li>OAuth flow was cancelled by the user</li>
+      <li>Invalid or expired redirect URI in TikTok Developer Console</li>
+      <li>Temporary error with TikTok's authentication server</li>
     </ul>
-    
+
     <p style="margin-top: 15px;">
-      <strong>Upplever du problem med att logga in på appen?</strong><br>
-      Vänligen kontakta support för assistance.
+      <strong>Experiencing problems logging into the app?</strong><br>
+      Please contact support for assistance.
     </p>
-    
+
     <a href="mailto:app.auto.publisher@gmail.com" class="support-link">
-      📧 Kontakta Support
+      📧 Contact Support
     </a>
   </div>
-  
+
   <div class="countdown" id="countdown"></div>
 
   <footer>
     <div class="footer-content">
       <div>© 2026 Casper Grenander – Historien Bakom Musiken AutoPublisher</div>
       <div class="footer-links">
-        <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Projektinfo</a>
-        <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>
-        <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>
+        <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Project Info</a>
+        <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
+        <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
         <a href="mailto:app.auto.publisher@gmail.com">Support</a>
       </div>
     </div>
@@ -287,18 +287,18 @@
   const errorContainer = document.getElementById("errorContainer");
   const loadingSpinner = document.getElementById("loadingSpinner");
   const countdownElement = document.getElementById("countdown");
-  
+
   const appScriptURL = "https://script.google.com/macros/s/AKfycbz-59JvYWMiIK7kJwkoRgVOk_cgfj7Q-fzV0CgB1Assr85OaMT7LNwB2iVO396bSr2t/exec";
   const supportEmail = "app.auto.publisher@gmail.com";
 
   function startCountdown(seconds, redirectURL) {
     let timeLeft = seconds;
     countdownElement.style.display = 'block';
-    
+
     const countdownInterval = setInterval(() => {
-      countdownElement.textContent = `Omdirigerar om ${timeLeft} sekund${timeLeft !== 1 ? 'er' : ''}...`;
+      countdownElement.textContent = `Redirecting in ${timeLeft} second${timeLeft !== 1 ? 's' : ''}...`;
       timeLeft--;
-      
+
       if (timeLeft < 0) {
         clearInterval(countdownInterval);
         window.location.href = redirectURL;
@@ -308,39 +308,39 @@
 
   if (error) {
     // TikTok returned an error
-    statusElement.textContent = "Autentiseringsfel från TikTok";
+    statusElement.textContent = "Authentication error from TikTok";
     statusElement.className = "status-error";
     loadingSpinner.style.display = "none";
     errorContainer.style.display = "block";
-    
-    codeBox.textContent = `Fel: ${error}\nBeskrivning: ${errorDescription || 'Ingen detaljerad beskrivning'}`;
+
+    codeBox.textContent = `Error: ${error}\nDescription: ${errorDescription || 'No detailed description'}`;
     codeBox.style.display = "block";
-    
+
   } else if (code) {
     // Successfully received code
-    statusElement.textContent = "✅ Autentiseringskod mottagen från TikTok";
+    statusElement.textContent = "✅ Authentication code received from TikTok";
     statusElement.className = "status-success";
-    
-    codeBox.textContent = `Kod: ${code.substring(0, 20)}...`;
+
+    codeBox.textContent = `Code: ${code.substring(0, 20)}...`;
     codeBox.style.display = "block";
-    
+
     // Show countdown before redirect
     startCountdown(3, appScriptURL + "?code=" + encodeURIComponent(code));
-    
+
   } else {
     // No code or error parameter found
-    statusElement.textContent = "Ingen autentiseringskod mottagen från TikTok.";
+    statusElement.textContent = "No authentication code received from TikTok.";
     statusElement.className = "status-error";
     loadingSpinner.style.display = "none";
     errorContainer.style.display = "block";
-    
-    codeBox.textContent = "Fel: Saknad 'code' parameter i URL.\nKontrollera TikTok redirect URI i Developer Console.";
+
+    codeBox.textContent = "Error: Missing 'code' parameter in URL.\nCheck TikTok redirect URI in Developer Console.";
     codeBox.style.display = "block";
-    
+
     // Suggest checking the redirect URI
     setTimeout(() => {
       const suggestion = document.createElement('p');
-      suggestion.innerHTML = `<br><strong>Teknisk kontroll:</strong> Se till att följande redirect URI är korrekt konfigurerad i TikTok Developer Portal:<br><code style="color:#25F4EE;font-size:0.9em;">https://caspergrenander.github.io/historienbakomusiken/redirect/</code>`;
+      suggestion.innerHTML = `<br><strong>Technical check:</strong> Ensure the following redirect URI is correctly configured in TikTok Developer Portal:<br><code style="color:#25F4EE;font-size:0.9em;">https://caspergrenander.github.io/historienbakomusiken/redirect/</code>`;
       errorContainer.appendChild(suggestion);
     }, 500);
   }
@@ -348,7 +348,7 @@
   // Add keyboard shortcut for support
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'h') {
-      window.location.href = `mailto:${supportEmail}?subject=Support: TikTok Login Issue&body=Hej,%0D%0A%0D%0AJag upplever problem med att logga in via TikTok.%0D%0A%0D%0ABeskriv ditt problem här...`;
+      window.location.href = `mailto:${supportEmail}?subject=Support: TikTok Login Issue&body=Hello,%0D%0A%0D%0AI am experiencing problems logging in via TikTok.%0D%0A%0D%0ADescribe your issue here...`;
     }
   });
 </script>
