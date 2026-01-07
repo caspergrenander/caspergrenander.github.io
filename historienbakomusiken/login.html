@@ -1,25 +1,75 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logga in med TikTok – Historien Bakom Musiken</title>
+<title>Login with TikTok – Historien Bakom Musiken</title>
 
 <style>
 body {
   margin: 0;
   padding: 0;
-  background: #000;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #1A2838 0%, #0D0F15 100%);
+  color: #F5E5C8;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #E8B65C 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, #D88B5C 2px, transparent 2px);
+  background-size: 50px 50px;
+  z-index: -1;
 }
 
 .container {
   text-align: center;
+  padding: 40px;
+  background-color: rgba(13, 15, 21, 0.7);
+  border-radius: 12px;
+  border: 1px solid #2A4A4A;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+}
+
+.project-header {
+  margin-bottom: 40px;
+}
+
+.project-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 2px solid rgba(245, 229, 200, 0.1);
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #25F4EE, #FE2C55, #E8B65C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+  text-shadow: 0 0 20px rgba(37, 244, 238, 0.2);
+}
+
+.project-subtitle {
+  color: #2A4A4A;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
 .tiktok-button {
@@ -33,13 +83,20 @@ body {
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .tiktok-button:hover {
   background: #f2f2f2;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-color: #25F4EE;
+}
+
+.tiktok-button:active {
+  transform: translateY(0);
 }
 
 /* Officiell TikTok-ikon – endast storlek ändrad */
@@ -48,37 +105,150 @@ body {
   height: 48px;
 }
 
+.button-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
 .note {
-  margin-top: 18px;
+  margin-top: 25px;
   font-size: 14px;
-  color: #B4B4B4;
+  color: #2A4A4A;
+  line-height: 1.5;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.note strong {
+  color: #E8B65C;
+}
+
+.scopes-info {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.2);
+  border-radius: 8px;
+  border-left: 4px solid #2A4A4A;
+  text-align: left;
+  font-size: 13px;
+}
+
+.scopes-info h3 {
+  color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.scopes-info ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #F5E5C8;
+}
+
+.scopes-info li {
+  margin-bottom: 5px;
+}
+
+.scopes-info code {
+  background-color: rgba(42, 74, 74, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #E8B65C;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #D88B5C;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #E8B65C;
+  text-decoration: underline;
+}
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #2A4A4A;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+    width: 95%;
+  }
+  
+  .tiktok-button {
+    padding: 18px 24px;
+    font-size: 16px;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="container">
+  <div class="background-pattern"></div>
+  
+  <div class="container">
+    <div class="project-header">
+      <img
+        class="project-logo"
+        src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+        alt="Historien Bakom Musiken"
+      />
+      <h1 class="project-title">Historien Bakom Musiken</h1>
+      <div class="project-subtitle">AutoPublisher</div>
+    </div>
 
-  <a
-    class="tiktok-button"
-    href="https://www.tiktok.com/v2/auth/authorize/?client_key=awjt9buhcbapxa9k
-&response_type=code&scope=user.info.basic,video.upload,video.publish&redirect_uri=https://caspergrenander.github.io/historienbakomusiken/redirect&state=hbm_autopublisher"
-  >
+    <a
+      class="tiktok-button"
+      href="https://www.tiktok.com/v2/auth/authorize/?client_key=awjt9buhcbapxa9k&response_type=code&scope=user.info.basic,video.upload,video.publish&redirect_uri=https://caspergrenander.github.io/historienbakomusiken/redirect&state=hbm_autopublisher"
+    >
+      <!-- ✅ OFFICIELL TikTok Open Platform-ikon -->
+      <img
+        class="tiktok-icon"
+        src="https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/tt_icon.png"
+        alt="TikTok"
+      />
+      <span class="button-text">Connect with TikTok</span>
+    </a>
 
-    <!-- ✅ OFFICIELL TikTok Open Platform-ikon -->
-    <img
-      class="tiktok-icon"
-      src="https://lf16-tt4d.tiktokcdn.com/obj/tiktok-open-platform/tt_icon.png"
-      alt="TikTok"
-    />
-
-    <span>Connect with TikTok</span>
-  </a>
-
-  <div class="note">
-    Säker inloggning via TikToks officiella autentisering
+    <div class="note">
+      <strong>Secure login</strong> via TikTok's official authentication system.<br>
+      Required to access the AutoPublisher tool.
+    </div>
+    
+    <div class="scopes-info">
+      <h3>Requested Permissions:</h3>
+      <ul>
+        <li><code>user.info.basic</code> – Verify your TikTok account</li>
+        <li><code>video.upload</code> – Upload video files</li>
+        <li><code>video.publish</code> – Publish videos to your account</li>
+      </ul>
+    </div>
+    
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="back-link">
+      ← Back to Project Information
+    </a>
   </div>
-
-</div>
+  
+  <footer>
+    © 2026 Casper Grenander – Historien Bakom Musiken AutoPublisher
+  </footer>
 </body>
 </html>
