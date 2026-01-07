@@ -462,13 +462,75 @@ strong {
   color: #0A73FF;
   font-weight: 500;
 }
+
+/* Quick links */
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.quick-link {
+  padding: 12px 24px;
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 6px;
+  color: #0A73FF;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.quick-link:hover {
+  background-color: rgba(10, 115, 255, 0.15);
+  color: #FFFFFF;
+}
+
+/* Meta callback info */
+.meta-callback-info {
+  background-color: rgba(10, 115, 255, 0.1);
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px auto;
+  max-width: 800px;
+}
+
+.meta-callback-info h4 {
+  color: #4A9AFF;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.policy-links {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.policy-links a {
+  padding: 8px 16px;
+  background-color: rgba(10, 115, 255, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.policy-links a:hover {
+  background-color: rgba(10, 115, 255, 0.4);
+  text-decoration: none;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <a href="https://caspergrenander.github.io/meta-policy/">
+  <a href="https://caspergrenander.github.io/meta/">
     <img src="./CABEATS-logo.png" alt="C/A Beats Logo">
     <h1>C / A Beats Publisher</h1>
   </a>
@@ -476,10 +538,18 @@ strong {
 </header>
 
 <div class="container">
+  <div class="quick-links">
+    <a href="https://caspergrenander.github.io/meta/" class="quick-link">🏠 Home</a>
+    <a href="https://caspergrenander.github.io/meta/privacy-policy" class="quick-link">🔒 Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta/contact" class="quick-link">📧 Contact</a>
+    <a href="https://caspergrenander.github.io/meta/projects" class="quick-link">📁 All Projects</a>
+  </div>
+
   <h2>Request Data Deletion</h2>
-  
+
   <div class="info-box">
     <p><strong>Important:</strong> This form is for requesting deletion of data associated with the C / A Beats Publisher automation system. The system is for internal use only and does not store personal data from external users.</p>
+    <p>All data deletion requests are processed in accordance with our Privacy Policy and Meta's data deletion requirements.</p>
   </div>
 
   <div class="timeline">
@@ -585,11 +655,10 @@ strong {
         <p>Your data deletion request has been received. We will process it within <strong>7-10 business days</strong>.</p>
         <p>A confirmation email has been sent to your provided email address.</p>
         <p><strong>Reference ID:</strong> <span id="referenceId">CA-2026-0000</span></p>
-        <p style="margin-top: 20px;">
-          <a href="https://caspergrenander.github.io/meta-policy/" style="color: #0A73FF; font-weight: 500;">
-            Return to Home Page
-          </a>
-        </p>
+        <div class="policy-links">
+          <a href="https://caspergrenander.github.io/meta/">Return to Home Page</a>
+          <a href="https://caspergrenander.github.io/meta/contact">Contact Support</a>
+        </div>
       </div>
 
       <button type="submit" class="submit-button" id="submitButton">
@@ -604,13 +673,13 @@ strong {
 
   <div class="section-divider"></div>
 
-  <div class="contact-info">
-    <h3>Need Assistance?</h3>
-    <p>
-      If you have questions about the data deletion process or need immediate assistance, please contact us directly:
-      <br><br>
-      📧 <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
-    </p>
+  <div class="meta-callback-info">
+    <h4>Meta Data Deletion Callback System</h4>
+    <p>This system is integrated with Meta's data deletion callback system. When you submit a deletion request through Meta's platform, it automatically triggers our data deletion process.</p>
+    <div class="callback-url">
+      https://caspergrenander.github.io/meta/
+    </div>
+    <p><em>This is the registered callback URL for Meta's data deletion requests.</em></p>
   </div>
 
   <div class="warning-note">
@@ -618,6 +687,29 @@ strong {
     <p><strong>Processing Time:</strong> Data deletion requests are typically processed within 7-10 business days.</p>
     <p><strong>Meta Integration:</strong> This request will trigger Meta's data deletion callback system for comprehensive data removal.</p>
     <p><strong>Internal Use Only:</strong> Remember that this system is for internal company use and does not store external user personal data.</p>
+  </div>
+
+  <div class="contact-info">
+    <h3>Need Assistance?</h3>
+    <p>
+      If you have questions about the data deletion process or need immediate assistance, please contact us directly:
+      <br><br>
+      📧 <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+      <br><br>
+      For general inquiries, visit our <a href="https://caspergrenander.github.io/meta/contact">Contact Page</a>.
+    </p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Related Policies</h3>
+  <p>
+    Please review these related documents:
+  </p>
+  <div class="policy-links">
+    <a href="https://caspergrenander.github.io/meta/privacy-policy">Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta/terms-of-service">Terms of Service</a>
+    <a href="https://caspergrenander.github.io/meta/projects">All Projects</a>
   </div>
 </div>
 
@@ -630,9 +722,12 @@ strong {
       © 2026 C / A Beats & Productions. All rights reserved.
     </p>
     <div class="footer-links">
-      <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
-      <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
-      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+      <a href="https://caspergrenander.github.io/meta/">Home</a>
+      <a href="https://caspergrenander.github.io/meta/projects">All Projects</a>
+      <a href="https://caspergrenander.github.io/meta/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/meta/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/meta/data-deletion-request">Data Deletion</a>
+      <a href="https://caspergrenander.github.io/meta/contact">Contact</a>
     </div>
   </div>
 </footer>
@@ -645,7 +740,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const successMessage = document.getElementById('successMessage');
   const referenceIdElement = document.getElementById('referenceId');
   const errorMessages = document.querySelectorAll('.error-message');
-  
+
   // Generate a reference ID
   function generateReferenceId() {
     const prefix = 'CA';
@@ -653,56 +748,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     return `${prefix}-${year}-${randomNum}`;
   }
-  
+
   // Reset all error messages
   errorMessages.forEach(error => error.classList.remove('show'));
-  
+
   // Form validation
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     // Reset error messages
     errorMessages.forEach(error => error.classList.remove('show'));
-    
+
     // Validate form
     let isValid = true;
-    
+
     // Check required fields
     if (!form.fullName.value.trim()) {
       document.getElementById('nameError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.email.value.trim() || !isValidEmail(form.email.value)) {
       document.getElementById('emailError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.accountType.value) {
       document.getElementById('accountError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.accountId.value.trim()) {
       document.getElementById('idError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.requestType.value) {
       document.getElementById('typeError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.confirmIdentity.checked) {
       document.getElementById('identityError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!form.confirmIrreversible.checked) {
       document.getElementById('irreversibleError').classList.add('show');
       isValid = false;
     }
-    
+
     if (!isValid) {
       // Scroll to first error
       const firstError = document.querySelector('.error-message.show');
@@ -711,26 +806,26 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       return;
     }
-    
+
     // Show processing indicator
     submitButton.disabled = true;
     processingIndicator.style.display = 'block';
-    
+
     // Simulate form processing (3 seconds)
     setTimeout(function() {
       // Hide processing indicator
       processingIndicator.style.display = 'none';
-      
+
       // Generate and display reference ID
       const referenceId = generateReferenceId();
       referenceIdElement.textContent = referenceId;
-      
+
       // Show success message
       successMessage.classList.add('show');
-      
+
       // Scroll to success message
       successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      
+
       // Update timeline
       const timelineSteps = document.querySelectorAll('.timeline-step');
       timelineSteps.forEach((step, index) => {
@@ -742,19 +837,19 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }, index * 500);
       });
-      
+
       // Reset form after 10 seconds (optional)
       setTimeout(resetForm, 10000);
-      
+
     }, 3000);
   });
-  
+
   // Email validation function
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
+
   // Real-time email validation
   form.email.addEventListener('blur', function() {
     if (this.value.trim() && !isValidEmail(this.value)) {
@@ -763,14 +858,14 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('emailError').classList.remove('show');
     }
   });
-  
+
   // Reset form function
   function resetForm() {
     form.reset();
     submitButton.disabled = false;
     successMessage.classList.remove('show');
     processingIndicator.style.display = 'none';
-    
+
     // Reset timeline
     const timelineSteps = document.querySelectorAll('.timeline-step');
     timelineSteps.forEach((step, index) => {
@@ -779,11 +874,11 @@ document.addEventListener('DOMContentLoaded', function() {
         step.classList.add('active');
       }
     });
-    
+
     // Clear errors
     errorMessages.forEach(error => error.classList.remove('show'));
   }
-  
+
   // Add some interactivity to checkboxes
   const checkboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
   checkboxes.forEach(checkbox => {
