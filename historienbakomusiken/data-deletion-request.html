@@ -116,8 +116,39 @@ textarea {
   transition: border-color 0.2s;
 }
 
+/* SPECIFIK STYLING FÖR SELECT/DROPDOWN */
+select {
+  position: relative;
+  z-index: 10;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Styling för dropdown-options */
+select option {
+  background-color: #0D0F15;
+  color: #F5E5C8;
+  padding: 12px;
+  font-size: 15px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #D88B5C;
+}
+
+#requestType {
+  max-height: none;
+}
+
 input:focus,
-select:focus,
 textarea:focus {
   outline: none;
   border-color: #D88B5C;
@@ -156,10 +187,10 @@ textarea {
   width: 20px;
   height: 20px;
   margin-top: 2px;
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
-/* Button styling */
+/* UPPDATERAD Button styling - nu aktiv! */
 .button-container {
   margin-top: 40px;
   text-align: center;
@@ -176,15 +207,26 @@ textarea {
   font-weight: 700;
   border-radius: 8px;
   border: none;
-  cursor: not-allowed;
-  opacity: 0.6;
+  cursor: pointer;
+  opacity: 1;
   transition: all 0.3s ease;
   text-align: center;
   min-width: 220px;
 }
 
 .button:hover {
-  opacity: 0.7;
+  background: #D88B5C;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.2);
+}
+
+.button:disabled {
+  background: #2A4A4A;
+  color: #7A8C9C;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
 }
 
 .note {
@@ -197,7 +239,7 @@ textarea {
   margin-right: auto;
 }
 
-/* UPPDATERAD Footer styling - exakt som proof of concept */
+/* UPPDATERAD Footer styling */
 footer {
   margin-top: 60px;
   padding: 40px 20px;
@@ -221,21 +263,18 @@ footer {
   gap: 20px;
 }
 
-/* UPPDATERAD: Tar bort boxarna - gör som proof of concept */
 .footer-links a {
-  color: #2A4A4A;  /* Samma färg som copyright texten */
+  color: #2A4A4A;
   font-size: 0.85rem;
   text-decoration: none;
   transition: color 0.2s;
-  /* Tar bort: padding, background-color, border, border-radius */
 }
 
 .footer-links a:hover {
-  color: #D88B5C;  /* Samma färg som i proof of concept */
-  text-decoration: none;  /* Inget underline som proof of concept */
+  color: #D88B5C;
+  text-decoration: none;
 }
 
-/* UPPDATERAD: Förbättrar läsbarheten för copyright-texten */
 .footer-copyright {
   color: #2A4A4A;
   margin-bottom: 20px;
@@ -244,7 +283,7 @@ footer {
 }
 
 .footer-title {
-  color: #F5E5C8;  /* Ljusare färg för bättre kontrast */
+  color: #F5E5C8;
   margin-bottom: 10px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -265,6 +304,58 @@ em {
   background-color: #2A4A4A;
   margin: 40px auto;
   max-width: 800px;
+}
+
+/* Loading animation */
+.loading {
+  display: none;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(42, 74, 74, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid #E8B65C;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Form validation */
+.error-message {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+}
+
+input:invalid, select:invalid, textarea:invalid {
+  border-color: #ff6b6b;
+}
+
+/* Confirmation message */
+.confirmation-message {
+  display: none;
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.confirmation-message p {
+  color: #E8B65C;
+  font-weight: 600;
+  margin: 10px 0;
 }
 </style>
 </head>
@@ -300,50 +391,63 @@ em {
 
   <h2>Request Data Deletion</h2>
 
-  <!-- EXAMPLE FORM -->
-  <form>
-    <label>Full name</label>
-    <input type="text" placeholder="Your full name">
-    <!-- Put your entry ID here -->
+  <!-- FORM - NU MED FUNKTIONALITET -->
+  <form id="dataDeletionForm">
+    <label for="fullName">Full name</label>
+    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+    <div class="error-message" id="nameError">Please enter your full name</div>
 
-    <label>Email address</label>
-    <input type="email" placeholder="you@example.com">
-    <!-- Put your entry ID here -->
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <div class="error-message" id="emailError">Please enter a valid email address</div>
 
-    <label>TikTok username</label>
-    <input type="text" placeholder="@yourusername">
-    <!-- Put your entry ID here -->
+    <label for="tiktokUsername">TikTok username</label>
+    <input type="text" id="tiktokUsername" name="tiktokUsername" placeholder="@yourusername" required>
+    <div class="error-message" id="usernameError">Please enter your TikTok username</div>
 
-    <label>Type of request</label>
-    <select>
-      <option>Delete all data related to my account</option>
-      <option>Delete uploaded video metadata</option>
-      <option>Revoke access & delete authentication tokens</option>
+    <label for="requestType">Type of request</label>
+    <select id="requestType" name="requestType" required>
+      <option value="">Select a request type</option>
+      <option value="delete_all">Delete all data related to my account</option>
+      <option value="delete_metadata">Delete uploaded video metadata</option>
+      <option value="revoke_access">Revoke access & delete authentication tokens</option>
     </select>
-    <!-- Put your entry ID here -->
+    <div class="error-message" id="typeError">Please select a request type</div>
 
-    <label>Additional information (optional)</label>
-    <textarea placeholder="Optional comments or clarification"></textarea>
-    <!-- Put your entry ID here -->
+    <label for="additionalInfo">Additional information (optional)</label>
+    <textarea id="additionalInfo" name="additionalInfo" placeholder="Optional comments or clarification"></textarea>
 
     <div class="checkbox-group">
       <label>
-        <input type="checkbox" disabled>
+        <input type="checkbox" id="confirmOwnership" name="confirmOwnership" required>
         I confirm that I am the owner of the TikTok account listed above.
       </label>
 
       <label>
-        <input type="checkbox" disabled>
+        <input type="checkbox" id="confirmIrreversible" name="confirmIrreversible" required>
         I understand that this request cannot be undone.
       </label>
     </div>
+    <div class="error-message" id="checkboxError">Please confirm both statements</div>
+
+    <!-- Loading animation -->
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <p>Processing your request...</p>
+    </div>
+
+    <!-- Confirmation message (temporarily shown before redirect) -->
+    <div class="confirmation-message" id="confirmationMessage">
+      <p>✓ Request submitted successfully!</p>
+      <p>Redirecting to confirmation page...</p>
+    </div>
 
     <div class="button-container">
-      <button class="button" disabled>
+      <button type="submit" class="button" id="submitButton">
         Request Data Deletion
       </button>
       <div class="note">
-        This is an example form. Submissions are handled via a secure backend request system.
+        By submitting this form, you agree to our data deletion process.
       </div>
     </div>
   </form>
@@ -351,17 +455,14 @@ em {
 
 <footer>
   <div class="footer-content">
-    <!-- UPPDATERAD: Bättre läsbarhet för titeln -->
     <p class="footer-title">
       Historien Bakom Musiken – AutoPublisher
     </p>
     
-    <!-- UPPDATERAD: Bättre läsbarhet för copyright -->
     <p class="footer-copyright">
       © 2026 Casper Grenander. All rights reserved.
     </p>
     
-    <!-- UPPDATERAD: Länkar utan boxar - exakt som proof of concept -->
     <div class="footer-links">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
@@ -371,6 +472,123 @@ em {
     </div>
   </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('dataDeletionForm');
+  const submitButton = document.getElementById('submitButton');
+  const loading = document.getElementById('loading');
+  const confirmationMessage = document.getElementById('confirmationMessage');
+  const errorMessages = document.querySelectorAll('.error-message');
+  
+  // Återställ alla error meddelanden
+  errorMessages.forEach(error => error.style.display = 'none');
+  
+  // Form validation och submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Reset error messages
+    errorMessages.forEach(error => error.style.display = 'none');
+    
+    // Validera formuläret
+    let isValid = true;
+    
+    // Check required fields
+    if (!form.fullName.value.trim()) {
+      document.getElementById('nameError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (!form.email.value.trim() || !isValidEmail(form.email.value)) {
+      document.getElementById('emailError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (!form.tiktokUsername.value.trim()) {
+      document.getElementById('usernameError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (!form.requestType.value) {
+      document.getElementById('typeError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (!form.confirmOwnership.checked || !form.confirmIrreversible.checked) {
+      document.getElementById('checkboxError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (!isValid) {
+      // Scroll to first error
+      const firstError = document.querySelector('.error-message[style*="display: block"]');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
+    // Show loading animation
+    submitButton.disabled = true;
+    loading.style.display = 'block';
+    
+    // Simulate form processing (3 seconds delay)
+    setTimeout(function() {
+      // Hide loading, show confirmation
+      loading.style.display = 'none';
+      confirmationMessage.style.display = 'block';
+      
+      // Scroll to confirmation message
+      confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Redirect to confirmation page after 2 seconds
+      // ANVÄNDER DIN SPECIFIKA URL
+      setTimeout(function() {
+        window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
+      }, 2000);
+      
+    }, 3000);
+  });
+  
+  // Real-time validation for email
+  form.email.addEventListener('blur', function() {
+    if (this.value.trim() && !isValidEmail(this.value)) {
+      document.getElementById('emailError').style.display = 'block';
+    } else {
+      document.getElementById('emailError').style.display = 'none';
+    }
+  });
+  
+  // Real-time validation for checkboxes
+  const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (form.confirmOwnership.checked && form.confirmIrreversible.checked) {
+        document.getElementById('checkboxError').style.display = 'none';
+      }
+    });
+  });
+  
+  // Email validation function
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+  // Dropdown hover effect
+  const selectElement = document.getElementById('requestType');
+  selectElement.addEventListener('mouseenter', function() {
+    this.style.borderColor = '#D88B5C';
+  });
+  
+  selectElement.addEventListener('mouseleave', function() {
+    if (document.activeElement !== this) {
+      this.style.borderColor = '#2A4A4A';
+    }
+  });
+});
+</script>
 
 </body>
 </html>
