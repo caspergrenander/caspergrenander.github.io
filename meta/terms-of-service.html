@@ -283,13 +283,53 @@ em {
   margin-top: 40px;
   font-style: italic;
 }
+
+/* Quick links */
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.quick-link {
+  padding: 12px 24px;
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 6px;
+  color: #0A73FF;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.quick-link:hover {
+  background-color: rgba(10, 115, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.important-notice {
+  background-color: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #FF6464;
+}
+
+.important-notice h3 {
+  color: #FF6464;
+  margin-top: 0;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <a href="https://caspergrenander.github.io/meta-policy/">
+  <a href="https://caspergrenander.github.io/meta/">
     <img src="./CABEATS-logo.png" alt="C/A Beats Logo">
     <h1>C / A Beats Publisher</h1>
   </a>
@@ -297,6 +337,13 @@ em {
 </header>
 
 <div class="container">
+  <div class="quick-links">
+    <a href="https://caspergrenander.github.io/meta/" class="quick-link">🏠 Home</a>
+    <a href="https://caspergrenander.github.io/meta/projects" class="quick-link">📁 All Projects</a>
+    <a href="https://caspergrenander.github.io/meta/privacy-policy" class="quick-link">🔒 Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta/contact" class="quick-link">📧 Contact</a>
+  </div>
+
   <div class="last-updated">
     Last Updated: January 2026 | Effective Date: January 2026
   </div>
@@ -321,7 +368,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>2. System Access & Authorization</h2>
-  
+
   <h3>2.1 Restricted Access</h3>
   <ul>
     <li>The System is available <strong>only to Authorized Users</strong></li>
@@ -339,7 +386,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>3. Acceptable Use</h2>
-  
+
   <h3>3.1 Permitted Activities</h3>
   <ul>
     <li>Scheduling content for Facebook and Instagram pages</li>
@@ -365,7 +412,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>4. Intellectual Property</h2>
-  
+
   <h3>4.1 System Ownership</h3>
   <p>
     The C / A Beats Publisher system, including all software, documentation, 
@@ -385,7 +432,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>5. Data Protection & Privacy</h2>
-  
+
   <h3>5.1 Data Handling</h3>
   <ul>
     <li>The System processes data in accordance with our Privacy Policy</li>
@@ -405,13 +452,13 @@ em {
   <div class="section-divider"></div>
 
   <h2>6. Limitation of Liability</h2>
-  
+
   <p>
     C / A Beats & Productions provides the System "as is" and makes no 
     warranties regarding uninterrupted access or error-free operation. 
     To the maximum extent permitted by law, we shall not be liable for:
   </p>
-  
+
   <ol>
     <li>Any interruptions or delays in System availability</li>
     <li>Loss of data or content through the publishing process</li>
@@ -423,7 +470,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>7. Termination</h2>
-  
+
   <h3>7.1 By User</h3>
   <p>
     Authorized Users may cease using the System at any time by notifying 
@@ -444,7 +491,7 @@ em {
   <div class="section-divider"></div>
 
   <h2>8. Modifications to Terms</h2>
-  
+
   <p>
     C / A Beats & Productions may modify these Terms at any time. 
     Continued use of the System after modifications constitutes acceptance 
@@ -452,20 +499,23 @@ em {
     through appropriate channels.
   </p>
 
-  <div class="info-box">
-    <p><strong>Contact for Questions:</strong> For questions about these Terms of Service, please contact system administrators or refer to the contact information below.</p>
+  <div class="important-notice">
+    <h3>Data Deletion Requests</h3>
+    <p>Users may request deletion of their data at any time through our dedicated data deletion portal.</p>
+    <p><a href="https://caspergrenander.github.io/meta/data-deletion-request">Request Data Deletion →</a></p>
   </div>
 
   <div class="section-divider"></div>
 
-  <h2>Policy Links</h2>
+  <h2>Related Documents</h2>
   <p>
-    Related policies and information:
+    Please review these related policies:
   </p>
   <div class="policy-links">
-    <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
-    <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
-    <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
+    <a href="https://caspergrenander.github.io/meta/privacy-policy">Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta/data-deletion-request">Data Deletion Request</a>
+    <a href="https://caspergrenander.github.io/meta/projects">All Projects</a>
+    <a href="https://caspergrenander.github.io/meta/contact">Contact Us</a>
   </div>
 
   <h2>Contact Information</h2>
@@ -476,6 +526,8 @@ em {
       📧 <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
       <br><br>
       <strong>System Administration:</strong> Contact authorized system administrators within C / A Beats & Productions for immediate assistance.
+      <br><br>
+      <strong>General Inquiries:</strong> Visit our <a href="https://caspergrenander.github.io/meta/contact">Contact Page</a> for additional contact options.
     </p>
   </div>
 </div>
@@ -489,11 +541,12 @@ em {
       © 2026 C / A Beats & Productions. All rights reserved.
     </p>
     <div class="footer-links">
-      <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
-      <a href="https://caspergrenander.github.io/meta-policy/terms-of-service">Terms of Service</a>
-      <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
-      <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
-      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+      <a href="https://caspergrenander.github.io/meta/">Home</a>
+      <a href="https://caspergrenander.github.io/meta/projects">All Projects</a>
+      <a href="https://caspergrenander.github.io/meta/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/meta/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/meta/data-deletion-request">Data Deletion</a>
+      <a href="https://caspergrenander.github.io/meta/contact">Contact</a>
     </div>
   </div>
 </footer>
