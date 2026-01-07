@@ -119,6 +119,70 @@ p {
   margin: 15px 0;
 }
 
+/* NYTT: Reference ID styling */
+.reference-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 2px solid #E8B65C;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E8B65C, #D88B5C, #E8B65C);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.reference-label {
+  color: #E8B65C;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.reference-id {
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+  letter-spacing: 2px;
+  border: 1px solid rgba(232, 182, 92, 0.3);
+  display: inline-block;
+  min-width: 300px;
+}
+
+.reference-note {
+  color: #F5E5C8;
+  font-size: 14px;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.reference-note strong {
+  color: #E8B65C;
+}
+
 .timeline-box {
   background: rgba(232, 182, 92, 0.1);
   border: 1px solid #E8B65C;
@@ -335,6 +399,29 @@ strong {
   color: #F5E5C8;
   font-size: 14px;
 }
+
+/* Support info box */
+.support-box {
+  background: rgba(42, 74, 74, 0.1);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #2A4A4A;
+}
+
+.support-box h3 {
+  color: #E8B65C;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.support-box p {
+  font-size: 14px;
+  margin: 10px 0;
+}
 </style>
 </head>
 
@@ -360,6 +447,17 @@ strong {
     <p style="font-size: 18px;">
       Your data deletion request has been successfully submitted.
     </p>
+    
+    <!-- NYTT: Reference ID sektion -->
+    <div class="reference-box">
+      <div class="reference-label">YOUR REFERENCE ID</div>
+      <div class="reference-id" id="referenceId">DR-2026-3874-6219</div>
+      <div class="reference-note">
+        <strong>Important:</strong> Save this Reference ID for your records. 
+        If you need to contact support regarding this request, please include 
+        this ID for faster assistance.
+      </div>
+    </div>
     
     <div class="success-message">
       <p>
@@ -449,11 +547,31 @@ strong {
       </div>
     </div>
     
+    <!-- NYTT: Support information box -->
+    <div class="support-box">
+      <h3>Need Support?</h3>
+      <p>
+        If you have questions about your request or need to make changes, 
+        please contact us at:
+      </p>
+      <p style="margin: 15px 0;">
+        <strong>
+          <a href="mailto:app.auto.publisher@gmail.com?subject=Support%20Request:%20DR-2026-3874-6219" 
+             style="color: #E8B65C; text-decoration: none;">
+            app.auto.publisher@gmail.com
+          </a>
+        </strong>
+      </p>
+      <p style="font-size: 13px;">
+        Please include your Reference ID in the subject line for faster processing.
+      </p>
+    </div>
+    
     <div class="action-buttons">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="btn btn-primary">
         Return to Home
       </a>
-      <a href="mailto:app.auto.publisher@gmail.com" class="btn btn-secondary">
+      <a href="mailto:app.auto.publisher@gmail.com?subject=Support%20Request:%20DR-2026-3874-6219" class="btn btn-secondary">
         Contact Support
       </a>
     </div>
@@ -465,9 +583,8 @@ strong {
         Need to make changes?
       </h3>
       <p style="text-align: center; font-size: 14px;">
-        If you need to modify or cancel your request, please contact us at
-        <a href="mailto:app.auto.publisher@gmail.com" style="color: #E8B65C;">app.auto.publisher@gmail.com</a>
-        as soon as possible.
+        If you need to modify or cancel your request, please contact us as soon as possible 
+        and include your Reference ID for immediate identification.
       </p>
     </div>
   </div>
@@ -494,8 +611,30 @@ strong {
 </footer>
 
 <script>
-// Simple animation for timeline
+// Generate a random reference ID
+function generateReferenceId() {
+  const prefix = 'DR';
+  const year = new Date().getFullYear();
+  const randomNum = Math.floor(1000 + Math.random() * 9000);
+  const randomNum2 = Math.floor(1000 + Math.random() * 9000);
+  return `${prefix}-${year}-${randomNum}-${randomNum2}`;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Set random reference ID
+  const referenceIdElement = document.getElementById('referenceId');
+  const referenceId = generateReferenceId();
+  referenceIdElement.textContent = referenceId;
+  
+  // Update all email links with the reference ID
+  const emailLinks = document.querySelectorAll('a[href^="mailto"]');
+  emailLinks.forEach(link => {
+    const currentHref = link.getAttribute('href');
+    if (currentHref.includes('subject=')) {
+      link.setAttribute('href', currentHref.replace('DR-2026-3874-6219', referenceId));
+    }
+  });
+  
   const timelineCircles = document.querySelectorAll('.timeline-circle');
   const checklistItems = document.querySelectorAll('.checklist-item');
   
@@ -521,6 +660,35 @@ document.addEventListener('DOMContentLoaded', function() {
         item.style.transform = 'translateX(0)';
       }, 50);
     }, index * 300);
+  });
+  
+  // Animate reference ID
+  setTimeout(() => {
+    referenceIdElement.style.transform = 'scale(1.05)';
+    referenceIdElement.style.boxShadow = '0 0 20px rgba(232, 182, 92, 0.3)';
+    setTimeout(() => {
+      referenceIdElement.style.transform = 'scale(1)';
+      referenceIdElement.style.boxShadow = 'none';
+    }, 500);
+  }, 1000);
+  
+  // Add copy to clipboard functionality for reference ID
+  referenceIdElement.style.cursor = 'pointer';
+  referenceIdElement.title = 'Click to copy to clipboard';
+  
+  referenceIdElement.addEventListener('click', function() {
+    navigator.clipboard.writeText(referenceId).then(() => {
+      const originalText = this.textContent;
+      this.textContent = 'Copied!';
+      this.style.color = '#D88B5C';
+      this.style.background = 'rgba(216, 139, 92, 0.1)';
+      
+      setTimeout(() => {
+        this.textContent = originalText;
+        this.style.color = '#FFFFFF';
+        this.style.background = 'rgba(0, 0, 0, 0.2)';
+      }, 2000);
+    });
   });
 });
 </script>
