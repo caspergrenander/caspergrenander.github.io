@@ -187,6 +187,54 @@ em {
 .footer-links a:hover {  
   color: #D88B5C;  
 }  
+
+/* Demo Button Styling */
+.demo-button-container {
+  text-align: center;
+  margin: 40px 0;
+  padding: 30px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 8px;
+  border: 1px solid #2A4A4A;
+}
+
+.demo-button {
+  background-color: #E8B65C;
+  color: #1A2838;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  margin: 15px 0;
+  min-width: 300px;
+}
+
+.demo-button:hover {
+  background-color: #F5C97C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 182, 92, 0.3);
+  text-decoration: none;
+}
+
+.demo-button:active {
+  transform: translateY(0);
+}
+
+.demo-note {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.demo-note strong {
+  color: #2A4A4A;
+}
 </style>  
 </head>  
 
@@ -226,6 +274,18 @@ em {
     Verktyget används individuellt per autentiserat TikTok-konto och  
     inga användardata delas mellan konton.  
   </p>  
+
+  <div class="demo-button-container">
+    <h2>Demo av Gränssnittet</h2>
+    <p>Se hur AutoPublisher gränssnittet ser ut och fungerar. Detta är en demo-version som visar gränssnittets design och funktioner.</p>
+    
+    <a href="app.html" class="demo-button">View Upload Interface (No login required)</a>
+    
+    <p class="demo-note">
+      <strong>Observera:</strong> Denna demo kräver ingen inloggning och visar endast gränssnittets design.<br>
+      Live-funktioner kräver TikTok OAuth-autentisering.
+    </p>
+  </div>
 
   <div class="section-divider"></div>  
 
@@ -277,6 +337,7 @@ em {
       © 2025 Casper Grenander. Alla rättigheter förbehållna.  
     </p>  
     <div class="footer-links">  
+      <a href="/historienbakomusiken/">Startsida</a>  
       <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>  
       <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>  
       <a href="/historienbakomusiken/data-radering">Dataradering</a>  
@@ -285,4 +346,4 @@ em {
   </div>  
 </footer>  
 </body>  
-</html>
+</html>a
