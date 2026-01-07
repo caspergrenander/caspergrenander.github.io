@@ -357,6 +357,13 @@ em {
   background: #D88B5C;
 }
 
+/* HÄR ÄR FIXEN: Styla SVG:erna istället för img */
+.icon-container svg {
+  width: 35px;
+  height: 35px;
+  color: white; /* Detta gör SVG:erna vita */
+}
+
 .icon-container img {
   width: 35px;
   height: 35px;
@@ -375,12 +382,17 @@ em {
   .social-icons {
     gap: 30px;
   }
-  
+
   .icon-container {
     width: 60px;
     height: 60px;
   }
-  
+
+  .icon-container svg {
+    width: 30px;
+    height: 30px;
+  }
+
   .icon-container img {
     width: 30px;
     height: 30px;
@@ -391,12 +403,17 @@ em {
   .social-icons {
     gap: 20px;
   }
-  
+
   .icon-container {
     width: 50px;
     height: 50px;
   }
-  
+
+  .icon-container svg {
+    width: 25px;
+    height: 25px;
+  }
+
   .icon-container img {
     width: 25px;
     height: 25px;
@@ -455,7 +472,7 @@ em {
           <span>Instagram</span>
         </a>
       </div>
-      
+
       <div class="social-icon">
         <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
@@ -467,7 +484,7 @@ em {
           <span>Facebook</span>
         </a>
       </div>
-      
+
       <div class="social-icon">
         <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
@@ -479,7 +496,7 @@ em {
           <span>Spotify</span>
         </a>
       </div>
-      
+
       <!-- TikTok ikon -->
       <div class="social-icon">
         <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
