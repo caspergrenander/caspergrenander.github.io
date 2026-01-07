@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Projects Hub – C / A Beats & Historien Bakom Musiken</title>
+
+<style>
+/* Samma CSS som du redan har */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #111111;
+  border-bottom: 1px solid #0A73FF;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(10, 115, 255, 0.3);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #0A73FF;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #0A73FF;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #0A73FF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #4A9AFF;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111111;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #0A73FF;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #0A73FF;
+  background: #111111;
+}
+
+.subtitle {
+  color: #0A73FF;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #B4B4B4;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #0A73FF;
+}
+
+/* List styling */
+ul {
+  max-width: 800px;
+  margin: 20px auto;
+  padding-left: 40px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+li:before {
+  content: "•";
+  color: #0A73FF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 0;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #0A73FF;
+  margin: 40px auto;
+  max-width: 800px;
+  opacity: 0.3;
+}
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.project-card {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #0A73FF;
+  box-shadow: 0 10px 30px rgba(10, 115, 255, 0.15);
+}
+
+.project-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #0A73FF;
+}
+
+.project-card h3 {
+  color: #FFFFFF;
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(10, 115, 255, 0.2);
+  padding-bottom: 10px;
+}
+
+.project-description {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  color: #B4B4B4;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.tech-tag {
+  background-color: rgba(10, 115, 255, 0.15);
+  color: #4A9AFF;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.project-button {
+  padding: 10px 20px;
+  background-color: rgba(10, 115, 255, 0.2);
+  color: #0A73FF;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.project-button:hover {
+  background-color: rgba(10, 115, 255, 0.4);
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.project-button.primary {
+  background-color: #0A73FF;
+  color: #FFFFFF;
+}
+
+.project-button.primary:hover {
+  background-color: #4A9AFF;
+}
+
+/* Comparison table */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background-color: rgba(10, 115, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.comparison-table th {
+  background-color: rgba(10, 115, 255, 0.1);
+  color: #FFFFFF;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 2px solid rgba(10, 115, 255, 0.3);
+}
+
+.comparison-table td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(10, 115, 255, 0.1);
+  color: #F5E5C8;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table .platform {
+  font-weight: 600;
+  color: #4A9AFF;
+}
+
+/* Info boxes */
+.info-box {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info {
+  background-color: rgba(10, 115, 255, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #0A73FF;
+}
+
+.contact-info a {
+  color: #4A9AFF;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Navigation */
+.nav-back {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 8px 16px;
+  background-color: rgba(10, 115, 255, 0.1);
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 6px;
+  color: #0A73FF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-back:hover {
+  background-color: rgba(10, 115, 255, 0.2);
+  color: #FFFFFF;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, rgba(10, 115, 255, 0.1) 0%, rgba(10, 115, 255, 0.05) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(10, 115, 255, 0.2);
+}
+
+.hero h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #B4B4B4;
+  max-width: 600px;
+  margin: 0 auto;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/">
+    <img src="./CABEATS-logo.png" alt="C/A Beats Logo">
+  </a>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>Our Automation Projects Hub</h1>
+    <p>Discover our specialized publishing systems for different platforms</p>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Welcome to our central projects hub.</strong> Here you'll find all our automation projects, each tailored to specific platform requirements and use cases.</p>
+  </div>
+
+  <h2>Featured Projects</h2>
+  
+  <div class="projects-grid">
+    <!-- Meta Project Card -->
+    <div class="project-card">
+      <div class="project-icon">📱</div>
+      <h3>C / A Beats Publisher</h3>
+      <div class="project-description">
+        Internal automation system for scheduled publishing to Facebook and Instagram via Meta Graph API. Designed for business content management with enterprise-level security.
+      </div>
+      <div class="project-tech">
+        <span class="tech-tag">Meta Graph API</span>
+        <span class="tech-tag">OAuth 2.0</span>
+        <span class="tech-tag">Scheduled Publishing</span>
+        <span class="tech-tag">Internal System</span>
+      </div>
+      <div class="project-links">
+        <a href="https://caspergrenander.github.io/meta-policy/" class="project-button primary">Visit Project</a>
+        <a href="https://caspergrenander.github.io/meta-policy/privacy-policy" class="project-button">Privacy Policy</a>
+      </div>
+    </div>
+
+    <!-- TikTok Project Card -->
+    <div class="project-card">
+      <div class="project-icon">🎵</div>
+      <h3>Historien Bakom Musiken</h3>
+      <div class="project-description">
+        Creator-driven TikTok publishing tool for music and creative content. User-initiated upload and publishing with full transparency about the creative process.
+      </div>
+      <div class="project-tech">
+        <span class="tech-tag">TikTok API</span>
+        <span class="tech-tag">Music Content</span>
+        <span class="tech-tag">Creative Process</span>
+        <span class="tech-tag">User-Initiated</span>
+      </div>
+      <div class="project-links">
+        <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="project-button primary">Visit Project</a>
+        <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy" class="project-button">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Platform Comparison</h2>
+  
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="platform">C / A Beats Publisher (Meta)</th>
+        <th class="platform">Historien Bakom Musiken (TikTok)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primary Platform</strong></td>
+        <td>Facebook & Instagram</td>
+        <td>TikTok</td>
+      </tr>
+      <tr>
+        <td><strong>API Used</strong></td>
+        <td>Meta Graph API</td>
+        <td>TikTok Content Posting API</td>
+      </tr>
+      <tr>
+        <td><strong>Content Type</strong></td>
+        <td>Business & Brand Content</td>
+        <td>Music & Creative Content</td>
+      </tr>
+      <tr>
+        <td><strong>Audience</strong></td>
+        <td>Internal Company Use</td>
+        <td>Public Creator Content</td>
+      </tr>
+      <tr>
+        <td><strong>Authentication</strong></td>
+        <td>OAuth 2.0 (Meta Login)</td>
+        <td>OAuth (TikTok Login)</td>
+      </tr>
+      <tr>
+        <td><strong>Key Feature</strong></td>
+        <td>Scheduled Publishing</td>
+        <td>User-Initiated Publishing</td>
+      </tr>
+      <tr>
+        <td><strong>Data Collection</strong></td>
+        <td>Minimal (Internal Only)</td>
+        <td>Transparent User Data</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-divider"></div>
+
+  <h2>Our Development Philosophy</h2>
+  
+  <h3>Platform-Specific Solutions</h3>
+  <p>
+    We believe in creating <strong>purpose-built solutions</strong> for each platform rather than 
+    generic multi-platform tools. Each API has unique capabilities, limitations, and 
+    best practices that require specialized implementation.
+  </p>
+
+  <h3>Core Principles</h3>
+  <ul>
+    <li><strong>User Control:</strong> All actions require explicit user initiation</li>
+    <li><strong>Data Minimization:</strong> Collect only what's necessary for functionality</li>
+    <li><strong>Platform Compliance:</strong> Strict adherence to API terms and policies</li>
+    <li><strong>Transparency:</strong> Clear communication about data handling</li>
+    <li><strong>Security First:</strong> Enterprise-grade security for all systems</li>
+  </ul>
+
+  <div class="section-divider"></div>
+
+  <h2>Technology Stack</h2>
+  
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">🔐</div>
+      <h3>Security & Auth</h3>
+      <div class="project-tech">
+        <span class="tech-tag">OAuth 2.0</span>
+        <span class="tech-tag">JWT Tokens</span>
+        <span class="tech-tag">HTTPS/TLS</span>
+        <span class="tech-tag">Encryption</span>
+      </div>
+      <p class="project-description">
+        Enterprise-grade authentication and data protection across all projects.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">⚡</div>
+      <h3>API Integration</h3>
+      <div class="project-tech">
+        <span class="tech-tag">REST APIs</span>
+        <span class="tech-tag">GraphQL</span>
+        <span class="tech-tag">Webhooks</span>
+        <span class="tech-tag">Rate Limiting</span>
+      </div>
+      <p class="project-description">
+        Robust integration with platform APIs following best practices.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🎨</div>
+      <h3>User Experience</h3>
+      <div class="project-tech">
+        <span class="tech-tag">Responsive Design</span>
+        <span class="tech-tag">Form Validation</span>
+        <span class="tech-tag">Real-time Feedback</span>
+        <span class="tech-tag">Accessibility</span>
+      </div>
+      <p class="project-description">
+        Intuitive interfaces with consistent design language across projects.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Contact & Collaboration</h2>
+  
+  <div class="contact-info">
+    <p>
+      Interested in our automation solutions or have questions about our projects?
+      <br><br>
+      📧 <strong>General Inquiries:</strong> <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+      <br><br>
+      Each project has its own dedicated contact channels for platform-specific questions.
+    </p>
+  </div>
+
+  <div class="project-links" style="justify-content: center; margin-top: 30px;">
+    <a href="https://caspergrenander.github.io/meta-policy/" class="project-button primary" style="margin: 0 10px;">
+      Visit Meta Project
+    </a>
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="project-button primary" style="margin: 0 10px;">
+      Visit TikTok Project
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Our Automation Projects Hub – C / A Beats & Historien Bakom Musiken</strong>
+    </p>
+    <p style="color: #B4B4B4; margin-bottom: 20px;">
+      © 2026 C / A Beats & Productions & Casper Grenander. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/">Home</a>
+      <a href="https://caspergrenander.github.io/projects.html">Projects Hub</a>
+      <a href="https://caspergrenander.github.io/meta-policy/">C / A Beats Publisher</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Historien Bakom Musiken</a>
+      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
