@@ -1,9 +1,9 @@
 <!DOCTYPE html>  
-<html lang="sv">  
+<html lang="en">  
 <head>  
 <meta charset="UTF-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Historien Bakom Musiken – Projekt & Autentisering</title>  
+<title>Historien Bakom Musiken – Project & Authentication</title>  
 <style>  
 body {  
   margin: 0;  
@@ -187,81 +187,140 @@ em {
 .footer-links a:hover {  
   color: #D88B5C;  
 }  
+
+.demo-button-container {
+  text-align: center;
+  margin: 40px 0;
+  padding: 30px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 8px;
+  border: 1px solid #2A4A4A;
+}
+
+.demo-button {
+  background-color: #E8B65C;
+  color: #1A2838;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  margin: 15px 0;
+  min-width: 300px;
+}
+
+.demo-button:hover {
+  background-color: #F5C97C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 182, 92, 0.3);
+  text-decoration: none;
+}
+
+.demo-button:active {
+  transform: translateY(0);
+}
+
+.demo-note {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.demo-note strong {
+  color: #2A4A4A;
+}
 </style>  
 </head>  
 
 <body>  
 <header>  
-  <a href="/historienbakomusiken/">  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">  
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"  
          alt="Historien Bakom Musiken Logo">  
     <h1>Historien Bakom Musiken</h1>  
   </a>  
-  <p class="subtitle">Ett kreativt projekt av Casper Grenander</p>  
+  <p class="subtitle">A creative project by Casper Grenander</p>  
 </header>  
 
 <div class="container">  
-  <h2>Om Projektet</h2>  
+  <h2>About the Project</h2>  
   <p>  
-    <strong>Historien Bakom Musiken</strong> är ett creator-drivet projekt där jag,  
-    <strong>Casper Grenander</strong>, delar insikter från musikskapande,  
-    poddproduktion och den kreativa processen.  
-    Projektet syftar till att ge transparens, inspiration och kontext  
-    kring hur innehåll skapas och publiceras.  
+    <strong>Historien Bakom Musiken</strong> is a creator-driven project where I,  
+    <strong>Casper Grenander</strong>, share insights from music creation,  
+    podcast production, and the creative process.  
+    The project aims to provide transparency, inspiration, and context  
+    about how content is created and published.  
   </p>  
 
-  <h2>Om AutoPublisher-verktyget</h2>  
+  <h2>About the AutoPublisher Tool</h2>  
   <p>  
-    <em>AutoPublisher</em> är ett verktyg som gör det möjligt att  
-    <strong>ladda upp och publicera videoklipp</strong>  
-    till ett TikTok-konto via TikToks officiella  
+    <em>AutoPublisher</em> is a tool that enables  
+    <strong>uploading and publishing video clips</strong>  
+    to a TikTok account via TikTok's official  
     <strong>Content Posting API</strong>.  
   </p>  
   <p>  
-    Alla åtgärder initieras <strong>explicit av användaren</strong>  
-    efter inloggning via TikToks OAuth-system.  
-    Verktyget utför inga automatiska eller obevakade publiceringar.  
+    All actions are initiated <strong>explicitly by the user</strong>  
+    after logging in via TikTok's OAuth system.  
+    The tool does not perform any automatic or unattended publications.  
   </p>  
   <p>  
-    Verktyget används individuellt per autentiserat TikTok-konto och  
-    inga användardata delas mellan konton.  
+    The tool is used individually per authenticated TikTok account and  
+    no user data is shared between accounts.  
   </p>  
+
+  <div class="demo-button-container">
+    <h2>Interface Demo</h2>
+    <p>See how the AutoPublisher interface looks and functions. This is a demo version showing the interface design and features.</p>
+    
+    <a href="app.html" class="demo-button">View Upload Interface (No login required)</a>
+    
+    <p class="demo-note">
+      <strong>Note:</strong> This demo requires no login and only shows the interface design.<br>
+      Live functions require TikTok OAuth authentication.
+    </p>
+  </div>
 
   <div class="section-divider"></div>  
 
-  <h2>Autentisering via TikTok</h2>  
+  <h2>Authentication via TikTok</h2>  
   <p>  
-    TikToks <strong>OAuth-autentisering</strong> används för att verifiera användaren  
-    och möjliggöra uppladdning samt publicering av videoinnehåll.  
-    Endast explicit nödvändiga scopes begärs:  
+    TikTok's <strong>OAuth authentication</strong> is used to verify the user  
+    and enable uploading and publishing of video content.  
+    Only explicitly necessary scopes are requested:  
   </p>  
   <ul>  
-    <li><code>user.info.basic</code> – verifierar TikTok-kontot</li>  
-    <li><code>video.upload</code> – laddar upp videofiler</li>  
-    <li><code>video.publish</code> – publicerar videor</li>  
+    <li><code>user.info.basic</code> – verifies the TikTok account</li>  
+    <li><code>video.upload</code> – uploads video files</li>  
+    <li><code>video.publish</code> – publishes videos</li>  
   </ul>  
   <p>  
-    Inga personuppgifter lagras permanent.  
-    Autentiseringstokens används endast för att genomföra  
-    användarinitierade åtgärder och hanteras enligt TikToks säkerhetskrav.  
+    No personal data is stored permanently.  
+    Authentication tokens are used only to carry out  
+    user-initiated actions and are handled according to TikTok's security requirements.  
   </p>  
 
   <div class="section-divider"></div>  
 
   <h2>Policy & Information</h2>  
   <p>  
-    För detaljerad information om datahantering, villkor och användning:  
+    For detailed information about data handling, terms, and usage:  
   </p>  
   <div class="policy-links">  
-    <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>  
-    <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>  
-    <a href="/historienbakomusiken/data-radering">Data Radering</a>  
+    <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>  
+    <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>  
+    <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>  
   </div>  
 
-  <h2>Kontakt</h2>  
+  <h2>Contact</h2>  
   <div class="contact-info">  
     <p>  
-      Vid frågor om projektet eller tekniken:  
+      For questions about the project or technology:  
       <br><br>  
       📧 <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>  
     </p>  
@@ -274,13 +333,14 @@ em {
       <strong>Historien Bakom Musiken – AutoPublisher</strong>  
     </p>  
     <p style="color: #2A4A4A; margin-bottom: 20px;">  
-      © 2026 Casper Grenander. Alla rättigheter förbehållna.  
+      © 2026 Casper Grenander. All rights reserved.  
     </p>  
     <div class="footer-links">  
-      <a href="/historienbakomusiken/integritetspolicy">Integritetspolicy</a>  
-      <a href="/historienbakomusiken/anvandarvillkor">Användarvillkor</a>  
-      <a href="/historienbakomusiken/data-radering">Dataradering</a>  
-      <a href="mailto:app.auto.publisher@gmail.com">Kontakt</a>  
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>  
+      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>  
+      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>  
+      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>  
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>  
     </div>  
   </div>  
 </footer>  
