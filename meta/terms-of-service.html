@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service – C / A Beats Publisher</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #111111;
+  border-bottom: 1px solid #0A73FF;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(10, 115, 255, 0.3);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #0A73FF;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #0A73FF;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #0A73FF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #4A9AFF;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111111;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #0A73FF;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #0A73FF;
+  background: #111111;
+}
+
+.subtitle {
+  color: #0A73FF;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #B4B4B4;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #0A73FF;
+}
+
+/* List styling */
+ul, ol {
+  max-width: 800px;
+  margin: 20px auto;
+  padding-left: 40px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+ul li:before {
+  content: "•";
+  color: #0A73FF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 0;
+}
+
+ol {
+  counter-reset: item;
+}
+
+ol li {
+  counter-increment: item;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  color: #0A73FF;
+  font-weight: bold;
+  display: inline-block;
+  width: 2em;
+  margin-left: -2em;
+  position: absolute;
+  left: 0;
+}
+
+code {
+  background-color: rgba(10, 115, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #4A9AFF;
+  font-family: monospace;
+  font-size: 0.95em;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.policy-links {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.policy-links a {
+  padding: 8px 16px;
+  background-color: rgba(10, 115, 255, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.policy-links a:hover {
+  background-color: rgba(10, 115, 255, 0.4);
+  text-decoration: none;
+}
+
+.contact-info {
+  background-color: rgba(10, 115, 255, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #0A73FF;
+}
+
+.contact-info a {
+  color: #4A9AFF;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #4A9AFF;
+  font-style: italic;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #0A73FF;
+  margin: 40px auto;
+  max-width: 800px;
+  opacity: 0.3;
+}
+
+/* Info boxes */
+.info-box {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.warning-note {
+  background-color: rgba(255, 165, 0, 0.1);
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #FFA500;
+}
+
+.warning-note h3 {
+  color: #FFA500;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.definition-box {
+  background-color: rgba(10, 115, 255, 0.1);
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px auto;
+  max-width: 800px;
+}
+
+.definition-box h4 {
+  color: #4A9AFF;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.last-updated {
+  text-align: center;
+  color: #B4B4B4;
+  font-size: 14px;
+  margin-top: 40px;
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/meta-policy/">
+    <img src="./CABEATS-logo.png" alt="C/A Beats Logo">
+    <h1>C / A Beats Publisher</h1>
+  </a>
+  <p class="subtitle">Terms of Service – Internal Use Agreement</p>
+</header>
+
+<div class="container">
+  <div class="last-updated">
+    Last Updated: January 2026 | Effective Date: January 2026
+  </div>
+
+  <div class="info-box">
+    <p><strong>Important Notice:</strong> These Terms of Service govern the internal use of the C / A Beats Publisher automation system. By accessing or using this system, you agree to be bound by these terms.</p>
+  </div>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>
+    By accessing and using the <strong>C / A Beats Publisher</strong> system ("the System"), 
+    you acknowledge that you have read, understood, and agree to be bound by these 
+    Terms of Service ("Terms"). If you do not agree to these Terms, you must not 
+    access or use the System.
+  </p>
+
+  <div class="definition-box">
+    <h4>Definition: "Authorized User"</h4>
+    <p>Refers to personnel explicitly authorized by C / A Beats & Productions to access and use the System for legitimate business purposes.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>2. System Access & Authorization</h2>
+  
+  <h3>2.1 Restricted Access</h3>
+  <ul>
+    <li>The System is available <strong>only to Authorized Users</strong></li>
+    <li>Access credentials must not be shared with unauthorized individuals</li>
+    <li>Each user is responsible for maintaining the confidentiality of their login credentials</li>
+  </ul>
+
+  <h3>2.2 Authorization Requirements</h3>
+  <ul>
+    <li>Users must have valid Meta Platform access tokens</li>
+    <li>Access is granted based on role-based permissions</li>
+    <li>C / A Beats & Productions reserves the right to revoke access at any time</li>
+  </ul>
+
+  <div class="section-divider"></div>
+
+  <h2>3. Acceptable Use</h2>
+  
+  <h3>3.1 Permitted Activities</h3>
+  <ul>
+    <li>Scheduling content for Facebook and Instagram pages</li>
+    <li>Managing publishing workflows for business content</li>
+    <li>Reviewing scheduled content and publishing history</li>
+    <li>Using the System in accordance with Meta's Platform Terms</li>
+  </ul>
+
+  <h3>3.2 Prohibited Activities</h3>
+  <ul>
+    <li>Using the System for unauthorized commercial purposes</li>
+    <li>Publishing content that violates Meta's Community Standards</li>
+    <li>Attempting to bypass system security or access controls</li>
+    <li>Sharing confidential business information externally</li>
+    <li>Using automated scripts outside of intended functionality</li>
+  </ul>
+
+  <div class="warning-note">
+    <h3>⚠️ Compliance with Meta Policies</h3>
+    <p>All content published through this System must comply with Meta's Community Standards, Advertising Policies, and Platform Terms. Violations may result in immediate access termination.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>4. Intellectual Property</h2>
+  
+  <h3>4.1 System Ownership</h3>
+  <p>
+    The C / A Beats Publisher system, including all software, documentation, 
+    and associated materials, is the intellectual property of 
+    <strong>C / A Beats & Productions</strong>. No rights are granted except 
+    for the limited internal use specified in these Terms.
+  </p>
+
+  <h3>4.2 User Content</h3>
+  <p>
+    Content uploaded or published through the System remains the property of 
+    the respective content owners. By using the System, you grant C / A Beats & 
+    Productions the necessary rights to process and publish your content 
+    according to your instructions.
+  </p>
+
+  <div class="section-divider"></div>
+
+  <h2>5. Data Protection & Privacy</h2>
+  
+  <h3>5.1 Data Handling</h3>
+  <ul>
+    <li>The System processes data in accordance with our Privacy Policy</li>
+    <li>Only necessary data for publishing functionality is processed</li>
+    <li>No personal data from external users is collected or stored</li>
+    <li>Access tokens are encrypted and securely stored</li>
+  </ul>
+
+  <h3>5.2 Security Measures</h3>
+  <ul>
+    <li>All connections use secure OAuth 2.0 authentication</li>
+    <li>Data transmissions are encrypted using industry-standard protocols</li>
+    <li>Regular security audits and updates are performed</li>
+    <li>Access logs are maintained for security monitoring</li>
+  </ul>
+
+  <div class="section-divider"></div>
+
+  <h2>6. Limitation of Liability</h2>
+  
+  <p>
+    C / A Beats & Productions provides the System "as is" and makes no 
+    warranties regarding uninterrupted access or error-free operation. 
+    To the maximum extent permitted by law, we shall not be liable for:
+  </p>
+  
+  <ol>
+    <li>Any interruptions or delays in System availability</li>
+    <li>Loss of data or content through the publishing process</li>
+    <li>Actions taken by Meta that affect publishing capabilities</li>
+    <li>Unauthorized access resulting from user credential compromise</li>
+    <li>Indirect, incidental, or consequential damages</li>
+  </ol>
+
+  <div class="section-divider"></div>
+
+  <h2>7. Termination</h2>
+  
+  <h3>7.1 By User</h3>
+  <p>
+    Authorized Users may cease using the System at any time by notifying 
+    system administrators and revoking Meta access tokens.
+  </p>
+
+  <h3>7.2 By C / A Beats & Productions</h3>
+  <p>
+    We reserve the right to suspend or terminate access to the System:
+  </p>
+  <ul>
+    <li>For violation of these Terms</li>
+    <li>For non-compliance with Meta's policies</li>
+    <li>Upon termination of employment or business relationship</li>
+    <li>For security or maintenance reasons</li>
+  </ul>
+
+  <div class="section-divider"></div>
+
+  <h2>8. Modifications to Terms</h2>
+  
+  <p>
+    C / A Beats & Productions may modify these Terms at any time. 
+    Continued use of the System after modifications constitutes acceptance 
+    of the updated Terms. Users will be notified of significant changes 
+    through appropriate channels.
+  </p>
+
+  <div class="info-box">
+    <p><strong>Contact for Questions:</strong> For questions about these Terms of Service, please contact system administrators or refer to the contact information below.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Policy Links</h2>
+  <p>
+    Related policies and information:
+  </p>
+  <div class="policy-links">
+    <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
+    <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
+  </div>
+
+  <h2>Contact Information</h2>
+  <div class="contact-info">
+    <p>
+      For questions about these Terms or the System:
+      <br><br>
+      📧 <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+      <br><br>
+      <strong>System Administration:</strong> Contact authorized system administrators within C / A Beats & Productions for immediate assistance.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>C / A Beats Publisher – Meta Automation</strong>
+    </p>
+    <p style="color: #B4B4B4; margin-bottom: 20px;">
+      © 2026 C / A Beats & Productions. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
+      <a href="https://caspergrenander.github.io/meta-policy/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
+      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
