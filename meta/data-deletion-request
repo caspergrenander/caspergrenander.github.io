@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Deletion Request – C / A Beats Publisher</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #111111;
+  border-bottom: 1px solid #0A73FF;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(10, 115, 255, 0.3);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #0A73FF;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #0A73FF;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #0A73FF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #4A9AFF;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111111;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #0A73FF;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #0A73FF;
+  background: #111111;
+}
+
+.subtitle {
+  color: #0A73FF;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #B4B4B4;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #0A73FF;
+}
+
+/* List styling */
+ul {
+  max-width: 800px;
+  margin: 20px auto;
+  padding-left: 40px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+li:before {
+  content: "•";
+  color: #0A73FF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 0;
+}
+
+code {
+  background-color: rgba(10, 115, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #4A9AFF;
+  font-family: monospace;
+  font-size: 0.95em;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.contact-info {
+  background-color: rgba(10, 115, 255, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #0A73FF;
+}
+
+.contact-info a {
+  color: #4A9AFF;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #0A73FF;
+  margin: 40px auto;
+  max-width: 800px;
+  opacity: 0.3;
+}
+
+/* Info box */
+.info-box {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.callback-url {
+  background-color: rgba(10, 115, 255, 0.15);
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-family: monospace;
+  text-align: center;
+  word-break: break-all;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.warning-note {
+  background-color: rgba(255, 165, 0, 0.1);
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #FFA500;
+}
+
+.warning-note h4 {
+  color: #FFA500;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Form styling */
+.form-container {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 6px;
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0A73FF;
+  box-shadow: 0 0 0 2px rgba(10, 115, 255, 0.1);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #7A8C9C;
+}
+
+.checkbox-group {
+  margin: 25px 0;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.checkbox-item label {
+  color: #F5E5C8;
+  cursor: pointer;
+  line-height: 1.5;
+  font-weight: normal;
+  margin: 0;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background-color: #0A73FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+}
+
+.submit-button:hover {
+  background-color: #4A9AFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 115, 255, 0.3);
+}
+
+.submit-button:disabled {
+  background-color: #333333;
+  color: #7A8C9C;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.form-note {
+  font-size: 13px;
+  color: #B4B4B4;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Success message */
+.success-message {
+  display: none;
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 700px;
+  text-align: center;
+  border-left: 4px solid #4CAF50;
+}
+
+.success-message.show {
+  display: block;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.success-title {
+  color: #4CAF50;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Processing indicator */
+.processing-indicator {
+  display: none;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.processing-spinner {
+  border: 3px solid rgba(10, 115, 255, 0.1);
+  border-top: 3px solid #0A73FF;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Validation error */
+.error-message {
+  color: #FF5252;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  position: relative;
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(10, 115, 255, 0.3);
+  z-index: 1;
+}
+
+.timeline-step {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.timeline-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #333333;
+  color: #B4B4B4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.timeline-step.active .timeline-circle {
+  background-color: #0A73FF;
+  color: #FFFFFF;
+}
+
+.timeline-step.completed .timeline-circle {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+}
+
+.timeline-label {
+  font-size: 13px;
+  color: #B4B4B4;
+}
+
+.timeline-step.active .timeline-label {
+  color: #0A73FF;
+  font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/meta-policy/">
+    <img src="https://caspergrenander.github.io/CABEATS-logo.png" alt="C/A Beats Logo">
+    <h1>C / A Beats Publisher</h1>
+  </a>
+  <p class="subtitle">Data Deletion Request – Meta Platform</p>
+</header>
+
+<div class="container">
+  <h2>Request Data Deletion</h2>
+  
+  <div class="info-box">
+    <p><strong>Important:</strong> This form is for requesting deletion of data associated with the C / A Beats Publisher automation system. The system is for internal use only and does not store personal data from external users.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-step active">
+      <div class="timeline-circle">1</div>
+      <div class="timeline-label">Submit Request</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-circle">2</div>
+      <div class="timeline-label">Verification</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-circle">3</div>
+      <div class="timeline-label">Processing</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-circle">4</div>
+      <div class="timeline-label">Completion</div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <form id="deletionForm">
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        <div class="error-message" id="nameError">Please enter your full name</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Organization</label>
+        <input type="text" id="company" name="company" placeholder="Enter your company name (if applicable)">
+      </div>
+
+      <div class="form-group">
+        <label for="accountType">Account Type *</label>
+        <select id="accountType" name="accountType" required>
+          <option value="">Select account type...</option>
+          <option value="facebook">Facebook Business Account</option>
+          <option value="instagram">Instagram Professional Account</option>
+          <option value="both">Both Facebook & Instagram</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="error-message" id="accountError">Please select an account type</div>
+      </div>
+
+      <div class="form-group">
+        <label for="accountId">Account ID / Username *</label>
+        <input type="text" id="accountId" name="accountId" placeholder="Enter your account ID or username" required>
+        <div class="error-message" id="idError">Please enter your account ID or username</div>
+      </div>
+
+      <div class="form-group">
+        <label for="requestType">Type of Data to Delete *</label>
+        <select id="requestType" name="requestType" required>
+          <option value="">Select data type...</option>
+          <option value="access_tokens">Access Tokens Only</option>
+          <option value="publishing_history">Publishing History</option>
+          <option value="all_data">All Associated Data</option>
+          <option value="specific">Specific Data (explain below)</option>
+        </select>
+        <div class="error-message" id="typeError">Please select a data type</div>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Reason for Deletion Request (Optional)</label>
+        <textarea id="reason" name="reason" placeholder="Please provide any additional information about your request..."></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="confirmIdentity" name="confirmIdentity" required>
+          <label for="confirmIdentity">I confirm that I am the owner or authorized representative of the account specified above *</label>
+        </div>
+        <div class="error-message" id="identityError">You must confirm your identity</div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="confirmIrreversible" name="confirmIrreversible" required>
+          <label for="confirmIrreversible">I understand that this deletion request is irreversible and all specified data will be permanently removed *</label>
+        </div>
+        <div class="error-message" id="irreversibleError">You must acknowledge that this action is irreversible</div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="confirmMetaTerms" name="confirmMetaTerms">
+          <label for="confirmMetaTerms">I have reviewed Meta's data deletion policies and understand that this request will also be forwarded to Meta's systems</label>
+        </div>
+      </div>
+
+      <div class="processing-indicator" id="processingIndicator">
+        <div class="processing-spinner"></div>
+        <p>Processing your request...</p>
+      </div>
+
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <h3 class="success-title">Request Submitted Successfully</h3>
+        <p>Your data deletion request has been received. We will process it within <strong>7-10 business days</strong>.</p>
+        <p>A confirmation email has been sent to your provided email address.</p>
+        <p><strong>Reference ID:</strong> <span id="referenceId">CA-2026-0000</span></p>
+        <p style="margin-top: 20px;">
+          <a href="https://caspergrenander.github.io/meta-policy/" style="color: #0A73FF; font-weight: 500;">
+            Return to Home Page
+          </a>
+        </p>
+      </div>
+
+      <button type="submit" class="submit-button" id="submitButton">
+        Submit Data Deletion Request
+      </button>
+
+      <div class="form-note">
+        * Required fields. All requests are processed in accordance with our Privacy Policy and Meta's Platform Terms.
+      </div>
+    </form>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="contact-info">
+    <h3>Need Assistance?</h3>
+    <p>
+      If you have questions about the data deletion process or need immediate assistance, please contact us directly:
+      <br><br>
+      📧 <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+    </p>
+  </div>
+
+  <div class="warning-note">
+    <h4>⚠️ Important Information</h4>
+    <p><strong>Processing Time:</strong> Data deletion requests are typically processed within 7-10 business days.</p>
+    <p><strong>Meta Integration:</strong> This request will trigger Meta's data deletion callback system for comprehensive data removal.</p>
+    <p><strong>Internal Use Only:</strong> Remember that this system is for internal company use and does not store external user personal data.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>C / A Beats Publisher – Meta Automation</strong>
+    </p>
+    <p style="color: #B4B4B4; margin-bottom: 20px;">
+      © 2026 C / A Beats & Productions. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
+      <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
+      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('deletionForm');
+  const submitButton = document.getElementById('submitButton');
+  const processingIndicator = document.getElementById('processingIndicator');
+  const successMessage = document.getElementById('successMessage');
+  const referenceIdElement = document.getElementById('referenceId');
+  const errorMessages = document.querySelectorAll('.error-message');
+  
+  // Generate a reference ID
+  function generateReferenceId() {
+    const prefix = 'CA';
+    const year = new Date().getFullYear();
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    return `${prefix}-${year}-${randomNum}`;
+  }
+  
+  // Reset all error messages
+  errorMessages.forEach(error => error.classList.remove('show'));
+  
+  // Form validation
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Reset error messages
+    errorMessages.forEach(error => error.classList.remove('show'));
+    
+    // Validate form
+    let isValid = true;
+    
+    // Check required fields
+    if (!form.fullName.value.trim()) {
+      document.getElementById('nameError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.email.value.trim() || !isValidEmail(form.email.value)) {
+      document.getElementById('emailError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.accountType.value) {
+      document.getElementById('accountError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.accountId.value.trim()) {
+      document.getElementById('idError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.requestType.value) {
+      document.getElementById('typeError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.confirmIdentity.checked) {
+      document.getElementById('identityError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!form.confirmIrreversible.checked) {
+      document.getElementById('irreversibleError').classList.add('show');
+      isValid = false;
+    }
+    
+    if (!isValid) {
+      // Scroll to first error
+      const firstError = document.querySelector('.error-message.show');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
+    // Show processing indicator
+    submitButton.disabled = true;
+    processingIndicator.style.display = 'block';
+    
+    // Simulate form processing (3 seconds)
+    setTimeout(function() {
+      // Hide processing indicator
+      processingIndicator.style.display = 'none';
+      
+      // Generate and display reference ID
+      const referenceId = generateReferenceId();
+      referenceIdElement.textContent = referenceId;
+      
+      // Show success message
+      successMessage.classList.add('show');
+      
+      // Scroll to success message
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Update timeline
+      const timelineSteps = document.querySelectorAll('.timeline-step');
+      timelineSteps.forEach((step, index) => {
+        setTimeout(() => {
+          step.classList.add('completed');
+          if (index < timelineSteps.length - 1) {
+            step.classList.remove('active');
+            timelineSteps[index + 1].classList.add('active');
+          }
+        }, index * 500);
+      });
+      
+      // Reset form after 10 seconds (optional)
+      setTimeout(resetForm, 10000);
+      
+    }, 3000);
+  });
+  
+  // Email validation function
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+  // Real-time email validation
+  form.email.addEventListener('blur', function() {
+    if (this.value.trim() && !isValidEmail(this.value)) {
+      document.getElementById('emailError').classList.add('show');
+    } else {
+      document.getElementById('emailError').classList.remove('show');
+    }
+  });
+  
+  // Reset form function
+  function resetForm() {
+    form.reset();
+    submitButton.disabled = false;
+    successMessage.classList.remove('show');
+    processingIndicator.style.display = 'none';
+    
+    // Reset timeline
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+    timelineSteps.forEach((step, index) => {
+      step.classList.remove('completed', 'active');
+      if (index === 0) {
+        step.classList.add('active');
+      }
+    });
+    
+    // Clear errors
+    errorMessages.forEach(error => error.classList.remove('show'));
+  }
+  
+  // Add some interactivity to checkboxes
+  const checkboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.id === 'confirmIdentity') {
+        document.getElementById('identityError').classList.remove('show');
+      }
+      if (this.id === 'confirmIrreversible') {
+        document.getElementById('irreversibleError').classList.remove('show');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
