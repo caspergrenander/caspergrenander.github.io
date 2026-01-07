@@ -188,7 +188,7 @@ em {
   color: #D88B5C;  
 }  
 
-/* CSS för Follow Us-sektionen */
+/* Ny CSS för Follow Us-sektionen */
 .follow-section {
   text-align: center;
   margin: 50px auto 30px;
@@ -196,7 +196,7 @@ em {
 }
 
 .follow-section h2 {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   border: none;
   padding-bottom: 0;
 }
@@ -216,7 +216,7 @@ em {
 }
 
 .social-icon:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
 }
 
 .social-icon a {
@@ -227,65 +227,38 @@ em {
 }
 
 .icon-container {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #2A4A4A;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .social-icon:hover .icon-container {
   background: #D88B5C;
-  box-shadow: 0 8px 16px rgba(216, 139, 92, 0.3);
 }
 
-.icon-container svg {
-  width: 38px;
-  height: 38px;
-  color: white;
+.icon-container img {
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
 }
 
 .social-icon span {
   color: #F5E5C8;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   margin-top: 5px;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover span {
-  color: #D88B5C;
 }
 
 /* Responsiv design för mindre skärmar */
 @media (max-width: 768px) {
   .social-icons {
-    gap: 25px;
-  }
-  
-  .icon-container {
-    width: 65px;
-    height: 65px;
-  }
-  
-  .icon-container svg {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .social-icon span {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 600px) {
-  .social-icons {
-    gap: 20px;
+    gap: 30px;
   }
   
   .icon-container {
@@ -293,39 +266,15 @@ em {
     height: 60px;
   }
   
-  .icon-container svg {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .social-icon span {
-    font-size: 12px;
+  .icon-container img {
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .social-icons {
-    gap: 15px;
-  }
-  
-  .icon-container {
-    width: 55px;
-    height: 55px;
-  }
-  
-  .icon-container svg {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .social-icon span {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 400px) {
-  .social-icons {
-    gap: 12px;
+    gap: 20px;
   }
   
   .icon-container {
@@ -333,13 +282,9 @@ em {
     height: 50px;
   }
   
-  .icon-container svg {
-    width: 22px;
-    height: 22px;
-  }
-  
-  .social-icon span {
-    font-size: 10px;
+  .icon-container img {
+    width: 25px;
+    height: 25px;
   }
 }
 </style>  
@@ -365,7 +310,7 @@ em {
     about how content is created and published.  
   </p>  
 
-  <!-- Follow Us-sektion -->
+  <!-- Ny Follow Us-sektion -->
   <div class="follow-section">
     <h2>Follow Us</h2>
     <div class="social-icons">
@@ -402,18 +347,6 @@ em {
             </svg>
           </div>
           <span>Spotify</span>
-        </a>
-      </div>
-      
-      <div class="social-icon">
-        <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <!-- TikTok SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-            </svg>
-          </div>
-          <span>TikTok</span>
         </a>
       </div>
     </div>
