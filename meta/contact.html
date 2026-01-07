@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – C / A Beats Publisher</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #111111;
+  border-bottom: 1px solid #0A73FF;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(10, 115, 255, 0.3);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #0A73FF;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #0A73FF;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #0A73FF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #4A9AFF;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #111111;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #0A73FF;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #B4B4B4;
+  border-top: 1px solid #0A73FF;
+  background: #111111;
+}
+
+.subtitle {
+  color: #0A73FF;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #B4B4B4;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #0A73FF;
+}
+
+/* List styling */
+ul {
+  max-width: 800px;
+  margin: 20px auto;
+  padding-left: 40px;
+  color: #F5E5C8;
+}
+
+li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+li:before {
+  content: "•";
+  color: #0A73FF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 0;
+}
+
+code {
+  background-color: rgba(10, 115, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #4A9AFF;
+  font-family: monospace;
+  font-size: 0.95em;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.policy-links {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.policy-links a {
+  padding: 8px 16px;
+  background-color: rgba(10, 115, 255, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgba(10, 115, 255, 0.3);
+}
+
+.policy-links a:hover {
+  background-color: rgba(10, 115, 255, 0.4);
+  text-decoration: none;
+}
+
+.contact-info {
+  background-color: rgba(10, 115, 255, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-left: 4px solid #0A73FF;
+}
+
+.contact-info a {
+  color: #4A9AFF;
+  font-weight: 500;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #4A9AFF;
+  font-style: italic;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #0A73FF;
+  margin: 40px auto;
+  max-width: 800px;
+  opacity: 0.3;
+}
+
+/* Info boxes */
+.info-box {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.2);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.warning-note {
+  background-color: rgba(255, 165, 0, 0.1);
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #FFA500;
+}
+
+.warning-note h3 {
+  color: #FFA500;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Contact grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.contact-card {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.1);
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: #0A73FF;
+  box-shadow: 0 5px 20px rgba(10, 115, 255, 0.2);
+}
+
+.contact-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #0A73FF;
+}
+
+.contact-card h3 {
+  color: #FFFFFF;
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+.contact-detail {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.contact-detail a {
+  color: #4A9AFF;
+  font-weight: 500;
+}
+
+.response-time {
+  font-size: 14px;
+  color: #B4B4B4;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* Form styling */
+.form-container {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.3);
+  border-radius: 6px;
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0A73FF;
+  box-shadow: 0 0 0 2px rgba(10, 115, 255, 0.1);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #7A8C9C;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background-color: #0A73FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+}
+
+.submit-button:hover {
+  background-color: #4A9AFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 115, 255, 0.3);
+}
+
+.form-note {
+  font-size: 13px;
+  color: #B4B4B4;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Success message */
+.success-message {
+  display: none;
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 700px;
+  text-align: center;
+  border-left: 4px solid #4CAF50;
+}
+
+.success-message.show {
+  display: block;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.success-title {
+  color: #4CAF50;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* FAQ section */
+.faq-section {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.faq-item {
+  background-color: rgba(10, 115, 255, 0.05);
+  border: 1px solid rgba(10, 115, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  background-color: rgba(10, 115, 255, 0.08);
+  border-color: rgba(10, 115, 255, 0.3);
+}
+
+.faq-question {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  color: #B4B4B4;
+  font-size: 15px;
+  line-height: 1.6;
+  display: none;
+}
+
+.faq-answer.show {
+  display: block;
+}
+
+.faq-toggle {
+  color: #0A73FF;
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/meta-policy/">
+    <img src="./CABEATS-logo.png" alt="C/A Beats Logo">
+    <h1>C / A Beats Publisher</h1>
+  </a>
+  <p class="subtitle">Contact & Support – Internal System Assistance</p>
+</header>
+
+<div class="container">
+  <h2>Get in Touch</h2>
+  
+  <div class="info-box">
+    <p><strong>Important:</strong> This contact system is for internal use and authorized inquiries related to the C / A Beats Publisher automation system. For general public inquiries, please use our main company contact channels.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">📧</div>
+      <h3>General Inquiries</h3>
+      <div class="contact-detail">
+        <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+      </div>
+      <p class="response-time">Response: 1-2 business days</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">🔧</div>
+      <h3>Technical Support</h3>
+      <div class="contact-detail">
+        <a href="mailto:contact.cabeatsproductions@gmail.com">contact.cabeatsproductions@gmail.com</a>
+      </div>
+      <p class="response-time">Response: 24-48 hours</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">📄</div>
+      <h3>Data Requests</h3>
+      <div class="contact-detail">
+        <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion Form</a>
+      </div>
+      <p class="response-time">Processing: 7-10 business days</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Contact Form</h2>
+  
+  <div class="form-container">
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="contactName">Your Name *</label>
+        <input type="text" id="contactName" name="contactName" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contactEmail">Email Address *</label>
+        <input type="email" id="contactEmail" name="contactEmail" placeholder="Enter your email address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contactDepartment">Department / Role</label>
+        <select id="contactDepartment" name="contactDepartment">
+          <option value="">Select department...</option>
+          <option value="content">Content Team</option>
+          <option value="marketing">Marketing</option>
+          <option value="technical">Technical / IT</option>
+          <option value="management">Management</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="contactSubject">Subject *</label>
+        <select id="contactSubject" name="contactSubject" required>
+          <option value="">Select subject...</option>
+          <option value="technical_issue">Technical Issue</option>
+          <option value="feature_request">Feature Request</option>
+          <option value="access_request">Access Request</option>
+          <option value="data_inquiry">Data Inquiry</option>
+          <option value="general">General Question</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="contactMessage">Message *</label>
+        <textarea id="contactMessage" name="contactMessage" placeholder="Please provide details about your inquiry..." required></textarea>
+      </div>
+
+      <div class="success-message" id="contactSuccess">
+        <div class="success-icon">✓</div>
+        <h3 class="success-title">Message Sent Successfully</h3>
+        <p>Thank you for your message. We will respond within 1-2 business days.</p>
+        <p>A confirmation has been sent to your email address.</p>
+      </div>
+
+      <button type="submit" class="submit-button" id="contactSubmit">
+        Send Message
+      </button>
+
+      <div class="form-note">
+        * Required fields. All messages are encrypted and handled confidentially.
+      </div>
+    </form>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-section">
+    <div class="faq-item" onclick="toggleFAQ(1)">
+      <div class="faq-question">
+        Who can access the C / A Beats Publisher system?
+        <span class="faq-toggle" id="faqToggle1">+</span>
+      </div>
+      <div class="faq-answer" id="faqAnswer1">
+        Access is restricted to authorized personnel within C / A Beats & Productions. All users must have valid Meta Platform access tokens and be approved by system administrators.
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(2)">
+      <div class="faq-question">
+        How do I request data deletion?
+        <span class="faq-toggle" id="faqToggle2">+</span>
+      </div>
+      <div class="faq-answer" id="faqAnswer2">
+        Use our <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion Request form</a> or email us directly. Data deletion requests are processed within 7-10 business days.
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(3)">
+      <div class="faq-question">
+        What are the system's operating hours?
+        <span class="faq-toggle" id="faqToggle3">+</span>
+      </div>
+      <div class="faq-answer" id="faqAnswer3">
+        The system operates 24/7 for scheduled publishing. Technical support is available during business hours (9 AM - 5 PM, Monday-Friday).
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(4)">
+      <div class="faq-question">
+        How do I report a technical issue?
+        <span class="faq-toggle" id="faqToggle4">+</span>
+      </div>
+      <div class="faq-answer" id="faqAnswer4">
+        Use the contact form above and select "Technical Issue" as the subject. Include as much detail as possible about the problem, including error messages and steps to reproduce.
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(5)">
+      <div class="faq-question">
+        Is my data secure when using this system?
+        <span class="faq-toggle" id="faqToggle5">+</span>
+      </div>
+      <div class="faq-answer" id="faqAnswer5">
+        Yes. All data is encrypted in transit and at rest. We use OAuth 2.0 authentication, and access tokens are securely stored. Regular security audits are performed to maintain system integrity.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="warning-note">
+    <h3>⚠️ Emergency Contact</h3>
+    <p>For urgent system outages or security incidents, please contact system administrators directly through internal communication channels. Do not use public email for sensitive security matters.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Related Information</h2>
+  <p>
+    For additional information, please visit:
+  </p>
+  <div class="policy-links">
+    <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
+    <a href="https://caspergrenander.github.io/meta-policy/terms-of-service">Terms of Service</a>
+    <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
+    <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
+  </div>
+
+  <div class="contact-info">
+    <p>
+      <strong>Meta Data Deletion Callback URL:</strong><br>
+      <code>https://caspergrenander.github.io/meta-policy/</code><br><br>
+      This URL is registered with Meta for handling data deletion requests through their platform.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>C / A Beats Publisher – Meta Automation</strong>
+    </p>
+    <p style="color: #B4B4B4; margin-bottom: 20px;">
+      © 2026 C / A Beats & Productions. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/meta-policy/">Home</a>
+      <a href="https://caspergrenander.github.io/meta-policy/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/meta-policy/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/meta-policy/data-deletion">Data Deletion</a>
+      <a href="mailto:contact.cabeatsproductions@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ toggle functionality
+function toggleFAQ(number) {
+  const answer = document.getElementById(`faqAnswer${number}`);
+  const toggle = document.getElementById(`faqToggle${number}`);
+  
+  if (answer.classList.contains('show')) {
+    answer.classList.remove('show');
+    toggle.textContent = '+';
+  } else {
+    answer.classList.add('show');
+    toggle.textContent = '−';
+  }
+}
+
+// Contact form submission
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const contactSubmit = document.getElementById('contactSubmit');
+  const contactSuccess = document.getElementById('contactSuccess');
+  
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simple validation
+    if (!contactForm.contactName.value.trim() || 
+        !contactForm.contactEmail.value.trim() || 
+        !contactForm.contactSubject.value || 
+        !contactForm.contactMessage.value.trim()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactForm.contactEmail.value)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    // Show loading state
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = 'Sending...';
+    
+    // Simulate form submission (in production, this would be a real API call)
+    setTimeout(function() {
+      // Show success message
+      contactSuccess.classList.add('show');
+      contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Reset form
+      contactForm.reset();
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = 'Send Message';
+      
+      // Hide success message after 8 seconds
+      setTimeout(function() {
+        contactSuccess.classList.remove('show');
+      }, 8000);
+    }, 2000);
+  });
+  
+  // Initialize all FAQ answers as hidden
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`faqToggle${i}`).textContent = '+';
+  }
+});
+</script>
+
+</body>
+</html>
