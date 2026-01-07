@@ -133,7 +133,7 @@ textarea {
   resize: vertical;
 }
 
-/* Checkbox groups - UPPDATERAD för bättre justering */
+/* Checkbox groups */
 .checkbox-group {
   margin-top: 35px;
   padding: 20px;
@@ -159,7 +159,7 @@ textarea {
   cursor: not-allowed;
 }
 
-/* Button styling - UPPDATERAD för bättre justering */
+/* Button styling */
 .button-container {
   margin-top: 40px;
   text-align: center;
@@ -197,7 +197,7 @@ textarea {
   margin-right: auto;
 }
 
-/* Footer styling från proof of concept */
+/* UPPDATERAD Footer styling - exakt som proof of concept */
 footer {
   margin-top: 60px;
   padding: 40px 20px;
@@ -221,20 +221,33 @@ footer {
   gap: 20px;
 }
 
+/* UPPDATERAD: Tar bort boxarna - gör som proof of concept */
 .footer-links a {
-  color: #2A4A4A;
+  color: #2A4A4A;  /* Samma färg som copyright texten */
   font-size: 0.85rem;
-  padding: 8px 16px;
-  background-color: rgba(42, 74, 74, 0.1);
-  border-radius: 4px;
-  border: 1px solid #2A4A4A;
-  transition: all 0.2s;
+  text-decoration: none;
+  transition: color 0.2s;
+  /* Tar bort: padding, background-color, border, border-radius */
 }
 
 .footer-links a:hover {
-  color: #D88B5C;
-  background-color: rgba(42, 74, 74, 0.3);
-  text-decoration: none;
+  color: #D88B5C;  /* Samma färg som i proof of concept */
+  text-decoration: none;  /* Inget underline som proof of concept */
+}
+
+/* UPPDATERAD: Förbättrar läsbarheten för copyright-texten */
+.footer-copyright {
+  color: #2A4A4A;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-title {
+  color: #F5E5C8;  /* Ljusare färg för bättre kontrast */
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 strong {
@@ -338,14 +351,17 @@ em {
 
 <footer>
   <div class="footer-content">
-    <p style="color: #F5E5C8; margin-bottom: 10px;">
-      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    <!-- UPPDATERAD: Bättre läsbarhet för titeln -->
+    <p class="footer-title">
+      Historien Bakom Musiken – AutoPublisher
     </p>
-    <p style="color: #2A4A4A; margin-bottom: 20px;">
+    
+    <!-- UPPDATERAD: Bättre läsbarhet för copyright -->
+    <p class="footer-copyright">
       © 2026 Casper Grenander. All rights reserved.
     </p>
     
-    <!-- Samma länkar som i proof of concept -->
+    <!-- UPPDATERAD: Länkar utan boxar - exakt som proof of concept -->
     <div class="footer-links">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
