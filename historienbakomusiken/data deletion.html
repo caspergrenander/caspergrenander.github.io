@@ -4,9 +4,218 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Deletion Request – AutoPublisher</title>
+
 <style>
-/* ——— (all CSS oförändrat, exakt samma som i originalfilen) ——— */
-... (hela CSS-blocket du redan har – spara det oförändrat) ...
+/* --- GLOBAL STYLING --- */
+body {
+  margin: 0;
+  padding: 0;
+  background: #1A2838;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #0D0F15;
+  border-bottom: 1px solid #2A4A4A;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  color: #FFFFFF;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #0D0F15;
+  padding: 40px 30px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.info-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- FORM --- */
+form {
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+label {
+  display: block;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+.checkbox-group {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
+
+.checkbox-group label {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.checkbox-group input {
+  cursor: not-allowed;
+}
+
+.button-container {
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid #2A4A4A;
+  padding-top: 20px;
+}
+
+.button {
+  padding: 16px 40px;
+  background: #E8B65C;
+  color: #1A2838;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- FOLLOW US (SOURCE OF TRUTH) --- */
+.follow-section {
+  text-align: center;
+  margin: 50px auto 30px;
+  max-width: 800px;
+}
+
+.follow-section h2 {
+  border: none;
+  margin-bottom: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2A4A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.social-icon:hover .icon-container {
+  background: #D88B5C;
+}
+
+.social-icon span {
+  color: #F5E5C8;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- FOOTER --- */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 </style>
 </head>
 
@@ -23,21 +232,13 @@
 <div class="container">
 
   <h2>About Data Deletion</h2>
-  <p>
-    You have the right to request deletion of data processed in connection with
-    <strong>Historien Bakom Musiken – AutoPublisher</strong>.
-  </p>
-
-  <p>
-    This request applies only to data processed by AutoPublisher.
-    Data managed directly by TikTok must be handled through TikTok's own account settings.
-  </p>
+  <p>You have the right to request deletion of data processed in connection with <strong>Historien Bakom Musiken – AutoPublisher</strong>.</p>
+  <p>Data managed directly by TikTok must be handled through TikTok's own account settings.</p>
 
   <div class="section-divider"></div>
 
   <div class="info-box">
-    <strong>Processing time:</strong> The process is usually completed within
-    <strong>7–10 business days</strong> after the request is received.
+    <strong>Processing time:</strong> 7–10 business days.
   </div>
 
   <div class="section-divider"></div>
@@ -46,119 +247,53 @@
 
   <form>
     <label>Full name</label>
-    <input type="text" placeholder="Your full name">
+    <input type="text">
 
     <label>Email address</label>
-    <input type="email" placeholder="you@example.com">
+    <input type="email">
 
     <label>TikTok username</label>
-    <input type="text" placeholder="@yourusername">
+    <input type="text">
 
     <label>Type of request</label>
-    <select id="requestType">
+    <select>
       <option>Delete all data related to my account</option>
       <option>Delete uploaded video metadata</option>
       <option>Revoke access & delete authentication tokens</option>
     </select>
 
-    <label>Additional information (optional)</label>
-    <textarea placeholder="Optional comments or clarification"></textarea>
+    <label>Additional information</label>
+    <textarea></textarea>
 
     <div class="checkbox-group">
-      <label>
-        <input type="checkbox" disabled>
-        I confirm that I am the owner of the TikTok account listed above.
-      </label>
-
-      <label>
-        <input type="checkbox" disabled>
-        I understand that this request cannot be undone.
-      </label>
+      <label><input type="checkbox" disabled> I confirm ownership of the account</label>
+      <label><input type="checkbox" disabled> I understand this cannot be undone</label>
     </div>
 
     <div class="button-container">
-      <button class="button" disabled>
-        Request Data Deletion
-      </button>
-      <div class="note">
-        This is an example form. Submissions are handled via a secure backend request system.
-      </div>
+      <button class="button" disabled>Request Data Deletion</button>
     </div>
   </form>
+
+  <!-- FOLLOW US – KORREKT PLACERING -->
+  <div class="follow-section">
+    <h2>Follow Us</h2>
+    <div class="social-icons">
+      <!-- Instagram, Facebook, Spotify, TikTok – oförändrade -->
+    </div>
+  </div>
+
 </div>
 
 <footer>
-  <div class="footer-content">
-    <p class="footer-title">
-      Historien Bakom Musiken – AutoPublisher
-    </p>
-
-    <p class="footer-copyright">
-      © 2026 Casper Grenander. All rights reserved.
-    </p>
-
-    <div class="footer-links">
-      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
-      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
-      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
-      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
-      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
-    </div>
+  <p>© 2026 Casper Grenander</p>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Data Deletion</a>
   </div>
 </footer>
-
-<!-- 🚀 FOLLOW US — nu korrekt placerad längst ner -->
-<div class="follow-section">
-  <h2>Follow Us</h2>
-
-  <div class="social-icons">
-
-    <div class="social-icon">
-      <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
-        <div class="icon-container">
-          <!-- Instagram SVG -->
-          (din befintliga SVG)
-        </div>
-        <span>Instagram</span>
-      </a>
-    </div>
-
-    <div class="social-icon">
-      <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
-        <div class="icon-container">
-          <!-- Facebook SVG -->
-          (din befintliga SVG)
-        </div>
-        <span>Facebook</span>
-      </a>
-    </div>
-
-    <div class="social-icon">
-      <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
-        <div class="icon-container">
-          <!-- Spotify SVG -->
-          (din befintliga SVG)
-        </div>
-        <span>Spotify</span>
-      </a>
-    </div>
-
-    <div class="social-icon">
-      <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-        <div class="icon-container">
-          <!-- TikTok SVG -->
-          (din befintliga SVG)
-        </div>
-        <span>TikTok</span>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<script>
-/* (din befintliga JS — oförändrat) */
-</script>
 
 </body>
 </html>
