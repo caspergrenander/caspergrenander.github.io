@@ -12,35 +12,35 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;  
   line-height: 1.7;  
 }  
-  
+
 header {  
   padding: 60px 20px 40px;  
   text-align: center;  
   background: #0D0F15;  
   border-bottom: 1px solid #2A4A4A;  
 }  
-  
+
 header a {  
   color: inherit;  
   text-decoration: none;  
   display: inline-block;  
   text-align: center;  
 }  
-  
+
 header img {  
   width: 180px;  
   border-radius: 6px;  
   margin-bottom: 20px;  
   box-shadow: 0 0 15px rgba(0,0,0,0.5);  
 }  
-  
+
 h1 {  
   color: #FFFFFF;  
   margin-bottom: 10px;  
   font-weight: 600;  
   font-size: 22px;  
 }  
-  
+
 h2 {  
   color: #FFFFFF;  
   font-weight: 600;  
@@ -48,13 +48,13 @@ h2 {
   border-bottom: 1px solid #2A4A4A;  
   padding-bottom: 10px;  
 }  
-  
+
 p {  
   max-width: 800px;  
   margin: 15px auto;  
   color: #F5E5C8;  
 }  
-  
+
 
 a {
   color: #D88B5C;
@@ -76,14 +76,14 @@ a:hover {
   margin-bottom: 40px;  
   border: 1px solid #2A4A4A;  
 }  
-  
+
 .subtitle {  
   color: #2A4A4A;  
   font-size: 14px;  
   margin-top: 5px;  
   letter-spacing: 1px;  
 }  
-  
+
 .info-box {  
   background: rgba(232, 182, 92, 0.1);  
   border: 1px solid #E8B65C;  
@@ -95,7 +95,7 @@ a:hover {
   margin-left: auto;  
   margin-right: auto;  
 }  
-  
+
 /* Form styling */  
 form {  
   margin-top: 30px;  
@@ -103,14 +103,14 @@ form {
   margin-left: auto;  
   margin-right: auto;  
 }  
-  
+
 label {  
   display: block;  
   margin: 25px 0 10px;  
   font-weight: 600;  
   color: #FFFFFF;  
 }  
-  
+
 input,  
 select,  
 textarea {  
@@ -124,7 +124,7 @@ textarea {
   box-sizing: border-box;  
   transition: border-color 0.2s;  
 }  
-  
+
 /* SPECIFIK STYLING FÖR SELECT/DROPDOWN */  
 select {  
   /* För att förhindra att dropdown öppnas uppåt */  
@@ -140,7 +140,7 @@ select {
   padding-right: 40px;  
   cursor: pointer;  
 }  
-  
+
 /* Styling för dropdown-options */  
 select option {  
   background-color: #0D0F15;  
@@ -148,7 +148,7 @@ select option {
   padding: 12px;  
   font-size: 15px;  
 }  
-  
+
 /* När select är öppen */  
 select:focus {  
   outline: none;  
@@ -156,29 +156,29 @@ select:focus {
   /* Visa dropdown nedåt */  
   position: relative;  
 }  
-  
+
 /* Specifik styling för den långa dropdown-listan */  
 #requestType {  
   /* Gör att hela listan visas när den öppnas */  
   max-height: none;  
 }  
-  
+
 input:focus,  
 textarea:focus {  
   outline: none;  
   border-color: #D88B5C;  
 }  
-  
+
 input::placeholder,  
 textarea::placeholder {  
   color: #7A8C9C;  
 }  
-  
+
 textarea {  
   min-height: 120px;  
   resize: vertical;  
 }  
-  
+
 /* Checkbox groups */  
 .checkbox-group {  
   margin-top: 35px;  
@@ -187,7 +187,7 @@ textarea {
   border-radius: 6px;  
   border: 1px solid #2A4A4A;  
 }  
-  
+
 .checkbox-group label {  
   display: flex;  
   align-items: flex-start;  
@@ -197,14 +197,14 @@ textarea {
   margin: 15px 0;  
   padding: 0;  
 }  
-  
+
 .checkbox-group input[type="checkbox"] {  
   width: 20px;  
   height: 20px;  
   margin-top: 2px;  
-  cursor: not-allowed;  
+  cursor: pointer;  
 }  
-  
+
 /* Button styling */  
 .button-container {  
   margin-top: 40px;  
@@ -212,7 +212,7 @@ textarea {
   padding-top: 20px;  
   border-top: 1px solid #2A4A4A;  
 }  
-  
+
 .button {  
   display: inline-block;  
   padding: 16px 40px;  
@@ -222,17 +222,22 @@ textarea {
   font-weight: 700;  
   border-radius: 8px;  
   border: none;  
-  cursor: not-allowed;  
+  cursor: pointer;  
   opacity: 0.6;  
   transition: all 0.3s ease;  
   text-align: center;  
   min-width: 220px;  
 }  
-  
+
 .button:hover {  
   opacity: 0.7;  
 }  
-  
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .note {  
   margin-top: 20px;  
   font-size: 13px;  
@@ -242,7 +247,7 @@ textarea {
   margin-left: auto;  
   margin-right: auto;  
 }  
-  
+
 /* UPPDATERAD Footer styling - exakt som proof of concept */  
 footer {  
   margin-top: 60px;  
@@ -253,12 +258,12 @@ footer {
   border-top: 1px solid #2A4A4A;  
   background: #0D0F15;  
 }  
-  
+
 .footer-content {  
   max-width: 800px;  
   margin: 0 auto;  
 }  
-  
+
 .footer-links {  
   margin: 25px 0;  
   display: flex;  
@@ -266,7 +271,7 @@ footer {
   flex-wrap: wrap;  
   gap: 20px;  
 }  
-  
+
 /* UPPDATERAD: Tar bort boxarna - gör som proof of concept */  
 .footer-links a {  
   color: #2A4A4A;  
@@ -274,12 +279,12 @@ footer {
   text-decoration: none;  
   transition: color 0.2s;  
 }  
-  
+
 .footer-links a:hover {  
   color: #D88B5C;  
   text-decoration: none;  
 }  
-  
+
 /* UPPDATERAD: Förbättrar läsbarheten för copyright-texten */  
 .footer-copyright {  
   color: #2A4A4A;  
@@ -287,31 +292,31 @@ footer {
   font-size: 0.85rem;  
   line-height: 1.5;  
 }  
-  
+
 .footer-title {  
   color: #F5E5C8;  
   margin-bottom: 10px;  
   font-size: 0.95rem;  
   font-weight: 600;  
 }  
-  
+
 strong {  
   color: #FFFFFF;  
   font-weight: 600;  
 }  
-  
+
 em {  
   color: #E8B65C;  
   font-style: italic;  
 }  
-  
+
 .section-divider {  
   height: 1px;  
   background-color: #2A4A4A;  
   margin: 40px auto;  
   max-width: 800px;  
 }  
-  
+
 /* CSS för Follow Us-sektionen */
 .follow-section {
   text-align: center;
@@ -384,12 +389,12 @@ em {
   .social-icons {
     gap: 30px;
   }
-  
+
   .icon-container {
     width: 60px;
     height: 60px;
   }
-  
+
   .icon-container img {
     width: 30px;
     height: 30px;
@@ -400,12 +405,12 @@ em {
   .social-icons {
     gap: 20px;
   }
-  
+
   .icon-container {
     width: 50px;
     height: 50px;
   }
-  
+
   .icon-container img {
     width: 25px;
     height: 25px;
@@ -419,11 +424,18 @@ em {
     margin-bottom: 20px;  
     padding: 30px 20px;  
   }  
-  
+
   h2 {  
     margin-top: 30px;  
   }  
 }  
+
+/**************
+ GOOGLE FORMS INTEGRATION (template)
+ Replace placeholders below:
+ - https://docs.google.com/forms/d/e/1FAIpQLSflMxzSGmg0Zm8lJiTr8QobSWcrsA5Ou9zsJb4OiDs9Qjq9vA/formResponse -> https://docs.google.com/forms/d/e/<FORM_ID>/formResponse
+ - entry.REPLACE_*      -> entry.<digits> for each question in your Google Form
+**************/
 </style>  </head>  <body>  <header>  
   <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">  
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"  
@@ -443,52 +455,72 @@ em {
   </p>        <div class="section-divider"></div>    <div class="info-box">  
     <strong>Processing time:</strong> The process is usually completed within   
     <strong>7–10 business days</strong> after the request is received.  
-  </div>    <div class="section-divider"></div>    <h2>Request Data Deletion</h2>    <!-- EXAMPLE FORM -->    <form>  
+  </div>    <div class="section-divider"></div>    <h2>Request Data Deletion</h2>    <!-- GOOGLE FORMS-READY FORM (template) -->    
+
+  <!-- Hidden iframe: keeps user on the same page after submit -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <form id="dataDeletionForm"
+        method="POST"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSflMxzSGmg0Zm8lJiTr8QobSWcrsA5Ou9zsJb4OiDs9Qjq9vA/formResponse"
+        target="hidden_iframe"
+        autocomplete="on">
+
+    <!-- REQUIRED for Google Forms to accept POST reliably in some browsers -->
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="draftResponse" value="[]">
+    <input type="hidden" name="pageHistory" value="0">
+    <input type="hidden" id="requestId" name="entry.1881999992" value="">
+    <input type="hidden" id="submissionSource" name="entry.638662447" value="Public Website – Data Deletion Page">
+    <!-- fbzx is optional; if you want maximum reliability, paste your form's fbzx value here -->
+    <input type="hidden" name="fbzx" value="">
+
     <label>Full name</label>  
-    <input type="text" placeholder="Your full name">  
-    <!-- Put your entry ID here -->  <label>Email address</label>  
-<input type="email" placeholder="you@example.com">  
-<!-- Put your entry ID here -->  
+    <input type="text" name="entry.1829161274" placeholder="Your full name" required>  
 
-<label>TikTok username</label>  
-<input type="text" placeholder="@yourusername">  
-<!-- Put your entry ID here -->  
+    <label>Email address</label>  
+    <input type="email" name="entry.1041620572" placeholder="you@example.com" required>
 
+
+    <label>TikTok username</label>
+    <input type="text" name="entry.874179121" placeholder="@yourusername" required>
 <label>Type of request</label>  
-<select id="requestType">  
-  <option>Delete all data related to my account</option>  
-  <option>Delete uploaded video metadata</option>  
-  <option>Revoke access & delete authentication tokens</option>  
-</select>  
-<!-- Put your entry ID here -->  
+    <select id="requestType" name="entry.2055580389" required>  
+      <option value="Delete all data related to my account">Delete all data related to my account</option>  
+      <option value="Delete uploaded video metadata">Delete uploaded video metadata</option>  
+      <option value="Revoke access & delete authentication tokens">Revoke access & delete authentication tokens</option>  
+    </select>  
 
-<label>Additional information (optional)</label>  
-<textarea placeholder="Optional comments or clarification"></textarea>  
-<!-- Put your entry ID here -->  
+    <label>Additional information (optional)</label>  
+    <textarea name="entry.1148237221" placeholder="Optional comments or clarification"></textarea>  
 
-<div class="checkbox-group">  
-  <label>  
-    <input type="checkbox" disabled>  
-    I confirm that I am the owner of the TikTok account listed above.  
-  </label>  
+    <div class="checkbox-group">  
+      <label>  
+        <input type="checkbox" id="confirmOwner" name="entry.1503199008" value="I confirm that I am the owner of the TikTok account listed above" required>  
+        I confirm that I am the owner of the TikTok account listed above.  
+      </label>  
 
-  <label>  
-    <input type="checkbox" disabled>  
-    I understand that this request cannot be undone.  
-  </label>  
-</div>  
+      <label>  
+        <input type="checkbox" id="confirmUndo" name="entry.227504898" value="I understand that this request cannot be undone" required>  
+        I understand that this request cannot be undone.  
+      </label>  
+    </div>  
 
-<div class="button-container">  
-  <button class="button" disabled>  
-    Request Data Deletion  
-  </button>  
-  <div class="note">  
-    This is an example form. Submissions are handled via a secure backend request system.  
-  </div>  
-</div>
-    
+    <div class="button-container">  
+      <button class="button" id="submitBtn" type="submit" disabled>  
+        Request Data Deletion  
+      </button>  
+      <div class="note" id="submitNote">  
+        Submissions are sent via Google Forms. If you don't see a confirmation, please verify the form action URL and entry IDs.  
+      </div>  
+    </div>
+
   </form>  
-  
+
+  <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px;">
+    ✅ Request submitted. Thank you.
+  </div>
+
   <div class="follow-section">
     <h2>Follow Us</h2>
     <div class="social-icons">
@@ -503,7 +535,7 @@ em {
           <span>Instagram</span>
         </a>
       </div>
-      
+
       <div class="social-icon">
         <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
@@ -515,7 +547,7 @@ em {
           <span>Facebook</span>
         </a>
       </div>
-      
+
       <div class="social-icon">
         <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
@@ -527,7 +559,7 @@ em {
           <span>Spotify</span>
         </a>
       </div>
-      
+
       <!-- TikTok ikon -->
       <div class="social-icon">
         <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
@@ -561,29 +593,66 @@ em {
 
   </div>  
 </footer>  <script>  
-// Ytterligare JavaScript för att förbättra dropdown-upplevelsen  
+// Dropdown UX (kept from your original)
 document.addEventListener('DOMContentLoaded', function() {  
   const selectElement = document.getElementById('requestType');  
-  
-  // Förhindra att dropdown öppnas i fel riktning  
   selectElement.addEventListener('focus', function() {  
-    // Scrolla till select-elementet om det behövs  
     if (window.innerHeight < 800) {  
       this.scrollIntoView({ behavior: 'smooth', block: 'center' });  
     }  
   });  
-  
-  // Lägg till hover-effekt för bättre UX  
   selectElement.addEventListener('mouseenter', function() {  
     this.style.borderColor = '#D88B5C';  
   });  
-  
   selectElement.addEventListener('mouseleave', function() {  
     if (document.activeElement !== this) {  
       this.style.borderColor = '#2A4A4A';  
     }  
   });  
-});  
+});
+
+// Submit gating logic: enable button only when both checkboxes are checked
+(() => {
+  const c1 = document.getElementById('confirmOwner');
+  const c2 = document.getElementById('confirmUndo');
+  const btn = document.getElementById('submitBtn');
+  const form = document.getElementById('dataDeletionForm');
+
+  // Populate hidden Reference ID (Google Forms entry.1881999992) with a pseudo-unique ID
+  // Format: DR-YYYY-XXXX-XXXX
+  const requestIdField = document.getElementById('requestId');
+  if (requestIdField && !requestIdField.value) {
+    const year = new Date().getFullYear();
+    const part1 = String(Math.floor(1000 + Math.random() * 9000));
+    const part2 = String(Math.floor(1000 + Math.random() * 9000));
+    requestIdField.value = `DR-${year}-${part1}-${part2}`;
+  }
+const success = document.getElementById('successMessage');
+
+  function sync() {
+    btn.disabled = !(c1.checked && c2.checked);
+    btn.style.opacity = btn.disabled ? '0.6' : '1';
+  }
+
+  c1.addEventListener('change', sync);
+  c2.addEventListener('change', sync);
+  sync();
+
+  // Lightweight UX: show a local "submitted" message (Google Forms does not provide CORS response)
+  form.addEventListener('submit', () => {
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    // show confirmation briefly, then redirect to confirmation page
+    window.setTimeout(() => {
+      success.style.display = 'block';
+    }, 300);
+
+    window.setTimeout(() => {
+      window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
+    }, 900);
+  });
+}
+)();
 </script>  
 </body>  
 </html>
