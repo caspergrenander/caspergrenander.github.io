@@ -1,299 +1,574 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Deletion Request – AutoPublisher</title>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Data Deletion Request – AutoPublisher</title>  <style>  
+body {  
+  margin: 0;  
+  padding: 0;  
+  background: #1A2838;  
+  color: #F5E5C8;  
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;  
+  line-height: 1.7;  
+}  
+  
+header {  
+  padding: 60px 20px 40px;  
+  text-align: center;  
+  background: #0D0F15;  
+  border-bottom: 1px solid #2A4A4A;  
+}  
+  
+header a {  
+  color: inherit;  
+  text-decoration: none;  
+  display: inline-block;  
+  text-align: center;  
+}  
+  
+header img {  
+  width: 180px;  
+  border-radius: 6px;  
+  margin-bottom: 20px;  
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);  
+}  
+  
+h1 {  
+  color: #FFFFFF;  
+  margin-bottom: 10px;  
+  font-weight: 600;  
+  font-size: 22px;  
+}  
+  
+h2 {  
+  color: #FFFFFF;  
+  font-weight: 600;  
+  margin-top: 50px;  
+  border-bottom: 1px solid #2A4A4A;  
+  padding-bottom: 10px;  
+}  
+  
+p {  
+  max-width: 800px;  
+  margin: 15px auto;  
+  color: #F5E5C8;  
+}  
+  
+.container {  
+  max-width: 900px;  
+  margin: auto;  
+  background: #0D0F15;  
+  padding: 40px 30px;  
+  border-radius: 6px;  
+  margin-top: 40px;  
+  margin-bottom: 40px;  
+  border: 1px solid #2A4A4A;  
+}  
+  
+.subtitle {  
+  color: #2A4A4A;  
+  font-size: 14px;  
+  margin-top: 5px;  
+  letter-spacing: 1px;  
+}  
+  
+.info-box {  
+  background: rgba(232, 182, 92, 0.1);  
+  border: 1px solid #E8B65C;  
+  border-radius: 6px;  
+  padding: 20px;  
+  font-size: 14px;  
+  margin: 25px 0;  
+  max-width: 800px;  
+  margin-left: auto;  
+  margin-right: auto;  
+}  
+  
+/* Form styling */  
+form {  
+  margin-top: 30px;  
+  max-width: 800px;  
+  margin-left: auto;  
+  margin-right: auto;  
+}  
+  
+label {  
+  display: block;  
+  margin: 25px 0 10px;  
+  font-weight: 600;  
+  color: #FFFFFF;  
+}  
+  
+input,  
+select,  
+textarea {  
+  width: 100%;  
+  padding: 14px;  
+  border-radius: 6px;  
+  border: 1px solid #2A4A4A;  
+  background: rgba(42, 74, 74, 0.2);  
+  color: #F5E5C8;  
+  font-size: 15px;  
+  box-sizing: border-box;  
+  transition: border-color 0.2s;  
+}  
+  
+/* SPECIFIK STYLING FÖR SELECT/DROPDOWN */  
+select {  
+  /* För att förhindra att dropdown öppnas uppåt */  
+  position: relative;  
+  z-index: 10;  
+  appearance: none;  
+  -webkit-appearance: none;  
+  -moz-appearance: none;  
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");  
+  background-repeat: no-repeat;  
+  background-position: right 15px center;  
+  background-size: 12px;  
+  padding-right: 40px;  
+  cursor: pointer;  
+}  
+  
+/* Styling för dropdown-options */  
+select option {  
+  background-color: #0D0F15;  
+  color: #F5E5C8;  
+  padding: 12px;  
+  font-size: 15px;  
+}  
+  
+/* När select är öppen */  
+select:focus {  
+  outline: none;  
+  border-color: #D88B5C;  
+  /* Visa dropdown nedåt */  
+  position: relative;  
+}  
+  
+/* Specifik styling för den långa dropdown-listan */  
+#requestType {  
+  /* Gör att hela listan visas när den öppnas */  
+  max-height: none;  
+}  
+  
+input:focus,  
+textarea:focus {  
+  outline: none;  
+  border-color: #D88B5C;  
+}  
+  
+input::placeholder,  
+textarea::placeholder {  
+  color: #7A8C9C;  
+}  
+  
+textarea {  
+  min-height: 120px;  
+  resize: vertical;  
+}  
+  
+/* Checkbox groups */  
+.checkbox-group {  
+  margin-top: 35px;  
+  padding: 20px;  
+  background-color: rgba(42, 74, 74, 0.1);  
+  border-radius: 6px;  
+  border: 1px solid #2A4A4A;  
+}  
+  
+.checkbox-group label {  
+  display: flex;  
+  align-items: flex-start;  
+  gap: 12px;  
+  font-weight: normal;  
+  color: #F5E5C8;  
+  margin: 15px 0;  
+  padding: 0;  
+}  
+  
+.checkbox-group input[type="checkbox"] {  
+  width: 20px;  
+  height: 20px;  
+  margin-top: 2px;  
+  cursor: not-allowed;  
+}  
+  
+/* Button styling */  
+.button-container {  
+  margin-top: 40px;  
+  text-align: center;  
+  padding-top: 20px;  
+  border-top: 1px solid #2A4A4A;  
+}  
+  
+.button {  
+  display: inline-block;  
+  padding: 16px 40px;  
+  background: #E8B65C;  
+  color: #1A2838;  
+  font-size: 16px;  
+  font-weight: 700;  
+  border-radius: 8px;  
+  border: none;  
+  cursor: not-allowed;  
+  opacity: 0.6;  
+  transition: all 0.3s ease;  
+  text-align: center;  
+  min-width: 220px;  
+}  
+  
+.button:hover {  
+  opacity: 0.7;  
+}  
+  
+.note {  
+  margin-top: 20px;  
+  font-size: 13px;  
+  color: #2A4A4A;  
+  text-align: center;  
+  max-width: 800px;  
+  margin-left: auto;  
+  margin-right: auto;  
+}  
+  
+/* UPPDATERAD Footer styling - exakt som proof of concept */  
+footer {  
+  margin-top: 60px;  
+  padding: 40px 20px;  
+  text-align: center;  
+  font-size: 0.9rem;  
+  color: #2A4A4A;  
+  border-top: 1px solid #2A4A4A;  
+  background: #0D0F15;  
+}  
+  
+.footer-content {  
+  max-width: 800px;  
+  margin: 0 auto;  
+}  
+  
+.footer-links {  
+  margin: 25px 0;  
+  display: flex;  
+  justify-content: center;  
+  flex-wrap: wrap;  
+  gap: 20px;  
+}  
+  
+/* UPPDATERAD: Tar bort boxarna - gör som proof of concept */  
+.footer-links a {  
+  color: #2A4A4A;  
+  font-size: 0.85rem;  
+  text-decoration: none;  
+  transition: color 0.2s;  
+}  
+  
+.footer-links a:hover {  
+  color: #D88B5C;  
+  text-decoration: none;  
+}  
+  
+/* UPPDATERAD: Förbättrar läsbarheten för copyright-texten */  
+.footer-copyright {  
+  color: #2A4A4A;  
+  margin-bottom: 20px;  
+  font-size: 0.85rem;  
+  line-height: 1.5;  
+}  
+  
+.footer-title {  
+  color: #F5E5C8;  
+  margin-bottom: 10px;  
+  font-size: 0.95rem;  
+  font-weight: 600;  
+}  
+  
+strong {  
+  color: #FFFFFF;  
+  font-weight: 600;  
+}  
+  
+em {  
+  color: #E8B65C;  
+  font-style: italic;  
+}  
+  
+.section-divider {  
+  height: 1px;  
+  background-color: #2A4A4A;  
+  margin: 40px auto;  
+  max-width: 800px;  
+}  
+  
+/* CSS för Follow Us-sektionen - EXAKT som på huvudsidan */  
+.follow-section {  
+  text-align: center;  
+  margin: 50px auto 30px;  
+  max-width: 800px;  
+}  
+  
+.follow-section h2 {  
+  margin-bottom: 30px;  
+  border: none;  
+  padding-bottom: 0;  
+}  
+  
+.social-icons {  
+  display: flex;  
+  justify-content: center;  
+  gap: 40px;  
+  flex-wrap: wrap;  
+}  
+  
+.social-icon {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  transition: transform 0.3s ease;  
+}  
+  
+.social-icon:hover {  
+  transform: translateY(-5px);  
+}  
+  
+.social-icon a {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  text-decoration: none;  
+}  
+  
+.icon-container {  
+  width: 70px;  
+  height: 70px;  
+  border-radius: 50%;  
+  background: #2A4A4A;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  margin-bottom: 10px;  
+  transition: background-color 0.3s ease;  
+}  
+  
+.social-icon:hover .icon-container {  
+  background: #D88B5C;  
+}  
+  
+.icon-container img {  
+  width: 35px;  
+  height: 35px;  
+  filter: brightness(0) invert(1);  
+}  
+  
+.social-icon span {  
+  color: #F5E5C8;  
+  font-size: 14px;  
+  font-weight: 500;  
+  margin-top: 5px;  
+}  
+  
+/* Responsiv design för mindre skärmar */  
+@media (max-width: 768px) {  
+  .social-icons {  
+    gap: 30px;  
+  }  
+  
+  .icon-container {  
+    width: 60px;  
+    height: 60px;  
+  }  
+  
+  .icon-container img {  
+    width: 30px;  
+    height: 30px;  
+  }  
+}  
+  
+@media (max-width: 480px) {  
+  .social-icons {  
+    gap: 20px;  
+  }  
+  
+  .icon-container {  
+    width: 50px;  
+    height: 50px;  
+  }  
+  
+  .icon-container img {  
+    width: 25px;  
+    height: 25px;  
+  }  
+}  
+  
+/* EXTRA: CSS för att se till att dropdown visas korrekt */  
+@media (max-height: 800px) {  
+  .container {  
+    margin-top: 20px;  
+    margin-bottom: 20px;  
+    padding: 30px 20px;  
+  }  
+  
+  h2 {  
+    margin-top: 30px;  
+  }  
+}  
+</style>  </head>  <body>  <header>  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">  
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"  
+         alt="Historien Bakom Musiken Logo">  
+    <h1>Historien Bakom Musiken</h1>  
+  </a>  
+  <p class="subtitle">Data Deletion Request – AutoPublisher</p>  
+</header>  <div class="container">  
+  <h2>About Data Deletion</h2>  
+  <p>  
+    You have the right to request deletion of data processed in connection with  
+    <strong>Historien Bakom Musiken – AutoPublisher</strong>.  
+  </p>  
+  <p>  
+    This request applies only to data processed by AutoPublisher.  
+    Data managed directly by TikTok must be handled through TikTok's own account settings.  
+  </p>    <!-- Follow Us-sektion - LAGT TILL -->    <div class="follow-section">  
+    <h2>Follow Us</h2>  
+    <div class="social-icons">  
+      <div class="social-icon">  
+        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">  
+          <div class="icon-container">  
+            <!-- Instagram SVG -->  
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">  
+              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>  
+            </svg>  
+          </div>  
+          <span>Instagram</span>  
+        </a>  
+      </div>  <div class="social-icon">  
+    <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">  
+      <div class="icon-container">  
+        <!-- Facebook SVG -->  
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">  
+          <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>  
+        </svg>  
+      </div>  
+      <span>Facebook</span>  
+    </a>  
+  </div>  
 
-<style>
-/* --- GLOBAL STYLING --- */
-body {
-  margin: 0;
-  padding: 0;
-  background: #1A2838;
-  color: #F5E5C8;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.7;
-}
+  <div class="social-icon">  
+    <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">  
+      <div class="icon-container">  
+        <!-- Spotify SVG -->  
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">  
+          <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>  
+        </svg>  
+      </div>  
+      <span>Spotify</span>  
+    </a>  
+  </div>  
 
-header {
-  padding: 60px 20px 40px;
-  text-align: center;
-  background: #0D0F15;
-  border-bottom: 1px solid #2A4A4A;
-}
-
-header a {
-  color: inherit;
-  text-decoration: none;
-}
-
-header img {
-  width: 180px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-h1 {
-  color: #FFFFFF;
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  color: #FFFFFF;
-  font-weight: 600;
-  margin-top: 50px;
-  border-bottom: 1px solid #2A4A4A;
-  padding-bottom: 10px;
-}
-
-p {
-  max-width: 800px;
-  margin: 15px auto;
-}
-
-.subtitle {
-  color: #2A4A4A;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  background: #0D0F15;
-  padding: 40px 30px;
-  border-radius: 6px;
-  border: 1px solid #2A4A4A;
-}
-
-.section-divider {
-  height: 1px;
-  background-color: #2A4A4A;
-  margin: 40px auto;
-  max-width: 800px;
-}
-
-.info-box {
-  background: rgba(232, 182, 92, 0.1);
-  border: 1px solid #E8B65C;
-  border-radius: 6px;
-  padding: 20px;
-  font-size: 14px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* --- FORM --- */
-form {
-  max-width: 800px;
-  margin: 30px auto 0;
-}
-
-label {
-  display: block;
-  margin: 25px 0 10px;
-  font-weight: 600;
-  color: #FFFFFF;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 6px;
-  border: 1px solid #2A4A4A;
-  background: rgba(42, 74, 74, 0.2);
-  color: #F5E5C8;
-}
-
-textarea {
-  min-height: 120px;
-}
-
-.checkbox-group {
-  margin-top: 35px;
-  padding: 20px;
-  background-color: rgba(42, 74, 74, 0.1);
-  border-radius: 6px;
-  border: 1px solid #2A4A4A;
-}
-
-.checkbox-group label {
-  display: flex;
-  gap: 12px;
-  margin: 15px 0;
-}
-
-.checkbox-group input {
-  cursor: not-allowed;
-}
-
-.button-container {
-  margin-top: 40px;
-  text-align: center;
-  border-top: 1px solid #2A4A4A;
-  padding-top: 20px;
-}
-
-.button {
-  padding: 16px 40px;
-  background: #E8B65C;
-  color: #1A2838;
-  font-weight: 700;
-  border-radius: 8px;
-  border: none;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* --- FOLLOW US (SOURCE OF TRUTH) --- */
-.follow-section {
-  text-align: center;
-  margin: 50px auto 30px;
-  max-width: 800px;
-}
-
-.follow-section h2 {
-  border: none;
-  margin-bottom: 30px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-}
-
-.icon-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #2A4A4A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.social-icon:hover .icon-container {
-  background: #D88B5C;
-}
-
-.social-icon span {
-  color: #F5E5C8;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* --- FOOTER --- */
-footer {
-  margin-top: 60px;
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #2A4A4A;
-  border-top: 1px solid #2A4A4A;
-  background: #0D0F15;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
-    <h1>Historien Bakom Musiken</h1>
-  </a>
-  <p class="subtitle">Data Deletion Request – AutoPublisher</p>
-</header>
-
-<div class="container">
-
-  <h2>About Data Deletion</h2>
-  <p>You have the right to request deletion of data processed in connection with <strong>Historien Bakom Musiken – AutoPublisher</strong>.</p>
-  <p>Data managed directly by TikTok must be handled through TikTok's own account settings.</p>
-
-  <div class="section-divider"></div>
-
-  <div class="info-box">
-    <strong>Processing time:</strong> 7–10 business days.
-  </div>
-
-  <div class="section-divider"></div>
-
-  <h2>Request Data Deletion</h2>
-
-  <form>
-    <label>Full name</label>
-    <input type="text">
-
-    <label>Email address</label>
-    <input type="email">
-
-    <label>TikTok username</label>
-    <input type="text">
-
-    <label>Type of request</label>
-    <select>
-      <option>Delete all data related to my account</option>
-      <option>Delete uploaded video metadata</option>
-      <option>Revoke access & delete authentication tokens</option>
-    </select>
-
-    <label>Additional information</label>
-    <textarea></textarea>
-
-    <div class="checkbox-group">
-      <label><input type="checkbox" disabled> I confirm ownership of the account</label>
-      <label><input type="checkbox" disabled> I understand this cannot be undone</label>
-    </div>
-
-    <div class="button-container">
-      <button class="button" disabled>Request Data Deletion</button>
-    </div>
-  </form>
-
-  <!-- FOLLOW US – KORREKT PLACERING -->
-  <div class="follow-section">
-    <h2>Follow Us</h2>
-    <div class="social-icons">
-      <!-- Instagram, Facebook, Spotify, TikTok – oförändrade -->
-    </div>
-  </div>
-
+  <!-- TikTok ikon -->  
+  <div class="social-icon">  
+    <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">  
+      <div class="icon-container">  
+        <!-- TikTok SVG -->  
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">  
+          <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>  
+        </svg>  
+      </div>  
+      <span>TikTok</span>  
+    </a>  
+  </div>  
 </div>
 
-<footer>
-  <p>© 2026 Casper Grenander</p>
-  <div class="footer-links">
-    <a href="#">Home</a>
-    <a href="#">Terms</a>
-    <a href="#">Privacy</a>
-    <a href="#">Data Deletion</a>
-  </div>
-</footer>
+  </div>    <div class="section-divider"></div>    <div class="info-box">  
+    <strong>Processing time:</strong> The process is usually completed within   
+    <strong>7–10 business days</strong> after the request is received.  
+  </div>    <div class="section-divider"></div>    <h2>Request Data Deletion</h2>    <!-- EXAMPLE FORM -->    <form>  
+    <label>Full name</label>  
+    <input type="text" placeholder="Your full name">  
+    <!-- Put your entry ID here -->  <label>Email address</label>  
+<input type="email" placeholder="you@example.com">  
+<!-- Put your entry ID here -->  
 
-</body>
-</html>
+<label>TikTok username</label>  
+<input type="text" placeholder="@yourusername">  
+<!-- Put your entry ID here -->  
+
+<label>Type of request</label>  
+<select id="requestType">  
+  <option>Delete all data related to my account</option>  
+  <option>Delete uploaded video metadata</option>  
+  <option>Revoke access & delete authentication tokens</option>  
+</select>  
+<!-- Put your entry ID here -->  
+
+<label>Additional information (optional)</label>  
+<textarea placeholder="Optional comments or clarification"></textarea>  
+<!-- Put your entry ID here -->  
+
+<div class="checkbox-group">  
+  <label>  
+    <input type="checkbox" disabled>  
+    I confirm that I am the owner of the TikTok account listed above.  
+  </label>  
+
+  <label>  
+    <input type="checkbox" disabled>  
+    I understand that this request cannot be undone.  
+  </label>  
+</div>  
+
+<div class="button-container">  
+  <button class="button" disabled>  
+    Request Data Deletion  
+  </button>  
+  <div class="note">  
+    This is an example form. Submissions are handled via a secure backend request system.  
+  </div>  
+</div>
+
+  </form>  
+</div>  <footer>  
+  <div class="footer-content">  
+    <p class="footer-title">  
+      Historien Bakom Musiken – AutoPublisher  
+    </p>  <p class="footer-copyright">  
+  © 2026 Casper Grenander. All rights reserved.  
+</p>  
+
+<div class="footer-links">  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>  
+  <a href="mailto:app.auto.publisher@gmail.com">Contact</a>  
+</div>
+
+  </div>  
+</footer>  <script>  
+// Ytterligare JavaScript för att förbättra dropdown-upplevelsen  
+document.addEventListener('DOMContentLoaded', function() {  
+  const selectElement = document.getElementById('requestType');  
+  
+  // Förhindra att dropdown öppnas i fel riktning  
+  selectElement.addEventListener('focus', function() {  
+    // Scrolla till select-elementet om det behövs  
+    if (window.innerHeight < 800) {  
+      this.scrollIntoView({ behavior: 'smooth', block: 'center' });  
+    }  
+  });  
+  
+  // Lägg till hover-effekt för bättre UX  
+  selectElement.addEventListener('mouseenter', function() {  
+    this.style.borderColor = '#D88B5C';  
+  });  
+  
+  selectElement.addEventListener('mouseleave', function() {  
+    if (document.activeElement !== this) {  
+      this.style.borderColor = '#2A4A4A';  
+    }  
+  });  
+});  
+</script>  
+</body>  
+</html>  
