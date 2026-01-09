@@ -794,38 +794,103 @@ strong {
 </footer>
 
 <script>
-// Reference ID display (single source of truth from form page)
+/**
+ * Confirmation Page - Reference ID Display and Management
+ * 
+ * This page displays the confirmation of a data deletion request
+ * and shows the reference ID for user's records.
+ * 
+ * The Reference ID is retrieved from:
+ * 1. URL parameter (primary source) - passed from form submission
+ * 2. localStorage (fallback) - if URL parameter is missing
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Reference ID is owned by the form page (single source of truth). This page only reads & displays it.
+  // ============================================
+  // Reference ID Retrieval
+  // ============================================
+  
+  /**
+   * Gets the Reference ID from URL parameters
+   * @returns {string|null} Reference ID from URL or null if not found
+   */
+  function getReferenceIdFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const refId = urlParams.get('ref');
+    if (refId) {
+      console.log('✓ Reference ID retrieved from URL:', refId);
+    }
+    return refId;
+  }
+
+  /**
+   * Gets the Reference ID from localStorage as fallback
+   * @returns {string|null} Reference ID from storage or null if not found
+   */
+  function getReferenceIdFromStorage() {
+    try {
+      const refId = localStorage.getItem('dataDeletionReferenceId');
+      if (refId) {
+        console.log('✓ Reference ID retrieved from localStorage:', refId);
+      }
+      return refId;
+    } catch (error) {
+      console.error('Error reading from localStorage:', error);
+      return null;
+    }
+  }
+
+  // Get Reference ID with fallback chain: URL → localStorage → null
+  let referenceId = getReferenceIdFromURL() || getReferenceIdFromStorage();
+  
   const referenceIdElement = document.getElementById('referenceId');
-  let referenceId = null;
-  try {
-    referenceId = localStorage.getItem('dataDeletionReferenceId');
-  } catch (e) {
-    referenceId = null;
-  }
-
+  
+  // Display the Reference ID or error message
   if (referenceIdElement) {
-    referenceIdElement.textContent = referenceId || 'Reference ID not found';
+    if (referenceId) {
+      referenceIdElement.textContent = referenceId;
+      console.log('✓ Reference ID displayed on page:', referenceId);
+    } else {
+      referenceIdElement.textContent = 'Reference ID not found';
+      referenceIdElement.style.color = '#f44336';
+      console.error('✗ Reference ID not found in URL or localStorage');
+    }
   }
 
-// Update all email links with the reference ID (only if available)
+  // ============================================
+  // Email Link Updates
+  // ============================================
+  
+  /**
+   * Updates all email links with the actual Reference ID
+   * Replaces placeholder ID with the real one in subject lines
+   */
   if (referenceId) {
     const emailLinks = document.querySelectorAll('a[href^="mailto"]');
     emailLinks.forEach(link => {
       const currentHref = link.getAttribute('href');
       if (currentHref && currentHref.includes('subject=')) {
-        link.setAttribute('href', currentHref.replace('DR-2026-3874-6219', referenceId));
+        // Replace placeholder with actual reference ID (exact format: DR-YYYY-XXXXX-XXXXX)
+        const updatedHref = currentHref.replace(/DR-\d{4}-\d{5}-\d{5}/g, referenceId);
+        link.setAttribute('href', updatedHref);
       }
     });
+    console.log('✓ Email links updated with Reference ID');
   }
 
-const timelineCircles = document.querySelectorAll('.timeline-circle');
+  // ============================================
+  // UI Animations
+  // ============================================
+  
+  const timelineCircles = document.querySelectorAll('.timeline-circle');
   const checklistItems = document.querySelectorAll('.checklist-item');
   
-  // Animate timeline circles sequentially
+  /**
+   * Animates timeline circles sequentially with scale effect
+   */
   timelineCircles.forEach((circle, index) => {
     setTimeout(() => {
+      circle.style.transition = 'transform 0.3s ease';
       circle.style.transform = 'scale(1.1)';
       setTimeout(() => {
         circle.style.transform = 'scale(1)';
@@ -833,51 +898,99 @@ const timelineCircles = document.querySelectorAll('.timeline-circle');
     }, index * 500);
   });
   
-  // Animate checklist items
+  /**
+   * Animates checklist items with fade-in and slide effect
+   */
   checklistItems.forEach((item, index) => {
+    // Set initial state
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(-20px)';
+    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    
+    // Animate in after delay
     setTimeout(() => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(-20px)';
-      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-      }, 50);
-    }, index * 300);
+      item.style.opacity = '1';
+      item.style.transform = 'translateX(0)';
+    }, index * 300 + 100);
   });
   
-  // Animate reference ID
-  setTimeout(() => {
-    referenceIdElement.style.transform = 'scale(1.05)';
-    referenceIdElement.style.boxShadow = '0 0 20px rgba(232, 182, 92, 0.3)';
+  /**
+   * Animates the Reference ID box with attention-grabbing effect
+   */
+  if (referenceIdElement && referenceId) {
     setTimeout(() => {
-      referenceIdElement.style.transform = 'scale(1)';
-      referenceIdElement.style.boxShadow = 'none';
-    }, 500);
-  }, 1000);
+      referenceIdElement.style.transition = 'all 0.5s ease';
+      referenceIdElement.style.transform = 'scale(1.05)';
+      referenceIdElement.style.boxShadow = '0 0 20px rgba(232, 182, 92, 0.3)';
+      
+      setTimeout(() => {
+        referenceIdElement.style.transform = 'scale(1)';
+        referenceIdElement.style.boxShadow = 'none';
+      }, 500);
+    }, 1000);
+  }
   
-  // Add copy to clipboard functionality for reference ID (only if available)
+  // ============================================
+  // Copy to Clipboard Functionality
+  // ============================================
+  
+  /**
+   * Adds click-to-copy functionality for the Reference ID
+   * Provides visual feedback when ID is copied
+   */
   if (referenceId && referenceIdElement) {
     referenceIdElement.style.cursor = 'pointer';
-    referenceIdElement.title = 'Click to copy to clipboard';
+    referenceIdElement.title = 'Click to copy Reference ID to clipboard';
 
     referenceIdElement.addEventListener('click', function() {
+      // Use modern clipboard API
       navigator.clipboard.writeText(referenceId).then(() => {
+        // Visual feedback for successful copy
         const originalText = this.textContent;
-        this.textContent = 'Copied!';
-        this.style.color = '#D88B5C';
-        this.style.background = 'rgba(216, 139, 92, 0.1)';
+        const originalColor = this.style.color;
+        const originalBackground = this.style.background;
+        
+        this.textContent = '✓ Copied to Clipboard!';
+        this.style.color = '#4CAF50';
+        this.style.background = 'rgba(76, 175, 80, 0.1)';
+        this.style.transition = 'all 0.3s ease';
+        
+        console.log('✓ Reference ID copied to clipboard');
 
+        // Restore original state after 2 seconds
         setTimeout(() => {
           this.textContent = originalText;
-          this.style.color = '#FFFFFF';
-          this.style.background = 'rgba(0, 0, 0, 0.2)';
+          this.style.color = originalColor || '#FFFFFF';
+          this.style.background = originalBackground || 'rgba(0, 0, 0, 0.2)';
         }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy to clipboard:', err);
+        // Fallback: select text for manual copy using range selection
+        try {
+          const range = document.createRange();
+          range.selectNodeContents(this);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          
+          // Show message to user
+          alert('Reference ID selected. Press Ctrl+C (Cmd+C on Mac) to copy.');
+        } catch (selectErr) {
+          console.error('Text selection also failed:', selectErr);
+        }
       });
     });
+    
+    console.log('✓ Copy-to-clipboard functionality enabled');
   }
 
+  // ============================================
+  // Initialization Complete
+  // ============================================
+  console.log('✓ Confirmation page initialized');
+  console.log('  - Reference ID:', referenceId || 'NOT FOUND');
+  console.log('  - Animations active');
+  console.log('  - Interactive features enabled');
 });
 </script>
 
