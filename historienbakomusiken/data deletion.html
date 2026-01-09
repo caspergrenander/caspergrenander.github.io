@@ -5,60 +5,374 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Deletion Request – AutoPublisher</title>
 <style>
-body { margin:0; padding:0; background:#1A2838; color:#F5E5C8; font-family:"Segoe UI",Roboto,Arial,sans-serif; line-height:1.7; }
-header { padding:60px 20px 40px; text-align:center; background:#0D0F15; border-bottom:1px solid #2A4A4A; }
-header a { color:inherit; text-decoration:none; display:inline-block; text-align:center; }
-header img { width:180px; border-radius:6px; margin-bottom:20px; box-shadow:0 0 15px rgba(0,0,0,0.5); }
-h1 { color:#FFFFFF; margin-bottom:10px; font-weight:600; font-size:22px; }
-h2 { color:#FFFFFF; font-weight:600; margin-top:50px; border-bottom:1px solid #2A4A4A; padding-bottom:10px; }
-p { max-width:800px; margin:15px auto; color:#F5E5C8; }
-a { color:#D88B5C; text-decoration:none; transition:color 0.2s; }
-a:hover { color:#E8B65C; text-decoration:underline; }
-.container { max-width:900px; margin:auto; background:#0D0F15; padding:40px 30px; border-radius:6px; margin-top:40px; margin-bottom:40px; border:1px solid #2A4A4A; }
-.subtitle { color:#2A4A4A; font-size:14px; margin-top:5px; letter-spacing:1px; }
-.info-box { background:rgba(232,182,92,0.1); border:1px solid #E8B65C; border-radius:6px; padding:20px; font-size:14px; margin:25px 0; max-width:800px; margin-left:auto; margin-right:auto; }
-form { margin-top:30px; max-width:800px; margin-left:auto; margin-right:auto; }
-label { display:block; margin:25px 0 10px; font-weight:600; color:#FFFFFF; }
-input, select, textarea { width:100%; padding:14px; border-radius:6px; border:1px solid #2A4A4A; background:rgba(42,74,74,0.2); color:#F5E5C8; font-size:15px; box-sizing:border-box; transition:border-color 0.2s; }
-select { position:relative; z-index:10; appearance:none; -webkit-appearance:none; -moz-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 15px center; background-size:12px; padding-right:40px; cursor:pointer; }
-select option { background-color:#0D0F15; color:#F5E5C8; padding:12px; font-size:15px; }
-input:focus, select:focus, textarea:focus { outline:none; border-color:#D88B5C; }
-input::placeholder, textarea::placeholder { color:#7A8C9C; }
-textarea { min-height:120px; resize:vertical; }
-.checkbox-group { margin-top:35px; padding:20px; background-color:rgba(42,74,74,0.1); border-radius:6px; border:1px solid #2A4A4A; }
-.checkbox-group label { display:flex; align-items:flex-start; gap:12px; font-weight:normal; color:#F5E5C8; margin:15px 0; padding:0; }
-.checkbox-group input[type="checkbox"] { width:20px; height:20px; margin-top:2px; cursor:pointer; }
-.button-container { margin-top:40px; text-align:center; padding-top:20px; border-top:1px solid #2A4A4A; }
-.button { display:inline-block; padding:16px 40px; background:#E8B65C; color:#1A2838; font-size:16px; font-weight:700; border-radius:8px; border:none; cursor:pointer; opacity:0.6; transition:all 0.3s ease; min-width:220px; }
-.button:hover { opacity:0.7; }
-.button:disabled { cursor:not-allowed; opacity:0.6; }
-.note { margin-top:20px; font-size:13px; color:#2A4A4A; text-align:center; max-width:800px; margin-left:auto; margin-right:auto; }
-footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem; color:#2A4A4A; border-top:1px solid #2A4A4A; background:#0D0F15; }
-.footer-content { max-width:800px; margin:0 auto; }
-.footer-links { margin:25px 0; display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
-.footer-links a { color:#2A4A4A; font-size:0.85rem; text-decoration:none; transition:color 0.2s; }
-.footer-links a:hover { color:#D88B5C; text-decoration:none; }
-.footer-copyright { color:#2A4A4A; margin-bottom:20px; font-size:0.85rem; line-height:1.5; }
-.footer-title { color:#F5E5C8; margin-bottom:10px; font-size:0.95rem; font-weight:600; }
-.section-divider { height:1px; background-color:#2A4A4A; margin:40px auto; max-width:800px; }
+body {
+  margin: 0;
+  padding: 0;
+  background: #1A2838;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
 
-/* Sociala medier styling (oförändrad) */
-.follow-section { text-align:center; margin:50px auto 30px; max-width:800px; }
-.follow-section h2 { margin-bottom:30px; border:none; padding-bottom:0; }
-.social-icons { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
-.social-icon { display:flex; flex-direction:column; align-items:center; transition:transform 0.3s ease; }
-.social-icon:hover { transform:translateY(-5px); }
-.icon-container { width:70px; height:70px; border-radius:50%; background:#2A4A4A; display:flex; align-items:center; justify-content:center; margin-bottom:10px; transition:background-color 0.3s ease; }
-.social-icon:hover .icon-container { background:#D88B5C; }
-.icon-container svg { width:35px; height:35px; fill:#ffffff; }
-.social-icon span { color:#F5E5C8; font-size:14px; font-weight:500; margin-top:5px; }
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #0D0F15;
+  border-bottom: 1px solid #2A4A4A;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #D88B5C;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #E8B65C;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #0D0F15;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #2A4A4A;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.info-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 25px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  display: block;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+select {
+  position: relative;
+  z-index: 10;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #0D0F15;
+  color: #F5E5C8;
+  padding: 12px;
+  font-size: 15px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #D88B5C;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #D88B5C;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7A8C9C;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.checkbox-group {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: normal;
+  color: #F5E5C8;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.button-container {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #2A4A4A;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: #E8B65C;
+  color: #1A2838;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 220px;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #2A4A4A;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+  text-decoration: none;
+}
+
+.footer-copyright {
+  color: #2A4A4A;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-title {
+  color: #F5E5C8;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.follow-section {
+  text-align: center;
+  margin: 50px auto 30px;
+  max-width: 800px;
+}
+
+.follow-section h2 {
+  margin-bottom: 30px;
+  border: none;
+  padding-bottom: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2A4A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover .icon-container {
+  background: #D88B5C;
+}
+
+.icon-container svg {
+  width: 35px;
+  height: 35px;
+  fill: #ffffff;
+}
+
+.social-icon span {
+  color: #F5E5C8;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  .social-icons { gap: 30px; }
+  .icon-container { width: 60px; height: 60px; }
+  .icon-container svg { width: 30px; height: 30px; }
+}
+
+@media (max-width: 480px) {
+  .social-icons { gap: 20px; }
+  .icon-container { width: 50px; height: 50px; }
+  .icon-container svg { width: 25px; height: 25px; }
+}
 </style>
 </head>
 <body>
 
 <header>
   <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
   <p class="subtitle">Data Deletion Request – AutoPublisher</p>
@@ -67,13 +381,20 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
 <div class="container">
 
   <h2>About Data Deletion</h2>
-  <p>You have the right to request deletion of data processed in connection with <strong>Historien Bakom Musiken – AutoPublisher</strong>.</p>
-  <p>This request applies only to data processed by AutoPublisher. Data managed directly by TikTok must be handled through TikTok's own account settings.</p>
+  <p>
+    You have the right to request deletion of data processed in connection with
+    <strong>Historien Bakom Musiken – AutoPublisher</strong>.
+  </p>
+  <p>
+    This request applies only to data processed by AutoPublisher.
+    Data managed directly by TikTok must be handled through TikTok's own account settings.
+  </p>
 
   <div class="section-divider"></div>
 
   <div class="info-box">
-    <strong>Processing time:</strong> The process is usually completed within <strong>7–10 business days</strong> after the request is received.
+    <strong>Processing time:</strong> The process is usually completed within
+    <strong>7–10 business days</strong> after the request is received.
   </div>
 
   <div class="section-divider"></div>
@@ -82,7 +403,11 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
 
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-  <form id="dataDeletionForm" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse" target="hidden_iframe" autocomplete="on">
+  <form id="dataDeletionForm"
+        method="POST"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
+        target="hidden_iframe"
+        autocomplete="on">
 
     <input type="hidden" name="fvv" value="1">
     <input type="hidden" name="draftResponse" value="[]">
@@ -115,6 +440,7 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
         <input type="checkbox" id="confirmOwner" name="entry.977425461" value="I confirm that I am the owner of the TikTok account listed above" required>
         I confirm that I am the owner of the TikTok account listed above.
       </label>
+
       <label>
         <input type="checkbox" id="confirmUndo" name="entry.246601893" value="I understand that this request cannot be undone" required>
         I understand that this request cannot be undone.
@@ -122,8 +448,12 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
     </div>
 
     <div class="button-container">
-      <button class="button" id="submitBtn" type="submit" disabled>Request Data Deletion</button>
-      <div class="note" id="submitNote">Submissions are sent via Google Forms.</div>
+      <button class="button" id="submitBtn" type="submit" disabled>
+        Request Data Deletion
+      </button>
+      <div class="note" id="submitNote">
+        Submissions are sent via Google Forms. If you don't see a confirmation, please verify the form action URL and entry IDs.
+      </div>
     </div>
 
   </form>
@@ -135,7 +465,18 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
   <div class="follow-section">
     <h2>Follow Us</h2>
     <div class="social-icons">
-      <!-- Lägg till dina sociala ikoner här som tidigare -->
+      <!-- Instagram -->
+      <div class="social-icon">
+        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z"/></svg>
+          </div>
+          <span>Instagram</span>
+        </a>
+      </div>
+
+      <!-- Facebook, Spotify, TikTok – samma struktur som tidigare -->
+      <!-- Lägg till dina andra sociala ikoner här om du vill ha dem kompletta -->
     </div>
   </div>
 
@@ -143,8 +484,13 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
 
 <footer>
   <div class="footer-content">
-    <p class="footer-title">Historien Bakom Musiken – AutoPublisher</p>
-    <p class="footer-copyright">© 2026 Casper Grenander. All rights reserved.</p>
+    <p class="footer-title">
+      Historien Bakom Musiken – AutoPublisher
+    </p>
+    <p class="footer-copyright">
+      © 2026 Casper Grenander. All rights reserved.
+    </p>
+
     <div class="footer-links">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
@@ -156,77 +502,72 @@ footer { margin-top:60px; padding:40px 20px; text-align:center; font-size:0.9rem
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-
+document.addEventListener('DOMContentLoaded', function () {
   // Dropdown UX
-  const select = document.getElementById('requestType');
-  if (select) {
-    select.addEventListener('focus', function() {
-      if (window.innerHeight < 800) this.scrollIntoView({behavior:'smooth', block:'center'});
+  const selectElement = document.getElementById('requestType');
+  if (selectElement) {
+    selectElement.addEventListener('focus', function () {
+      if (window.innerHeight < 800) {
+        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
-    select.addEventListener('mouseenter', () => select.style.borderColor = '#D88B5C');
-    select.addEventListener('mouseleave', () => {
-      if (document.activeElement !== select) select.style.borderColor = '#2A4A4A';
+    selectElement.addEventListener('mouseenter', function () {
+      this.style.borderColor = '#D88B5C';
+    });
+    selectElement.addEventListener('mouseleave', function () {
+      if (document.activeElement !== this) {
+        this.style.borderColor = '#2A4A4A';
+      }
     });
   }
 
-  // Generera & spara Reference ID
+  // FIX: Robust generering av Reference ID (ingen template literal)
   const requestIdField = document.getElementById('requestId');
   if (requestIdField && !requestIdField.value) {
     const year = new Date().getFullYear();
     const part1 = Math.floor(1000 + Math.random() * 9000);
     const part2 = Math.floor(1000 + Math.random() * 9000);
-
-    const referenceId = 'DR-' + year + '-' + part1 + '-' + part2;
-
-    requestIdField.value = referenceId;
-
-    try {
-      localStorage.setItem('dataDeletionReferenceId', referenceId);
-    } catch (e) {
-      console.warn('Kunde inte spara referens i localStorage', e);
-    }
+    requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
   }
 
-  // Checkbox + submit-knapp
-  const c1 = document.getElementById('confirmOwner');
-  const c2 = document.getElementById('confirmUndo');
-  const btn = document.getElementById('submitBtn');
-
-  if (c1 && c2 && btn) {
-    const update = () => {
-      const ok = c1.checked && c2.checked;
-      btn.disabled = !ok;
-      btn.style.opacity = ok ? '1' : '0.6';
-    };
-
-    c1.addEventListener('change', update);
-    c2.addEventListener('change', update);
-    update();
-  }
-
-  // Submit hantering
+  // Checkbox och submit-knapp logik
+  const confirmOwner = document.getElementById('confirmOwner');
+  const confirmUndo = document.getElementById('confirmUndo');
+  const submitBtn = document.getElementById('submitBtn');
   const form = document.getElementById('dataDeletionForm');
-  const success = document.getElementById('successMessage');
+  const successMessage = document.getElementById('successMessage');
 
+  if (confirmOwner && confirmUndo && submitBtn) {
+    function updateButtonState() {
+      const bothChecked = confirmOwner.checked && confirmUndo.checked;
+      submitBtn.disabled = !bothChecked;
+      submitBtn.style.opacity = bothChecked ? '1' : '0.6';
+    }
+
+    confirmOwner.addEventListener('change', updateButtonState);
+    confirmUndo.addEventListener('change', updateButtonState);
+    updateButtonState();
+  }
+
+  // Submit-hantering
   if (form) {
-    form.addEventListener('submit', function() {
-      if (btn) {
-        btn.disabled = true;
-        btn.style.opacity = '0.6';
+    form.addEventListener('submit', function () {
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
       }
 
       setTimeout(() => {
-        if (success) success.style.display = 'block';
-      }, 400);
+        if (successMessage) successMessage.style.display = 'block';
+      }, 300);
 
       setTimeout(() => {
         window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
-      }, 1400);
+      }, 900);
     });
   }
-
 });
 </script>
+
 </body>
 </html>
