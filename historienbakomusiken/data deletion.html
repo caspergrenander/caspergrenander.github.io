@@ -588,16 +588,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // FIX: Robust generering av Reference ID (ingen template literal)
+  // FIX: Robust generering av Reference ID (ingen template literal) + single source of truth via localStorage
   const requestIdField = document.getElementById('requestId');
-  if (requestIdField && !requestIdField.value) {
-    const year = new Date().getFullYear();
-    const part1 = Math.floor(1000 + Math.random() * 9000);
-    const part2 = Math.floor(1000 + Math.random() * 9000);
-    requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
+  if (requestIdField) {
+    if (!requestIdField.value) {
+      const year = new Date().getFullYear();
+      const part1 = Math.floor(1000 + Math.random() * 9000);
+      const part2 = Math.floor(1000 + Math.random() * 9000);
+      requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
+    }
+    // Single source of truth: store the exact same Reference ID for the confirmation page
+    try {
+      localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
+    } catch (e) {
+      // If storage is blocked, the flow still submits to Google Forms; the confirmation page may not be able to display the ID.
+    }
   }
 
-  // Checkbox och submit-knapp logik
+// Checkbox och submit-knapp logik
   const confirmOwner = document.getElementById('confirmOwner');
   const confirmUndo = document.getElementById('confirmUndo');
   const submitBtn = document.getElementById('submitBtn');
