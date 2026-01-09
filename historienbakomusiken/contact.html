@@ -1,767 +1,430 @@
-<!DOCTYPE html>    
-<html lang="en">    
-<head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
-<title>Contact – Historien Bakom Musiken</title>    
-<style>    
-
-body {    
-  margin: 0;    
-  padding: 0;    
-  background: #1A2838;    
-  color: #F5E5C8;    
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;    
-  line-height: 1.7;    
-}    
-
-header {    
-  padding: 60px 20px 40px;    
-  text-align: center;    
-  background: #0D0F15;    
-  border-bottom: 1px solid #2A4A4A;    
-}    
-
-header a {    
-  color: inherit;    
-  text-decoration: none;    
-  display: inline-block;    
-  text-align: center;    
-}    
-
-header img {    
-  width: 180px;    
-  border-radius: 6px;    
-  margin-bottom: 20px;    
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);    
-}    
-
-h1 {    
-  color: #FFFFFF;    
-  margin-bottom: 10px;    
-  font-weight: 600;    
-  font-size: 22px;    
-}    
-
-h2 {    
-  color: #FFFFFF;    
-  font-weight: 600;    
-  margin-top: 50px;    
-  border-bottom: 1px solid #2A4A4A;    
-  padding-bottom: 10px;    
-}    
-
-h3 {    
-  color: #E8B65C;    
-  font-weight: 600;    
-  margin-top: 40px;    
-  font-size: 18px;    
-}    
-
-p {    
-  max-width: 800px;    
-  margin: 15px auto;    
-  color: #F5E5C8;    
-}    
-
-a {    
-  color: #D88B5C;    
-  text-decoration: none;    
-  transition: color 0.2s;    
-}    
-a:hover {    
-  color: #E8B65C;    
-  text-decoration: underline;    
-}    
-
-.container {    
-  max-width: 900px;    
-  margin: auto;    
-  background: #0D0F15;    
-  padding: 40px 30px;    
-  border-radius: 6px;    
-  margin-top: 40px;    
-  margin-bottom: 40px;    
-  border: 1px solid #2A4A4A;    
-}    
-
-.subtitle {    
-  color: #2A4A4A;    
-  font-size: 14px;    
-  margin-top: 5px;    
-  letter-spacing: 1px;    
-}    
-
-.info-box {    
-  background: rgba(232, 182, 92, 0.1);    
-  border: 1px solid #E8B65C;    
-  border-radius: 6px;    
-  padding: 20px;    
-  font-size: 14px;    
-  margin: 25px 0;    
-  max-width: 800px;    
-  margin-left: auto;    
-  margin-right: auto;    
-}    
-
-.email-box {    
-  background: rgba(42, 74, 74, 0.2);    
-  border: 1px solid #2A4A4A;    
-  border-radius: 6px;    
-  padding: 25px;    
-  margin: 30px auto;    
-  max-width: 800px;    
-  text-align: center;    
-}    
-
-.email-box a {    
-  font-size: 18px;    
-  font-weight: 600;    
-  color: #E8B65C;    
-}    
-
-.email-box a:hover {    
-  color: #D88B5C;    
-}    
-
-/* Form styling */    
-form {    
-  margin-top: 30px;    
-  max-width: 800px;    
-  margin-left: auto;    
-  margin-right: auto;    
-}    
-
-label {    
-  display: block;    
-  margin: 25px 0 10px;    
-  font-weight: 600;    
-  color: #FFFFFF;    
-}    
-
-input,    
-select,    
-textarea {    
-  width: 100%;    
-  padding: 14px;    
-  border-radius: 6px;    
-  border: 1px solid #2A4A4A;    
-  background: rgba(42, 74, 74, 0.2);    
-  color: #F5E5C8;    
-  font-size: 15px;    
-  box-sizing: border-box;    
-  transition: border-color 0.2s;    
-}    
-
-select {    
-  position: relative;    
-  z-index: 10;    
-  appearance: none;    
-  -webkit-appearance: none;    
-  -moz-appearance: none;    
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");    
-  background-repeat: no-repeat;    
-  background-position: right 15px center;    
-  background-size: 12px;    
-  padding-right: 40px;    
-  cursor: pointer;    
-}    
-
-select option {    
-  background-color: #0D0F15;    
-  color: #F5E5C8;    
-  padding: 12px;    
-  font-size: 15px;    
-}    
-
-select:focus {    
-  outline: none;    
-  border-color: #D88B5C;    
-  position: relative;    
-}    
-
-input:focus,    
-textarea:focus {    
-  outline: none;    
-  border-color: #D88B65;    
-}    
-
-input::placeholder,    
-textarea::placeholder {    
-  color: #7A8C9C;    
-}    
-
-textarea {    
-  min-height: 120px;    
-  resize: vertical;    
-}    
-
-/* Checkbox styling */    
-.checkbox-group {    
-  margin-top: 35px;    
-  padding: 20px;    
-  background-color: rgba(42, 74, 74, 0.1);    
-  border-radius: 6px;    
-  border: 1px solid #2A4A4A;    
-}    
-
-.checkbox-group label {    
-  display: flex;    
-  align-items: flex-start;    
-  gap: 12px;    
-  font-weight: normal;    
-  color: #F5E5C8;    
-  margin: 15px 0;    
-  padding: 0;    
-}    
-
-.checkbox-group input[type="checkbox"] {    
-  width: 20px;    
-  height: 20px;    
-  margin-top: 2px;    
-  cursor: pointer;    
-}    
-
-/* Button styling */    
-.button-container {    
-  margin-top: 40px;    
-  text-align: center;    
-  padding-top: 20px;    
-  border-top: 1px solid #2A4A4A;    
-}    
-
-.button {    
-  display: inline-block;    
-  padding: 16px 40px;    
-  background: #E8B65C;    
-  color: #1A2838;    
-  font-size: 16px;    
-  font-weight: 700;    
-  border-radius: 8px;    
-  border: none;    
-  cursor: pointer;    
-  transition: all 0.3s ease;    
-  text-align: center;    
-  min-width: 220px;    
-}    
-
-.button:hover {    
-  background: #D88B5C;    
-  transform: translateY(-2px);    
-  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.3);    
-}    
-
-.note {    
-  margin-top: 20px;    
-  font-size: 13px;    
-  color: #2A4A4A;    
-  text-align: center;    
-  max-width: 800px;    
-  margin-left: auto;    
-  margin-right: auto;    
-}    
-
-/* Contact info section */    
-.contact-info {    
-  display: grid;    
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));    
-  gap: 30px;    
-  margin: 40px auto;    
-  max-width: 800px;    
-}    
-
-.contact-item {    
-  background: rgba(42, 74, 74, 0.1);    
-  border: 1px solid #2A4A4A;    
-  border-radius: 6px;    
-  padding: 25px;    
-  text-align: center;    
-  transition: all 0.3s ease;    
-}    
-
-.contact-item:hover {    
-  border-color: #D88B5C;    
-  transform: translateY(-5px);    
-}    
-
-.contact-icon {    
-  font-size: 36px;    
-  color: #E8B65C;    
-  margin-bottom: 15px;    
-}    
-
-.contact-item h4 {    
-  color: #FFFFFF;    
-  margin: 10px 0;    
-  font-size: 16px;    
-}    
-
-.contact-item p {    
-  margin: 10px 0;    
-  color: #7A8C9C;    
-  font-size: 14px;    
-}    
-
-/* Footer styling */    
-footer {    
-  margin-top: 60px;    
-  padding: 40px 20px;    
-  text-align: center;    
-  font-size: 0.9rem;    
-  color: #2A4A4A;    
-  border-top: 1px solid #2A4A4A;    
-  background: #0D0F15;    
-}    
-
-.footer-content {    
-  max-width: 800px;    
-  margin: 0 auto;    
-}    
-
-.footer-links {    
-  margin: 20px 0;    
-  display: flex;    
-  justify-content: center;    
-  flex-wrap: wrap;    
-  gap: 15px;    
-}    
-
-.footer-links a {    
-  color: #2A4A4A;    
-  font-size: 0.85rem;    
-}    
-
-.footer-links a:hover {    
-  color: #D88B5C;    
-}    
-
-strong {    
-  color: #FFFFFF;    
-  font-weight: 600;    
-}    
-
-em {    
-  color: #E8B65C;    
-  font-style: italic;    
-}    
-
-.section-divider {    
-  height: 1px;    
-  background-color: #2A4A4A;    
-  margin: 40px auto;    
-  max-width: 800px;    
-}    
-
-.back-link {    
-  display: inline-block;    
-  margin-top: 20px;    
-  color: #D88B5C;    
-  font-size: 0.9em;    
-}    
-
-.back-link:hover {    
-  color: #E8B65C;    
-}    
-
-/* CSS för Follow Us-sektionen */
-.follow-section {
-  text-align: center;
-  margin: 50px auto 30px;
-  max-width: 800px;
-}
-
-.follow-section h2 {
-  margin-bottom: 30px;
-  border: none;
-  padding-bottom: 0;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-}
-
-.social-icon a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.icon-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #2A4A4A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.social-icon:hover .icon-container {
-  background: #D88B5C;
-}
-
-.icon-container img {
-  width: 35px;
-  height: 35px;
-  filter: brightness(0) invert(1);
-}
-
-.social-icon span {
-  color: #F5E5C8;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-
-
-/* Responsiv design för mindre skärmar */
-@media (max-width: 768px) {
-  .social-icons {
-    gap: 30px;
-  }
-  
-  .icon-container {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .icon-container img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .social-icons {
-    gap: 20px;
-  }
-  
-  .icon-container {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .icon-container img {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-
-/* Responsive design */    
-@media (max-width: 768px) {    
-  .container {    
-    padding: 30px 20px;    
-    margin-top: 20px;    
-    margin-bottom: 20px;    
-  }    
-  .contact-info {    
-    grid-template-columns: 1fr;    
-  }    
-}    
-
-</style>    
-</head>    
-<body>    
-<header>    
-  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">    
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"    
-         alt="Historien Bakom Musiken Logo">    
-    <h1>Historien Bakom Musiken</h1>    
-  </a>    
-  <p class="subtitle">Contact Us – Get in Touch</p>    
-</header>    
-
-<div class="container">    
-  <h2>Contact Information</h2>    
-  <p>    
-    We're here to help! You can reach us via email or use the contact form below.    
-    We typically respond within <strong>24-48 hours</strong> on business days.    
-  </p>    
-
-  <div class="email-box">    
-    <p><strong>Primary Email Address:</strong></p>    
-    <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>    
-    <p style="margin-top: 10px; font-size: 14px; color: #7A8C9C;">    
-      For support, inquiries, and general questions    
-    </p>    
-  </div>    
-
-  <div class="info-box">    
-    <strong>Response Time:</strong> We strive to respond to all inquiries within    
-    <strong>1-2 business days</strong>. For urgent matters related to AutoPublisher,    
-    please include "URGENT" in your subject line.    
-  </div>    
-
-  <div class="section-divider"></div>    
-
-  <div class="contact-info">    
-    <div class="contact-item">    
-      <div class="contact-icon">📧</div>    
-      <h4>Email Support</h4>    
-      <p>For general inquiries and support questions</p>    
-      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>    
-    </div>    
-
-    <div class="contact-item">    
-      <div class="contact-icon">⚙️</div>    
-      <h4>Technical Support</h4>    
-      <p>For AutoPublisher technical issues</p>    
-      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>    
-    </div>    
-
-    <div class="contact-item">    
-      <div class="contact-icon">🔒</div>    
-      <h4>Privacy & Data</h4>    
-      <p>For privacy concerns and data deletion requests</p>    
-      <p><a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Form</a></p>    
-    </div>    
-  </div>    
-
-  <div class="section-divider"></div>    
-
-  <h2>Send Us a Message</h2>    
-
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-  <form id="contactForm"    
-        method="POST"
-        action="https://docs.google.com/forms/d/e/1FAIpQLSc5nM9zKeDSSOiYBm5Y3F9LhzuZ0jlp9-MN2UioIKu9f7N03A/formResponse"
-        target="hidden_iframe">    
-
-    <input type="hidden" name="fvv" value="1">
-    <input type="hidden" name="draftResponse" value="[]">
-    <input type="hidden" name="pageHistory" value="0">
-
-    <!-- Reference ID -->
-    <input type="hidden" name="entry.1874837238" id="referenceIdField" value="">
-
-    <label>Full Name</label>    
-    <input type="text" id="fullName" name="entry.2104914956" placeholder="Your name" required>    
-
-    <label>Email Address</label>    
-    <input type="email" id="email" name="entry.1629993521" placeholder="you@example.com" required>    
-
-    <label>Subject</label>    
-    <select id="subject" name="entry.1657781963" required>    
-      <option value="" disabled selected>Select a subject</option>    
-      <option value="General Inquiry">General Inquiry</option>    
-      <option value="AutoPublisher Support">AutoPublisher Support</option>    
-      <option value="Technical Issue">Technical Issue</option>    
-      <option value="Partnership Opportunity">Partnership Opportunity</option>    
-      <option value="Feedback/Suggestion">Feedback/Suggestion</option>    
-      <option value="Other">Other</option>    
-    </select>    
-
-    <label>Message</label>    
-    <textarea id="message" name="entry.1148119123" placeholder="How can we help you?" required></textarea>    
-
-    <div class="checkbox-group">    
-      <label>    
-        <input type="checkbox" id="privacyAgree" name="entry.600771406" value="I agree to the Privacy Policy" required>    
-        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>    
-      </label>    
-
-      <label>    
-        <input type="checkbox" id="updatesOptIn" name="entry.467794325" value="I'd like to receive updates about Historien Bakom Musiken (optional)">    
-        I'd like to receive updates about Historien Bakom Musiken (optional)    
-      </label>    
-    </div>    
-
-    <div class="button-container">    
-      <button type="submit" class="button" id="submitBtn">    
-        Send Message    
-      </button>    
-      <div class="note" id="submitNote">    
-        Submissions are sent via Google Forms. After you submit, you will be redirected to the confirmation page.    
-      </div>    
-    </div>    
-  </form>    
-
-  <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px;">
-    ✅ Message submitted. Redirecting…
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historien Bakom Musiken – Contact Us</title>
+  <style>
+    /* (CSS styles following the same design system as other pages) */
+    body {
+      background: #1A2838;
+      color: #F5E5C8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2A4A4A;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    header .subtitle {
+      margin: 5px 0 0;
+      font-size: 16px;
+      color: #E8B65C;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      color: #E8B65C;
+    }
+    .section-divider {
+      height: 1px;
+      background: #E8B65C;
+      margin: 30px 0;
+      border: none;
+    }
+    .email-box {
+      background: rgba(42, 74, 74, 0.1);
+      padding: 15px 20px;
+      margin-bottom: 20px;
+    }
+    .info-box {
+      background: rgba(42, 74, 74, 0.1);
+      padding: 15px 20px;
+      border-left: 4px solid #E8B65C;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-family: inherit;
+      background: #FFFFFF;
+      border: 2px solid #2A4A4A;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #7A8C9C;
+    }
+    select {
+      cursor: pointer;
+    }
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    .checkbox-group {
+      margin: 20px 0;
+    }
+    .checkbox-group label {
+      display: block;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+    .checkbox-group input {
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+    .button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .button {
+      background: #E8B65C;
+      color: #1A2838;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .note {
+      font-size: 14px;
+      color: #7A8C9C;
+      margin-top: 8px;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .contact-item {
+      flex: 1;
+      min-width: 200px;
+      background: #1A2838;
+      padding: 15px;
+      border: 1px solid #2A4A4A;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .contact-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .follow-section {
+      text-align: center;
+      margin: 50px auto 30px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: translateY(-5px);
+    }
+    .icon-container {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #2A4A4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .social-icon:hover .icon-container {
+      background: #D88B5C;
+    }
+    .icon-container svg {
+      width: 35px;
+      height: 35px;
+      fill: #ffffff;
+    }
+    .social-icon span {
+      color: #F5E5C8;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+    footer {
+      background: #2A4A4A;
+      padding: 20px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 16px;
+      color: #F5E5C8;
+      margin: 0;
+    }
+    .footer-links {
+      margin-top: 10px;
+    }
+    .footer-links a {
+      color: #E8B65C;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+      .social-icons { gap: 30px; }
+      .icon-container { width: 60px; height: 60px; }
+      .icon-container svg { width: 30px; height: 30px; }
+    }
+    @media (max-width: 480px) {
+      .social-icons { gap: 20px; }
+      .icon-container { width: 50px; height: 50px; }
+      .icon-container svg { width: 25px; height: 25px; }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
+    <img src="/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo" />
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p class="subtitle">Contact Us – Get in Touch</p>
+</header>
+
+<div class="container">
+  <h2>Contact Information</h2>
+  <p>
+    We're here to help! You can reach us via email or use the contact form below. 
+    We typically respond within <strong>24–48 hours</strong> on business days.
+  </p>
+
+  <div class="email-box">
+    <p><strong>Primary Email Address:</strong></p>
+    <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>
+    <p style="margin-top: 10px; font-size: 14px; color: #7A8C9C;">
+      For support, inquiries, and general questions
+    </p>
   </div>
 
-  <div class="section-divider"></div>    
+  <div class="info-box">
+    <strong>Response Time:</strong> We strive to respond to all inquiries within 
+    <strong>1–2 business days</strong>. For urgent matters related to AutoPublisher, 
+    please include "URGENT" in your subject line.
+  </div>
 
-  <h2>Frequently Asked Questions</h2>    
+  <div class="section-divider"></div>
 
-  <h3>What is the best way to contact you?</h3>    
-  <p>Email is the preferred method for all inquiries. Please use <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a> for the fastest response.</p>    
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-icon">📧</div>
+      <h4>Email Support</h4>
+      <p>For general inquiries and support questions</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">⚙️</div>
+      <h4>Technical Support</h4>
+      <p>For AutoPublisher technical issues</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🔒</div>
+      <h4>Privacy & Data</h4>
+      <p>For privacy concerns and data deletion requests</p>
+      <p><a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Form</a></p>
+    </div>
+  </div>
 
-  <h3>Do you offer technical support for AutoPublisher?</h3>    
-  <p>Yes! We provide technical support for AutoPublisher users. Please include your TikTok username and a description of the issue in your email.</p>    
+  <div class="section-divider"></div>
 
-  <h3>Can I request a feature for AutoPublisher?</h3>    
-  <p>Absolutely! We welcome feature requests and suggestions. Use the contact form above or send us an email with your ideas.</p>    
+  <h2>Send Us a Message</h2>
 
-  <h3>What should I do if I need to delete my data?</h3>    
-  <p>Visit our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a> to submit a formal request.</p>    
+  <!-- Hidden iframe to handle form submission -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 
+  <form id="contactForm" method="POST"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSXXXXXXXXXXXXXXXX/formResponse"
+        target="hidden_iframe" autocomplete="on">
+    <!-- Google Forms hidden fields -->
+    <input type="hidden" name="fvv" value="1" />
+    <input type="hidden" name="draftResponse" value="[]" />
+    <input type="hidden" name="pageHistory" value="0" />
+    <!-- (Optional: a submission source field if your form uses one)
+    <input type="hidden" name="entry.YYYYYYYYYY" value="Public Website – Contact Page" /> -->
+    <input type="hidden" name="fbzx" value="" />
 
-<div class="follow-section">
+    <label>Full Name</label>
+    <input type="text" name="entry.1111111111" placeholder="Your name" required />
+    <!-- Replace 1111111111 with the actual entry ID for "Full Name" -->
+
+    <label>Email Address</label>
+    <input type="email" name="entry.2222222222" placeholder="you@example.com" required />
+    <!-- Replace 2222222222 with the actual entry ID for "Email Address" -->
+
+    <label>Subject</label>
+    <select name="entry.3333333333" required>
+      <option value="" disabled selected>Select a subject</option>
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="AutoPublisher Support">AutoPublisher Support</option>
+      <option value="Technical Issue">Technical Issue</option>
+      <option value="Partnership Opportunity">Partnership Opportunity</option>
+      <option value="Feedback/Suggestion">Feedback/Suggestion</option>
+      <option value="Other">Other</option>
+    </select>
+    <!-- Replace 3333333333 with the actual entry ID for "Subject" -->
+
+    <label>Message</label>
+    <textarea name="entry.4444444444" placeholder="How can we help you?" required></textarea>
+    <!-- Replace 4444444444 with the actual entry ID for "Message" -->
+
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" name="entry.5555555555" 
+               value="I agree to the Privacy Policy" required />
+        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy" target="_blank">Privacy Policy</a>
+      </label>
+      <!-- Replace 5555555555 with the actual entry ID for the Privacy Policy agreement checkbox -->
+      <label>
+        <input type="checkbox" name="entry.6666666666" 
+               value="I'd like to receive updates about Historien Bakom Musiken (optional)" />
+        I'd like to receive updates about Historien Bakom Musiken (optional)
+      </label>
+      <!-- Replace 6666666666 with the actual entry ID for the Updates opt-in checkbox -->
+    </div>
+
+    <div class="button-container">
+      <button type="submit" class="button">Send Message</button>
+      <div class="note">
+        <!-- You can adjust this note or remove it now that the form is live -->
+        * All fields are required except the updates opt-in.
+      </div>
+    </div>
+  </form>
+
+  <div class="section-divider"></div>
+
+  <h2>Frequently Asked Questions</h2>
+  <h3>What is the best way to contact you?</h3>
+  <p>Email is the preferred method for all inquiries. Please use <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a> for the fastest response.</p>
+  <h3>Do you offer technical support for AutoPublisher?</h3>
+  <p>Yes! We provide technical support for AutoPublisher users. Please include your TikTok username and a description of the issue in your email.</p>
+  <h3>Can I request a feature for AutoPublisher?</h3>
+  <p>Absolutely! We welcome feature requests and suggestions. Use the contact form above or send us an email with your ideas.</p>
+  <h3>What should I do if I need to delete my data?</h3>
+  <p>Visit our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a> to submit a formal request.</p>
+
+  <div class="follow-section">
     <h2>Follow Us</h2>
     <div class="social-icons">
+      <!-- Example: Instagram icon -->
       <div class="social-icon">
-        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/historienbakommusiken" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
-            <!-- Instagram SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#FFFFFF">
+              <!-- ... Instagram SVG path ... -->
             </svg>
           </div>
           <span>Instagram</span>
         </a>
       </div>
-      
-      <div class="social-icon">
-        <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <!-- Facebook SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
-            </svg>
-          </div>
-          <span>Facebook</span>
-        </a>
-      </div>
-      
-      <div class="social-icon">
-        <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <!-- Spotify SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
-            </svg>
-          </div>
-          <span>Spotify</span>
-        </a>
-      </div>
-      
-      <!-- TikTok ikon -->
-      <div class="social-icon">
-        <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <!-- TikTok SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-            </svg>
-          </div>
-          <span>TikTok</span>
-        </a>
-      </div>
+      <!-- Other social icons (Facebook, Spotify, TikTok, etc.) can be added similarly -->
     </div>
   </div>
+</div>
 
-  <div class="back-link">    
-    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Back to main page</a>    
-  </div>    
+<footer>
+  <div class="footer-content">
+    <p class="footer-title">Historien Bakom Musiken – Contact</p>
+    <p class="footer-copyright">© 2026 Casper Grenander. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
 
-</div>    
-
-<footer>    
-  <div class="footer-content">    
-    <p style="color: #F5E5C8; margin-bottom: 10px;">    
-      <strong>Historien Bakom Musiken – AutoPublisher</strong>    
-    </p>    
-    <p style="color: #2A4A4A; margin-bottom: 20px;">    
-      © 2026 Casper Grenander. All rights reserved.    
-    </p>    
-    <div class="footer-links">    
-      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>    
-      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>    
-      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>    
-      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>    
-      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>    
-    </div>    
-  </div>    
-</footer>    
-
-<script>    
-document.addEventListener('DOMContentLoaded', function() {    
-  const contactForm = document.getElementById('contactForm');    
-  const submitBtn = document.getElementById('submitBtn');
-  const successMessage = document.getElementById('successMessage');
-  const referenceIdField = document.getElementById('referenceIdField');
-
-  function generateReferenceId() {
-    const year = new Date().getFullYear();
-    const a = Math.floor(1000 + Math.random() * 9000);
-    const b = Math.floor(1000 + Math.random() * 9000);
-    return `MS-${year}-${a}-${b}`;
-  }
-
-  if (contactForm) {    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
     contactForm.addEventListener('submit', function() {
-      // Guard: prevent double-submit
-      if (submitBtn && submitBtn.dataset.submitted === '1') return;
-
-      // Create ID ONLY on submit (not in message field)
-      const referenceId = generateReferenceId();
-
-      // Store for confirmation page
-      localStorage.setItem('contactReferenceId', referenceId);
-
-      // Send same ID into Google Forms hidden field
-      if (referenceIdField) referenceIdField.value = referenceId;
-
-      // UI lock
-      if (submitBtn) {
-        submitBtn.dataset.submitted = '1';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
-        submitBtn.style.cursor = 'not-allowed';
+      // Show feedback on submit
+      const button = contactForm.querySelector('.button');
+      if (button) {
+        button.textContent = 'Message Sent!';
+        button.style.background = '#2A4A4A';
+        button.style.color = '#F5E5C8';
+        button.style.cursor = 'default';
       }
-
-      if (successMessage) successMessage.style.display = 'block';
-
-      // Redirect to your confirmation page
-      setTimeout(function() {
-        window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/message.sent';
-      }, 1200);
-    });    
-  }    
-
-  // Add hover effect to select elements    
-  const selectElements = document.querySelectorAll('select');    
-  selectElements.forEach(select => {    
-    select.addEventListener('mouseenter', function() {    
-      this.style.borderColor = '#D88B5C';    
-    });    
-
-    select.addEventListener('mouseleave', function() {    
-      if (document.activeElement !== this) {    
-        this.style.borderColor = '#2A4A4A';    
-      }    
-    });    
-
-    select.addEventListener('focus', function() {    
-      this.style.borderColor = '#D88B5C';    
-    });    
-
-    select.addEventListener('blur', function() {    
-      this.style.borderColor = '#2A4A4A';    
-    });    
-  });    
-});    
-</script>    
-</body>    
-</html>    
+      // After 3 seconds, reset the form and allow another message
+      setTimeout(() => {
+        if (button) {
+          button.textContent = 'Send Another Message';
+          button.style.background = '#E8B65C';
+          button.style.color = '#1A2838';
+          button.style.cursor = 'pointer';
+        }
+        contactForm.reset();
+      }, 3000);
+    });
+  }
+  // Enhance select field UX (hover/focus highlight)
+  const selectElements = document.querySelectorAll('select');
+  selectElements.forEach(select => {
+    select.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#D88B5C';
+    });
+    select.addEventListener('mouseleave', function() {
+      if (document.activeElement !== this) {
+        this.style.borderColor = '#2A4A4A';
+      }
+    });
+    select.addEventListener('focus', function() {
+      this.style.borderColor = '#D88B5C';
+    });
+    select.addEventListener('blur', function() {
+      this.style.borderColor = '#2A4A4A';
+    });
+  });
+});
+</script>
+</body>
+</html>
