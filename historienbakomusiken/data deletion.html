@@ -170,7 +170,7 @@
       font-size: 15px;
     }
 
-    select:focus { outline: none; border-color: #D88B5C; box-shadow: 0 0 0 3px rgba(216, 139, 92, 0.1); }
+
 
     input::placeholder, textarea::placeholder { color: #7A8C9C; }
 
@@ -695,13 +695,14 @@
 
       /**
        * Validates TikTok username format
-       * Should start with @ and contain only valid characters
+       * Should start with @ (optional) followed by alphanumeric character
+       * Then can contain letters, numbers, dots, underscores
        * @param {string} username - TikTok username to validate
        * @returns {boolean} True if username is valid
        */
       function isValidTikTokUsername(username) {
-        // Allow usernames with or without @, containing letters, numbers, dots, underscores
-        const tiktokRegex = /^@?[a-zA-Z0-9._]+$/;
+        // Username must start with alphanumeric after optional @, then allow dots and underscores
+        const tiktokRegex = /^@?[a-zA-Z0-9][a-zA-Z0-9._]*$/;
         return username.length > 0 && tiktokRegex.test(username);
       }
 
@@ -800,9 +801,15 @@
           console.error('✗ Fetch submission failed:', error);
           console.log('⟳ Attempting fallback submission via iframe...');
           
-          // Show error message but prepare for fallback
+          // Update UI to show fallback attempt
           loadingIndicator.style.display = 'block';
-          errorMessage.style.display = 'none'; // Keep trying with fallback
+          errorMessage.style.display = 'none';
+          
+          // Show a message indicating we're trying an alternative method
+          const fallbackNote = document.createElement('p');
+          fallbackNote.style.cssText = 'color: #E8B65C; font-size: 14px; margin-top: 10px;';
+          fallbackNote.textContent = 'Trying alternative submission method...';
+          loadingIndicator.appendChild(fallbackNote);
           
           // Fallback: Submit via hidden iframe
           setTimeout(() => {

@@ -870,8 +870,8 @@ document.addEventListener('DOMContentLoaded', function() {
     emailLinks.forEach(link => {
       const currentHref = link.getAttribute('href');
       if (currentHref && currentHref.includes('subject=')) {
-        // Replace placeholder with actual reference ID
-        const updatedHref = currentHref.replace(/DR-\d{4}-\d{4,5}-\d{4,5}/g, referenceId);
+        // Replace placeholder with actual reference ID (exact format: DR-YYYY-XXXXX-XXXXX)
+        const updatedHref = currentHref.replace(/DR-\d{4}-\d{5}-\d{5}/g, referenceId);
         link.setAttribute('href', updatedHref);
       }
     });
@@ -965,8 +965,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy to clipboard:', err);
-        // Fallback: select text for manual copy
-        this.select();
+        // Fallback: select text for manual copy using range selection
+        try {
+          const range = document.createRange();
+          range.selectNodeContents(this);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          
+          // Show message to user
+          alert('Reference ID selected. Press Ctrl+C (Cmd+C on Mac) to copy.');
+        } catch (selectErr) {
+          console.error('Text selection also failed:', selectErr);
+        }
       });
     });
     
