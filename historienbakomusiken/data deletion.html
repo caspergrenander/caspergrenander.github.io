@@ -386,6 +386,29 @@
     <!-- Dold iframe för att hantera formulärinlämning -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
+    <!--
+      GOOGLE FORMS CONFIGURATION VALIDATION:
+      - Form Action URL: https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse
+      - Method: POST
+      - Target: hidden_iframe (for silent submission)
+      
+      FIELD MAPPINGS (entry.* keys must match Google Form field IDs):
+      - entry.1526351014: Request ID (auto-generated reference)
+      - entry.1745207114: Submission Source (hidden: "Public Website – Data Deletion Page")
+      - entry.1000001577: Full name
+      - entry.1233888397: Email address
+      - entry.531571766: TikTok username
+      - entry.1847505465: Type of request (dropdown)
+      - entry.226762827: Additional information (optional)
+      - entry.977425461: Confirm owner checkbox
+      - entry.246601893: Confirm undo checkbox
+      
+      SUBMISSION STRATEGY:
+      - Dual submission: iframe (primary) + fetch (backup)
+      - Retry mechanism: Up to 3 attempts with exponential backoff
+      - Logging: All attempts logged to console and sessionStorage
+    -->
+
     <form id="dataDeletionForm"
           method="POST"
           action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
@@ -425,12 +448,12 @@
 
       <div class="checkbox-group">
         <label>
-          <input type="checkbox" id="confirmOwner" name="entry.977425461" required>
+          <input type="checkbox" id="confirmOwner" name="entry.977425461" value="I confirm that I am the owner of the TikTok account listed above." required>
           I confirm that I am the owner of the TikTok account listed above.
         </label>
 
         <label>
-          <input type="checkbox" id="confirmUndo" name="entry.246601893" required>
+          <input type="checkbox" id="confirmUndo" name="entry.246601893" value="I understand that this request cannot be undone." required>
           I understand that this request cannot be undone.
         </label>
       </div>
@@ -440,7 +463,8 @@
         
         <div class="loading" id="loadingIndicator">
           <div class="loading-spinner"></div>
-          <p style="margin-top: 10px; color: #E8B65C;">Submitting request to Google Forms...</p>
+          <p style="margin-top: 10px; color: #E8B65C;">Submitting your request...</p>
+          <p style="margin-top: 5px; font-size: 12px; color: #7A8C9C;">Using multiple submission methods for reliability</p>
         </div>
 
         <div class="note" id="submitNote">
