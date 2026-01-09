@@ -701,39 +701,45 @@
         }
 
         // Strategy 2: Submit via fetch as backup (parallel submission)
-        fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors'
-        })
-        .then(() => {
-          fetchSubmissionCompleted = true;
-          SubmissionLogger.log('success', 'Fetch submission completed', { attempt });
-          
-          // Wait a bit to see if iframe also completes
-          setTimeout(() => {
-            if (!iframeSubmissionCompleted && !fetchSubmissionCompleted) {
-              SubmissionLogger.log('warning', 'Neither submission method confirmed, but likely succeeded');
-            }
-            handleSuccessfulSubmission();
-          }, 2000);
-        })
-        .catch((error) => {
-          SubmissionLogger.log('error', 'Fetch submission failed', { error: error.message, attempt });
-          
-          // Retry if attempts remaining
-          if (attempt < MAX_RETRY_ATTEMPTS) {
-            const retryDelay = Math.min(1000 * Math.pow(2, attempt - 1), 5000); // Exponential backoff: 1s, 2s, 4s
-            SubmissionLogger.log('info', `Retrying in ${retryDelay}ms`, { attempt: attempt + 1 });
+        // Wait a bit to see if iframe completes, then try fetch
+        setTimeout(() => {
+          fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+          })
+          .then(() => {
+            fetchSubmissionCompleted = true;
+            SubmissionLogger.log('success', 'Fetch submission completed', { attempt });
             
+            // Success via fetch, proceed to confirmation
+            if (!iframeSubmissionCompleted) {
+              handleSuccessfulSubmission();
+            }
+          })
+          .catch((error) => {
+            SubmissionLogger.log('error', 'Fetch submission failed', { error: error.message, attempt });
+            
+            // Check if iframe succeeded - if so, don't retry
             setTimeout(() => {
-              submitFormWithRetry(attempt + 1);
-            }, retryDelay);
-          } else {
-            SubmissionLogger.log('error', 'All submission attempts exhausted', { attempts: MAX_RETRY_ATTEMPTS });
-            handleSubmissionFailure();
-          }
-        });
+              if (iframeSubmissionCompleted) {
+                SubmissionLogger.log('info', 'Iframe succeeded, skipping retry', { attempt });
+                handleSuccessfulSubmission();
+              } else if (attempt < MAX_RETRY_ATTEMPTS) {
+                // Retry if attempts remaining and iframe hasn't succeeded
+                const retryDelay = Math.min(1000 * Math.pow(2, attempt - 1), 5000); // Exponential backoff: 1s, 2s, 4s
+                SubmissionLogger.log('info', `Retrying in ${retryDelay}ms`, { attempt: attempt + 1 });
+                
+                setTimeout(() => {
+                  submitFormWithRetry(attempt + 1);
+                }, retryDelay);
+              } else {
+                SubmissionLogger.log('error', 'All submission attempts exhausted', { attempts: MAX_RETRY_ATTEMPTS });
+                handleSubmissionFailure();
+              }
+            }, 1000); // Wait 1 second to see if iframe completes
+          });
+        }, 500); // Small delay to let iframe submission start first
       }
 
       // Handle successful submission
