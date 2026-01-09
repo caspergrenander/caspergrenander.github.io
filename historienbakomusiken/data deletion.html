@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Deletion Request – AutoPublisher</title>
-
   <style>
     body {
       margin: 0;
@@ -62,7 +61,6 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-
     a:hover {
       color: #E8B65C;
       text-decoration: underline;
@@ -147,21 +145,10 @@
       font-size: 15px;
     }
 
-    select:focus {
-      outline: none;
-      border-color: #D88B5C;
-    }
+    select:focus { outline: none; border-color: #D88B5C; }
+    input:focus, textarea:focus { outline: none; border-color: #D88B5C; }
 
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #D88B5C;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #7A8C9C;
-    }
+    input::placeholder, textarea::placeholder { color: #7A8C9C; }
 
     textarea {
       min-height: 120px;
@@ -256,7 +243,10 @@
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: #D88B5C; text-decoration: none; }
+    .footer-links a:hover {
+      color: #D88B5C;
+      text-decoration: none;
+    }
 
     .footer-copyright {
       color: #2A4A4A;
@@ -352,7 +342,7 @@
 <body>
   <header>
     <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
-      <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo" />
+      <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
       <h1>Historien Bakom Musiken</h1>
     </a>
     <p class="subtitle">Data Deletion Request – AutoPublisher</p>
@@ -360,20 +350,13 @@
 
   <div class="container">
     <h2>About Data Deletion</h2>
-    <p>
-      You have the right to request deletion of data processed in connection with
-      <strong>Historien Bakom Musiken – AutoPublisher</strong>.
-    </p>
-    <p>
-      This request applies only to data processed by AutoPublisher.
-      Data managed directly by TikTok must be handled through TikTok's own account settings.
-    </p>
+    <p>You have the right to request deletion of data processed in connection with <strong>Historien Bakom Musiken – AutoPublisher</strong>.</p>
+    <p>This request applies only to data processed by AutoPublisher. Data managed directly by TikTok must be handled through TikTok's own account settings.</p>
 
     <div class="section-divider"></div>
 
     <div class="info-box">
-      <strong>Processing time:</strong> The process is usually completed within
-      <strong>7–10 business days</strong> after the request is received.
+      <strong>Processing time:</strong> The process is usually completed within <strong>7–10 business days</strong> after the request is received.
     </div>
 
     <div class="section-divider"></div>
@@ -382,31 +365,30 @@
 
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-    <form
-      id="dataDeletionForm"
-      method="POST"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
-      target="hidden_iframe"
-      autocomplete="on"
-    >
-      <input type="hidden" name="fvv" value="1" />
-      <input type="hidden" name="draftResponse" value="[]" />
-      <input type="hidden" name="pageHistory" value="0" />
+    <form id="dataDeletionForm"
+          method="POST"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
+          target="hidden_iframe"
+          autocomplete="on">
 
-      <input type="hidden" id="requestId" name="entry.1526351014" value="" />
-      <input type="hidden" id="submissionSource" name="entry.1745207114" value="Public Website – Data Deletion Page" />
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="draftResponse" value="[]">
+      <input type="hidden" name="pageHistory" value="0">
 
-      <!-- FIX: fbzx måste ha korrekt värde annars kan Google Forms vägra registrera -->
-      <input type="hidden" name="fbzx" value="-2437333437311568305" />
+      <input type="hidden" id="requestId" name="entry.1526351014" value="">
+      <input type="hidden" id="submissionSource" name="entry.1745207114" value="Public Website – Data Deletion Page">
+
+      <!-- KRITISKT: fbzx måste matcha formens view-source -->
+      <input type="hidden" name="fbzx" value="-2437333437311568305">
 
       <label>Full name</label>
-      <input type="text" name="entry.1000001577" placeholder="Your full name" required />
+      <input type="text" name="entry.1000001577" placeholder="Your full name" required>
 
       <label>Email address</label>
-      <input type="email" name="entry.1233888397" placeholder="you@example.com" required />
+      <input type="email" name="entry.1233888397" placeholder="you@example.com" required>
 
       <label>TikTok username</label>
-      <input type="text" name="entry.531571766" placeholder="@yourusername" required />
+      <input type="text" name="entry.531571766" placeholder="@yourusername" required>
 
       <label>Type of request</label>
       <select id="requestType" name="entry.1847505465" required>
@@ -421,21 +403,19 @@
       <div class="checkbox-group">
         <label>
           <input type="checkbox" id="confirmOwner" name="entry.977425461"
-            value="I confirm that I am the owner of the TikTok account listed above" required />
+                 value="I confirm that I am the owner of the TikTok account listed above" required>
           I confirm that I am the owner of the TikTok account listed above.
         </label>
 
         <label>
           <input type="checkbox" id="confirmUndo" name="entry.246601893"
-            value="I understand that this request cannot be undone" required />
+                 value="I understand that this request cannot be undone" required>
           I understand that this request cannot be undone.
         </label>
       </div>
 
       <div class="button-container">
-        <button class="button" id="submitBtn" type="submit" disabled>
-          Request Data Deletion
-        </button>
+        <button class="button" id="submitBtn" type="submit" disabled>Request Data Deletion</button>
 
         <div class="note" id="submitNote">
           Submissions are sent via Google Forms. If you don't see a confirmation, please verify the form action URL and entry IDs.
@@ -449,8 +429,8 @@
 
     <div class="follow-section">
       <h2>Follow Us</h2>
-
       <div class="social-icons">
+
         <div class="social-icon">
           <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
             <div class="icon-container">
@@ -494,6 +474,7 @@
             <span>TikTok</span>
           </a>
         </div>
+
       </div>
     </div>
   </div>
@@ -502,7 +483,6 @@
     <div class="footer-content">
       <p class="footer-title">Historien Bakom Musiken – AutoPublisher</p>
       <p class="footer-copyright">© 2026 Casper Grenander. All rights reserved.</p>
-
       <div class="footer-links">
         <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
         <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
@@ -515,28 +495,14 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Dropdown UX
-      const selectElement = document.getElementById('requestType');
-      if (selectElement) {
-        selectElement.addEventListener('focus', function () {
-          if (window.innerHeight < 800) {
-            this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        });
-
-        selectElement.addEventListener('mouseenter', function () {
-          this.style.borderColor = '#D88B5C';
-        });
-
-        selectElement.addEventListener('mouseleave', function () {
-          if (document.activeElement !== this) {
-            this.style.borderColor = '#2A4A4A';
-          }
-        });
-      }
-
-      // Robust generering av Reference ID
       const requestIdField = document.getElementById('requestId');
+      const confirmOwner = document.getElementById('confirmOwner');
+      const confirmUndo = document.getElementById('confirmUndo');
+      const submitBtn = document.getElementById('submitBtn');
+      const form = document.getElementById('dataDeletionForm');
+      const successMessage = document.getElementById('successMessage');
+
+      // Reference ID
       if (requestIdField && !requestIdField.value) {
         const year = new Date().getFullYear();
         const part1 = Math.floor(1000 + Math.random() * 9000);
@@ -549,66 +515,36 @@
         if (requestIdField) localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
       } catch (e) {}
 
-      // Checkbox och submit-knapp logik
-      const confirmOwner = document.getElementById('confirmOwner');
-      const confirmUndo = document.getElementById('confirmUndo');
-      const submitBtn = document.getElementById('submitBtn');
-      const form = document.getElementById('dataDeletionForm');
-      const successMessage = document.getElementById('successMessage');
-
+      // Enable-knapp
       function updateButtonState() {
-        const bothChecked = !!(confirmOwner && confirmUndo && confirmOwner.checked && confirmUndo.checked);
+        const ok = !!(confirmOwner && confirmUndo && confirmOwner.checked && confirmUndo.checked);
         if (submitBtn) {
-          submitBtn.disabled = !bothChecked;
-          submitBtn.style.opacity = bothChecked ? '1' : '0.6';
+          submitBtn.disabled = !ok;
+          submitBtn.style.opacity = ok ? '1' : '0.6';
         }
       }
-
       if (confirmOwner) confirmOwner.addEventListener('change', updateButtonState);
       if (confirmUndo) confirmUndo.addEventListener('change', updateButtonState);
       updateButtonState();
 
-      // Submit-hantering
+      // Submit: LÅT BROWSER SKICKA (ingen preventDefault, ingen form.submit)
       if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
+        form.addEventListener('submit', function () {
           if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             submitBtn.style.cursor = 'not-allowed';
           }
-
-          if (successMessage) {
-            successMessage.style.display = 'block';
-          }
+          if (successMessage) successMessage.style.display = 'block';
 
           try {
             if (requestIdField) localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
           } catch (e2) {}
 
-          const iframe = document.getElementById('hidden_iframe');
-
-          let redirected = false;
-          function doRedirect() {
-            if (redirected) return;
-            redirected = true;
+          // Vänta så POST hinner registreras innan redirect
+          setTimeout(function () {
             window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
-          }
-
-          if (iframe) {
-            const onLoad = function () {
-              iframe.removeEventListener('load', onLoad);
-              setTimeout(doRedirect, 250);
-            };
-            iframe.addEventListener('load', onLoad);
-          }
-
-          // Skicka formuläret
-          form.submit();
-
-          // Fallback
-          setTimeout(doRedirect, 6000);
+          }, 2800);
         });
       }
     });
