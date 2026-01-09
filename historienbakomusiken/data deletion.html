@@ -663,6 +663,9 @@
       // Track submission attempts
       let submissionAttempts = 0;
       const MAX_RETRY_ATTEMPTS = 3;
+      const FETCH_DELAY_MS = 500; // Delay before starting fetch to let iframe start first
+      const IFRAME_CHECK_DELAY_MS = 1000; // Time to wait for iframe completion check
+      const REDIRECT_DELAY_MS = 2000; // Delay before redirecting to confirmation page
       let iframeSubmissionCompleted = false;
       let fetchSubmissionCompleted = false;
 
@@ -727,7 +730,7 @@
                 handleSuccessfulSubmission();
               } else if (attempt < MAX_RETRY_ATTEMPTS) {
                 // Retry if attempts remaining and iframe hasn't succeeded
-                const retryDelay = Math.min(1000 * Math.pow(2, attempt - 1), 5000); // Exponential backoff: 1s, 2s, 4s
+                const retryDelay = Math.min(1000 * Math.pow(2, attempt - 1), 5000); // Exponential backoff: 1s, 2s, 4s (capped at 5s)
                 SubmissionLogger.log('info', `Retrying in ${retryDelay}ms`, { attempt: attempt + 1 });
                 
                 setTimeout(() => {
@@ -737,9 +740,9 @@
                 SubmissionLogger.log('error', 'All submission attempts exhausted', { attempts: MAX_RETRY_ATTEMPTS });
                 handleSubmissionFailure();
               }
-            }, 1000); // Wait 1 second to see if iframe completes
+            }, IFRAME_CHECK_DELAY_MS);
           });
-        }, 500); // Small delay to let iframe submission start first
+        }, FETCH_DELAY_MS);
       }
 
       // Handle successful submission
@@ -775,7 +778,7 @@
           const redirectUrl = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
           SubmissionLogger.log('info', 'Redirecting to confirmation page', { url: redirectUrl });
           window.location.href = redirectUrl;
-        }, 2000);
+        }, REDIRECT_DELAY_MS);
       }
 
       // Handle submission failure
