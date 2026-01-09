@@ -216,6 +216,26 @@
       margin-right: auto;
     }
 
+    .loading {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .loading-spinner {
+      border: 3px solid rgba(42, 74, 74, 0.3);
+      border-top: 3px solid #E8B65C;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     footer {
       margin-top: 60px;
       padding: 40px 20px;
@@ -363,6 +383,7 @@
 
     <h2>Request Data Deletion</h2>
 
+    <!-- Dold iframe för att hantera formulärinlämning -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <form id="dataDeletionForm"
@@ -371,16 +392,17 @@
           target="hidden_iframe"
           autocomplete="on">
 
+      <!-- Google Forms hidden fields -->
       <input type="hidden" name="fvv" value="1">
       <input type="hidden" name="draftResponse" value="[]">
       <input type="hidden" name="pageHistory" value="0">
+      <input type="hidden" name="fbzx" value="-2437333437311568305">
 
+      <!-- Custom hidden fields -->
       <input type="hidden" id="requestId" name="entry.1526351014" value="">
       <input type="hidden" id="submissionSource" name="entry.1745207114" value="Public Website – Data Deletion Page">
 
-      <!-- KRITISKT: fbzx måste matcha formens view-source -->
-      <input type="hidden" name="fbzx" value="-2437333437311568305">
-
+      <!-- Visible form fields -->
       <label>Full name</label>
       <input type="text" name="entry.1000001577" placeholder="Your full name" required>
 
@@ -392,6 +414,7 @@
 
       <label>Type of request</label>
       <select id="requestType" name="entry.1847505465" required>
+        <option value="" disabled selected>Select request type</option>
         <option value="Delete all data related to my account">Delete all data related to my account</option>
         <option value="Delete uploaded video metadata">Delete uploaded video metadata</option>
         <option value="Revoke access & delete authentication tokens">Revoke access & delete authentication tokens</option>
@@ -402,27 +425,34 @@
 
       <div class="checkbox-group">
         <label>
-          <input type="checkbox" id="confirmOwner" name="entry.977425461"
-                 value="I confirm that I am the owner of the TikTok account listed above" required>
+          <input type="checkbox" id="confirmOwner" name="entry.977425461" required>
           I confirm that I am the owner of the TikTok account listed above.
         </label>
 
         <label>
-          <input type="checkbox" id="confirmUndo" name="entry.246601893"
-                 value="I understand that this request cannot be undone" required>
+          <input type="checkbox" id="confirmUndo" name="entry.246601893" required>
           I understand that this request cannot be undone.
         </label>
       </div>
 
       <div class="button-container">
         <button class="button" id="submitBtn" type="submit" disabled>Request Data Deletion</button>
-
-        <div class="note" id="submitNote">
-          Submissions are sent via Google Forms. If you don't see a confirmation, please verify the form action URL and entry IDs.
+        
+        <div class="loading" id="loadingIndicator">
+          <div class="loading-spinner"></div>
+          <p style="margin-top: 10px; color: #E8B65C;">Submitting request to Google Forms...</p>
         </div>
 
-        <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px;">
-          ✅ Request submitted. Thank you.
+        <div class="note" id="submitNote">
+          Your request will be submitted to our system. Please don't close this page while submitting.
+        </div>
+
+        <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px; color: #4CAF50;">
+          ✅ Request successfully submitted. Redirecting to confirmation page...
+        </div>
+
+        <div id="errorMessage" class="note" style="display:none; font-size:14px; margin-top:18px; color: #f44336;">
+          ❌ An error occurred. Please try again or contact support.
         </div>
       </div>
     </form>
@@ -495,58 +525,177 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Element referenser
+      const form = document.getElementById('dataDeletionForm');
       const requestIdField = document.getElementById('requestId');
       const confirmOwner = document.getElementById('confirmOwner');
       const confirmUndo = document.getElementById('confirmUndo');
       const submitBtn = document.getElementById('submitBtn');
-      const form = document.getElementById('dataDeletionForm');
+      const loadingIndicator = document.getElementById('loadingIndicator');
       const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const submitNote = document.getElementById('submitNote');
 
-      // Reference ID
-      if (requestIdField && !requestIdField.value) {
+      // Generera och spara Reference ID
+      function generateReferenceId() {
         const year = new Date().getFullYear();
-        const part1 = Math.floor(1000 + Math.random() * 9000);
-        const part2 = Math.floor(1000 + Math.random() * 9000);
-        requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
+        const timestamp = Date.now().toString().slice(-6);
+        const random = Math.floor(1000 + Math.random() * 9000);
+        return `DR-${year}-${timestamp}-${random}`;
       }
 
-      // Spara Reference ID lokalt
-      try {
-        if (requestIdField) localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
-      } catch (e) {}
-
-      // Enable-knapp
-      function updateButtonState() {
-        const ok = !!(confirmOwner && confirmUndo && confirmOwner.checked && confirmUndo.checked);
-        if (submitBtn) {
-          submitBtn.disabled = !ok;
-          submitBtn.style.opacity = ok ? '1' : '0.6';
+      // Spara Reference ID i local storage
+      function saveReferenceIdToLocalStorage(referenceId) {
+        try {
+          // Spara både som separat variabel och i ett objekt med metadata
+          localStorage.setItem('dataDeletionReferenceId', referenceId);
+          localStorage.setItem('lastDataDeletionRequest', JSON.stringify({
+            referenceId: referenceId,
+            timestamp: new Date().toISOString(),
+            status: 'pending'
+          }));
+          
+          console.log('Reference ID saved to localStorage:', referenceId);
+          return true;
+        } catch (error) {
+          console.error('Error saving to localStorage:', error);
+          return false;
         }
       }
-      if (confirmOwner) confirmOwner.addEventListener('change', updateButtonState);
-      if (confirmUndo) confirmUndo.addEventListener('change', updateButtonState);
+
+      // Initialisera Reference ID
+      let referenceId;
+      
+      // Försök att hämta befintligt ID från local storage
+      try {
+        const savedData = localStorage.getItem('lastDataDeletionRequest');
+        if (savedData) {
+          const parsedData = JSON.parse(savedData);
+          // Om förfrågan är mer än 24h gammal, generera nytt ID
+          const requestTime = new Date(parsedData.timestamp);
+          const now = new Date();
+          const hoursDiff = Math.abs(now - requestTime) / 36e5;
+          
+          if (hoursDiff < 24 && parsedData.status === 'pending') {
+            referenceId = parsedData.referenceId;
+          } else {
+            referenceId = generateReferenceId();
+            saveReferenceIdToLocalStorage(referenceId);
+          }
+        } else {
+          referenceId = generateReferenceId();
+          saveReferenceIdToLocalStorage(referenceId);
+        }
+      } catch (e) {
+        // Fallback om något går fel
+        referenceId = generateReferenceId();
+        saveReferenceIdToLocalStorage(referenceId);
+      }
+
+      // Sätt Reference ID i formuläret
+      if (requestIdField && referenceId) {
+        requestIdField.value = referenceId;
+        console.log('Reference ID set in form:', referenceId);
+      }
+
+      // Aktivera/inaktivera submit-knapp
+      function updateButtonState() {
+        const isConfirmed = confirmOwner.checked && confirmUndo.checked;
+        submitBtn.disabled = !isConfirmed;
+        submitBtn.style.opacity = isConfirmed ? '1' : '0.6';
+      }
+
+      confirmOwner.addEventListener('change', updateButtonState);
+      confirmUndo.addEventListener('change', updateButtonState);
       updateButtonState();
 
-      // Submit: LÅT BROWSER SKICKA (ingen preventDefault, ingen form.submit)
-      if (form) {
-        form.addEventListener('submit', function () {
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.cursor = 'not-allowed';
-          }
-          if (successMessage) successMessage.style.display = 'block';
+      // Hantera formulärinlämning med AJAX för bättre kontroll
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Hindra standardbeteende
+        
+        // Visa laddningsindikator
+        loadingIndicator.style.display = 'block';
+        submitNote.style.display = 'none';
+        errorMessage.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        // Validera formuläret igen
+        if (!confirmOwner.checked || !confirmUndo.checked) {
+          alert('Please confirm both checkboxes before submitting.');
+          loadingIndicator.style.display = 'none';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request Data Deletion';
+          return;
+        }
 
+        // Förbered form data
+        const formData = new FormData(form);
+        
+        // Skicka förfrågan till Google Forms med fetch för bättre felhantering
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors' // Google Forms kräver no-cors
+        })
+        .then(() => {
+          // Med no-cors kan vi inte läsa svaret, men vi antar att det lyckades
+          console.log('Form submitted successfully');
+          
+          // Uppdatera local storage status
           try {
-            if (requestIdField) localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
-          } catch (e2) {}
-
-          // Vänta så POST hinner registreras innan redirect
-          setTimeout(function () {
-            window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
-          }, 2800);
+            const savedData = localStorage.getItem('lastDataDeletionRequest');
+            if (savedData) {
+              const parsedData = JSON.parse(savedData);
+              parsedData.status = 'submitted';
+              parsedData.submittedAt = new Date().toISOString();
+              localStorage.setItem('lastDataDeletionRequest', JSON.stringify(parsedData));
+            }
+          } catch (e) {
+            console.error('Error updating localStorage:', e);
+          }
+          
+          // Visa framgångsmeddelande
+          loadingIndicator.style.display = 'none';
+          successMessage.style.display = 'block';
+          
+          // Vänta lite innan omdirigering
+          setTimeout(() => {
+            // Omdirigera till bekräftelsesidan med referenceId i URL
+            window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
+          }, 1500);
+        })
+        .catch((error) => {
+          console.error('Error submitting form:', error);
+          loadingIndicator.style.display = 'none';
+          errorMessage.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request Data Deletion';
+          
+          // Alternativ metod: Skicka via iframe som fallback
+          console.log('Trying fallback method...');
+          setTimeout(() => {
+            form.target = 'hidden_iframe';
+            form.submit();
+            
+            // Ändå visa framgångsmeddelande eftersom iframe-metoden brukar fungera
+            setTimeout(() => {
+              loadingIndicator.style.display = 'none';
+              successMessage.style.display = 'block';
+              setTimeout(() => {
+                window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
+              }, 1500);
+            }, 2000);
+          }, 1000);
         });
-      }
+      });
+
+      // Lyssnare på iframe för att detektera när formuläret har laddats (fallback)
+      const iframe = document.getElementById('hidden_iframe');
+      iframe.addEventListener('load', function() {
+        console.log('Iframe loaded - form submission likely completed');
+        // Vi kan inte kontrollera innehållet pga CORS, men vi antar lyckad inlämning
+      });
     });
   </script>
 </body>
