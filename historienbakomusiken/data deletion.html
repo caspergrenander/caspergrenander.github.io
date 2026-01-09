@@ -588,24 +588,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // FIX: Robust generering av Reference ID (ingen template literal) + single source of truth via localStorage
+  // FIX: Robust generering av Reference ID (ingen template literal)
   const requestIdField = document.getElementById('requestId');
-  if (requestIdField) {
-    if (!requestIdField.value) {
-      const year = new Date().getFullYear();
-      const part1 = Math.floor(1000 + Math.random() * 9000);
-      const part2 = Math.floor(1000 + Math.random() * 9000);
-      requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
-    }
-    // Single source of truth: store the exact same Reference ID for the confirmation page
-    try {
-      localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
-    } catch (e) {
-      // If storage is blocked, the flow still submits to Google Forms; the confirmation page may not be able to display the ID.
-    }
+  if (requestIdField && !requestIdField.value) {
+    const year = new Date().getFullYear();
+    const part1 = Math.floor(1000 + Math.random() * 9000);
+    const part2 = Math.floor(1000 + Math.random() * 9000);
+    requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
   }
 
-// Checkbox och submit-knapp logik
+  // Spara Reference ID lokalt så det kan visas på nästa sida (Request Received)
+  try {
+    localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
+  } catch (e) {}
+
+  // Checkbox och submit-knapp logik
   const confirmOwner = document.getElementById('confirmOwner');
   const confirmUndo = document.getElementById('confirmUndo');
   const submitBtn = document.getElementById('submitBtn');
@@ -626,21 +623,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Submit-hantering
   if (form) {
-    form.addEventListener('submit', function () {
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.6';
-      }
+    form.addEventListener('submit', function(e) {
+    // Viktigt: vi får inte avbryta POST:en till Google Forms genom att redirecta för tidigt.
+    // Vi skickar först till hidden iframe och redirectar sedan när iframe laddar.
+    e.preventDefault();
 
-      setTimeout(() => {
-        if (successMessage) successMessage.style.display = 'block';
-      }, 300);
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
+    }
 
-      setTimeout(() => {
-        window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
-      }, 900);
-    });
-  }
+    if (successMessage) {
+      successMessage.style.display = 'block';
+    }
+
+    // Säkerställ att samma Reference ID alltid finns sparat
+    try {
+      localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
+    } catch (e) {}
+
+    const iframe = document.getElementById('hidden_iframe');
+
+    let redirected = false;
+    function doRedirect() {
+      if (redirected) return;
+      redirected = true;
+      window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
+    }
+
+    if (iframe) {
+      const onLoad = function() {
+        iframe.removeEventListener('load', onLoad);
+        // liten buffert för att låta Google Forms hinna skriva klart
+        setTimeout(doRedirect, 250);
+      };
+      iframe.addEventListener('load', onLoad);
+    }
+
+    // Skicka formuläret till Google Forms (target=hidden_iframe)
+    form.submit();
+
+    // Fallback: om iframe-load inte triggas (adblock/konstigheter), redirecta ändå efter en stund
+    setTimeout(doRedirect, 6000);
+  });
+}
 });
 </script>
 
