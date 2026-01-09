@@ -121,7 +121,32 @@
       color: #F5E5C8;
       font-size: 15px;
       box-sizing: border-box;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #D88B5C;
+      box-shadow: 0 0 0 3px rgba(216, 139, 92, 0.1);
+    }
+
+    input.error,
+    select.error,
+    textarea.error {
+      border-color: #f44336;
+    }
+
+    .validation-message {
+      color: #f44336;
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .validation-message.show {
+      display: block;
     }
 
     select {
@@ -145,8 +170,7 @@
       font-size: 15px;
     }
 
-    select:focus { outline: none; border-color: #D88B5C; }
-    input:focus, textarea:focus { outline: none; border-color: #D88B5C; }
+    select:focus { outline: none; border-color: #D88B5C; box-shadow: 0 0 0 3px rgba(216, 139, 92, 0.1); }
 
     input::placeholder, textarea::placeholder { color: #7A8C9C; }
 
@@ -203,8 +227,27 @@
       min-width: 220px;
     }
 
-    .button:hover { opacity: 0.7; }
-    .button:disabled { cursor: not-allowed; opacity: 0.6; }
+    .button.enabled {
+      opacity: 1;
+      box-shadow: 0 2px 8px rgba(232, 182, 92, 0.3);
+    }
+
+    .button.enabled:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(232, 182, 92, 0.4);
+    }
+
+    .button.enabled:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(232, 182, 92, 0.3);
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+      box-shadow: none;
+    }
 
     .note {
       margin-top: 20px;
@@ -525,7 +568,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Element referenser
+      // ============================================
+      // DOM Element References
+      // ============================================
       const form = document.getElementById('dataDeletionForm');
       const requestIdField = document.getElementById('requestId');
       const confirmOwner = document.getElementById('confirmOwner');
@@ -535,167 +580,292 @@
       const successMessage = document.getElementById('successMessage');
       const errorMessage = document.getElementById('errorMessage');
       const submitNote = document.getElementById('submitNote');
+      const iframe = document.getElementById('hidden_iframe');
 
-      // Generera och spara Reference ID
+      // Get all form input fields for validation
+      const nameInput = form.querySelector('input[name="entry.1000001577"]');
+      const emailInput = form.querySelector('input[name="entry.1233888397"]');
+      const tiktokInput = form.querySelector('input[name="entry.531571766"]');
+      const requestTypeSelect = document.getElementById('requestType');
+
+      // ============================================
+      // Reference ID Generation
+      // ============================================
+      /**
+       * Generates a unique Reference ID in the format: DR-YYYY-XXXXX-XXXXX
+       * Format breakdown:
+       * - DR: Data Request prefix
+       * - YYYY: Current year (4 digits)
+       * - XXXXX: Random 5-digit number (10000-99999)
+       * - XXXXX: Random 5-digit number (10000-99999)
+       * 
+       * @returns {string} Generated reference ID
+       */
       function generateReferenceId() {
         const year = new Date().getFullYear();
-        const timestamp = Date.now().toString().slice(-6);
-        const random = Math.floor(1000 + Math.random() * 9000);
-        return `DR-${year}-${timestamp}-${random}`;
+        // Generate two random 5-digit numbers (10000-99999)
+        const random1 = Math.floor(10000 + Math.random() * 90000);
+        const random2 = Math.floor(10000 + Math.random() * 90000);
+        return `DR-${year}-${random1}-${random2}`;
       }
 
-      // Spara Reference ID i local storage
+      /**
+       * Saves the Reference ID and request metadata to localStorage
+       * Stores both the ID alone and a full request object with metadata
+       * 
+       * @param {string} referenceId - The reference ID to save
+       * @returns {boolean} True if saved successfully, false otherwise
+       */
       function saveReferenceIdToLocalStorage(referenceId) {
         try {
-          // Spara både som separat variabel och i ett objekt med metadata
+          // Store the reference ID separately for quick access
           localStorage.setItem('dataDeletionReferenceId', referenceId);
-          localStorage.setItem('lastDataDeletionRequest', JSON.stringify({
+          
+          // Store complete request metadata for tracking
+          const requestData = {
             referenceId: referenceId,
             timestamp: new Date().toISOString(),
             status: 'pending'
-          }));
+          };
+          localStorage.setItem('lastDataDeletionRequest', JSON.stringify(requestData));
           
-          console.log('Reference ID saved to localStorage:', referenceId);
+          console.log('✓ Reference ID saved to localStorage:', referenceId);
           return true;
         } catch (error) {
-          console.error('Error saving to localStorage:', error);
+          console.error('✗ Error saving to localStorage:', error);
           return false;
         }
       }
 
-      // Initialisera Reference ID
-      let referenceId;
-      
-      // Försök att hämta befintligt ID från local storage
-      try {
-        const savedData = localStorage.getItem('lastDataDeletionRequest');
-        if (savedData) {
-          const parsedData = JSON.parse(savedData);
-          // Om förfrågan är mer än 24h gammal, generera nytt ID
-          const requestTime = new Date(parsedData.timestamp);
-          const now = new Date();
-          const hoursDiff = Math.abs(now - requestTime) / 36e5;
+      /**
+       * Retrieves or generates a Reference ID
+       * If a pending request exists within 24 hours, reuses that ID
+       * Otherwise, generates a new ID
+       * 
+       * @returns {string} The reference ID to use
+       */
+      function getOrCreateReferenceId() {
+        try {
+          const savedData = localStorage.getItem('lastDataDeletionRequest');
           
-          if (hoursDiff < 24 && parsedData.status === 'pending') {
-            referenceId = parsedData.referenceId;
-          } else {
-            referenceId = generateReferenceId();
-            saveReferenceIdToLocalStorage(referenceId);
+          if (savedData) {
+            const parsedData = JSON.parse(savedData);
+            const requestTime = new Date(parsedData.timestamp);
+            const now = new Date();
+            const hoursDiff = Math.abs(now - requestTime) / 36e5; // Convert ms to hours
+            
+            // Reuse existing ID if request is less than 24 hours old and still pending
+            if (hoursDiff < 24 && parsedData.status === 'pending') {
+              console.log('✓ Reusing existing Reference ID (within 24h window):', parsedData.referenceId);
+              return parsedData.referenceId;
+            } else {
+              console.log('⟳ Previous request expired or completed, generating new ID');
+            }
           }
-        } else {
-          referenceId = generateReferenceId();
-          saveReferenceIdToLocalStorage(referenceId);
+        } catch (error) {
+          console.error('Error reading from localStorage:', error);
         }
-      } catch (e) {
-        // Fallback om något går fel
-        referenceId = generateReferenceId();
-        saveReferenceIdToLocalStorage(referenceId);
+        
+        // Generate new ID if no valid existing request found
+        const newId = generateReferenceId();
+        saveReferenceIdToLocalStorage(newId);
+        console.log('✓ New Reference ID generated:', newId);
+        return newId;
       }
 
-      // Sätt Reference ID i formuläret
+      // Initialize Reference ID and set it in the form
+      const referenceId = getOrCreateReferenceId();
       if (requestIdField && referenceId) {
         requestIdField.value = referenceId;
-        console.log('Reference ID set in form:', referenceId);
+        console.log('✓ Reference ID set in form field:', referenceId);
       }
 
-      // Aktivera/inaktivera submit-knapp
+      // ============================================
+      // Form Validation
+      // ============================================
+      /**
+       * Validates email format using regex
+       * @param {string} email - Email address to validate
+       * @returns {boolean} True if email is valid
+       */
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      /**
+       * Validates TikTok username format
+       * Should start with @ and contain only valid characters
+       * @param {string} username - TikTok username to validate
+       * @returns {boolean} True if username is valid
+       */
+      function isValidTikTokUsername(username) {
+        // Allow usernames with or without @, containing letters, numbers, dots, underscores
+        const tiktokRegex = /^@?[a-zA-Z0-9._]+$/;
+        return username.length > 0 && tiktokRegex.test(username);
+      }
+
+      /**
+       * Validates all required form fields
+       * @returns {boolean} True if all validations pass
+       */
+      function validateForm() {
+        let isValid = true;
+        
+        // Check if all required text fields are filled
+        if (!nameInput.value.trim()) isValid = false;
+        if (!emailInput.value.trim() || !isValidEmail(emailInput.value.trim())) isValid = false;
+        if (!tiktokInput.value.trim() || !isValidTikTokUsername(tiktokInput.value.trim())) isValid = false;
+        if (!requestTypeSelect.value) isValid = false;
+        
+        // Check if both checkboxes are checked
+        if (!confirmOwner.checked || !confirmUndo.checked) isValid = false;
+        
+        return isValid;
+      }
+
+      /**
+       * Updates the submit button state based on form validation
+       * Enables button only when all validations pass
+       * Adds/removes visual classes for better UX
+       */
       function updateButtonState() {
-        const isConfirmed = confirmOwner.checked && confirmUndo.checked;
-        submitBtn.disabled = !isConfirmed;
-        submitBtn.style.opacity = isConfirmed ? '1' : '0.6';
+        const isValid = validateForm();
+        submitBtn.disabled = !isValid;
+        
+        // Add/remove CSS class for enhanced hover effects
+        if (isValid) {
+          submitBtn.classList.add('enabled');
+        } else {
+          submitBtn.classList.remove('enabled');
+        }
       }
 
+      // Add validation listeners to all form inputs
+      nameInput.addEventListener('input', updateButtonState);
+      emailInput.addEventListener('input', updateButtonState);
+      tiktokInput.addEventListener('input', updateButtonState);
+      requestTypeSelect.addEventListener('change', updateButtonState);
       confirmOwner.addEventListener('change', updateButtonState);
       confirmUndo.addEventListener('change', updateButtonState);
+      
+      // Initial button state check
       updateButtonState();
 
-      // Hantera formulärinlämning med AJAX för bättre kontroll
+      // ============================================
+      // Form Submission
+      // ============================================
+      /**
+       * Handles form submission with Google Forms integration
+       * Implements primary fetch method with iframe fallback
+       * Provides user feedback throughout the submission process
+       */
       form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Hindra standardbeteende
+        event.preventDefault(); // Prevent default form submission
         
-        // Visa laddningsindikator
+        // Final validation check before submission
+        if (!validateForm()) {
+          alert('Please fill in all required fields correctly and confirm both checkboxes.');
+          return;
+        }
+        
+        // Update UI for submission state
         loadingIndicator.style.display = 'block';
         submitNote.style.display = 'none';
         errorMessage.style.display = 'none';
+        successMessage.style.display = 'none';
         submitBtn.disabled = true;
+        submitBtn.classList.remove('enabled');
         submitBtn.textContent = 'Submitting...';
         
-        // Validera formuläret igen
-        if (!confirmOwner.checked || !confirmUndo.checked) {
-          alert('Please confirm both checkboxes before submitting.');
-          loadingIndicator.style.display = 'none';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Request Data Deletion';
-          return;
-        }
+        console.log('📤 Submitting form to Google Forms...');
 
-        // Förbered form data
+        // Prepare form data
         const formData = new FormData(form);
         
-        // Skicka förfrågan till Google Forms med fetch för bättre felhantering
+        // Primary submission method: fetch with no-cors mode
         fetch(form.action, {
           method: 'POST',
           body: formData,
-          mode: 'no-cors' // Google Forms kräver no-cors
+          mode: 'no-cors' // Required for Google Forms CORS policy
         })
         .then(() => {
-          // Med no-cors kan vi inte läsa svaret, men vi antar att det lyckades
-          console.log('Form submitted successfully');
-          
-          // Uppdatera local storage status
-          try {
-            const savedData = localStorage.getItem('lastDataDeletionRequest');
-            if (savedData) {
-              const parsedData = JSON.parse(savedData);
-              parsedData.status = 'submitted';
-              parsedData.submittedAt = new Date().toISOString();
-              localStorage.setItem('lastDataDeletionRequest', JSON.stringify(parsedData));
-            }
-          } catch (e) {
-            console.error('Error updating localStorage:', e);
-          }
-          
-          // Visa framgångsmeddelande
-          loadingIndicator.style.display = 'none';
-          successMessage.style.display = 'block';
-          
-          // Vänta lite innan omdirigering
-          setTimeout(() => {
-            // Omdirigera till bekräftelsesidan med referenceId i URL
-            window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
-          }, 1500);
+          // With no-cors mode, we can't read the response
+          // We assume success if no error is thrown
+          console.log('✓ Form submitted successfully via fetch');
+          handleSuccessfulSubmission();
         })
         .catch((error) => {
-          console.error('Error submitting form:', error);
-          loadingIndicator.style.display = 'none';
-          errorMessage.style.display = 'block';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Request Data Deletion';
+          // If fetch fails, try iframe fallback method
+          console.error('✗ Fetch submission failed:', error);
+          console.log('⟳ Attempting fallback submission via iframe...');
           
-          // Alternativ metod: Skicka via iframe som fallback
-          console.log('Trying fallback method...');
+          // Show error message but prepare for fallback
+          loadingIndicator.style.display = 'block';
+          errorMessage.style.display = 'none'; // Keep trying with fallback
+          
+          // Fallback: Submit via hidden iframe
           setTimeout(() => {
             form.target = 'hidden_iframe';
             form.submit();
             
-            // Ändå visa framgångsmeddelande eftersom iframe-metoden brukar fungera
+            // Give iframe time to load, then assume success
             setTimeout(() => {
-              loadingIndicator.style.display = 'none';
-              successMessage.style.display = 'block';
-              setTimeout(() => {
-                window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
-              }, 1500);
+              console.log('✓ Form submitted via iframe fallback');
+              handleSuccessfulSubmission();
             }, 2000);
           }, 1000);
         });
       });
 
-      // Lyssnare på iframe för att detektera när formuläret har laddats (fallback)
-      const iframe = document.getElementById('hidden_iframe');
+      /**
+       * Handles successful form submission
+       * Updates localStorage, shows success message, and redirects to confirmation page
+       */
+      function handleSuccessfulSubmission() {
+        // Update request status in localStorage
+        try {
+          const savedData = localStorage.getItem('lastDataDeletionRequest');
+          if (savedData) {
+            const parsedData = JSON.parse(savedData);
+            parsedData.status = 'submitted';
+            parsedData.submittedAt = new Date().toISOString();
+            localStorage.setItem('lastDataDeletionRequest', JSON.stringify(parsedData));
+            console.log('✓ Request status updated to "submitted"');
+          }
+        } catch (error) {
+          console.error('Error updating localStorage:', error);
+        }
+        
+        // Show success message
+        loadingIndicator.style.display = 'none';
+        successMessage.style.display = 'block';
+        
+        // Redirect to confirmation page with Reference ID in URL
+        setTimeout(() => {
+          const confirmationUrl = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
+          console.log('↪ Redirecting to:', confirmationUrl);
+          window.location.href = confirmationUrl;
+        }, 1500);
+      }
+
+      /**
+       * Handles iframe load events (for fallback submission method)
+       * Called when the hidden iframe completes loading
+       */
       iframe.addEventListener('load', function() {
-        console.log('Iframe loaded - form submission likely completed');
-        // Vi kan inte kontrollera innehållet pga CORS, men vi antar lyckad inlämning
+        // This event fires after iframe submission completes
+        // Due to CORS, we can't check the response content, but load event indicates completion
+        console.log('✓ Iframe loaded - form submission completed');
       });
+
+      // ============================================
+      // Initial Setup Complete
+      // ============================================
+      console.log('✓ Data Deletion Form initialized');
+      console.log('  - Reference ID:', referenceId);
+      console.log('  - Form validation active');
+      console.log('  - Ready for submission');
     });
   </script>
 </body>
