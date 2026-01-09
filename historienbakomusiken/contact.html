@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Sent – Historien Bakom Musiken</title>
+<title>Contact – Historien Bakom Musiken</title>
 <style>
+
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +16,7 @@ body {
 }
 
 header {
-  padding: 40px 20px 30px;
+  padding: 60px 20px 40px;
   text-align: center;
   background: #0D0F15;
   border-bottom: 1px solid #2A4A4A;
@@ -29,32 +30,31 @@ header a {
 }
 
 header img {
-  width: 140px;
+  width: 180px;
   border-radius: 6px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 h2 {
   color: #FFFFFF;
   font-weight: 600;
-  margin-top: 40px;
+  margin-top: 50px;
   border-bottom: 1px solid #2A4A4A;
   padding-bottom: 10px;
-  font-size: 22px;
 }
 
 h3 {
   color: #E8B65C;
   font-weight: 600;
-  margin-top: 30px;
+  margin-top: 40px;
   font-size: 18px;
 }
 
@@ -62,8 +62,6 @@ p {
   max-width: 800px;
   margin: 15px auto;
   color: #F5E5C8;
-  text-align: center;
-  padding: 0 15px;
 }
 
 a {
@@ -80,10 +78,10 @@ a:hover {
   max-width: 900px;
   margin: auto;
   background: #0D0F15;
-  padding: 30px 20px;
+  padding: 40px 30px;
   border-radius: 6px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border: 1px solid #2A4A4A;
 }
 
@@ -94,246 +92,220 @@ a:hover {
   letter-spacing: 1px;
 }
 
-/* Success message styling */
-.success-container {
-  max-width: 700px;
-  margin: 40px auto;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.success-icon {
-  width: 70px;
-  height: 70px;
-  background: rgba(232, 182, 92, 0.1);
-  border: 2px solid #E8B65C;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 25px;
-  font-size: 32px;
-  color: #E8B65C;
-}
-
-.success-title {
-  color: #E8B65C;
-  font-size: 28px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.success-message {
-  background: rgba(42, 74, 74, 0.1);
-  border-radius: 8px;
-  padding: 25px 20px;
-  margin: 30px auto;
-  max-width: 600px;
-  border-left: 4px solid #E8B65C;
-}
-
-.success-message p {
-  text-align: left;
-  margin: 12px 0;
-  padding: 0;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* Reference ID styling */
-.reference-box {
-  background: rgba(232, 182, 92, 0.1);
-  border: 2px solid #E8B65C;
-  border-radius: 10px;
-  padding: 20px 15px;
-  margin: 25px auto;
-  max-width: 600px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.reference-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #E8B65C, #D88B5C, #E8B65C);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite linear;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.reference-label {
-  color: #E8B65C;
-  font-size: 15px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.reference-id {
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-  font-weight: 700;
-  color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 12px 15px;
-  border-radius: 6px;
-  margin: 12px 0;
-  letter-spacing: 1px;
-  border: 1px solid rgba(232, 182, 92, 0.3);
-  display: inline-block;
-  min-width: 260px;
-  max-width: 100%;
-  overflow-x: auto;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-
-.reference-note {
-  color: #F5E5C8;
-  font-size: 13px;
-  margin-top: 12px;
-  line-height: 1.5;
-  padding: 0 10px;
-}
-
-.reference-note strong {
-  color: #E8B65C;
-}
-
-.timeline-box {
+.info-box {
   background: rgba(232, 182, 92, 0.1);
   border: 1px solid #E8B65C;
-  border-radius: 8px;
-  padding: 20px 15px;
-  margin: 25px auto;
-  max-width: 600px;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 25px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.email-box {
+  background: rgba(42, 74, 74, 0.2);
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
   text-align: center;
 }
 
-.timeline-box h3 {
-  color: #E8B65C;
-  margin-top: 0;
-  margin-bottom: 15px;
+.email-box a {
   font-size: 18px;
-}
-
-.timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.timeline-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  min-width: 70px;
-}
-
-.timeline-circle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #E8B65C;
-  color: #1A2838;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.timeline-circle.active {
-  background: #E8B65C;
-  box-shadow: 0 0 0 3px rgba(232, 182, 92, 0.3);
-}
-
-.timeline-circle.completed {
-  background: #2A4A4A;
-  color: #F5E5C8;
-}
-
-.timeline-line {
-  flex-grow: 1;
-  height: 2px;
-  background: #2A4A4A;
-  margin-top: 18px;
-  min-width: 20px;
-  max-width: 40px;
-}
-
-.timeline-label {
-  font-size: 12px;
-  color: #F5E5C8;
-  text-align: center;
-  line-height: 1.3;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 35px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 14px 25px;
-  border-radius: 8px;
-  font-size: 16px;
   font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
-  text-align: center;
-  min-width: 160px;
-  flex: 1;
-  max-width: 280px;
+  color: #E8B65C;
 }
 
-.btn-primary {
+.email-box a:hover {
+  color: #D88B5C;
+}
+
+/* Form styling */
+form {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  display: block;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+select {
+  position: relative;
+  z-index: 10;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #0D0F15;
+  color: #F5E5C8;
+  padding: 12px;
+  font-size: 15px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #D88B5C;
+  position: relative;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #D88B65;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7A8C9C;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: normal;
+  color: #F5E5C8;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+/* Button styling */
+.button-container {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #2A4A4A;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 40px;
   background: #E8B65C;
   color: #1A2838;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
   border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 220px;
 }
 
-.btn-primary:hover {
+.button:hover {
   background: #D88B5C;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.2);
+  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.3);
 }
 
-.btn-secondary {
-  background: rgba(232, 182, 92, 0.1);
-  color: #F5E5C8;
-  border: 1px solid #E8B65C;
+.note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #2A4A4A;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.btn-secondary:hover {
-  background: rgba(232, 182, 92, 0.1);
+/* Contact info section */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.contact-item {
+  background: rgba(42, 74, 74, 0.1);
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
   border-color: #D88B5C;
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 36px;
+  color: #E8B65C;
+  margin-bottom: 15px;
+}
+
+.contact-item h4 {
+  color: #FFFFFF;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.contact-item p {
+  margin: 10px 0;
+  color: #7A8C9C;
+  font-size: 14px;
 }
 
 /* Footer styling */
 footer {
-  margin-top: 50px;
-  padding: 30px 20px;
+  margin-top: 60px;
+  padding: 40px 20px;
   text-align: center;
   font-size: 0.9rem;
   color: #2A4A4A;
@@ -357,27 +329,10 @@ footer {
 .footer-links a {
   color: #2A4A4A;
   font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
 .footer-links a:hover {
   color: #D88B5C;
-  text-decoration: none;
-}
-
-.footer-copyright {
-  color: #2A4A4A;
-  margin-bottom: 15px;
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-.footer-title {
-  color: #F5E5C8;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  font-weight: 600;
 }
 
 strong {
@@ -393,209 +348,38 @@ em {
 .section-divider {
   height: 1px;
   background-color: #2A4A4A;
-  margin: 35px auto;
+  margin: 40px auto;
   max-width: 800px;
 }
 
-/* Checklist styling */
-.checklist {
-  text-align: left;
-  max-width: 600px;
-  margin: 25px auto;
-}
-
-.checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 15px 0;
-  padding: 15px;
-  background: rgba(42, 74, 74, 0.1);
-  border-radius: 6px;
-  border-left: 3px solid #2A4A4A;
-}
-
-.checklist-item.completed {
-  border-left-color: #E8B65C;
-  background: rgba(232, 182, 92, 0.05);
-}
-
-.checklist-icon {
-  color: #E8B65C;
-  font-size: 18px;
-  margin-top: 2px;
-  min-width: 20px;
-  flex-shrink: 0;
-}
-
-.checklist-content h4 {
-  color: #FFFFFF;
-  margin: 0 0 5px 0;
-  font-size: 15px;
-}
-
-.checklist-content p {
-  text-align: left;
-  margin: 5px 0;
-  color: #F5E5C8;
-  font-size: 13px;
-  line-height: 1.5;
-  padding: 0;
-}
-
-/* Support info box */
-.support-box {
-  background: rgba(42, 74, 74, 0.1);
-  border-radius: 8px;
-  padding: 20px 15px;
-  margin: 30px auto;
-  max-width: 600px;
-  text-align: center;
-  border: 1px solid #2A4A4A;
-}
-
-.support-box h3 {
-  color: #E8B65C;
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 17px;
-}
-
-.support-box p {
-  font-size: 14px;
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-/* Response info box */
-.response-info {
-  background: rgba(42, 74, 74, 0.15);
-  border-radius: 8px;
-  padding: 20px 15px;
-  margin: 25px auto;
-  max-width: 600px;
-  text-align: center;
-  border: 1px solid #2A4A4A;
-}
-
-.response-info h3 {
-  color: #E8B65C;
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 18px;
-}
-
-.response-time {
-  font-size: 22px;
-  color: #E8B65C;
-  font-weight: bold;
-  margin: 12px 0;
-  line-height: 1.2;
-}
-
-.response-note {
-  font-size: 13px;
-  color: #F5E5C8;
-  margin-top: 8px;
-  line-height: 1.5;
-}
-
-/* Email confirmation styling */
-.email-confirmation {
-  background: rgba(232, 182, 92, 0.05);
-  border: 1px dashed #E8B65C;
-  border-radius: 8px;
-  padding: 20px 15px;
-  margin: 25px auto;
-  max-width: 600px;
-  text-align: center;
-}
-
-.email-confirmation p {
-  margin: 8px 0;
-  font-size: 14px;
-}
-
-.email-address {
-  font-family: 'Courier New', monospace;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 10px 15px;
-  border-radius: 6px;
+.back-link {
   display: inline-block;
-  margin: 12px 0;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
+
+.back-link:hover {
   color: #E8B65C;
-  font-weight: 600;
-  font-size: 14px;
-  max-width: 100%;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
-/* Contact info cards */
-.contact-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin: 30px auto;
-  max-width: 800px;
-}
-
-.contact-card {
-  background: rgba(42, 74, 74, 0.1);
-  border: 1px solid #2A4A4A;
-  border-radius: 8px;
-  padding: 20px 15px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-  border-color: #D88B5C;
-  transform: translateY(-5px);
-}
-
-.card-icon {
-  font-size: 32px;
-  color: #E8B65C;
-  margin-bottom: 12px;
-}
-
-.contact-card h4 {
-  color: #FFFFFF;
-  margin: 8px 0;
-  font-size: 15px;
-}
-
-.contact-card p {
-  margin: 8px 0;
-  color: #7A8C9C;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.contact-card strong {
-  font-size: 14px;
-  word-break: break-all;
-}
-
-/* Follow Us section */
+/* CSS för Follow Us-sektionen */
 .follow-section {
   text-align: center;
-  margin: 40px auto 25px;
+  margin: 50px auto 30px;
   max-width: 800px;
 }
 
 .follow-section h2 {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   border: none;
   padding-bottom: 0;
-  font-size: 22px;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
@@ -604,7 +388,6 @@ em {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
-  flex: 0 0 auto;
 }
 
 .social-icon:hover {
@@ -619,14 +402,14 @@ em {
 }
 
 .icon-container {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #2A4A4A;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   transition: background-color 0.3s ease;
 }
 
@@ -634,213 +417,39 @@ em {
   background: #D88B5C;
 }
 
-.icon-container svg {
-  width: 28px;
-  height: 28px;
-  fill: #FFFFFF;
+.icon-container img {
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
 }
 
 .social-icon span {
   color: #F5E5C8;
-  font-size: 13px;
-  font-weight: 500;
-  margin-top: 4px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  color: #D88B5C;
-  font-size: 0.9em;
-  padding: 0 15px;
-}
-
-.back-link:hover {
-  color: #E8B65C;
-}
-
-/* Extra info box */
-.extra-info {
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 18px 15px;
-  background: rgba(42, 74, 74, 0.1);
-  border-radius: 8px;
-}
-
-.extra-info h3 {
-  color: #FFFFFF;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 17px;
-}
-
-.extra-info p {
-  text-align: center;
   font-size: 14px;
-  line-height: 1.5;
-  margin: 8px 0;
+  font-weight: 500;
+  margin-top: 5px;
 }
 
-/* Mobile optimizations */
+/* Responsiv design för mindre skärmar */
 @media (max-width: 768px) {
-  header {
-    padding: 30px 15px 20px;
-  }
-  
-  header img {
-    width: 120px;
-  }
-  
-  h1 {
-    font-size: 18px;
-  }
-  
-  .subtitle {
-    font-size: 13px;
-  }
-  
-  .container {
-    padding: 20px 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .success-container {
-    margin: 30px auto;
-    padding: 25px 15px;
-  }
-  
-  .success-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-  }
-  
-  .success-title {
-    font-size: 24px;
-    padding: 0 10px;
-  }
-  
-  .reference-id {
-    font-size: 16px;
-    padding: 10px 12px;
-    min-width: 220px;
-    letter-spacing: 0.5px;
-  }
-  
-  .timeline {
-    gap: 5px;
-  }
-  
-  .timeline-step {
-    min-width: 60px;
-  }
-  
-  .timeline-circle {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-  
-  .timeline-label {
-    font-size: 11px;
-  }
-  
-  .timeline-line {
-    min-width: 15px;
-    margin-top: 16px;
-  }
-  
-  .btn {
-    min-width: 140px;
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-  
-  .contact-cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .contact-card {
-    padding: 18px 12px;
-  }
-  
   .social-icons {
-    gap: 20px;
+    gap: 30px;
   }
   
   .icon-container {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
   }
   
-  .icon-container svg {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .follow-section h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+  .icon-container img {
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media (max-width: 480px) {
-  header {
-    padding: 25px 10px 15px;
-  }
-  
-  header img {
-    width: 100px;
-    margin-bottom: 10px;
-  }
-  
-  h1 {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .success-title {
-    font-size: 22px;
-  }
-  
-  .reference-id {
-    font-size: 15px;
-    min-width: 200px;
-    padding: 8px 10px;
-  }
-  
-  .action-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    min-width: 0;
-  }
-  
-  .timeline {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .timeline-step {
-    min-width: 70px;
-    margin-bottom: 10px;
-  }
-  
-  .timeline-line {
-    display: none;
-  }
-  
   .social-icons {
-    gap: 15px;
+    gap: 20px;
   }
   
   .icon-container {
@@ -848,276 +457,152 @@ em {
     height: 50px;
   }
   
-  .icon-container svg {
-    width: 22px;
-    height: 22px;
-  }
-  
-  .social-icon span {
-    font-size: 12px;
-  }
-  
-  .follow-section h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .footer-links {
-    gap: 10px;
-  }
-  
-  .footer-links a {
-    font-size: 0.8rem;
+  .icon-container img {
+    width: 25px;
+    height: 25px;
   }
 }
 
-/* Small phone optimizations */
-@media (max-width: 360px) {
-  .reference-id {
-    font-size: 14px;
-    min-width: 180px;
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
-  
-  .timeline-step {
-    min-width: 65px;
-  }
-  
-  .timeline-circle {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
-  }
-  
-  .timeline-label {
-    font-size: 10px;
-  }
-  
-  .social-icons {
-    gap: 12px;
-  }
-  
-  .icon-container {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .icon-container svg {
-    width: 20px;
-    height: 20px;
+  .contact-info {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Horizontal scroll prevention */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
 </style>
 </head>
-
 <body>
-
 <header>
   <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
          alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p class="subtitle">Contact Confirmation – Message Sent</p>
+  <p class="subtitle">Contact Us – Get in Touch</p>
 </header>
 
 <div class="container">
-  <div class="success-container">
-    <div class="success-icon">
-      ✓
-    </div>
-    
-    <h1 class="success-title">Message Sent Successfully!</h1>
-    
-    <p style="font-size: 16px;">
-      Thank you for contacting Historien Bakom Musiken. We've received your message.
+  <h2>Contact Information</h2>
+  <p>
+    We're here to help! You can reach us via email or use the contact form below.
+    We typically respond within <strong>24-48 hours</strong> on business days.
+  </p>
+
+  <div class="email-box">
+    <p><strong>Primary Email Address:</strong></p>
+    <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>
+    <p style="margin-top: 10px; font-size: 14px; color: #7A8C9C;">
+      For support, inquiries, and general questions
     </p>
-    
-    <!-- Reference ID for tracking -->
-    <div class="reference-box">
-      <div class="reference-label">YOUR REFERENCE ID</div>
-      <div class="reference-id" id="referenceId">CT-2026-8921-4567</div>
-      <div class="reference-note">
-        <strong>Save this Reference ID:</strong> If you need to follow up on your inquiry, 
-        please include this ID for faster assistance.
-      </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Response Time:</strong> We strive to respond to all inquiries within
+    <strong>1-2 business days</strong>. For urgent matters related to AutoPublisher,
+    please include "URGENT" in your subject line.
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-icon">📧</div>
+      <h4>Email Support</h4>
+      <p>For general inquiries and support questions</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
     </div>
     
-    <div class="success-message">
-      <p>
-        <strong>Your message has been received and logged in our system.</strong>
-      </p>
-      <p>
-        We appreciate you reaching out to us. A member of our team will review 
-        your inquiry and respond as soon as possible.
-      </p>
-      <p>
-        Please check the response time information below to know when to expect our reply.
-      </p>
+    <div class="contact-item">
+      <div class="contact-icon">⚙️</div>
+      <h4>Technical Support</h4>
+      <p>For AutoPublisher technical issues</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
     </div>
     
-    <!-- Response time information -->
-    <div class="response-info">
-      <h3>Expected Response Time</h3>
-      <div class="response-time">24-48 Hours</div>
-      <p>On business days (Monday-Friday)</p>
-      <p class="response-note">
-        <strong>Note:</strong> For urgent matters related to AutoPublisher, 
-        please include "URGENT" in your email subject.
-      </p>
-    </div>
-    
-    <div class="timeline-box">
-      <h3>What Happens Next?</h3>
-      <div class="timeline">
-        <div class="timeline-step">
-          <div class="timeline-circle active">1</div>
-          <div class="timeline-label">Message<br>Received</div>
-        </div>
-        
-        <div class="timeline-line"></div>
-        
-        <div class="timeline-step">
-          <div class="timeline-circle">2</div>
-          <div class="timeline-label">Team<br>Review</div>
-        </div>
-        
-        <div class="timeline-line"></div>
-        
-        <div class="timeline-step">
-          <div class="timeline-circle">3</div>
-          <div class="timeline-label">Response<br>Preparation</div>
-        </div>
-        
-        <div class="timeline-line"></div>
-        
-        <div class="timeline-step">
-          <div class="timeline-circle">4</div>
-          <div class="timeline-label">Reply<br>Sent</div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Checklist for what to expect -->
-    <div class="checklist">
-      <h3 style="text-align: center; color: #FFFFFF; margin-bottom: 20px; font-size: 18px;">
-        What You Can Expect
-      </h3>
-      
-      <div class="checklist-item completed">
-        <div class="checklist-icon">✓</div>
-        <div class="checklist-content">
-          <h4>Confirmation of Receipt</h4>
-          <p>You're seeing this page because we've received your message.</p>
-        </div>
-      </div>
-      
-      <div class="checklist-item">
-        <div class="checklist-icon">📧</div>
-        <div class="checklist-content">
-          <h4>Email Response</h4>
-          <p>We'll reply to the email address you provided in the contact form.</p>
-        </div>
-      </div>
-      
-      <div class="checklist-item">
-        <div class="checklist-icon">⏱️</div>
-        <div class="checklist-content">
-          <h4>Timely Reply</h4>
-          <p>Expect a response within 24-48 hours on business days.</p>
-        </div>
-      </div>
-      
-      <div class="checklist-item">
-        <div class="checklist-icon">🔧</div>
-        <div class="checklist-content">
-          <h4>Thorough Assistance</h4>
-          <p>Our team will address all your questions and provide the help you need.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Contact information cards -->
-    <div class="contact-cards">
-      <div class="contact-card">
-        <div class="card-icon">📧</div>
-        <h4>Primary Contact</h4>
-        <p>For general inquiries and support</p>
-        <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
-      </div>
-      
-      <div class="contact-card">
-        <div class="card-icon">⚙️</div>
-        <h4>Technical Support</h4>
-        <p>For AutoPublisher technical issues</p>
-        <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
-      </div>
-      
-      <div class="contact-card">
-        <div class="card-icon">📋</div>
-        <h4>Follow Up</h4>
-        <p>Include your Reference ID in any follow-up emails</p>
-        <p><strong id="referenceIdShort">CT-2026-8921-4567</strong></p>
-      </div>
-    </div>
-    
-    <!-- Support information box -->
-    <div class="support-box">
-      <h3>Need Immediate Assistance?</h3>
-      <p>
-        If you need to add more information to your inquiry or have an urgent matter, 
-        please contact us directly:
-      </p>
-      <p style="margin: 12px 0;">
-        <strong>
-          <a href="mailto:app.auto.publisher@gmail.com?subject=Follow-up:%20CT-2026-8921-4567" 
-             style="color: #E8B65C; text-decoration: none; font-size: 14px;">
-            app.auto.publisher@gmail.com
-          </a>
-        </strong>
-      </p>
-      <p style="font-size: 13px;">
-        Please include your Reference ID in the subject line.
-      </p>
-    </div>
-    
-    <div class="action-buttons">
-      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="btn btn-primary">
-        Return to Home
-      </a>
-      <a href="contact.html" class="btn btn-secondary">
-        Send Another Message
-      </a>
-    </div>
-    
-    <div class="section-divider"></div>
-    
-    <!-- Additional information -->
-    <div class="extra-info">
-      <h3>Didn't Receive a Response?</h3>
-      <p>
-        If you don't hear back from us within 48 hours (business days), please check your 
-        spam folder or contact us again. Sometimes email filters can redirect our responses.
-      </p>
+    <div class="contact-item">
+      <div class="contact-icon">🔒</div>
+      <h4>Privacy & Data</h4>
+      <p>For privacy concerns and data deletion requests</p>
+      <p><a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Form</a></p>
     </div>
   </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Send Us a Message</h2>
+
+  <form id="contactForm">
+    <label>Full Name</label>
+    <input type="text" placeholder="Your name" required>
+    
+    <label>Email Address</label>
+    <input type="email" placeholder="you@example.com" required>
+    
+    <label>Subject</label>
+    <select required>
+      <option value="" disabled selected>Select a subject</option>
+      <option>General Inquiry</option>
+      <option>AutoPublisher Support</option>
+      <option>Technical Issue</option>
+      <option>Partnership Opportunity</option>
+      <option>Feedback/Suggestion</option>
+      <option>Other</option>
+    </select>
+    
+    <label>Message</label>
+    <textarea placeholder="How can we help you?" required></textarea>
+    
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" required>
+        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      </label>
+      
+      <label>
+        <input type="checkbox">
+        I'd like to receive updates about Historien Bakom Musiken (optional)
+      </label>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" class="button">
+        Send Message
+      </button>
+      <div class="note">
+        Note: This is a demo form. For actual contact, please email us directly.
+      </div>
+    </div>
+  </form>
+
+  <div class="section-divider"></div>
+
+  <h2>Frequently Asked Questions</h2>
   
-  <!-- Follow Us Section -->
-  <div class="follow-section">
+  <h3>What is the best way to contact you?</h3>
+  <p>Email is the preferred method for all inquiries. Please use <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a> for the fastest response.</p>
+  
+  <h3>Do you offer technical support for AutoPublisher?</h3>
+  <p>Yes! We provide technical support for AutoPublisher users. Please include your TikTok username and a description of the issue in your email.</p>
+  
+  <h3>Can I request a feature for AutoPublisher?</h3>
+  <p>Absolutely! We welcome feature requests and suggestions. Use the contact form above or send us an email with your ideas.</p>
+  
+  <h3>What should I do if I need to delete my data?</h3>
+  <p>Visit our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a> to submit a formal request.</p>
+
+<div class="follow-section">
     <h2>Follow Us</h2>
     <div class="social-icons">
       <div class="social-icon">
         <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
+            <!-- Instagram SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
             </svg>
@@ -1129,6 +614,7 @@ html, body {
       <div class="social-icon">
         <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
+            <!-- Facebook SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
             </svg>
@@ -1140,6 +626,7 @@ html, body {
       <div class="social-icon">
         <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
+            <!-- Spotify SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
               <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
             </svg>
@@ -1148,9 +635,11 @@ html, body {
         </a>
       </div>
       
+      <!-- TikTok ikon -->
       <div class="social-icon">
         <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
+            <!-- TikTok SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
             </svg>
@@ -1164,129 +653,74 @@ html, body {
   <div class="back-link">
     <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Back to main page</a>
   </div>
+
 </div>
 
 <footer>
   <div class="footer-content">
-    <p class="footer-title">
-      Historien Bakom Musiken – AutoPublisher
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
     </p>
-    
-    <p class="footer-copyright">
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
       © 2026 Casper Grenander. All rights reserved.
     </p>
-    
     <div class="footer-links">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
-      <a href="contact.html">Contact</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Generate a unique reference ID for this contact request
-  function generateReferenceId() {
-    const prefix = 'CT';
-    const year = new Date().getFullYear();
-    const randomNum = Math.floor(1000 + Math.random() * 9000);
-    const secondRandom = Math.floor(1000 + Math.random() * 9000);
-    return `${prefix}-${year}-${randomNum}-${secondRandom}`;
-  }
-
-  // Get or create reference ID
-  let referenceId = localStorage.getItem('contactReferenceId');
-  if (!referenceId) {
-    referenceId = generateReferenceId();
-    localStorage.setItem('contactReferenceId', referenceId);
-  }
-
-  // Update reference IDs in the DOM
-  const referenceIdElements = document.querySelectorAll('#referenceId, #referenceIdShort');
-  referenceIdElements.forEach(element => {
-    element.textContent = referenceId;
-  });
-
-  // Update email links with reference ID
-  const emailLinks = document.querySelectorAll('a[href^="mailto"]');
-  emailLinks.forEach(link => {
-    const currentHref = link.getAttribute('href');
-    if (currentHref && currentHref.includes('subject=')) {
-      link.setAttribute('href', currentHref.replace('CT-2026-8921-4567', referenceId));
-    }
-  });
-
-  // Animate elements
-  const timelineCircles = document.querySelectorAll('.timeline-circle');
-  const checklistItems = document.querySelectorAll('.checklist-item');
-  const mainReferenceId = document.getElementById('referenceId');
+  const contactForm = document.getElementById('contactForm');
   
-  // Animate timeline circles
-  timelineCircles.forEach((circle, index) => {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // In a real implementation, you would send the form data to a server
+    // This is just a demo showing a confirmation message
+    const button = contactForm.querySelector('.button');
+    const originalText = button.textContent;
+    
+    button.textContent = 'Message Sent!';
+    button.style.background = '#2A4A4A';
+    button.style.color = '#F5E5C8';
+    button.style.cursor = 'default';
+    
     setTimeout(() => {
-      circle.style.transform = 'scale(1.1)';
-      setTimeout(() => {
-        circle.style.transform = 'scale(1)';
-      }, 300);
-    }, index * 500);
+      button.textContent = 'Send Another Message';
+      button.style.background = '#E8B65C';
+      button.style.color = '#1A2838';
+      contactForm.reset();
+    }, 3000);
   });
   
-  // Animate checklist items
-  checklistItems.forEach((item, index) => {
-    setTimeout(() => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(-20px)';
-      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-      }, 50);
-    }, index * 300);
-  });
-  
-  // Animate reference ID
-  if (mainReferenceId) {
-    setTimeout(() => {
-      mainReferenceId.style.transform = 'scale(1.05)';
-      mainReferenceId.style.boxShadow = '0 0 20px rgba(232, 182, 92, 0.3)';
-      setTimeout(() => {
-        mainReferenceId.style.transform = 'scale(1)';
-        mainReferenceId.style.boxShadow = 'none';
-      }, 500);
-    }, 1000);
-  }
-  
-  // Add copy to clipboard functionality for reference ID
-  if (mainReferenceId) {
-    mainReferenceId.style.cursor = 'pointer';
-    mainReferenceId.title = 'Click to copy to clipboard';
-
-    mainReferenceId.addEventListener('click', function() {
-      navigator.clipboard.writeText(referenceId).then(() => {
-        const originalText = this.textContent;
-        this.textContent = 'Copied!';
-        this.style.color = '#D88B5C';
-        this.style.background = 'rgba(216, 139, 92, 0.1)';
-
-        setTimeout(() => {
-          this.textContent = originalText;
-          this.style.color = '#FFFFFF';
-          this.style.background = 'rgba(0, 0, 0, 0.2)';
-        }, 2000);
-      });
+  // Add hover effect to select elements
+  const selectElements = document.querySelectorAll('select');
+  selectElements.forEach(select => {
+    select.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#D88B5C';
     });
-  }
-
-  // Clear the reference ID from localStorage after 1 hour
-  setTimeout(() => {
-    localStorage.removeItem('contactReferenceId');
-  }, 3600000); // 1 hour
+    
+    select.addEventListener('mouseleave', function() {
+      if (document.activeElement !== this) {
+        this.style.borderColor = '#2A4A4A';
+      }
+    });
+    
+    select.addEventListener('focus', function() {
+      this.style.borderColor = '#D88B5C';
+    });
+    
+    select.addEventListener('blur', function() {
+      this.style.borderColor = '#2A4A4A';
+    });
+  });
 });
 </script>
-
 </body>
 </html>
