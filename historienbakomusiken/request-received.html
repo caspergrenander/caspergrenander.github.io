@@ -58,18 +58,6 @@ p {
   text-align: center;
 }
 
-
-
-a {
-  color: #D88B5C;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: #E8B65C;
-  text-decoration: underline;
-}
-
 .container {
   max-width: 900px;
   margin: auto;
@@ -446,6 +434,8 @@ strong {
   margin-bottom: 30px;
   border: none;
   padding-bottom: 0;
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 .social-icons {
@@ -754,8 +744,7 @@ strong {
       </div>
     </div>
   </div>
-
-  </div>
+</div>
 
 <footer>
   <div class="footer-content">
@@ -772,37 +761,39 @@ strong {
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
-      <a href="https://caspergrenander.github.io/historienbakomusiken/contact">Contact</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
-// Generate a random reference ID
-function generateReferenceId() {
-  const prefix = 'DR';
-  const year = new Date().getFullYear();
-  const randomNum = Math.floor(1000 + Math.random() * 9000);
-  const randomNum2 = Math.floor(1000 + Math.random() * 9000);
-  return `${prefix}-${year}-${randomNum}-${randomNum2}`;
-}
-
+// Reference ID display (single source of truth from form page)
 document.addEventListener('DOMContentLoaded', function() {
-  // Set random reference ID
+  // Reference ID is owned by the form page (single source of truth). This page only reads & displays it.
   const referenceIdElement = document.getElementById('referenceId');
-  const referenceId = generateReferenceId();
-  referenceIdElement.textContent = referenceId;
-  
-  // Update all email links with the reference ID
-  const emailLinks = document.querySelectorAll('a[href^="mailto"]');
-  emailLinks.forEach(link => {
-    const currentHref = link.getAttribute('href');
-    if (currentHref.includes('subject=')) {
-      link.setAttribute('href', currentHref.replace('DR-2026-3874-6219', referenceId));
-    }
-  });
-  
-  const timelineCircles = document.querySelectorAll('.timeline-circle');
+  let referenceId = null;
+  try {
+    referenceId = localStorage.getItem('dataDeletionReferenceId');
+  } catch (e) {
+    referenceId = null;
+  }
+
+  if (referenceIdElement) {
+    referenceIdElement.textContent = referenceId || 'Reference ID not found';
+  }
+
+// Update all email links with the reference ID (only if available)
+  if (referenceId) {
+    const emailLinks = document.querySelectorAll('a[href^="mailto"]');
+    emailLinks.forEach(link => {
+      const currentHref = link.getAttribute('href');
+      if (currentHref && currentHref.includes('subject=')) {
+        link.setAttribute('href', currentHref.replace('DR-2026-3874-6219', referenceId));
+      }
+    });
+  }
+
+const timelineCircles = document.querySelectorAll('.timeline-circle');
   const checklistItems = document.querySelectorAll('.checklist-item');
   
   // Animate timeline circles sequentially
@@ -839,24 +830,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
   }, 1000);
   
-  // Add copy to clipboard functionality for reference ID
-  referenceIdElement.style.cursor = 'pointer';
-  referenceIdElement.title = 'Click to copy to clipboard';
-  
-  referenceIdElement.addEventListener('click', function() {
-    navigator.clipboard.writeText(referenceId).then(() => {
-      const originalText = this.textContent;
-      this.textContent = 'Copied!';
-      this.style.color = '#D88B5C';
-      this.style.background = 'rgba(216, 139, 92, 0.1)';
-      
-      setTimeout(() => {
-        this.textContent = originalText;
-        this.style.color = '#FFFFFF';
-        this.style.background = 'rgba(0, 0, 0, 0.2)';
-      }, 2000);
+  // Add copy to clipboard functionality for reference ID (only if available)
+  if (referenceId && referenceIdElement) {
+    referenceIdElement.style.cursor = 'pointer';
+    referenceIdElement.title = 'Click to copy to clipboard';
+
+    referenceIdElement.addEventListener('click', function() {
+      navigator.clipboard.writeText(referenceId).then(() => {
+        const originalText = this.textContent;
+        this.textContent = 'Copied!';
+        this.style.color = '#D88B5C';
+        this.style.background = 'rgba(216, 139, 92, 0.1)';
+
+        setTimeout(() => {
+          this.textContent = originalText;
+          this.style.color = '#FFFFFF';
+          this.style.background = 'rgba(0, 0, 0, 0.2)';
+        }, 2000);
+      });
     });
-  });
+  }
+
 });
 </script>
 
