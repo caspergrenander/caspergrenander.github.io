@@ -1,702 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Deletion Request – AutoPublisher</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #1A2838;
-      color: #F5E5C8;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.7;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Historien Bakom Musiken</title>
+<style>
 
-    header {
-      padding: 60px 20px 40px;
-      text-align: center;
-      background: #0D0F15;
-      border-bottom: 1px solid #2A4A4A;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  background: #1A2838;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
 
-    header a {
-      color: inherit;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-    }
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #0D0F15;
+  border-bottom: 1px solid #2A4A4A;
+}
 
-    header img {
-      width: 180px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
 
-    h1 {
-      color: #FFFFFF;
-      margin-bottom: 10px;
-      font-weight: 600;
-      font-size: 22px;
-    }
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
-    h2 {
-      color: #FFFFFF;
-      font-weight: 600;
-      margin-top: 50px;
-      border-bottom: 1px solid #2A4A4A;
-      padding-bottom: 10px;
-    }
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
 
-    p {
-      max-width: 800px;
-      margin: 15px auto;
-      color: #F5E5C8;
-    }
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
 
-    a {
-      color: #D88B5C;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    a:hover {
-      color: #E8B65C;
-      text-decoration: underline;
-    }
+h3 {
+  color: #E8B65C;
+  font-weight: 600;
+  margin-top: 40px;
+  font-size: 18px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #0D0F15;
-      padding: 40px 30px;
-      border-radius: 6px;
-      margin-top: 40px;
-      margin-bottom: 40px;
-      border: 1px solid #2A4A4A;
-    }
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
 
-    .subtitle {
-      color: #2A4A4A;
-      font-size: 14px;
-      margin-top: 5px;
-      letter-spacing: 1px;
-    }
+a {
+  color: #D88B5C;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #E8B65C;
+  text-decoration: underline;
+}
 
-    .info-box {
-      background: rgba(232, 182, 92, 0.1);
-      border: 1px solid #E8B65C;
-      border-radius: 6px;
-      padding: 20px;
-      font-size: 14px;
-      margin: 25px 0;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #0D0F15;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #2A4A4A;
+}
 
-    form {
-      margin-top: 30px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
 
-    label {
-      display: block;
-      margin: 25px 0 10px;
-      font-weight: 600;
-      color: #FFFFFF;
-    }
+.info-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 25px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 14px;
-      border-radius: 6px;
-      border: 1px solid #2A4A4A;
-      background: rgba(42, 74, 74, 0.2);
-      color: #F5E5C8;
-      font-size: 15px;
-      box-sizing: border-box;
-      transition: border-color 0.2s;
-    }
+.email-box {
+  background: rgba(42, 74, 74, 0.2);
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+  text-align: center;
+}
 
-    select {
-      position: relative;
-      z-index: 10;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 12px;
-      padding-right: 40px;
-      cursor: pointer;
-    }
+.email-box a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #E8B65C;
+}
 
-    select option {
-      background-color: #0D0F15;
-      color: #F5E5C8;
-      padding: 12px;
-      font-size: 15px;
-    }
+.email-box a:hover {
+  color: #D88B5C;
+}
 
-    select:focus { outline: none; border-color: #D88B5C; }
-    input:focus, textarea:focus { outline: none; border-color: #D88B5C; }
+/* Form styling */
+form {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    input::placeholder, textarea::placeholder { color: #7A8C9C; }
+label {
+  display: block;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
 
-    .checkbox-group {
-      margin-top: 35px;
-      padding: 20px;
-      background-color: rgba(42, 74, 74, 0.1);
-      border-radius: 6px;
-      border: 1px solid #2A4A4A;
-    }
+select {
+  position: relative;
+  z-index: 10;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  cursor: pointer;
+}
 
-    .checkbox-group label {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-weight: normal;
-      color: #F5E5C8;
-      margin: 15px 0;
-      padding: 0;
-    }
+select option {
+  background-color: #0D0F15;
+  color: #F5E5C8;
+  padding: 12px;
+  font-size: 15px;
+}
 
-    .checkbox-group input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-      cursor: pointer;
-    }
+select:focus {
+  outline: none;
+  border-color: #D88B5C;
+  position: relative;
+}
 
-    .button-container {
-      margin-top: 40px;
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #2A4A4A;
-    }
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #D88B65;
+}
 
-    .button {
-      display: inline-block;
-      padding: 16px 40px;
-      background: #E8B65C;
-      color: #1A2838;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: all 0.3s ease;
-      text-align: center;
-      min-width: 220px;
-    }
+input::placeholder,
+textarea::placeholder {
+  color: #7A8C9C;
+}
 
-    .button:hover { opacity: 0.7; }
-    .button:disabled { cursor: not-allowed; opacity: 0.6; }
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
-    .note {
-      margin-top: 20px;
-      font-size: 13px;
-      color: #2A4A4A;
-      text-align: center;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+/* Checkbox styling */
+.checkbox-group {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
 
-    .loading {
-      display: none;
-      margin-top: 15px;
-    }
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: normal;
+  color: #F5E5C8;
+  margin: 15px 0;
+  padding: 0;
+}
 
-    .loading-spinner {
-      border: 3px solid rgba(42, 74, 74, 0.3);
-      border-top: 3px solid #E8B65C;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+/* Button styling */
+.button-container {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #2A4A4A;
+}
 
-    footer {
-      margin-top: 60px;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #2A4A4A;
-      border-top: 1px solid #2A4A4A;
-      background: #0D0F15;
-    }
+.button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: #E8B65C;
+  color: #1A2838;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 220px;
+}
 
-    .footer-content { max-width: 800px; margin: 0 auto; }
+.button:hover {
+  background: #D88B5C;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.3);
+}
 
-    .footer-links {
-      margin: 25px 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+.note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #2A4A4A;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    .footer-links a {
-      color: #2A4A4A;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+/* Contact info section */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+}
 
-    .footer-links a:hover {
-      color: #D88B5C;
-      text-decoration: none;
-    }
+.contact-item {
+  background: rgba(42, 74, 74, 0.1);
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
 
-    .footer-copyright {
-      color: #2A4A4A;
-      margin-bottom: 20px;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
+.contact-item:hover {
+  border-color: #D88B5C;
+  transform: translateY(-5px);
+}
 
-    .footer-title {
-      color: #F5E5C8;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
+.contact-icon {
+  font-size: 36px;
+  color: #E8B65C;
+  margin-bottom: 15px;
+}
 
-    strong { color: #FFFFFF; font-weight: 600; }
+.contact-item h4 {
+  color: #FFFFFF;
+  margin: 10px 0;
+  font-size: 16px;
+}
 
-    .section-divider {
-      height: 1px;
-      background-color: #2A4A4A;
-      margin: 40px auto;
-      max-width: 800px;
-    }
+.contact-item p {
+  margin: 10px 0;
+  color: #7A8C9C;
+  font-size: 14px;
+}
 
-    .follow-section {
-      text-align: center;
-      margin: 50px auto 30px;
-      max-width: 800px;
-    }
+/* Footer styling */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
 
-    .follow-section h2 {
-      margin-bottom: 30px;
-      border: none;
-      padding-bottom: 0;
-    }
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-    .social-icon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease;
-    }
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+}
 
-    .social-icon:hover { transform: translateY(-5px); }
+.footer-links a:hover {
+  color: #D88B5C;
+}
 
-    .social-icon a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-    }
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
 
-    .icon-container {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #2A4A4A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      transition: background-color 0.3s ease;
-    }
+em {
+  color: #E8B65C;
+  font-style: italic;
+}
 
-    .social-icon:hover .icon-container { background: #D88B5C; }
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
 
-    .social-icon span {
-      color: #F5E5C8;
-      font-size: 14px;
-      font-weight: 500;
-      margin-top: 5px;
-    }
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
 
-    @media (max-width: 768px) {
-      .social-icons { gap: 30px; }
-      .icon-container { width: 60px; height: 60px; }
-    }
+.back-link:hover {
+  color: #E8B65C;
+}
 
-    @media (max-width: 480px) {
-      .social-icons { gap: 20px; }
-      .icon-container { width: 50px; height: 50px; }
-    }
-  </style>
+/* CSS för Follow Us-sektionen */
+.follow-section {
+  text-align: center;
+  margin: 50px auto 30px;
+  max-width: 800px;
+}
+
+.follow-section h2 {
+  margin-bottom: 30px;
+  border: none;
+  padding-bottom: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2A4A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover .icon-container {
+  background: #D88B5C;
+}
+
+.icon-container img {
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
+}
+
+.social-icon span {
+  color: #F5E5C8;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 768px) {
+  .social-icons {
+    gap: 30px;
+  }
+
+  .icon-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-container img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons {
+    gap: 20px;
+  }
+
+  .icon-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-container img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
 </head>
-
 <body>
-  <header>
-    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
-      <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken Logo">
-      <h1>Historien Bakom Musiken</h1>
-    </a>
-    <p class="subtitle">Data Deletion Request – AutoPublisher</p>
-  </header>
+<header>
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p class="subtitle">Contact Us – Get in Touch</p>
+</header>
 
-  <div class="container">
-    <h2>About Data Deletion</h2>
-    <p>You have the right to request deletion of data processed in connection with <strong>Historien Bakom Musiken – AutoPublisher</strong>.</p>
-    <p>This request applies only to data processed by AutoPublisher. Data managed directly by TikTok must be handled through TikTok's own account settings.</p>
+<div class="container">
+  <h2>Contact Information</h2>
+  <p>
+    We're here to help! You can reach us via email or use the contact form below.
+    We typically respond within <strong>24-48 hours</strong> on business days.
+  </p>
 
-    <div class="section-divider"></div>
+  <div class="email-box">
+    <p><strong>Primary Email Address:</strong></p>
+    <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>
+    <p style="margin-top: 10px; font-size: 14px; color: #7A8C9C;">
+      For support, inquiries, and general questions
+    </p>
+  </div>
 
-    <div class="info-box">
-      <strong>Processing time:</strong> The process is usually completed within <strong>7–10 business days</strong> after the request is received.
+  <div class="info-box">
+    <strong>Response Time:</strong> We strive to respond to all inquiries within
+    <strong>1-2 business days</strong>. For urgent matters related to AutoPublisher,
+    please include "URGENT" in your subject line.
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-icon">📧</div>
+      <h4>Email Support</h4>
+      <p>For general inquiries and support questions</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
     </div>
 
-    <div class="section-divider"></div>
+    <div class="contact-item">
+      <div class="contact-icon">⚙️</div>
+      <h4>Technical Support</h4>
+      <p>For AutoPublisher technical issues</p>
+      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
+    </div>
 
-    <h2>Request Data Deletion</h2>
+    <div class="contact-item">
+      <div class="contact-icon">🔒</div>
+      <h4>Privacy & Data</h4>
+      <p>For privacy concerns and data deletion requests</p>
+      <p><a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Form</a></p>
+    </div>
+  </div>
 
-    <!-- Dold iframe för att hantera formulärinlämning -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  <div class="section-divider"></div>
 
-    <form id="dataDeletionForm"
-          method="POST"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
-          target="hidden_iframe"
-          autocomplete="on">
+  <h2>Send Us a Message</h2>
 
-      <!-- Google Forms hidden fields -->
-      <input type="hidden" name="fvv" value="1">
-      <input type="hidden" name="draftResponse" value="[]">
-      <input type="hidden" name="pageHistory" value="0">
-      <input type="hidden" name="fbzx" value="-2437333437311568305">
+  <form id="contactForm">
+    <label>Full Name</label>
+    <input type="text" placeholder="Your name" required>
 
-      <!-- Custom hidden fields -->
-      <input type="hidden" id="requestId" name="entry.1526351014" value="">
-      <input type="hidden" id="submissionSource" name="entry.1745207114" value="Public Website – Data Deletion Page">
+    <label>Email Address</label>
+    <input type="email" placeholder="you@example.com" required>
 
-      <!-- Visible form fields -->
-      <label>Full name</label>
-      <input type="text" name="entry.1000001577" placeholder="Your full name" required>
+    <label>Subject</label>
+    <select required>
+      <option value="" disabled selected>Select a subject</option>
+      <option>General Inquiry</option>
+      <option>AutoPublisher Support</option>
+      <option>Technical Issue</option>
+      <option>Partnership Opportunity</option>
+      <option>Feedback/Suggestion</option>
+      <option>Other</option>
+    </select>
 
-      <label>Email address</label>
-      <input type="email" name="entry.1233888397" placeholder="you@example.com" required>
+    <label>Message</label>
+    <textarea placeholder="How can we help you?" required></textarea>
 
-      <label>TikTok username</label>
-      <input type="text" name="entry.531571766" placeholder="@yourusername" required>
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" required>
+        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      </label>
 
-      <label>Type of request</label>
-      <select id="requestType" name="entry.1847505465" required>
-        <option value="" disabled selected>Select request type</option>
-        <option value="Delete all data related to my account">Delete all data related to my account</option>
-        <option value="Delete uploaded video metadata">Delete uploaded video metadata</option>
-        <option value="Revoke access & delete authentication tokens">Revoke access & delete authentication tokens</option>
-      </select>
+      <label>
+        <input type="checkbox">
+        I'd like to receive updates about Historien Bakom Musiken (optional)
+      </label>
+    </div>
 
-      <label>Additional information (optional)</label>
-      <textarea name="entry.226762827" placeholder="Optional comments or clarification"></textarea>
+    <div class="button-container">
+      <button type="submit" class="button">
+        Send Message
+      </button>
+      <div class="note">
+        Note: This is a demo form. For actual contact, please email us directly.
+      </div>
+    </div>
+  </form>
 
-      <div class="checkbox-group">
-        <label>
-          <input type="checkbox" id="confirmOwner" name="entry.977425461" required>
-          I confirm that I am the owner of the TikTok account listed above.
-        </label>
+  <div class="section-divider"></div>
 
-        <label>
-          <input type="checkbox" id="confirmUndo" name="entry.246601893" required>
-          I understand that this request cannot be undone.
-        </label>
+  <div class="follow-section">
+    <h2>Follow Us</h2>
+    <div class="social-icons">
+      <div class="social-icon">
+        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <!-- Instagram SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+          </div>
+          <span>Instagram</span>
+        </a>
       </div>
 
-      <div class="button-container">
-        <button class="button" id="submitBtn" type="submit" disabled>Request Data Deletion</button>
-        
-        <div class="loading" id="loadingIndicator">
-          <div class="loading-spinner"></div>
-          <p style="margin-top: 10px; color: #E8B65C;">Submitting request to Google Forms...</p>
-        </div>
-
-        <div class="note" id="submitNote">
-          Your request will be submitted to our system. Please don't close this page while submitting.
-        </div>
-
-        <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px; color: #4CAF50;">
-          ✅ Request successfully submitted. Redirecting to confirmation page...
-        </div>
-
-        <div id="errorMessage" class="note" style="display:none; font-size:14px; margin-top:18px; color: #f44336;">
-          ❌ An error occurred. Please try again or contact support.
-        </div>
+      <div class="social-icon">
+        <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <!-- Facebook SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+            </svg>
+          </div>
+          <span>Facebook</span>
+        </a>
       </div>
-    </form>
 
-    <div class="follow-section">
-      <h2>Follow Us</h2>
-      <div class="social-icons">
+      <div class="social-icon">
+        <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <!-- Spotify SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+              <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+            </svg>
+          </div>
+          <span>Spotify</span>
+        </a>
+      </div>
 
-        <div class="social-icon">
-          <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6-7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-              </svg>
-            </div>
-            <span>Instagram</span>
-          </a>
-        </div>
-
-        <div class="social-icon">
-          <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
-              </svg>
-            </div>
-            <span>Facebook</span>
-          </a>
-        </div>
-
-        <div class="social-icon">
-          <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
-              </svg>
-            </div>
-            <span>Spotify</span>
-          </a>
-        </div>
-
-        <div class="social-icon">
-          <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-              </svg>
-            </div>
-            <span>TikTok</span>
-          </a>
-        </div>
-
+      <!-- TikTok ikon -->
+      <div class="social-icon">
+        <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <!-- TikTok SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+          </div>
+          <span>TikTok</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="footer-content">
-      <p class="footer-title">Historien Bakom Musiken – AutoPublisher</p>
-      <p class="footer-copyright">© 2026 Casper Grenander. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
-        <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
-        <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
-        <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
-        <a href="https://caspergrenander.github.io/historienbakomusiken/contact">Contact</a>
-      </div>
+  <div class="back-link">
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Back to main page</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    </p>
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
+      © 2026 Casper Grenander. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Element referenser
-      const form = document.getElementById('dataDeletionForm');
-      const requestIdField = document.getElementById('requestId');
-      const confirmOwner = document.getElementById('confirmOwner');
-      const confirmUndo = document.getElementById('confirmUndo');
-      const submitBtn = document.getElementById('submitBtn');
-      const loadingIndicator = document.getElementById('loadingIndicator');
-      const successMessage = document.getElementById('successMessage');
-      const errorMessage = document.getElementById('errorMessage');
-      const submitNote = document.getElementById('submitNote');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
 
-      // Generera och spara Reference ID
-      function generateReferenceId() {
-        const year = new Date().getFullYear();
-        const timestamp = Date.now().toString().slice(-6);
-        const random = Math.floor(1000 + Math.random() * 9000);
-        return `DR-${year}-${timestamp}-${random}`;
-      }
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      // Spara Reference ID i local storage
-      function saveReferenceIdToLocalStorage(referenceId) {
-        try {
-          // Spara både som separat variabel och i ett objekt med metadata
-          localStorage.setItem('dataDeletionReferenceId', referenceId);
-          localStorage.setItem('lastDataDeletionRequest', JSON.stringify({
-            referenceId: referenceId,
-            timestamp: new Date().toISOString(),
-            status: 'pending'
-          }));
-          
-          console.log('Reference ID saved to localStorage:', referenceId);
-          return true;
-        } catch (error) {
-          console.error('Error saving to localStorage:', error);
-          return false;
-        }
-      }
+    // In a real implementation, you would send the form data to a server
+    // This is just a demo showing a confirmation message
+    const button = contactForm.querySelector('.button');
+    const originalText = button.textContent;
 
-      // Initialisera Reference ID
-      let referenceId;
-      
-      // Försök att hämta befintligt ID från local storage
-      try {
-        const savedData = localStorage.getItem('lastDataDeletionRequest');
-        if (savedData) {
-          const parsedData = JSON.parse(savedData);
-          // Om förfrågan är mer än 24h gammal, generera nytt ID
-          const requestTime = new Date(parsedData.timestamp);
-          const now = new Date();
-          const hoursDiff = Math.abs(now - requestTime) / 36e5;
-          
-          if (hoursDiff < 24 && parsedData.status === 'pending') {
-            referenceId = parsedData.referenceId;
-          } else {
-            referenceId = generateReferenceId();
-            saveReferenceIdToLocalStorage(referenceId);
-          }
-        } else {
-          referenceId = generateReferenceId();
-          saveReferenceIdToLocalStorage(referenceId);
-        }
-      } catch (e) {
-        // Fallback om något går fel
-        referenceId = generateReferenceId();
-        saveReferenceIdToLocalStorage(referenceId);
-      }
+    button.textContent = 'Message Sent!';
+    button.style.background = '#2A4A4A';
+    button.style.color = '#F5E5C8';
+    button.style.cursor = 'default';
 
-      // Sätt Reference ID i formuläret
-      if (requestIdField && referenceId) {
-        requestIdField.value = referenceId;
-        console.log('Reference ID set in form:', referenceId);
-      }
+    setTimeout(() => {
+      button.textContent = 'Send Another Message';
+      button.style.background = '#E8B65C';
+      button.style.color = '#1A2838';
+      contactForm.reset();
+    }, 3000);
+  });
 
-      // Aktivera/inaktivera submit-knapp
-      function updateButtonState() {
-        const isConfirmed = confirmOwner.checked && confirmUndo.checked;
-        submitBtn.disabled = !isConfirmed;
-        submitBtn.style.opacity = isConfirmed ? '1' : '0.6';
-      }
-
-      confirmOwner.addEventListener('change', updateButtonState);
-      confirmUndo.addEventListener('change', updateButtonState);
-      updateButtonState();
-
-      // Hantera formulärinlämning med AJAX för bättre kontroll
-      form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Hindra standardbeteende
-        
-        // Visa laddningsindikator
-        loadingIndicator.style.display = 'block';
-        submitNote.style.display = 'none';
-        errorMessage.style.display = 'none';
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-        
-        // Validera formuläret igen
-        if (!confirmOwner.checked || !confirmUndo.checked) {
-          alert('Please confirm both checkboxes before submitting.');
-          loadingIndicator.style.display = 'none';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Request Data Deletion';
-          return;
-        }
-
-        // Förbered form data
-        const formData = new FormData(form);
-        
-        // Skicka förfrågan till Google Forms med fetch för bättre felhantering
-        fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors' // Google Forms kräver no-cors
-        })
-        .then(() => {
-          // Med no-cors kan vi inte läsa svaret, men vi antar att det lyckades
-          console.log('Form submitted successfully');
-          
-          // Uppdatera local storage status
-          try {
-            const savedData = localStorage.getItem('lastDataDeletionRequest');
-            if (savedData) {
-              const parsedData = JSON.parse(savedData);
-              parsedData.status = 'submitted';
-              parsedData.submittedAt = new Date().toISOString();
-              localStorage.setItem('lastDataDeletionRequest', JSON.stringify(parsedData));
-            }
-          } catch (e) {
-            console.error('Error updating localStorage:', e);
-          }
-          
-          // Visa framgångsmeddelande
-          loadingIndicator.style.display = 'none';
-          successMessage.style.display = 'block';
-          
-          // Vänta lite innan omdirigering
-          setTimeout(() => {
-            // Omdirigera till bekräftelsesidan med referenceId i URL
-            window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
-          }, 1500);
-        })
-        .catch((error) => {
-          console.error('Error submitting form:', error);
-          loadingIndicator.style.display = 'none';
-          errorMessage.style.display = 'block';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Request Data Deletion';
-          
-          // Alternativ metod: Skicka via iframe som fallback
-          console.log('Trying fallback method...');
-          setTimeout(() => {
-            form.target = 'hidden_iframe';
-            form.submit();
-            
-            // Ändå visa framgångsmeddelande eftersom iframe-metoden brukar fungera
-            setTimeout(() => {
-              loadingIndicator.style.display = 'none';
-              successMessage.style.display = 'block';
-              setTimeout(() => {
-                window.location.href = `https://caspergrenander.github.io/historienbakomusiken/request-received?ref=${encodeURIComponent(referenceId)}`;
-              }, 1500);
-            }, 2000);
-          }, 1000);
-        });
-      });
-
-      // Lyssnare på iframe för att detektera när formuläret har laddats (fallback)
-      const iframe = document.getElementById('hidden_iframe');
-      iframe.addEventListener('load', function() {
-        console.log('Iframe loaded - form submission likely completed');
-        // Vi kan inte kontrollera innehållet pga CORS, men vi antar lyckad inlämning
-      });
+  // Add hover effect to select elements
+  const selectElements = document.querySelectorAll('select');
+  selectElements.forEach(select => {
+    select.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#D88B5C';
     });
-  </script>
+
+    select.addEventListener('mouseleave', function() {
+      if (document.activeElement !== this) {
+        this.style.borderColor = '#2A4A4A';
+      }
+    });
+
+    select.addEventListener('focus', function() {
+      this.style.borderColor = '#D88B5C';
+    });
+
+    select.addEventListener('blur', function() {
+      this.style.borderColor = '#2A4A4A';
+    });
+  });
+});
+</script>
 </body>
 </html>
