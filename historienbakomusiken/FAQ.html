@@ -1,1 +1,1111 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ – Historien Bakom Musiken</title>
+<style>
+
+/* ====== ORIGINAL DESIGN (orörd) ====== */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #1A2838;
+  color: #F5E5C8;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: #0D0F15;
+  border-bottom: 1px solid #2A4A4A;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 50px;
+  border-bottom: 1px solid #2A4A4A;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #E8B65C;
+  font-weight: 600;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: 15px auto;
+  color: #F5E5C8;
+}
+
+a {
+  color: #D88B5C;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #E8B65C;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #0D0F15;
+  padding: 40px 30px;
+  border-radius: 6px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #2A4A4A;
+}
+
+.subtitle {
+  color: #2A4A4A;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.info-box {
+  background: rgba(232, 182, 92, 0.1);
+  border: 1px solid #E8B65C;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 25px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: #2A4A4A;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+/* Form styling */
+form {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  display: block;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.2);
+  color: #F5E5C8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #D88B5C;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7A8C9C;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.checkbox-group {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(42, 74, 74, 0.1);
+  border-radius: 6px;
+  border: 1px solid #2A4A4A;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: normal;
+  color: #F5E5C8;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.button-container {
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #2A4A4A;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: #E8B65C;
+  color: #1A2838;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 220px;
+}
+
+.button:hover {
+  background: #D88B5C;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.3);
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #2A4A4A;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
+}
+
+.back-link:hover {
+  color: #E8B65C;
+}
+
+/* CSS för Follow Us-sektionen (orörd) */
+.follow-section {
+  text-align: center;
+  margin: 50px auto 30px;
+  max-width: 800px;
+}
+
+.follow-section h2 {
+  margin-bottom: 30px;
+  border: none;
+  padding-bottom: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2A4A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover .icon-container {
+  background: #D88B5C;
+}
+
+.social-icon span {
+  color: #F5E5C8;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .social-icons {
+    gap: 30px;
+  }
+  .icon-container {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons {
+    gap: 20px;
+  }
+  .icon-container {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #2A4A4A;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #D88B5C;
+}
+
+strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+em {
+  color: #E8B65C;
+  font-style: italic;
+}
+
+/* ====== NYTT: FAQ + CHAT (designmatchande, men separat) ====== */
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 10px auto 0;
+}
+
+details.faq-item {
+  border: 1px solid #2A4A4A;
+  border-radius: 6px;
+  background: rgba(42, 74, 74, 0.10);
+  padding: 0;
+  margin: 12px 0;
+  overflow: hidden;
+}
+
+details.faq-item[open] {
+  border-color: #D88B5C;
+}
+
+summary.faq-q {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+summary.faq-q::-webkit-details-marker { display: none; }
+
+.faq-q .chev {
+  color: #E8B65C;
+  font-weight: 700;
+  user-select: none;
+}
+
+.faq-a {
+  padding: 0 16px 16px;
+  color: #F5E5C8;
+  border-top: 1px solid #2A4A4A;
+}
+
+.mini-muted {
+  color: #7A8C9C;
+  font-size: 13px;
+  max-width: 800px;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+/* Chat feed */
+.chat-shell {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 10px auto 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.15);
+  color: #7A8C9C;
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.pill strong {
+  color: #F5E5C8;
+  font-weight: 600;
+}
+
+.chat-feed {
+  margin-top: 18px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.chat-empty {
+  padding: 20px;
+  color: #7A8C9C;
+  text-align: center;
+}
+
+.msg {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #2A4A4A;
+}
+
+.msg:last-child {
+  border-bottom: none;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2A4A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.avatar.dev {
+  background: #E8B65C;
+  color: #1A2838;
+}
+
+.msg-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.msg-name {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.msg-meta {
+  color: #7A8C9C;
+  font-size: 12px;
+}
+
+.msg-body {
+  color: #F5E5C8;
+  white-space: pre-wrap;
+}
+
+.msg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.reaction-btn,
+.reply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #2A4A4A;
+  background: rgba(42, 74, 74, 0.15);
+  color: #F5E5C8;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.reaction-btn:hover,
+.reply-btn:hover {
+  border-color: #D88B5C;
+  transform: translateY(-1px);
+}
+
+.reaction-btn.active {
+  border-color: #E8B65C;
+  background: rgba(232, 182, 92, 0.12);
+}
+
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #7A8C9C;
+}
+
+.badge-verified svg {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.reply-context {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-left: 3px solid #E8B65C;
+  background: rgba(232, 182, 92, 0.06);
+  color: #7A8C9C;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.admin-reply-box {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #E8B65C;
+  background: rgba(232, 182, 92, 0.08);
+  border-radius: 6px;
+}
+
+.admin-reply-box .mini {
+  color: #7A8C9C;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
+         alt="Historien Bakom Musiken Logo">
+    <h1>Historien Bakom Musiken</h1>
+  </a>
+  <p class="subtitle">FAQ + Support Thread</p>
+</header>
+
+<div class="container">
+
+  <h2>Frequently Asked Questions</h2>
+  <p>
+    Quick answers first. If you still need help, ask directly below — it will appear in the support thread.
+  </p>
+
+  <div class="faq-accordion" id="faqAccordion">
+    <details class="faq-item">
+      <summary class="faq-q">
+        What is the best way to contact you?
+        <span class="chev">+</span>
+      </summary>
+      <div class="faq-a">
+        Email is the preferred method for all inquiries. Please use
+        <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a> for the fastest response.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Do you offer technical support for AutoPublisher?
+        <span class="chev">+</span>
+      </summary>
+      <div class="faq-a">
+        Yes! We provide technical support for AutoPublisher users. Please include your TikTok username and a description of the issue in your email.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Can I request a feature for AutoPublisher?
+        <span class="chev">+</span>
+      </summary>
+      <div class="faq-a">
+        Absolutely! We welcome feature requests and suggestions. Use the support thread below or send us an email with your ideas.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        What should I do if I need to delete my data?
+        <span class="chev">+</span>
+      </summary>
+      <div class="faq-a">
+        Visit our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a> to submit a formal request.
+      </div>
+    </details>
+  </div>
+
+  <div class="mini-muted">
+    Tip: You can bookmark a specific question thread later when we add IDs + anchors.
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>Ask the Developers</h2>
+  <p>
+    Post a question and it will show up below. When the backend is connected, developer replies will appear as <strong>AutoPublisher</strong> with a verified badge.
+  </p>
+
+  <div class="info-box">
+    <strong>Note:</strong> This page is currently a frontend demo. Posting works on this page and saves locally in your browser.
+    When we connect Google Sheets, posts and replies will sync live.
+  </div>
+
+  <form id="askForm">
+    <label>Display Name</label>
+    <input id="nameInput" type="text" placeholder="Your name" required>
+
+    <label>Email Address (optional)</label>
+    <input id="emailInput" type="email" placeholder="you@example.com">
+
+    <label>Topic</label>
+    <select id="topicSelect" required>
+      <option value="" disabled selected>Select a topic</option>
+      <option>General</option>
+      <option>AutoPublisher Support</option>
+      <option>Technical Issue</option>
+      <option>Feature Request</option>
+      <option>Privacy & Data</option>
+      <option>Other</option>
+    </select>
+
+    <label>Your Question</label>
+    <textarea id="questionInput" placeholder="Write your question here..." required></textarea>
+
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" id="agreeBox" required>
+        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      </label>
+      <label>
+        <input type="checkbox" id="updatesBox">
+        I'd like to receive updates (optional)
+      </label>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" class="button" id="postBtn">Post Question</button>
+      <div class="note" id="postNote">
+        For urgent matters, email <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>.
+      </div>
+    </div>
+  </form>
+
+  <div class="section-divider"></div>
+
+  <h2>Support Thread</h2>
+
+  <div class="chat-shell">
+    <div class="chat-toolbar">
+      <div class="pill" id="modePill">Mode: <strong>Visitor</strong></div>
+      <div class="pill">Status: <strong>Demo (local)</strong></div>
+    </div>
+
+    <div class="chat-feed" id="chatFeed">
+      <div class="chat-empty">No posts yet. Be the first to ask a question.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="follow-section">
+    <h2>Follow Us</h2>
+    <div class="social-icons">
+      <div class="social-icon">
+        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+          </div>
+          <span>Instagram</span>
+        </a>
+      </div>
+
+      <div class="social-icon">
+        <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+            </svg>
+          </div>
+          <span>Facebook</span>
+        </a>
+      </div>
+
+      <div class="social-icon">
+        <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+              <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+            </svg>
+          </div>
+          <span>Spotify</span>
+        </a>
+      </div>
+
+      <div class="social-icon">
+        <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+          </div>
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Back to main page</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p style="color: #F5E5C8; margin-bottom: 10px;">
+      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    </p>
+    <p style="color: #2A4A4A; margin-bottom: 20px;">
+      © 2026 Casper Grenander. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
+      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/**
+ * FAQ + Chat demo (localStorage).
+ * Backend-hook points are prepared but not enabled.
+ */
+
+(function() {
+  const STORAGE_KEY = "ap_faq_thread_v1";
+  const REACTIONS_KEY = "ap_faq_reactions_v1";
+
+  const isAdmin = new URLSearchParams(location.search).get("admin") === "1";
+  const modePill = document.getElementById("modePill");
+  modePill.innerHTML = isAdmin ? 'Mode: <strong>Admin (demo)</strong>' : 'Mode: <strong>Visitor</strong>';
+
+  // Verified SVG (inline)
+  const verifiedSvg = `
+    <span class="badge-verified" title="Verified developer account">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#E8B65C" d="M12 2l2.3 2.2 3.1-.4 1.1 3 2.7 1.6-1.2 3 1.2 3-2.7 1.6-1.1 3-3.1-.4L12 22l-2.3-2.2-3.1.4-1.1-3-2.7-1.6 1.2-3-1.2-3 2.7-1.6 1.1-3 3.1.4L12 2z"/>
+        <path fill="#0D0F15" d="M10.6 14.8l-2.2-2.2 1.1-1.1 1.1 1.1 4-4 1.1 1.1-5.1 5.1z"/>
+      </svg>
+      <span>Verified</span>
+    </span>
+  `;
+
+  // FAQ accordion chevron behavior (+/-)
+  document.querySelectorAll("details.faq-item").forEach(d => {
+    const s = d.querySelector(".chev");
+    const sync = () => s.textContent = d.open ? "–" : "+";
+    d.addEventListener("toggle", sync);
+    sync();
+  });
+
+  const askForm = document.getElementById("askForm");
+  const nameInput = document.getElementById("nameInput");
+  const emailInput = document.getElementById("emailInput");
+  const topicSelect = document.getElementById("topicSelect");
+  const questionInput = document.getElementById("questionInput");
+  const chatFeed = document.getElementById("chatFeed");
+  const postBtn = document.getElementById("postBtn");
+
+  function nowIso() {
+    return new Date().toISOString();
+  }
+
+  function formatTime(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
+    } catch {
+      return iso;
+    }
+  }
+
+  function loadThread() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    try { return JSON.parse(raw) || []; } catch { return []; }
+  }
+
+  function saveThread(items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }
+
+  function loadReactions() {
+    const raw = localStorage.getItem(REACTIONS_KEY);
+    if (!raw) return { counts: {}, my: {} };
+    try { return JSON.parse(raw) || { counts:{}, my:{} }; } catch { return { counts:{}, my:{} }; }
+  }
+
+  function saveReactions(r) {
+    localStorage.setItem(REACTIONS_KEY, JSON.stringify(r));
+  }
+
+  function uid() {
+    return "m_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
+  }
+
+  function initials(name) {
+    const parts = (name || "").trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return "?";
+    const a = parts[0][0] || "?";
+    const b = parts.length > 1 ? (parts[parts.length-1][0] || "") : "";
+    return (a + b).toUpperCase();
+  }
+
+  function escapeHtml(str) {
+    return (str || "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function render() {
+    const items = loadThread();
+    const reactions = loadReactions();
+
+    if (!items.length) {
+      chatFeed.innerHTML = `<div class="chat-empty">No posts yet. Be the first to ask a question.</div>`;
+      return;
+    }
+
+    chatFeed.innerHTML = items.map(item => {
+      const isDev = item.authorType === "dev";
+      const av = isDev ? "AP" : initials(item.displayName);
+      const name = isDev
+        ? `AutoPublisher ${verifiedSvg}`
+        : escapeHtml(item.displayName || "Visitor");
+      const meta = `${escapeHtml(item.topic || "General")} • ${formatTime(item.createdAt)}`;
+
+      const msgId = item.id;
+      const c = reactions.counts[msgId] || { up: 0, down: 0 };
+      const my = reactions.my[msgId] || null;
+
+      const replyContext = item.replyTo
+        ? `<div class="reply-context">Replying to <strong>${escapeHtml(item.replyToName || "a post")}</strong></div>`
+        : "";
+
+      const adminReplyControls = (!isDev && isAdmin)
+        ? `
+          <button class="reply-btn" data-action="openReply" data-id="${msgId}">Reply as AutoPublisher</button>
+        `
+        : "";
+
+      return `
+        <div class="msg" data-mid="${msgId}">
+          <div class="avatar ${isDev ? "dev" : ""}">${av}</div>
+          <div>
+            <div class="msg-head">
+              <div class="msg-name">${name}</div>
+              <div class="msg-meta">${meta}</div>
+            </div>
+
+            ${replyContext}
+
+            <div class="msg-body">${escapeHtml(item.body)}</div>
+
+            <div class="msg-actions">
+              <button class="reaction-btn ${my === "up" ? "active" : ""}" data-action="react" data-kind="up" data-id="${msgId}">👍 <span>${c.up}</span></button>
+              <button class="reaction-btn ${my === "down" ? "active" : ""}" data-action="react" data-kind="down" data-id="${msgId}">👎 <span>${c.down}</span></button>
+              ${adminReplyControls}
+            </div>
+
+            ${isAdmin ? `<div class="admin-slot" data-slot="${msgId}"></div>` : ""}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function toggleReaction(messageId, kind) {
+    const r = loadReactions();
+    const counts = r.counts[messageId] || { up: 0, down: 0 };
+    const prev = r.my[messageId] || null;
+
+    // remove previous
+    if (prev === "up") counts.up = Math.max(0, counts.up - 1);
+    if (prev === "down") counts.down = Math.max(0, counts.down - 1);
+
+    // toggle same -> clear
+    if (prev === kind) {
+      r.my[messageId] = null;
+    } else {
+      r.my[messageId] = kind;
+      if (kind === "up") counts.up += 1;
+      if (kind === "down") counts.down += 1;
+    }
+
+    r.counts[messageId] = counts;
+    saveReactions(r);
+    render();
+  }
+
+  function openAdminReplyBox(messageId) {
+    const items = loadThread();
+    const target = items.find(x => x.id === messageId);
+    if (!target) return;
+
+    const slot = document.querySelector(`[data-slot="${messageId}"]`);
+    if (!slot) return;
+
+    // If already open, close it
+    if (slot.innerHTML.trim()) {
+      slot.innerHTML = "";
+      return;
+    }
+
+    slot.innerHTML = `
+      <div class="admin-reply-box">
+        <label style="margin:0 0 10px; font-weight:700; color:#FFFFFF;">Reply as AutoPublisher</label>
+        <textarea id="adminReplyText_${messageId}" placeholder="Write a developer reply..." style="min-height:90px;"></textarea>
+        <div class="button-container" style="border-top:none; padding-top:12px; margin-top:10px;">
+          <button class="button" data-action="sendAdminReply" data-id="${messageId}" style="min-width:220px;">Post Reply</button>
+          <div class="mini">Demo only. In real mode this comes from Google Sheets / backend.</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function postQuestion(payload) {
+    const items = loadThread();
+    items.push(payload);
+    saveThread(items);
+
+    // Backend hook (later):
+    // fetch("YOUR_API_ENDPOINT/messages", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
+
+    render();
+  }
+
+  function postDevReply(parentId, replyText) {
+    const items = loadThread();
+    const parent = items.find(x => x.id === parentId);
+    if (!parent) return;
+
+    items.push({
+      id: uid(),
+      authorType: "dev",
+      displayName: "AutoPublisher",
+      topic: "Developer Reply",
+      body: replyText,
+      createdAt: nowIso(),
+      replyTo: parentId,
+      replyToName: parent.displayName || "Visitor"
+    });
+
+    saveThread(items);
+
+    // Backend hook (later):
+    // fetch("YOUR_API_ENDPOINT/replies", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ parentId, replyText }) });
+
+    render();
+
+    const slot = document.querySelector(`[data-slot="${parentId}"]`);
+    if (slot) slot.innerHTML = "";
+  }
+
+  askForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    postBtn.textContent = "Posting...";
+    postBtn.disabled = true;
+    postBtn.style.cursor = "default";
+
+    const payload = {
+      id: uid(),
+      authorType: "user",
+      displayName: nameInput.value.trim(),
+      email: emailInput.value.trim() || null,
+      topic: topicSelect.value,
+      body: questionInput.value.trim(),
+      createdAt: nowIso(),
+      updatesOptIn: document.getElementById("updatesBox").checked || false
+    };
+
+    // Minimal validation
+    if (!payload.displayName || !payload.topic || !payload.body) {
+      postBtn.textContent = "Post Question";
+      postBtn.disabled = false;
+      postBtn.style.cursor = "pointer";
+      return;
+    }
+
+    postQuestion(payload);
+
+    setTimeout(() => {
+      postBtn.textContent = "Posted!";
+      postBtn.style.background = "#2A4A4A";
+      postBtn.style.color = "#F5E5C8";
+      askForm.reset();
+
+      setTimeout(() => {
+        postBtn.textContent = "Post Question";
+        postBtn.disabled = false;
+        postBtn.style.background = "#E8B65C";
+        postBtn.style.color = "#1A2838";
+        postBtn.style.cursor = "pointer";
+      }, 1100);
+    }, 250);
+  });
+
+  chatFeed.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    const action = btn.getAttribute("data-action");
+    const id = btn.getAttribute("data-id");
+
+    if (action === "react") {
+      const kind = btn.getAttribute("data-kind");
+      toggleReaction(id, kind);
+    }
+
+    if (action === "openReply" && isAdmin) {
+      openAdminReplyBox(id);
+    }
+
+    if (action === "sendAdminReply" && isAdmin) {
+      const ta = document.getElementById(`adminReplyText_${id}`);
+      const text = (ta && ta.value || "").trim();
+      if (!text) return;
+      postDevReply(id, text);
+    }
+  });
+
+  // First render
+  render();
+
+})();
+</script>
+
+</body>
+</html>
