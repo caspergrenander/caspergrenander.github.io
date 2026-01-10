@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FAQ – Historien Bakom Musiken</title>
-<style>
 
-/* ====== ORIGINAL DESIGN (orörd) ====== */
+<style>
+/* ====== NEW PROJECT DESIGN (same as your Contact page) ====== */
 
 body {
   margin: 0;
@@ -113,7 +113,10 @@ a:hover {
   max-width: 800px;
 }
 
-/* Form styling */
+strong { color: #FFFFFF; font-weight: 600; }
+em { color: #E8B65C; font-style: italic; }
+
+/* ====== Form styling (same vibe as Contact) ====== */
 form {
   margin-top: 30px;
   max-width: 800px;
@@ -142,6 +145,23 @@ textarea {
   transition: border-color 0.2s;
 }
 
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B65C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #0D0F15;
+  color: #F5E5C8;
+}
+
 input:focus,
 textarea:focus,
 select:focus {
@@ -150,9 +170,7 @@ select:focus {
 }
 
 input::placeholder,
-textarea::placeholder {
-  color: #7A8C9C;
-}
+textarea::placeholder { color: #7A8C9C; }
 
 textarea {
   min-height: 120px;
@@ -160,7 +178,7 @@ textarea {
 }
 
 .checkbox-group {
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 20px;
   background-color: rgba(42, 74, 74, 0.1);
   border-radius: 6px;
@@ -185,7 +203,7 @@ textarea {
 }
 
 .button-container {
-  margin-top: 30px;
+  margin-top: 40px;
   text-align: center;
   padding-top: 20px;
   border-top: 1px solid #2A4A4A;
@@ -222,211 +240,61 @@ textarea {
   margin-right: auto;
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  color: #D88B5C;
-  font-size: 0.9em;
-}
-
-.back-link:hover {
-  color: #E8B65C;
-}
-
-/* CSS för Follow Us-sektionen (orörd) */
-.follow-section {
-  text-align: center;
-  margin: 50px auto 30px;
-  max-width: 800px;
-}
-
-.follow-section h2 {
-  margin-bottom: 30px;
-  border: none;
-  padding-bottom: 0;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-}
-
-.social-icon a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.icon-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #2A4A4A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.social-icon:hover .icon-container {
-  background: #D88B5C;
-}
-
-.social-icon span {
-  color: #F5E5C8;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .social-icons {
-    gap: 30px;
-  }
-  .icon-container {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .social-icons {
-    gap: 20px;
-  }
-  .icon-container {
-    width: 50px;
-    height: 50px;
-  }
-}
-
-footer {
-  margin-top: 60px;
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #2A4A4A;
-  border-top: 1px solid #2A4A4A;
-  background: #0D0F15;
-}
-
-.footer-content {
+/* ====== FAQ Accordion (fits your style) ====== */
+.faq-wrap {
   max-width: 800px;
   margin: 0 auto;
-}
-
-.footer-links {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.footer-links a {
-  color: #2A4A4A;
-  font-size: 0.85rem;
-}
-
-.footer-links a:hover {
-  color: #D88B5C;
-}
-
-strong {
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-em {
-  color: #E8B65C;
-  font-style: italic;
-}
-
-/* ====== NYTT: FAQ + CHAT (designmatchande, men separat) ====== */
-
-.faq-accordion {
-  max-width: 800px;
-  margin: 10px auto 0;
 }
 
 details.faq-item {
   border: 1px solid #2A4A4A;
   border-radius: 6px;
   background: rgba(42, 74, 74, 0.10);
-  padding: 0;
   margin: 12px 0;
   overflow: hidden;
 }
 
-details.faq-item[open] {
-  border-color: #D88B5C;
-}
+details.faq-item[open] { border-color: #D88B5C; }
 
 summary.faq-q {
   list-style: none;
   cursor: pointer;
-  padding: 16px 16px;
-  font-weight: 600;
-  color: #FFFFFF;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  color: #FFFFFF;
+  font-weight: 700;
 }
 
 summary.faq-q::-webkit-details-marker { display: none; }
 
 .faq-q .chev {
   color: #E8B65C;
-  font-weight: 700;
+  font-weight: 900;
   user-select: none;
 }
 
 .faq-a {
   padding: 0 16px 16px;
-  color: #F5E5C8;
   border-top: 1px solid #2A4A4A;
+  color: #F5E5C8;
 }
 
-.mini-muted {
-  color: #7A8C9C;
-  font-size: 13px;
-  max-width: 800px;
-  margin: 10px auto 0;
-  text-align: center;
-}
-
-/* Chat feed */
-.chat-shell {
+/* ====== Support Thread (Subscriptions Add-ons logic ported, new design) ====== */
+.thread-wrap {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.chat-toolbar {
+.thread-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  margin: 10px auto 0;
+  margin: 10px 0 20px;
 }
 
 .pill {
@@ -441,152 +309,186 @@ summary.faq-q::-webkit-details-marker { display: none; }
   padding: 8px 12px;
 }
 
-.pill strong {
-  color: #F5E5C8;
-  font-weight: 600;
-}
+.pill strong { color: #F5E5C8; }
 
-.chat-feed {
-  margin-top: 18px;
+.thread-item{
+  margin: 0 0 18px;
+  padding: 18px;
   border: 1px solid #2A4A4A;
-  background: rgba(42, 74, 74, 0.08);
   border-radius: 6px;
-  overflow: hidden;
+  background: rgba(42, 74, 74, 0.10);
 }
 
-.chat-empty {
-  padding: 20px;
+.thread-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom: 10px;
+}
+
+.thread-name{
+  color:#FFFFFF;
+  font-weight:800;
+}
+
+.thread-meta{
+  color:#7A8C9C;
+  font-size: 12px;
+}
+
+.thread-topic {
+  color:#E8B65C;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.thread-body{
+  color:#F5E5C8;
+  white-space:pre-wrap;
+}
+
+.support-reply{
+  margin-top: 14px;
+  padding: 12px;
+  background: rgba(232, 182, 92, 0.08);
+  border-radius: 6px;
+  border-left: 3px solid #E8B65C;
+}
+
+.support-tag{
+  font-weight: 800;
+  font-size: 0.85rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom: 6px;
+  color:#E8B65C;
+}
+
+.verified-badge{
+  width:16px;
+  height:16px;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.thread-empty {
+  padding: 18px;
+  border: 1px dashed #2A4A4A;
+  border-radius: 6px;
   color: #7A8C9C;
   text-align: center;
+  background: rgba(42, 74, 74, 0.06);
 }
 
-.msg {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 12px;
-  padding: 16px;
-  border-bottom: 1px solid #2A4A4A;
-}
+/* Anti-bot honeypot */
+.honeypot { display:none !important; }
 
-.msg:last-child {
-  border-bottom: none;
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #D88B5C;
+  font-size: 0.9em;
 }
+.back-link:hover { color: #E8B65C; }
 
-.avatar {
-  width: 44px;
-  height: 44px;
+/* ====== Follow Us (same as your site) ====== */
+.follow-section {
+  text-align: center;
+  margin: 50px auto 30px;
+  max-width: 800px;
+}
+.follow-section h2 {
+  margin-bottom: 30px;
+  border: none;
+  padding-bottom: 0;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+.social-icon:hover { transform: translateY(-5px); }
+.social-icon a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+.icon-container {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #2A4A4A;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  user-select: none;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
-
-.avatar.dev {
-  background: #E8B65C;
-  color: #1A2838;
+.social-icon:hover .icon-container { background: #D88B5C; }
+.icon-container svg {
+  width: 35px;
+  height: 35px;
+  fill: #FFFFFF;
 }
-
-.msg-head {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.msg-name {
-  color: #FFFFFF;
-  font-weight: 700;
-}
-
-.msg-meta {
-  color: #7A8C9C;
-  font-size: 12px;
-}
-
-.msg-body {
+.social-icon span {
   color: #F5E5C8;
-  white-space: pre-wrap;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
 }
 
-.msg-actions {
+/* Footer (same as your site) */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2A4A4A;
+  border-top: 1px solid #2A4A4A;
+  background: #0D0F15;
+}
+.footer-content { max-width: 800px; margin: 0 auto; }
+.footer-links {
+  margin: 20px 0;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 15px;
 }
+.footer-links a { color: #2A4A4A; font-size: 0.85rem; }
+.footer-links a:hover { color: #D88B5C; }
 
-.reaction-btn,
-.reply-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid #2A4A4A;
-  background: rgba(42, 74, 74, 0.15);
-  color: #F5E5C8;
-  padding: 8px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.2s ease;
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .social-icons { gap: 30px; }
+  .icon-container { width: 60px; height: 60px; }
+  .icon-container svg { width: 30px; height: 30px; }
 }
-
-.reaction-btn:hover,
-.reply-btn:hover {
-  border-color: #D88B5C;
-  transform: translateY(-1px);
+@media (max-width: 480px) {
+  .social-icons { gap: 20px; }
+  .icon-container { width: 50px; height: 50px; }
+  .icon-container svg { width: 25px; height: 25px; }
 }
-
-.reaction-btn.active {
-  border-color: #E8B65C;
-  background: rgba(232, 182, 92, 0.12);
-}
-
-.badge-verified {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #7A8C9C;
-}
-
-.badge-verified svg {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-}
-
-.reply-context {
-  margin-top: 6px;
-  padding: 10px 12px;
-  border-left: 3px solid #E8B65C;
-  background: rgba(232, 182, 92, 0.06);
-  color: #7A8C9C;
-  border-radius: 6px;
-  font-size: 13px;
-}
-
-.admin-reply-box {
-  margin-top: 14px;
-  padding: 14px;
-  border: 1px solid #E8B65C;
-  background: rgba(232, 182, 92, 0.08);
-  border-radius: 6px;
-}
-
-.admin-reply-box .mini {
-  color: #7A8C9C;
-  font-size: 12px;
-  margin-top: 6px;
-}
-
 </style>
 </head>
+
 <body>
 
 <header>
@@ -595,17 +497,18 @@ summary.faq-q::-webkit-details-marker { display: none; }
          alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p class="subtitle">FAQ + Support Thread</p>
+  <p class="subtitle">FAQ + Developer Support Thread</p>
 </header>
 
 <div class="container">
 
   <h2>Frequently Asked Questions</h2>
   <p>
-    Quick answers first. If you still need help, ask directly below — it will appear in the support thread.
+    Snabba svar först. Om du behöver mer hjälp — posta din fråga i tråden längre ner så kan vi svara som <strong>AutoPublisher</strong> (Verified).
   </p>
 
-  <div class="faq-accordion" id="faqAccordion">
+  <div class="faq-wrap" id="faqWrap">
+    <!-- FAQ items (edit freely) -->
     <details class="faq-item">
       <summary class="faq-q">
         What is the best way to contact you?
@@ -623,7 +526,7 @@ summary.faq-q::-webkit-details-marker { display: none; }
         <span class="chev">+</span>
       </summary>
       <div class="faq-a">
-        Yes! We provide technical support for AutoPublisher users. Please include your TikTok username and a description of the issue in your email.
+        Yes! Please include your TikTok username and a short description of the issue.
       </div>
     </details>
 
@@ -633,7 +536,7 @@ summary.faq-q::-webkit-details-marker { display: none; }
         <span class="chev">+</span>
       </summary>
       <div class="faq-a">
-        Absolutely! We welcome feature requests and suggestions. Use the support thread below or send us an email with your ideas.
+        Absolutely. Post it in the support thread below (or email us) with your use case.
       </div>
     </details>
 
@@ -643,36 +546,41 @@ summary.faq-q::-webkit-details-marker { display: none; }
         <span class="chev">+</span>
       </summary>
       <div class="faq-a">
-        Visit our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a> to submit a formal request.
+        Use our <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Request page</a>.
       </div>
     </details>
-  </div>
-
-  <div class="mini-muted">
-    Tip: You can bookmark a specific question thread later when we add IDs + anchors.
   </div>
 
   <div class="section-divider"></div>
 
   <h2>Ask the Developers</h2>
   <p>
-    Post a question and it will show up below. When the backend is connected, developer replies will appear as <strong>AutoPublisher</strong> with a verified badge.
+    Den här delen använder “Subscriptions Add-ons”-logiken: inskick + bot-filter + hämtning från Sheet + Approved-filter + Verified support-reply.
   </p>
 
   <div class="info-box">
-    <strong>Note:</strong> This page is currently a frontend demo. Posting works on this page and saves locally in your browser.
-    When we connect Google Sheets, posts and replies will sync live.
+    <strong>Setup:</strong> Du behöver koppla in 1) Google Form (för inskick) och 2) Apps Script /exec (för att läsa tråden som JSON).
+    Båda är statiska-vänliga och fungerar på GitHub Pages.
   </div>
 
-  <form id="askForm">
-    <label>Display Name</label>
-    <input id="nameInput" type="text" placeholder="Your name" required>
+  <!-- ========= POST FORM (Google Form) =========
+    1) Replace action with your Google Form "formResponse" URL.
+    2) Replace each entry.* with your form entry IDs.
+    3) This submits in a hidden iframe (no redirect).
+  -->
+  <form id="supportPostForm"
+        action="REPLACE_WITH_GOOGLE_FORM_ACTION_URL_formResponse"
+        method="POST"
+        target="hidden_iframe">
 
-    <label>Email Address (optional)</label>
-    <input id="emailInput" type="email" placeholder="you@example.com">
+    <label>Full Name</label>
+    <input type="text" name="entry.REPLACE_NAME_ENTRY_ID" placeholder="Your name" required>
+
+    <label>Email Address</label>
+    <input type="email" name="entry.REPLACE_EMAIL_ENTRY_ID" placeholder="you@example.com" required>
 
     <label>Topic</label>
-    <select id="topicSelect" required>
+    <select name="entry.REPLACE_TOPIC_ENTRY_ID" required>
       <option value="" disabled selected>Select a topic</option>
       <option>General</option>
       <option>AutoPublisher Support</option>
@@ -683,15 +591,19 @@ summary.faq-q::-webkit-details-marker { display: none; }
     </select>
 
     <label>Your Question</label>
-    <textarea id="questionInput" placeholder="Write your question here..." required></textarea>
+    <textarea name="entry.REPLACE_MESSAGE_ENTRY_ID" placeholder="Write your question..." required></textarea>
+
+    <!-- Anti-bot fields (same logic) -->
+    <input type="text" name="honeypot" class="honeypot">
+    <input type="hidden" name="submission_time" class="submission-time">
 
     <div class="checkbox-group">
       <label>
-        <input type="checkbox" id="agreeBox" required>
+        <input type="checkbox" required>
         I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
       </label>
       <label>
-        <input type="checkbox" id="updatesBox">
+        <input type="checkbox" name="entry.REPLACE_UPDATES_ENTRY_ID">
         I'd like to receive updates (optional)
       </label>
     </div>
@@ -704,18 +616,21 @@ summary.faq-q::-webkit-details-marker { display: none; }
     </div>
   </form>
 
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
   <div class="section-divider"></div>
 
   <h2>Support Thread</h2>
 
-  <div class="chat-shell">
-    <div class="chat-toolbar">
-      <div class="pill" id="modePill">Mode: <strong>Visitor</strong></div>
-      <div class="pill">Status: <strong>Demo (local)</strong></div>
+  <div class="thread-wrap">
+    <div class="thread-toolbar">
+      <div class="pill">Source: <strong>Google Sheets</strong></div>
+      <div class="pill">Visibility: <strong>Approved only</strong></div>
+      <div class="pill">Refresh: <strong>Auto</strong></div>
     </div>
 
-    <div class="chat-feed" id="chatFeed">
-      <div class="chat-empty">No posts yet. Be the first to ask a question.</div>
+    <div id="threadContainer">
+      <div class="thread-empty">Loading thread…</div>
     </div>
   </div>
 
@@ -726,9 +641,9 @@ summary.faq-q::-webkit-details-marker { display: none; }
     <div class="social-icons">
       <div class="social-icon">
         <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
+          <div class="icon-container" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
             </svg>
           </div>
           <span>Instagram</span>
@@ -737,9 +652,9 @@ summary.faq-q::-webkit-details-marker { display: none; }
 
       <div class="social-icon">
         <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
+          <div class="icon-container" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+              <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
             </svg>
           </div>
           <span>Facebook</span>
@@ -748,9 +663,9 @@ summary.faq-q::-webkit-details-marker { display: none; }
 
       <div class="social-icon">
         <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
+          <div class="icon-container" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+              <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
             </svg>
           </div>
           <span>Spotify</span>
@@ -759,9 +674,9 @@ summary.faq-q::-webkit-details-marker { display: none; }
 
       <div class="social-icon">
         <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
+          <div class="icon-container" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+              <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
             </svg>
           </div>
           <span>TikTok</span>
@@ -795,316 +710,248 @@ summary.faq-q::-webkit-details-marker { display: none; }
 </footer>
 
 <script>
-/**
- * FAQ + Chat demo (localStorage).
- * Backend-hook points are prepared but not enabled.
- */
+/* ==========================
+   FAQ accordion chevrons
+========================== */
+document.querySelectorAll("details.faq-item").forEach(d => {
+  const chev = d.querySelector(".chev");
+  const sync = () => { if (chev) chev.textContent = d.open ? "–" : "+"; };
+  d.addEventListener("toggle", sync);
+  sync();
+});
 
-(function() {
-  const STORAGE_KEY = "ap_faq_thread_v1";
-  const REACTIONS_KEY = "ap_faq_reactions_v1";
+/* ==========================
+   CONFIG — FILL THESE 2
+========================== */
+const CONFIG = {
+  // Apps Script Web App /exec that returns JSON rows from your sheet
+  APPS_SCRIPT_EXEC_URL: "REPLACE_WITH_APPS_SCRIPT_EXEC_URL",
 
-  const isAdmin = new URLSearchParams(location.search).get("admin") === "1";
-  const modePill = document.getElementById("modePill");
-  modePill.innerHTML = isAdmin ? 'Mode: <strong>Admin (demo)</strong>' : 'Mode: <strong>Visitor</strong>';
+  // Auto refresh interval for thread (ms)
+  REFRESH_MS: 30000,
 
-  // Verified SVG (inline)
-  const verifiedSvg = `
-    <span class="badge-verified" title="Verified developer account">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="#E8B65C" d="M12 2l2.3 2.2 3.1-.4 1.1 3 2.7 1.6-1.2 3 1.2 3-2.7 1.6-1.1 3-3.1-.4L12 22l-2.3-2.2-3.1.4-1.1-3-2.7-1.6 1.2-3-1.2-3 2.7-1.6 1.1-3 3.1.4L12 2z"/>
-        <path fill="#0D0F15" d="M10.6 14.8l-2.2-2.2 1.1-1.1 1.1 1.1 4-4 1.1 1.1-5.1 5.1z"/>
-      </svg>
-      <span>Verified</span>
-    </span>
-  `;
+  // Anti-bot minimum seconds on page before submit allowed
+  MIN_SECONDS_BEFORE_SUBMIT: 5
+};
 
-  // FAQ accordion chevron behavior (+/-)
-  document.querySelectorAll("details.faq-item").forEach(d => {
-    const s = d.querySelector(".chev");
-    const sync = () => s.textContent = d.open ? "–" : "+";
-    d.addEventListener("toggle", sync);
-    sync();
+/* ==========================
+   Anti-bot (Subscriptions Add-ons logic)
+   - honeypot must be empty
+   - must be on page >= MIN_SECONDS
+========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".submission-time").forEach(input => {
+    input.value = String(Date.now());
   });
+});
 
-  const askForm = document.getElementById("askForm");
-  const nameInput = document.getElementById("nameInput");
-  const emailInput = document.getElementById("emailInput");
-  const topicSelect = document.getElementById("topicSelect");
-  const questionInput = document.getElementById("questionInput");
-  const chatFeed = document.getElementById("chatFeed");
+function isBotSubmission(form) {
+  const honeypot = form.querySelector('input[name="honeypot"]')?.value || "";
+  const startedAt = parseInt(form.querySelector('input[name="submission_time"]')?.value || "0", 10);
+  const seconds = (Date.now() - startedAt) / 1000;
+
+  if (honeypot.trim() !== "" || seconds < CONFIG.MIN_SECONDS_BEFORE_SUBMIT) {
+    alert("Suspected bot activity. Please try again.");
+    return true;
+  }
+  return false;
+}
+
+/* ==========================
+   Thread renderer (Subscriptions Add-ons logic ported)
+   - fetch JSON
+   - reverse newest-first
+   - filter Approved=yes
+   - dedupe
+   - render Support Reply w/ Verified badge
+========================== */
+const threadContainer = document.getElementById("threadContainer");
+let lastRenderedKeys = new Set(); // helps prevent duplicate render across refreshes
+
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function formatDate(input) {
+  try {
+    const d = new Date(input);
+    if (isNaN(d.getTime())) return String(input || "");
+    return d.toLocaleString(undefined, {
+      year: "numeric", month: "short", day: "2-digit",
+      hour: "2-digit", minute: "2-digit"
+    });
+  } catch {
+    return String(input || "");
+  }
+}
+
+function verifiedBadgeSvg() {
+  // Simple verified icon (inline). Same concept as your old verified replies.
+  return `
+    <svg class="verified-badge" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.796-1.88-1.88a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/>
+    </svg>`;
+}
+
+function makeKey(row) {
+  // Dedupe key: prefer id if exists, else Timestamp+Name+Message
+  const id = row["ID"] || row["Id"] || row["id"];
+  if (id) return "id:" + String(id);
+
+  const ts = row["Timestamp"] || row["timestamp"] || "";
+  const name = row["Your Name"] || row["Name"] || row["Full Name"] || "";
+  const msg = row["Your Review"] || row["Your Message"] || row["Message"] || "";
+  return "k:" + String(ts) + "|" + String(name) + "|" + String(msg);
+}
+
+async function loadThread() {
+  try {
+    threadContainer.innerHTML = `<div class="thread-empty">Loading thread…</div>`;
+
+    if (!CONFIG.APPS_SCRIPT_EXEC_URL || CONFIG.APPS_SCRIPT_EXEC_URL.includes("REPLACE_WITH")) {
+      threadContainer.innerHTML = `
+        <div class="thread-empty">
+          <strong>Setup needed:</strong><br/>
+          Replace <em>CONFIG.APPS_SCRIPT_EXEC_URL</em> in the code with your Apps Script /exec URL.
+        </div>`;
+      return;
+    }
+
+    const res = await fetch(CONFIG.APPS_SCRIPT_EXEC_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error("Failed to fetch thread: " + res.status);
+
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("Expected array JSON from Apps Script.");
+
+    // Newest first (same style as your old logic)
+    const rows = data.slice().reverse();
+
+    // Build new render set this round
+    const newRenderedKeys = new Set();
+    const htmlParts = [];
+
+    for (const row of rows) {
+      const approved = String(row["Approved"] ?? row["approved"] ?? "").toLowerCase();
+      if (approved !== "yes") continue;
+
+      const name = row["Your Name"] || row["Name"] || row["Full Name"] || "Anonymous";
+      const topic = row["Topic"] || row["Subject"] || "General";
+      const msg = row["Your Review"] || row["Your Message"] || row["Message"] || "";
+      const timestampRaw = row["Timestamp"] || row["timestamp"] || row["Created At"] || "";
+      const timestamp = timestampRaw ? formatDate(timestampRaw) : "";
+
+      const key = makeKey(row);
+
+      // Dedupe: within page refresh + across refresh (prevents duplicates if API repeats)
+      if (newRenderedKeys.has(key)) continue;
+      newRenderedKeys.add(key);
+
+      // If you want strict "never re-render existing", keep this line enabled:
+      // if (lastRenderedKeys.has(key)) continue;
+
+      const supportReply = row["Support Reply"] || row["SupportReply"] || row["Reply"] || "";
+
+      let block = `
+        <div class="thread-item">
+          <div class="thread-head">
+            <div>
+              <div class="thread-name">${escapeHtml(name)}</div>
+              <div class="thread-topic">${escapeHtml(topic)}</div>
+            </div>
+            <div class="thread-meta">${escapeHtml(timestamp)}</div>
+          </div>
+          <div class="thread-body">${escapeHtml(msg)}</div>
+      `;
+
+      if (supportReply) {
+        block += `
+          <div class="support-reply">
+            <div class="support-tag">
+              AutoPublisher – Support
+              ${verifiedBadgeSvg()}
+            </div>
+            <div>${escapeHtml(supportReply)}</div>
+          </div>
+        `;
+      }
+
+      block += `</div>`;
+      htmlParts.push(block);
+    }
+
+    lastRenderedKeys = newRenderedKeys;
+
+    if (!htmlParts.length) {
+      threadContainer.innerHTML = `<div class="thread-empty">No approved posts yet. Be the first to ask a question.</div>`;
+      return;
+    }
+
+    threadContainer.innerHTML = htmlParts.join("");
+
+  } catch (err) {
+    console.error(err);
+    threadContainer.innerHTML = `<div class="thread-empty">⚠️ Could not load thread. Check your Apps Script URL and JSON format.</div>`;
+  }
+}
+
+/* ==========================
+   Submit hook:
+   - run anti-bot check
+   - show UI feedback
+   - reload thread after short delay
+========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("supportPostForm");
   const postBtn = document.getElementById("postBtn");
 
-  function nowIso() {
-    return new Date().toISOString();
-  }
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      if (isBotSubmission(form)) {
+        e.preventDefault();
+        return false;
+      }
 
-  function formatTime(iso) {
-    try {
-      const d = new Date(iso);
-      return d.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
-    } catch {
-      return iso;
-    }
-  }
+      // UI feedback (doesn't break Google Form submit)
+      if (postBtn) {
+        postBtn.textContent = "Posting…";
+        postBtn.disabled = true;
+        postBtn.style.cursor = "default";
+      }
 
-  function loadThread() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-    try { return JSON.parse(raw) || []; } catch { return []; }
-  }
-
-  function saveThread(items) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }
-
-  function loadReactions() {
-    const raw = localStorage.getItem(REACTIONS_KEY);
-    if (!raw) return { counts: {}, my: {} };
-    try { return JSON.parse(raw) || { counts:{}, my:{} }; } catch { return { counts:{}, my:{} }; }
-  }
-
-  function saveReactions(r) {
-    localStorage.setItem(REACTIONS_KEY, JSON.stringify(r));
-  }
-
-  function uid() {
-    return "m_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
-  }
-
-  function initials(name) {
-    const parts = (name || "").trim().split(/\s+/).filter(Boolean);
-    if (!parts.length) return "?";
-    const a = parts[0][0] || "?";
-    const b = parts.length > 1 ? (parts[parts.length-1][0] || "") : "";
-    return (a + b).toUpperCase();
-  }
-
-  function escapeHtml(str) {
-    return (str || "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-
-  function render() {
-    const items = loadThread();
-    const reactions = loadReactions();
-
-    if (!items.length) {
-      chatFeed.innerHTML = `<div class="chat-empty">No posts yet. Be the first to ask a question.</div>`;
-      return;
-    }
-
-    chatFeed.innerHTML = items.map(item => {
-      const isDev = item.authorType === "dev";
-      const av = isDev ? "AP" : initials(item.displayName);
-      const name = isDev
-        ? `AutoPublisher ${verifiedSvg}`
-        : escapeHtml(item.displayName || "Visitor");
-      const meta = `${escapeHtml(item.topic || "General")} • ${formatTime(item.createdAt)}`;
-
-      const msgId = item.id;
-      const c = reactions.counts[msgId] || { up: 0, down: 0 };
-      const my = reactions.my[msgId] || null;
-
-      const replyContext = item.replyTo
-        ? `<div class="reply-context">Replying to <strong>${escapeHtml(item.replyToName || "a post")}</strong></div>`
-        : "";
-
-      const adminReplyControls = (!isDev && isAdmin)
-        ? `
-          <button class="reply-btn" data-action="openReply" data-id="${msgId}">Reply as AutoPublisher</button>
-        `
-        : "";
-
-      return `
-        <div class="msg" data-mid="${msgId}">
-          <div class="avatar ${isDev ? "dev" : ""}">${av}</div>
-          <div>
-            <div class="msg-head">
-              <div class="msg-name">${name}</div>
-              <div class="msg-meta">${meta}</div>
-            </div>
-
-            ${replyContext}
-
-            <div class="msg-body">${escapeHtml(item.body)}</div>
-
-            <div class="msg-actions">
-              <button class="reaction-btn ${my === "up" ? "active" : ""}" data-action="react" data-kind="up" data-id="${msgId}">👍 <span>${c.up}</span></button>
-              <button class="reaction-btn ${my === "down" ? "active" : ""}" data-action="react" data-kind="down" data-id="${msgId}">👎 <span>${c.down}</span></button>
-              ${adminReplyControls}
-            </div>
-
-            ${isAdmin ? `<div class="admin-slot" data-slot="${msgId}"></div>` : ""}
-          </div>
-        </div>
-      `;
-    }).join("");
-  }
-
-  function toggleReaction(messageId, kind) {
-    const r = loadReactions();
-    const counts = r.counts[messageId] || { up: 0, down: 0 };
-    const prev = r.my[messageId] || null;
-
-    // remove previous
-    if (prev === "up") counts.up = Math.max(0, counts.up - 1);
-    if (prev === "down") counts.down = Math.max(0, counts.down - 1);
-
-    // toggle same -> clear
-    if (prev === kind) {
-      r.my[messageId] = null;
-    } else {
-      r.my[messageId] = kind;
-      if (kind === "up") counts.up += 1;
-      if (kind === "down") counts.down += 1;
-    }
-
-    r.counts[messageId] = counts;
-    saveReactions(r);
-    render();
-  }
-
-  function openAdminReplyBox(messageId) {
-    const items = loadThread();
-    const target = items.find(x => x.id === messageId);
-    if (!target) return;
-
-    const slot = document.querySelector(`[data-slot="${messageId}"]`);
-    if (!slot) return;
-
-    // If already open, close it
-    if (slot.innerHTML.trim()) {
-      slot.innerHTML = "";
-      return;
-    }
-
-    slot.innerHTML = `
-      <div class="admin-reply-box">
-        <label style="margin:0 0 10px; font-weight:700; color:#FFFFFF;">Reply as AutoPublisher</label>
-        <textarea id="adminReplyText_${messageId}" placeholder="Write a developer reply..." style="min-height:90px;"></textarea>
-        <div class="button-container" style="border-top:none; padding-top:12px; margin-top:10px;">
-          <button class="button" data-action="sendAdminReply" data-id="${messageId}" style="min-width:220px;">Post Reply</button>
-          <div class="mini">Demo only. In real mode this comes from Google Sheets / backend.</div>
-        </div>
-      </div>
-    `;
-  }
-
-  function postQuestion(payload) {
-    const items = loadThread();
-    items.push(payload);
-    saveThread(items);
-
-    // Backend hook (later):
-    // fetch("YOUR_API_ENDPOINT/messages", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
-
-    render();
-  }
-
-  function postDevReply(parentId, replyText) {
-    const items = loadThread();
-    const parent = items.find(x => x.id === parentId);
-    if (!parent) return;
-
-    items.push({
-      id: uid(),
-      authorType: "dev",
-      displayName: "AutoPublisher",
-      topic: "Developer Reply",
-      body: replyText,
-      createdAt: nowIso(),
-      replyTo: parentId,
-      replyToName: parent.displayName || "Visitor"
-    });
-
-    saveThread(items);
-
-    // Backend hook (later):
-    // fetch("YOUR_API_ENDPOINT/replies", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ parentId, replyText }) });
-
-    render();
-
-    const slot = document.querySelector(`[data-slot="${parentId}"]`);
-    if (slot) slot.innerHTML = "";
-  }
-
-  askForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    postBtn.textContent = "Posting...";
-    postBtn.disabled = true;
-    postBtn.style.cursor = "default";
-
-    const payload = {
-      id: uid(),
-      authorType: "user",
-      displayName: nameInput.value.trim(),
-      email: emailInput.value.trim() || null,
-      topic: topicSelect.value,
-      body: questionInput.value.trim(),
-      createdAt: nowIso(),
-      updatesOptIn: document.getElementById("updatesBox").checked || false
-    };
-
-    // Minimal validation
-    if (!payload.displayName || !payload.topic || !payload.body) {
-      postBtn.textContent = "Post Question";
-      postBtn.disabled = false;
-      postBtn.style.cursor = "pointer";
-      return;
-    }
-
-    postQuestion(payload);
-
-    setTimeout(() => {
-      postBtn.textContent = "Posted!";
-      postBtn.style.background = "#2A4A4A";
-      postBtn.style.color = "#F5E5C8";
-      askForm.reset();
-
+      // After Google Form posts (hidden iframe), refresh
       setTimeout(() => {
-        postBtn.textContent = "Post Question";
-        postBtn.disabled = false;
-        postBtn.style.background = "#E8B65C";
-        postBtn.style.color = "#1A2838";
-        postBtn.style.cursor = "pointer";
-      }, 1100);
-    }, 250);
-  });
+        if (postBtn) {
+          postBtn.textContent = "Posted!";
+          postBtn.style.background = "#2A4A4A";
+          postBtn.style.color = "#F5E5C8";
+        }
 
-  chatFeed.addEventListener("click", (e) => {
-    const btn = e.target.closest("button");
-    if (!btn) return;
+        form.reset();
 
-    const action = btn.getAttribute("data-action");
-    const id = btn.getAttribute("data-id");
+        setTimeout(() => {
+          if (postBtn) {
+            postBtn.textContent = "Post Question";
+            postBtn.disabled = false;
+            postBtn.style.background = "#E8B65C";
+            postBtn.style.color = "#1A2838";
+            postBtn.style.cursor = "pointer";
+          }
+        }, 1200);
 
-    if (action === "react") {
-      const kind = btn.getAttribute("data-kind");
-      toggleReaction(id, kind);
-    }
+        loadThread();
+      }, 1500);
+    });
+  }
 
-    if (action === "openReply" && isAdmin) {
-      openAdminReplyBox(id);
-    }
-
-    if (action === "sendAdminReply" && isAdmin) {
-      const ta = document.getElementById(`adminReplyText_${id}`);
-      const text = (ta && ta.value || "").trim();
-      if (!text) return;
-      postDevReply(id, text);
-    }
-  });
-
-  // First render
-  render();
-
-})();
+  // Initial load + auto refresh
+  loadThread();
+  setInterval(loadThread, CONFIG.REFRESH_MS);
+});
 </script>
 
 </body>
