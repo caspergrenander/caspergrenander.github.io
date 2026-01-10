@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact – Historien Bakom Musiken</title>
+<title>Data Deletion Request – AutoPublisher</title>
 <style>
-
 body {
   margin: 0;
   padding: 0;
@@ -49,13 +48,6 @@ h2 {
   margin-top: 50px;
   border-bottom: 1px solid #2A4A4A;
   padding-bottom: 10px;
-}
-
-h3 {
-  color: #E8B65C;
-  font-weight: 600;
-  margin-top: 40px;
-  font-size: 18px;
 }
 
 p {
@@ -104,27 +96,6 @@ a:hover {
   margin-right: auto;
 }
 
-.email-box {
-  background: rgba(42, 74, 74, 0.2);
-  border: 1px solid #2A4A4A;
-  border-radius: 6px;
-  padding: 25px;
-  margin: 30px auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.email-box a {
-  font-size: 18px;
-  font-weight: 600;
-  color: #E8B65C;
-}
-
-.email-box a:hover {
-  color: #D88B5C;
-}
-
-/* Form styling */
 form {
   margin-top: 30px;
   max-width: 800px;
@@ -177,13 +148,12 @@ select option {
 select:focus {
   outline: none;
   border-color: #D88B5C;
-  position: relative;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #D88B65;
+  border-color: #D88B5C;
 }
 
 input::placeholder,
@@ -196,7 +166,6 @@ textarea {
   resize: vertical;
 }
 
-/* Checkbox styling */
 .checkbox-group {
   margin-top: 35px;
   padding: 20px;
@@ -222,7 +191,6 @@ textarea {
   cursor: pointer;
 }
 
-/* Button styling */
 .button-container {
   margin-top: 40px;
   text-align: center;
@@ -240,15 +208,19 @@ textarea {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  opacity: 0.6;
   transition: all 0.3s ease;
   text-align: center;
   min-width: 220px;
 }
 
 .button:hover {
-  background: #D88B5C;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(232, 182, 92, 0.3);
+  opacity: 0.7;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .note {
@@ -261,48 +233,6 @@ textarea {
   margin-right: auto;
 }
 
-/* Contact info section */
-.contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin: 40px auto;
-  max-width: 800px;
-}
-
-.contact-item {
-  background: rgba(42, 74, 74, 0.1);
-  border: 1px solid #2A4A4A;
-  border-radius: 6px;
-  padding: 25px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-  border-color: #D88B5C;
-  transform: translateY(-5px);
-}
-
-.contact-icon {
-  font-size: 36px;
-  color: #E8B65C;
-  margin-bottom: 15px;
-}
-
-.contact-item h4 {
-  color: #FFFFFF;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-.contact-item p {
-  margin: 10px 0;
-  color: #7A8C9C;
-  font-size: 14px;
-}
-
-/* Footer styling */
 footer {
   margin-top: 60px;
   padding: 40px 20px;
@@ -319,20 +249,37 @@ footer {
 }
 
 .footer-links {
-  margin: 20px 0;
+  margin: 25px 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }
 
 .footer-links a {
   color: #2A4A4A;
   font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .footer-links a:hover {
   color: #D88B5C;
+  text-decoration: none;
+}
+
+.footer-copyright {
+  color: #2A4A4A;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-title {
+  color: #F5E5C8;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 strong {
@@ -340,27 +287,11 @@ strong {
   font-weight: 600;
 }
 
-em {
-  color: #E8B65C;
-  font-style: italic;
-}
-
 .section-divider {
   height: 1px;
   background-color: #2A4A4A;
   margin: 40px auto;
   max-width: 800px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  color: #D88B5C;
-  font-size: 0.9em;
-}
-
-.back-link:hover {
-  color: #E8B65C;
 }
 
 /* CSS för Follow Us-sektionen */
@@ -435,12 +366,12 @@ em {
   .social-icons {
     gap: 30px;
   }
-
+ 
   .icon-container {
     width: 60px;
     height: 60px;
   }
-
+ 
   .icon-container img {
     width: 30px;
     height: 30px;
@@ -451,136 +382,157 @@ em {
   .social-icons {
     gap: 20px;
   }
-
+ 
   .icon-container {
     width: 50px;
     height: 50px;
   }
-
+ 
   .icon-container img {
     width: 25px;
     height: 25px;
   }
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .contact-info {
-    grid-template-columns: 1fr;
-  }
-}
-
 </style>
 </head>
 <body>
+
 <header>
   <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"
          alt="Historien Bakom Musiken Logo">
     <h1>Historien Bakom Musiken</h1>
   </a>
-  <p class="subtitle">Contact Us – Get in Touch</p>
+  <p class="subtitle">Data Deletion Request – AutoPublisher</p>
 </header>
 
 <div class="container">
-  <h2>Contact Information</h2>
+
+  <h2>About Data Deletion</h2>
   <p>
-    We're here to help! You can reach us via email or use the contact form below.
-    We typically respond within <strong>24-48 hours</strong> on business days.
+    You have the right to request deletion of data processed in connection with
+    <strong>Historien Bakom Musiken – AutoPublisher</strong>.
+  </p>
+  <p>
+    This request applies only to data processed by AutoPublisher.
+    Data managed directly by TikTok must be handled through TikTok's own account settings.
   </p>
 
-  <div class="email-box">
-    <p><strong>Primary Email Address:</strong></p>
-    <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>
-    <p style="margin-top: 10px; font-size: 14px; color: #7A8C9C;">
-      For support, inquiries, and general questions
-    </p>
+  <div class="info-box">
+    <strong>Important:</strong> Do not include passwords, verification codes, ID documents, or sensitive personal details in this form.
+    If verification is needed, we will ask for it in a safer way.
   </div>
+
+  <div class="section-divider"></div>
+
+  <h2>What AutoPublisher Can Delete</h2>
+  <p>
+    Depending on your request type, AutoPublisher can delete data handled in connection with the service, such as:
+  </p>
+  <div class="info-box">
+    <strong>Examples:</strong><br>
+    • Authentication tokens stored in the server environment (session maintenance)<br>
+    • Internal request logs needed to process your request<br>
+    • Upload-related metadata handled by the service (where applicable)
+  </div>
+
+  <h2>What We Cannot Delete For You</h2>
+  <p>
+    TikTok is the platform and controls platform-side content and account data.
+    If your goal is to remove TikTok-side information, you may need to act in your TikTok account settings.
+  </p>
+
+  <div class="section-divider"></div>
 
   <div class="info-box">
-    <strong>Response Time:</strong> We strive to respond to all inquiries within
-    <strong>1-2 business days</strong>. For urgent matters related to AutoPublisher,
-    please include "URGENT" in your subject line.
+    <strong>Processing time:</strong> The process is usually completed within
+    <strong>7–10 business days</strong> after the request is received.
   </div>
 
   <div class="section-divider"></div>
 
-  <div class="contact-info">
-    <div class="contact-item">
-      <div class="contact-icon">📧</div>
-      <h4>Email Support</h4>
-      <p>For general inquiries and support questions</p>
-      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
-    </div>
-
-    <div class="contact-item">
-      <div class="contact-icon">⚙️</div>
-      <h4>Technical Support</h4>
-      <p>For AutoPublisher technical issues</p>
-      <p><a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a></p>
-    </div>
-
-    <div class="contact-item">
-      <div class="contact-icon">🔒</div>
-      <h4>Privacy & Data</h4>
-      <p>For privacy concerns and data deletion requests</p>
-      <p><a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion Form</a></p>
-    </div>
+  <h2>What Happens Next</h2>
+  <p>
+    To keep this predictable (and avoid endless email ping-pong), the workflow is:
+  </p>
+  <div class="info-box">
+    <strong>Step-by-step:</strong><br>
+    1) You submit the request and receive a Reference ID.<br>
+    2) We verify the request details (mainly: account ownership confirmation).<br>
+    3) We process deletion for the data handled by AutoPublisher.<br>
+    4) You receive a confirmation once completed.<br><br>
+    <strong>Tip:</strong> If you want to revoke access instantly, do it in TikTok settings as well.
   </div>
 
   <div class="section-divider"></div>
 
-  <h2>Send Us a Message</h2>
+  <h2>Request Data Deletion</h2>
 
-  <form id="contactForm">
-    <label>Full Name</label>
-    <input type="text" placeholder="Your name" required>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-    <label>Email Address</label>
-    <input type="email" placeholder="you@example.com" required>
+  <form id="dataDeletionForm"
+        method="POST"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfIlZrBcx1CgAu-cHCGzr-Mw7gxqPpB3mMwnNDnr-eOG10jLQ/formResponse"
+        target="hidden_iframe"
+        autocomplete="on">
 
-    <label>Subject</label>
-    <select required>
-      <option value="" disabled selected>Select a subject</option>
-      <option>General Inquiry</option>
-      <option>AutoPublisher Support</option>
-      <option>Technical Issue</option>
-      <option>Partnership Opportunity</option>
-      <option>Feedback/Suggestion</option>
-      <option>Other</option>
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="draftResponse" value="[]">
+    <input type="hidden" name="pageHistory" value="0">
+    <input type="hidden" id="requestId" name="entry.1526351014" value="">
+    <input type="hidden" id="submissionSource" name="entry.1745207114" value="Public Website – Data Deletion Page">
+    <input type="hidden" name="fbzx" value="">
+
+    <label>Full name</label>
+    <input type="text" name="entry.1000001577" placeholder="Your full name" required>
+
+    <label>Email address</label>
+    <input type="email" name="entry.1233888397" placeholder="you@example.com" required>
+
+    <label>TikTok username</label>
+    <input type="text" name="entry.531571766" placeholder="@yourusername" required>
+
+    <label>Type of request</label>
+    <select id="requestType" name="entry.1847505465" required>
+      <option value="Delete all data related to my account">Delete all data related to my account</option>
+      <option value="Delete uploaded video metadata">Delete uploaded video metadata</option>
+      <option value="Revoke access & delete authentication tokens">Revoke access & delete authentication tokens</option>
     </select>
 
-    <label>Message</label>
-    <textarea placeholder="How can we help you?" required></textarea>
+    <div class="note" style="margin-top:10px;">
+      Choose the option that matches your goal. If you are unsure, explain it briefly below and we will map it to the correct request type.
+    </div>
+
+    <label>Additional information (optional)</label>
+    <textarea name="entry.226762827" placeholder="Optional comments or clarification"></textarea>
 
     <div class="checkbox-group">
       <label>
-        <input type="checkbox" required>
-        I agree to the <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
+        <input type="checkbox" id="confirmOwner" name="entry.977425461" value="I confirm that I am the owner of the TikTok account listed above" required>
+        I confirm that I am the owner of the TikTok account listed above.
       </label>
 
       <label>
-        <input type="checkbox">
-        I'd like to receive updates about Historien Bakom Musiken (optional)
+        <input type="checkbox" id="confirmUndo" name="entry.246601893" value="I understand that this request cannot be undone" required>
+        I understand that this request cannot be undone.
       </label>
     </div>
 
     <div class="button-container">
-      <button type="submit" class="button">
-        Send Message
+      <button class="button" id="submitBtn" type="submit" disabled>
+        Request Data Deletion
       </button>
-      <div class="note">
-        Note: This is a demo form. For actual contact, please email us directly.
+      <div class="note" id="submitNote">
+        Submissions are sent via Google Forms. If you don't see a confirmation, please verify the form action URL and entry IDs.
       </div>
     </div>
+
   </form>
 
-  <div class="section-divider"></div>
+  <div id="successMessage" class="note" style="display:none; font-size:14px; margin-top:18px;">
+    ✅ Request submitted. Thank you.
+  </div>
 
   <div class="follow-section">
     <h2>Follow Us</h2>
@@ -588,7 +540,6 @@ em {
       <div class="social-icon">
         <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
-            <!-- Instagram SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
             </svg>
@@ -596,11 +547,10 @@ em {
           <span>Instagram</span>
         </a>
       </div>
-
+     
       <div class="social-icon">
         <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
-            <!-- Facebook SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
             </svg>
@@ -608,11 +558,10 @@ em {
           <span>Facebook</span>
         </a>
       </div>
-
+     
       <div class="social-icon">
         <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
-            <!-- Spotify SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
               <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
             </svg>
@@ -620,12 +569,10 @@ em {
           <span>Spotify</span>
         </a>
       </div>
-
-      <!-- TikTok ikon -->
+     
       <div class="social-icon">
         <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
           <div class="icon-container">
-            <!-- TikTok SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
             </svg>
@@ -636,77 +583,121 @@ em {
     </div>
   </div>
 
-  <div class="back-link">
-    <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">← Back to main page</a>
-  </div>
-
 </div>
 
 <footer>
   <div class="footer-content">
-    <p style="color: #F5E5C8; margin-bottom: 10px;">
-      <strong>Historien Bakom Musiken – AutoPublisher</strong>
+    <p class="footer-title">
+      Historien Bakom Musiken – AutoPublisher
     </p>
-    <p style="color: #2A4A4A; margin-bottom: 20px;">
+    <p class="footer-copyright">
       © 2026 Casper Grenander. All rights reserved.
     </p>
+
     <div class="footer-links">
       <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>
       <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>
-      <a href="mailto:app.auto.publisher@gmail.com">Contact</a>
+      <a href="https://caspergrenander.github.io/historienbakomusiken/contact">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const contactForm = document.getElementById('contactForm');
-
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // In a real implementation, you would send the form data to a server
-    // This is just a demo showing a confirmation message
-    const button = contactForm.querySelector('.button');
-    const originalText = button.textContent;
-
-    button.textContent = 'Message Sent!';
-    button.style.background = '#2A4A4A';
-    button.style.color = '#F5E5C8';
-    button.style.cursor = 'default';
-
-    setTimeout(() => {
-      button.textContent = 'Send Another Message';
-      button.style.background = '#E8B65C';
-      button.style.color = '#1A2838';
-      contactForm.reset();
-    }, 3000);
-  });
-
-  // Add hover effect to select elements
-  const selectElements = document.querySelectorAll('select');
-  selectElements.forEach(select => {
-    select.addEventListener('mouseenter', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  // Dropdown UX
+  const selectElement = document.getElementById('requestType');
+  if (selectElement) {
+    selectElement.addEventListener('focus', function () {
+      if (window.innerHeight < 800) {
+        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+    selectElement.addEventListener('mouseenter', function () {
       this.style.borderColor = '#D88B5C';
     });
-
-    select.addEventListener('mouseleave', function() {
+    selectElement.addEventListener('mouseleave', function () {
       if (document.activeElement !== this) {
         this.style.borderColor = '#2A4A4A';
       }
     });
+  }
 
-    select.addEventListener('focus', function() {
-      this.style.borderColor = '#D88B5C';
-    });
+  // Robust Reference ID
+  const requestIdField = document.getElementById('requestId');
+  if (requestIdField && !requestIdField.value) {
+    const year = new Date().getFullYear();
+    const part1 = Math.floor(1000 + Math.random() * 9000);
+    const part2 = Math.floor(1000 + Math.random() * 9000);
+    requestIdField.value = 'DR-' + year + '-' + part1 + '-' + part2;
+  }
 
-    select.addEventListener('blur', function() {
-      this.style.borderColor = '#2A4A4A';
+  // Save Reference ID for request-received page
+  try {
+    localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
+  } catch (e) {}
+
+  // Checkbox gating
+  const confirmOwner = document.getElementById('confirmOwner');
+  const confirmUndo = document.getElementById('confirmUndo');
+  const submitBtn = document.getElementById('submitBtn');
+  const form = document.getElementById('dataDeletionForm');
+  const successMessage = document.getElementById('successMessage');
+
+  if (confirmOwner && confirmUndo && submitBtn) {
+    function updateButtonState() {
+      const bothChecked = confirmOwner.checked && confirmUndo.checked;
+      submitBtn.disabled = !bothChecked;
+      submitBtn.style.opacity = bothChecked ? '1' : '0.6';
+    }
+    confirmOwner.addEventListener('change', updateButtonState);
+    confirmUndo.addEventListener('change', updateButtonState);
+    updateButtonState();
+  }
+
+  // Submit handling
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+      }
+
+      if (successMessage) {
+        successMessage.style.display = 'block';
+      }
+
+      try {
+        localStorage.setItem('dataDeletionReferenceId', requestIdField.value);
+      } catch (e) {}
+
+      const iframe = document.getElementById('hidden_iframe');
+
+      let redirected = false;
+      function doRedirect() {
+        if (redirected) return;
+        redirected = true;
+        window.location.href = 'https://caspergrenander.github.io/historienbakomusiken/request-received';
+      }
+
+      if (iframe) {
+        const onLoad = function() {
+          iframe.removeEventListener('load', onLoad);
+          setTimeout(doRedirect, 250);
+        };
+        iframe.addEventListener('load', onLoad);
+      }
+
+      form.submit();
+      setTimeout(doRedirect, 6000);
     });
-  });
+  }
 });
 </script>
+
 </body>
 </html>
