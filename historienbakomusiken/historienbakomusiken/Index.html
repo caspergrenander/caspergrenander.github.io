@@ -1,1 +1,128 @@
-1
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Historien bakom musiken – Meriter & dokumentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0e14;
+  --gold:#d4b36a;
+  --gold-soft:#bfa25c;
+  --text:#e6e6e6;
+  --muted:#9aa0a6;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:radial-gradient(ellipse at top,#141a26 0%,#0b0e14 60%);
+  color:var(--text);
+  font-family:Inter,system-ui,Arial,sans-serif;
+  line-height:1.6;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 24px 100px;
+}
+
+header{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+header h1{
+  font-family:"Playfair Display",serif;
+  color:var(--gold);
+  font-size:42px;
+  letter-spacing:0.5px;
+  margin-bottom:12px;
+}
+
+header p{
+  color:var(--muted);
+  font-size:16px;
+}
+
+.section-title{
+  font-family:"Playfair Display",serif;
+  color:var(--gold-soft);
+  font-size:26px;
+  margin-bottom:30px;
+}
+
+.posts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:40px;
+  align-items:start;
+}
+
+.embed-wrap{
+  background:linear-gradient(180deg,#121826,#0d121c);
+  border:1px solid rgba(212,179,106,0.25);
+  border-radius:14px;
+  padding:22px 18px 28px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.45);
+}
+
+.embed-wrap::before{
+  content:"Dokumenterat genomslag";
+  display:block;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  margin-bottom:14px;
+}
+
+footer{
+  margin-top:90px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Historien bakom musiken</h1>
+  <p>Meritarkiv & offentlig dokumentation av projektets utveckling och genomslag</p>
+</header>
+
+<section>
+  <div class="section-title">Utvalda milstolpar</div>
+
+  <div class="posts">
+
+    <div class="embed-wrap">
+      <!-- Instagram inlägg 28 dec 2023 -->
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C1aKhNxL0S9/" data-instgrm-version="14"></blockquote>
+    </div>
+
+    <div class="embed-wrap">
+      <!-- Instagram inlägg 4 dec 2024 -->
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDKsFTAM7rC/" data-instgrm-version="14"></blockquote>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © Historien bakom musiken – oberoende dokumentation
+</footer>
+
+</div>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
+</body>
+</html>
