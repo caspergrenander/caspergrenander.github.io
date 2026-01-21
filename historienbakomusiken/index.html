@@ -63,12 +63,14 @@ header p{
   align-items:start;
 }
 
+/* Card wrapper */
 .embed-wrap{
   background:linear-gradient(180deg,#121826,#0d121c);
   border:1px solid rgba(212,179,106,0.25);
-  border-radius:14px;
-  padding:22px 18px 28px;
+  border-radius:16px;
+  padding:18px 14px 22px;
   box-shadow:0 20px 60px rgba(0,0,0,0.45);
+  overflow:hidden; /* viktig */
 }
 
 .embed-wrap::before{
@@ -79,6 +81,35 @@ header p{
   text-transform:uppercase;
   color:var(--gold-soft);
   margin-bottom:14px;
+}
+
+/* ---- Instagram embed fix ---- */
+
+.embed-wrap .instagram-media{
+  max-width:100% !important;
+  width:100% !important;
+  margin:0 auto !important;
+  border-radius:10px !important;
+}
+
+.embed-wrap iframe{
+  max-width:100% !important;
+  width:100% !important;
+}
+
+/* Mobiloptimering */
+@media (max-width:600px){
+  header h1{
+    font-size:32px;
+  }
+
+  .container{
+    padding:40px 16px 80px;
+  }
+
+  .embed-wrap{
+    padding:14px 10px 18px;
+  }
 }
 
 footer{
@@ -104,13 +135,17 @@ footer{
   <div class="posts">
 
     <div class="embed-wrap">
-      <!-- Instagram inlägg 28 dec 2023 -->
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C1aKhNxL0S9/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/C1aKhNxL0S9/"
+        data-instgrm-version="14">
+      </blockquote>
     </div>
 
     <div class="embed-wrap">
-      <!-- Instagram inlägg 4 dec 2024 -->
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDKsFTAM7rC/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DDKsFTAM7rC/"
+        data-instgrm-version="14">
+      </blockquote>
     </div>
 
   </div>
