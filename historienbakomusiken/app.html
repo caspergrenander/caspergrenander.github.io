@@ -195,12 +195,16 @@
     .checkbox-item label {  
       margin: 0;  
       cursor: pointer;  
-      color: #FFFFFF; /* Säkerställer vit färg */  
+      color: #FFFFFF;  
       font-weight: normal;  
     }  
     .checkbox-item label.disabled {  
       opacity: 0.5;  
       cursor: not-allowed;  
+    }  
+    /* Explicit styling för consent-label för att garantera synlighet */  
+    #consentLabel {  
+      color: #FFFFFF !important;  
     }  
     .commercial-section {  
       background: rgba(216, 139, 92, 0.1);  
@@ -694,7 +698,9 @@
     }
 
     initializeFromCreatorInfo();
+    // Extra anrop för att säkerställa att consent-texten sätts direkt
+    updateConsentLabel();
     validateForm();
   </script>
 </body>  
-</html> 
+</html>
