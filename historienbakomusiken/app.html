@@ -1,448 +1,767 @@
-<!DOCTYPE html>  
+<!DOCTYPE html> 
 <html lang="en">  
 <head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Historien Bakom Musiken – Project & Authentication</title>  
-<style>  
-body {  
-  margin: 0;  
-  padding: 0;  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>AutoPublisher – Direct Post</title>  
+  <style>  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  body {  
   background: #1A2838;  
   color: #F5E5C8;  
   font-family: "Segoe UI", Roboto, Arial, sans-serif;  
-  line-height: 1.7;  
+  line-height: 1.6;  
 }  
 
 header {  
-  padding: 60px 20px 40px;  
+  padding: 40px 20px;  
   text-align: center;  
   background: #0D0F15;  
   border-bottom: 1px solid #2A4A4A;  
 }  
 
-header a {  
-  color: inherit;  
-  text-decoration: none;  
-  display: inline-block;  
-  text-align: center;  
-}  
-
 header img {  
-  width: 180px;  
+  width: 160px;  
   border-radius: 6px;  
-  margin-bottom: 20px;  
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);  
+  margin-bottom: 15px;  
 }  
 
 h1 {  
   color: #FFFFFF;  
-  margin-bottom: 10px;  
   font-weight: 600;  
-  font-size: 22px;  
-}  
-
-h2 {  
-  color: #FFFFFF;  
-  font-weight: 600;  
-  margin-top: 50px;  
-  border-bottom: 1px solid #2A4A4A;  
-  padding-bottom: 10px;  
-}  
-
-p {  
-  max-width: 800px;  
-  margin: 15px auto;  
-  padding: 0 20px;  
-  color: #F5E5C8;  
-}  
-
-a {  
-  color: #D88B5C;  
-  text-decoration: none;  
-  transition: color 0.2s;  
-}  
-a:hover {  
-  color: #E8B65C;  
-  text-decoration: underline;  
+  font-size: 24px;  
 }  
 
 .container {  
-  max-width: 900px;  
-  margin: auto;  
-  background: #0D0F15;  
-  padding: 40px 30px;  
-  border-radius: 6px;  
-  margin-top: 40px;  
-  margin-bottom: 40px;  
-  border: 1px solid #2A4A4A;  
-}  
-
-ul {  
   max-width: 800px;  
-  margin: 20px auto;  
-  padding-left: 40px;  
-  color: #F5E5C8;  
+  margin: 40px auto;  
+  padding: 0 20px;  
 }  
 
-li {  
-  margin-bottom: 10px;  
-}  
-
-code {  
-  background-color: rgba(42, 74, 74, 0.3);  
-  padding: 2px 8px;  
-  border-radius: 4px;  
-  color: #E8B65C;  
-  font-family: monospace;  
-  font-size: 0.95em;  
-}  
-
-footer {  
-  margin-top: 60px;  
-  padding: 40px 20px;  
-  text-align: center;  
-  font-size: 0.9rem;  
-  color: #2A4A4A;  
-  border-top: 1px solid #2A4A4A;  
+.card {  
   background: #0D0F15;  
+  border: 1px solid #2A4A4A;  
+  border-radius: 8px;  
+  padding: 30px;  
 }  
 
-.policy-links {  
-  margin: 25px 0;  
+.creator-section {  
+  background: rgba(232, 182, 92, 0.1);  
+  border: 1px solid #E8B65C;  
+  border-radius: 8px;  
+  padding: 20px;  
+  margin-bottom: 30px;  
   display: flex;  
-  justify-content: center;  
-  flex-wrap: wrap;  
+  align-items: center;  
   gap: 20px;  
 }  
 
-.policy-links a {  
-  padding: 8px 16px;  
-  background-color: rgba(42, 74, 74, 0.2);  
-  border-radius: 4px;  
-  border: 1px solid #2A4A4A;  
+.creator-avatar {  
+  width: 60px;  
+  height: 60px;  
+  border-radius: 50%;  
+  background: #2A4A4A;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  font-size: 24px;  
+  color: #FFFFFF;  
 }  
 
-.policy-links a:hover {  
-  background-color: rgba(42, 74, 74, 0.4);  
-  text-decoration: none;  
+.creator-details {  
+  flex: 1;  
 }  
 
-.contact-info {  
-  background-color: rgba(42, 74, 74, 0.1);  
-  padding: 20px;  
+.creator-username {  
+  font-size: 20px;  
+  font-weight: 600;  
+  color: #FFFFFF;  
+  margin-bottom: 5px;  
+}  
+
+.creator-stats {  
+  color: #2A4A4A;  
+  font-size: 14px;  
+}  
+
+.upload-area {  
+  border: 2px dashed #2A4A4A;  
+  border-radius: 8px;  
+  padding: 40px 20px;  
+  text-align: center;  
+  margin: 20px 0;  
+  cursor: pointer;  
+  transition: all 0.2s ease;  
+}  
+
+.upload-area:hover {  
+  border-color: #E8B65C;  
+  background: rgba(232, 182, 92, 0.05);  
+}  
+
+.upload-icon {  
+  font-size: 48px;  
+  color: #2A4A4A;  
+  margin-bottom: 15px;  
+}  
+
+.file-info {  
+  background: rgba(42, 74, 74, 0.2);  
+  padding: 15px;  
   border-radius: 6px;  
-  margin: 30px auto;  
-  max-width: 800px;  
-  border-left: 4px solid #D88B5C;  
+  margin: 20px 0;  
+  border-left: 4px solid #E8B65C;  
 }  
 
-.contact-info a {  
-  color: #E8B65C;  
+.video-preview {  
+  width: 100%;  
+  max-width: 400px;  
+  margin: 20px auto;  
+  display: block;  
+  border-radius: 8px;  
+  border: 2px solid #2A4A4A;  
+}  
+
+.form-group {  
+  margin-bottom: 25px;  
+}  
+
+label {  
+  display: block;  
+  margin-bottom: 8px;  
+  color: #FFFFFF;  
   font-weight: 500;  
 }  
 
-strong {  
-  color: #FFFFFF;  
-  font-weight: 600;  
+textarea {  
+  width: 100%;  
+  padding: 12px;  
+  background: rgba(42, 74, 74, 0.2);  
+  border: 1px solid #2A4A4A;  
+  border-radius: 6px;  
+  color: #F5E5C8;  
+  font-family: inherit;  
+  font-size: 15px;  
+  resize: vertical;  
+  min-height: 100px;  
 }  
 
-em {  
-  color: #E8B65C;  
-  font-style: italic;  
+textarea:focus {  
+  outline: none;  
+  border-color: #E8B65C;  
 }  
 
-.subtitle {  
-  color: #2A4A4A;  
-  font-size: 14px;  
-  margin-top: 5px;  
-  letter-spacing: 1px;  
+select {  
+  width: 100%;  
+  padding: 12px;  
+  background: rgba(42, 74, 74, 0.2);  
+  border: 1px solid #2A4A4A;  
+  border-radius: 6px;  
+  color: #F5E5C8;  
+  font-size: 15px;  
+  cursor: pointer;  
 }  
 
-.section-divider {  
-  height: 1px;  
-  background-color: #2A4A4A;  
-  margin: 40px auto;  
-  max-width: 800px;  
+select:focus {  
+  outline: none;  
+  border-color: #E8B65C;  
 }  
 
-.footer-content {  
-  max-width: 800px;  
-  margin: 0 auto;  
+select option {  
+  background: #0D0F15;  
+  color: #F5E5C8;  
 }  
 
-.footer-links {  
-  margin: 20px 0;  
+select:disabled {  
+  opacity: 0.5;  
+  cursor: not-allowed;  
+}  
+
+.checkbox-group {  
+  background: rgba(42, 74, 74, 0.1);  
+  border: 1px solid #2A4A4A;  
+  border-radius: 6px;  
+  padding: 15px;  
+}  
+
+.checkbox-item {  
   display: flex;  
-  justify-content: center;  
-  flex-wrap: wrap;  
-  gap: 15px;  
+  align-items: center;  
+  gap: 10px;  
+  margin: 10px 0;  
 }  
 
-.footer-links a {  
-  color: #2A4A4A;  
-  font-size: 0.85rem;  
+.checkbox-item input[type="checkbox"] {  
+  width: 18px;  
+  height: 18px;  
+  cursor: pointer;  
 }  
 
-.footer-links a:hover {  
+.checkbox-item input[type="checkbox"]:disabled {  
+  opacity: 0.3;  
+  cursor: not-allowed;  
+}  
+
+.checkbox-item label {  
+  margin: 0;  
+  cursor: pointer;  
+}  
+
+.checkbox-item label.disabled {  
+  opacity: 0.5;  
+  cursor: not-allowed;  
+}  
+
+.commercial-section {  
+  background: rgba(216, 139, 92, 0.1);  
+  border: 1px solid #D88B5C;  
+  border-radius: 6px;  
+  padding: 15px;  
+}  
+
+.commercial-toggle {  
+  display: flex;  
+  align-items: center;  
+  gap: 10px;  
+  margin-bottom: 15px;  
+}  
+
+.commercial-options {  
+  margin-left: 28px;  
+  display: none;  
+}  
+
+.commercial-options.show {  
+  display: block;  
+}  
+
+.button {  
+  background: #E8B65C;  
+  color: #1A2838;  
+  border: none;  
+  padding: 14px 28px;  
+  border-radius: 6px;  
+  font-size: 16px;  
+  font-weight: 600;  
+  cursor: pointer;  
+  transition: all 0.2s ease;  
+  width: 100%;  
+}  
+
+.button:hover:not(:disabled) {  
+  background: #F5C97C;  
+  transform: translateY(-1px);  
+}  
+
+.button:disabled {  
+  opacity: 0.5;  
+  cursor: not-allowed;  
+}  
+
+.status {  
+  margin-top: 20px;  
+  padding: 15px;  
+  border-radius: 6px;  
+  text-align: center;  
+  display: none;  
+}  
+
+.status.show {  
+  display: block;  
+}  
+
+.status.success {  
+  background: rgba(232, 182, 92, 0.15);  
+  border: 2px solid #E8B65C;  
+  color: #E8B65C;  
+}  
+
+.status.error {  
+  background: rgba(216, 139, 92, 0.15);  
+  border: 2px solid #D88B5C;  
   color: #D88B5C;  
 }  
 
-/* CSS för Follow Us-sektionen */
-.follow-section {
-  text-align: center;
-  margin: 50px auto 30px;
-  max-width: 800px;
+.status.processing {  
+  background: rgba(42, 74, 74, 0.3);  
+  border: 2px solid #2A4A4A;  
+  color: #F5E5C8;  
+}  
+
+.error-message {  
+  color: #D88B5C;  
+  font-size: 14px;  
+  margin-top: 5px;  
+  display: none;  
+}  
+
+.error-message.show {  
+  display: block;  
+}  
+
+.back-link {  
+  display: inline-block;  
+  margin-top: 30px;  
+  color: #2A4A4A;  
+  text-decoration: none;  
+  font-size: 14px;  
+}  
+
+.back-link:hover {  
+  color: #E8B65C;  
 }
 
-.follow-section h2 {
-  margin-bottom: 30px;
-  border: none;
-  padding-bottom: 0;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-}
-
-.social-icon a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.icon-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #2A4A4A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.social-icon:hover .icon-container {
-  background: #D88B5C;
-}
-
-.icon-container svg {
-  width: 35px;
-  height: 35px;
-  color: #F5E5C8;  /* Detta styr färgen via currentColor */
-}
-
-.social-icon span {
-  color: #F5E5C8;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-/* Responsiv design för mindre skärmar */
-@media (max-width: 768px) {
-  .social-icons {
-    gap: 30px;
-  }
-
-  .icon-container {
-    width: 60px;
-    height: 60px;
-  }
-
-  .icon-container svg {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .social-icons {
-    gap: 20px;
-  }
-
-  .icon-container {
-    width: 50px;
-    height: 50px;
-  }
-
-  .icon-container svg {
-    width: 25px;
-    height: 25px;
-  }
-}
-</style>  
+  </style>  
 </head>  
-
 <body>  
-<header>  
-  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">  
-    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png"  
-         alt="Historien Bakom Musiken Logo">  
-    <h1>Historien Bakom Musiken</h1>  
-  </a>  
-  <p class="subtitle">A creative project by Casper Grenander</p>  
-</header>  
+  <header>  
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken">  
+    <h1>AutoPublisher</h1>  
+  </header>    <div class="container">  
+    <div class="card">  
+      <!-- Creator Info - Dynamically populated from TikTok API -->  
+      <div class="creator-section" id="creatorSection">  
+        <div class="creator-avatar" id="creatorAvatar">👤</div>  
+        <div class="creator-details">  
+          <div class="creator-username" id="creatorUsername"><?= creatorInfo?.creator_nickname ? '@' + creatorInfo.creator_nickname : 'Loading...' ?></div>  
+          <div class="creator-stats" id="creatorStats">  
+            <span id="creatorFollowers"><?= creatorInfo?.followers_count ?? '0' ?></span> followers  
+          </div>  
+        </div>  
+      </div>  <!-- Upload Area -->  
+  <div class="upload-area" id="uploadArea">  
+    <div class="upload-icon">📁</div>  
+    <p>Select video to publish</p>  
+    <p style="color: #2A4A4A; font-size: 14px; margin-top: 10px;">MP4, MOV, AVI (max 100MB)</p>  
+  </div>  
+  <input type="file" id="videoFile" accept="video/*" style="display: none">  
 
-<div class="container">  
-  <h2>About the Project</h2>  
-  <p>  
-    <strong>Historien Bakom Musiken</strong> is a creator-driven project where I,  
-    <strong>Casper Grenander</strong>, share insights from music creation,  
-    podcast production, and the creative process.  
-    The project aims to provide transparency, inspiration, and context  
-    about how content is created and published.  
-  </p>  
-
-  <div class="section-divider"></div>
-
-  <h2>About the AutoPublisher Tool</h2>  
-  <p>  
-    <em>AutoPublisher</em> is a <strong>manual publishing tool</strong> that enables  
-    <strong>authenticated TikTok users</strong> to upload and publish their own video content  
-    to their <strong>own TikTok account</strong> via TikTok's official  
-    <strong>Content Posting API</strong>.  
-  </p>  
-  <p>  
-    The <strong>Direct Post functionality</strong> is used solely to allow a logged-in user  
-    to manually publish a selected video file directly from the web interface  
-    to their own TikTok account.  
-  </p>  
-  <p>  
-    All actions are initiated <strong>explicitly by the user</strong>  
-    after logging in via TikTok's OAuth system.  
-    The tool does not support bulk posting, scheduling, automated posting,  
-    or background publishing.  
-  </p>  
-  <p>  
-    The tool is used individually per authenticated TikTok account and  
-    no user data is shared between accounts.  
-  </p>  
-
-  <div class="section-divider"></div>  
-
-  <h2>Authentication via TikTok</h2>  
-  <p>  
-    TikTok's <strong>OAuth authentication</strong> is used to verify the user  
-    and enable uploading and publishing of video content.  
-    Only explicitly necessary scopes are requested:  
-  </p>  
-  <ul>  
-    <li><code>user.info.basic</code> – verifies the TikTok account</li>  
-    <li><code>video.upload</code> – uploads video files</li>  
-    <li><code>video.publish</code> – publishes videos</li>  
-  </ul>  
-  <p>  
-    No video content is stored permanently by the application.  
-    Access tokens are stored securely and used only to perform  
-    user-initiated publishing actions. Tokens are not shared, sold,  
-    or used for any purpose other than enabling the authenticated  
-    user's own publishing actions.  
-  </p>  
-
-  <div class="section-divider"></div>  
-
-  <h2>Policy & Information</h2>  
-  <p>  
-    For detailed information about data handling, terms, and usage:  
-  </p>  
-  <div class="policy-links">  
-    <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>  
-    <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>  
-    <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>  
+  <!-- File Info & Preview -->  
+  <div id="fileInfo" class="file-info" style="display: none;">  
+    <p><strong>Selected:</strong> <span id="fileName"></span></p>  
+    <p style="color: #2A4A4A; font-size: 14px;">Size: <span id="fileSize"></span></p>  
   </div>  
 
-  <h2>Contact</h2>  
-  <div class="contact-info">  
-    <p>  
-      For questions about the project or technology:  
-      <br><br>  
-      📧 <a href="mailto:app.auto.publisher@gmail.com">app.auto.publisher@gmail.com</a>  
-    </p>  
-  </div>  
+  <video id="videoPreview" class="video-preview" controls style="display: none;"></video>  
 
-  <div class="follow-section">
-    <h2>Follow Us</h2>
-    <div class="social-icons">
-      <div class="social-icon">
-        <a href="https://www.instagram.com/historienbakommusiken?igsh=MXhkcXp6a2J1MjN6NQ==" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-            </svg>
-          </div>
-          <span>Instagram</span>
-        </a>
-      </div>
-
-      <div class="social-icon">
-        <a href="https://www.facebook.com/share/17mCscac1o/" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
-            </svg>
-          </div>
-          <span>Facebook</span>
-        </a>
-      </div>
-
-      <div class="social-icon">
-        <a href="https://open.spotify.com/show/4iNHYPETp0acYF9bdagB2B?si=tSNgfmGxR_iUJwPIeLRJig" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
-            </svg>
-          </div>
-          <span>Spotify</span>
-        </a>
-      </div>
-
-      <div class="social-icon">
-        <a href="https://www.tiktok.com/@historienbakommusiken?_r=1&_t=ZN-92stjEInvde" target="_blank" rel="noopener noreferrer">
-          <div class="icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-            </svg>
-          </div>
-          <span>TikTok</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>  
-
-<footer>  
-  <div class="footer-content">  
-    <p style="color: #F5E5C8; margin-bottom: 10px;">  
-      <strong>Historien Bakom Musiken – AutoPublisher</strong>  
-    </p>  
-    <p style="color: #2A4A4A; margin-bottom: 20px;">  
-      © 2026 Casper Grenander. All rights reserved.  
-    </p>  
-    <div class="footer-links">  
-      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/">Home</a>  
-      <a href="https://caspergrenander.github.io/historienbakomusiken/terms-of-service">Terms of Service</a>  
-      <a href="https://caspergrenander.github.io/historienbakomusiken/privacy-policy">Privacy Policy</a>  
-      <a href="https://caspergrenander.github.io/historienbakomusiken/data%20deletion">Data Deletion</a>  
-      <a href="https://caspergrenander.github.io/historienbakomusiken/contact">Contact</a>  
+  <!-- Caption -->  
+  <div class="form-group">  
+    <label for="caption">Caption</label>  
+    <textarea id="caption" placeholder="Write your video caption..." maxlength="2200"></textarea>  
+    <div style="text-align: right; font-size: 12px; color: #2A4A4A; margin-top: 5px;">  
+      <span id="captionCount">0</span>/2200  
     </div>  
   </div>  
-</footer>  
+
+  <!-- Privacy Level - Dynamically from creatorInfo -->  
+  <div class="form-group">  
+    <label for="privacy">Privacy</label>  
+    <select id="privacy"></select>  
+  </div>  
+
+  <!-- Interaction Controls - Reflecting creatorInfo settings -->  
+  <div class="form-group">  
+    <label>Interaction Settings</label>  
+    <div class="checkbox-group">  
+      <div class="checkbox-item">  
+        <input type="checkbox" id="allowComment">  
+        <label for="allowComment" id="allowCommentLabel">Allow comments</label>  
+      </div>  
+      <div class="checkbox-item">  
+        <input type="checkbox" id="allowDuet">  
+        <label for="allowDuet" id="allowDuetLabel">Allow duet</label>  
+      </div>  
+      <div class="checkbox-item">  
+        <input type="checkbox" id="allowStitch">  
+        <label for="allowStitch" id="allowStitchLabel">Allow stitch</label>  
+      </div>  
+    </div>  
+  </div>  
+
+  <!-- Commercial Content -->  
+  <div class="form-group">  
+    <div class="commercial-section">  
+      <div class="commercial-toggle">  
+        <input type="checkbox" id="commercialToggle">  
+        <label for="commercialToggle">This contains commercial content</label>  
+      </div>  
+      <div class="commercial-options" id="commercialOptions">  
+        <div class="checkbox-item">  
+          <input type="checkbox" id="commercialYourBrand">  
+          <label for="commercialYourBrand">Your Brand</label>  
+        </div>  
+        <div class="checkbox-item">  
+          <input type="checkbox" id="commercialBranded">  
+          <label for="commercialBranded">Branded Content</label>  
+        </div>  
+      </div>  
+    </div>  
+    <div class="error-message" id="commercialError">Select commercial content type</div>  
+  </div>  
+
+  <!-- Consent -->  
+  <div class="form-group">  
+    <div class="checkbox-item">  
+      <input type="checkbox" id="consent">  
+      <label for="consent">I confirm I have rights to this content</label>  
+    </div>  
+    <div class="error-message" id="consentError">Consent required</div>  
+  </div>  
+
+  <!-- Publish Button -->  
+  <button class="button" id="publishBtn" disabled>Publish to TikTok</button>  
+
+  <!-- Status Message -->  
+  <div class="status" id="status"></div>  
+
+  <!-- Back Link -->  
+  <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="back-link">← Back</a>  
+</div>
+
+  </div>    <script>  
+    // File handling  
+    let selectedFile = null;  
+    let publishInProgress = false;  
+  
+    // DOM Elements  
+    const uploadArea = document.getElementById('uploadArea');  
+    const videoFile = document.getElementById('videoFile');  
+    const fileInfo = document.getElementById('fileInfo');  
+    const fileName = document.getElementById('fileName');  
+    const fileSize = document.getElementById('fileSize');  
+    const videoPreview = document.getElementById('videoPreview');  
+    const caption = document.getElementById('caption');  
+    const captionCount = document.getElementById('captionCount');  
+    const privacy = document.getElementById('privacy');  
+    const allowComment = document.getElementById('allowComment');  
+    const allowDuet = document.getElementById('allowDuet');  
+    const allowStitch = document.getElementById('allowStitch');  
+    const allowCommentLabel = document.getElementById('allowCommentLabel');  
+    const allowDuetLabel = document.getElementById('allowDuetLabel');  
+    const allowStitchLabel = document.getElementById('allowStitchLabel');  
+    const commercialToggle = document.getElementById('commercialToggle');  
+    const commercialOptions = document.getElementById('commercialOptions');  
+    const commercialYourBrand = document.getElementById('commercialYourBrand');  
+    const commercialBranded = document.getElementById('commercialBranded');  
+    const consent = document.getElementById('consent');  
+    const publishBtn = document.getElementById('publishBtn');  
+    const status = document.getElementById('status');  
+    const commercialError = document.getElementById('commercialError');  
+    const consentError = document.getElementById('consentError');  
+  
+    // Creator info from server  
+    const creatorInfo = <?= JSON_encode(creatorInfo) ?>;  
+  
+    // Initialize UI based on creatorInfo  
+    function initializeFromCreatorInfo() {  
+      if (!creatorInfo) return;  
+  
+      // 1. Render privacy options from API  
+      renderPrivacyOptions();  
+  
+      // 2. Apply interaction settings from API  
+      applyInteractionSettings();  
+    }  
+  
+    // ✅ CORRECT: Privacy options from creatorInfo.privacy_level_options  
+    function renderPrivacyOptions() {  
+      privacy.innerHTML = '';  
+  
+      if (!creatorInfo || !creatorInfo.privacy_level_options || !creatorInfo.privacy_level_options.length) {  
+        // Fallback to standard options if API doesn't return any  
+        const options = ['PUBLIC', 'FRIENDS', 'PRIVATE'];  
+        options.forEach(level => {  
+          const option = document.createElement('option');  
+          option.value = level;  
+          option.textContent =   
+            level === 'PUBLIC' ? 'Public' :  
+            level === 'FRIENDS' ? 'Friends' :  
+            level === 'PRIVATE' ? 'Private' : level;  
+          privacy.appendChild(option);  
+        });  
+        return;  
+      }  
+  
+      creatorInfo.privacy_level_options.forEach(level => {  
+        const option = document.createElement('option');  
+        option.value = level;  
+        option.textContent =   
+          level === 'PUBLIC' ? 'Public' :  
+          level === 'FRIENDS' ? 'Friends' :  
+          level === 'PRIVATE' ? 'Private' : level;  
+        privacy.appendChild(option);  
+      });  
+    }  
+  
+    // ✅ CORRECT: Interaction settings from creatorInfo  
+    function applyInteractionSettings() {  
+      if (!creatorInfo) return;  
+  
+      // Comments  
+      if (creatorInfo.comment_disabled) {  
+        allowComment.checked = false;  
+        allowComment.disabled = true;  
+        allowCommentLabel.classList.add('disabled');  
+      } else {  
+        allowComment.checked = true;  
+        allowComment.disabled = false;  
+        allowCommentLabel.classList.remove('disabled');  
+      }  
+  
+      // Duet  
+      if (creatorInfo.duet_disabled) {  
+        allowDuet.checked = false;  
+        allowDuet.disabled = true;  
+        allowDuetLabel.classList.add('disabled');  
+      } else {  
+        allowDuet.checked = false;  
+        allowDuet.disabled = false;  
+        allowDuetLabel.classList.remove('disabled');  
+      }  
+  
+      // Stitch  
+      if (creatorInfo.stitch_disabled) {  
+        allowStitch.checked = false;  
+        allowStitch.disabled = true;  
+        allowStitchLabel.classList.add('disabled');  
+      } else {  
+        allowStitch.checked = false;  
+        allowStitch.disabled = false;  
+        allowStitchLabel.classList.remove('disabled');  
+      }  
+    }  
+  
+    // Upload handlers  
+    uploadArea.addEventListener('click', () => videoFile.click());  
+  
+    uploadArea.addEventListener('dragover', (e) => {  
+      e.preventDefault();  
+      uploadArea.style.borderColor = '#E8B65C';  
+    });  
+  
+    uploadArea.addEventListener('dragleave', () => {  
+      uploadArea.style.borderColor = '#2A4A4A';  
+    });  
+  
+    uploadArea.addEventListener('drop', (e) => {  
+      e.preventDefault();  
+      uploadArea.style.borderColor = '#2A4A4A';  
+      if (e.dataTransfer.files.length) {  
+        videoFile.files = e.dataTransfer.files;  
+        handleFileSelect();  
+      }  
+    });  
+  
+    videoFile.addEventListener('change', handleFileSelect);  
+  
+    function handleFileSelect() {  
+      if (videoFile.files.length) {  
+        selectedFile = videoFile.files[0];  
+          
+        // Validate file size (100MB limit)  
+        if (selectedFile.size > 100 * 1024 * 1024) {  
+          showStatus('File exceeds 100MB limit', 'error');  
+          videoFile.value = '';  
+          selectedFile = null;  
+          return;  
+        }  
+  
+        // Show file info  
+        fileName.textContent = selectedFile.name;  
+        fileSize.textContent = formatFileSize(selectedFile.size);  
+        fileInfo.style.display = 'block';  
+  
+        // Show preview  
+        const url = URL.createObjectURL(selectedFile);  
+        videoPreview.src = url;  
+        videoPreview.style.display = 'block';  
+  
+        validateForm();  
+      }  
+    }  
+  
+    function formatFileSize(bytes) {  
+      if (bytes === 0) return '0 Bytes';  
+      const k = 1024;  
+      const sizes = ['Bytes', 'KB', 'MB'];  
+      const i = Math.floor(Math.log(bytes) / Math.log(k));  
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];  
+    }  
+  
+    // Caption counter  
+    caption.addEventListener('input', () => {  
+      captionCount.textContent = caption.value.length;  
+      validateForm();  
+    });  
+  
+    // Commercial toggle  
+    commercialToggle.addEventListener('change', function() {  
+      commercialOptions.classList.toggle('show', this.checked);  
+      if (!this.checked) {  
+        commercialYourBrand.checked = false;  
+        commercialBranded.checked = false;  
+      }  
+      validateForm();  
+    });  
+  
+    // Validation listeners  
+    [privacy, allowComment, allowDuet, allowStitch, commercialYourBrand,   
+     commercialBranded, consent].forEach(el => {  
+      el.addEventListener('change', validateForm);  
+    });  
+  
+    function validateForm() {  
+      let isValid = true;  
+  
+      // File required  
+      if (!selectedFile) isValid = false;  
+  
+      // Caption required  
+      if (!caption.value.trim()) isValid = false;  
+  
+      // Privacy required  
+      if (!privacy.value) isValid = false;  
+  
+      // Commercial validation  
+      if (commercialToggle.checked) {  
+        if (!commercialYourBrand.checked && !commercialBranded.checked) {  
+          commercialError.classList.add('show');  
+          isValid = false;  
+        } else {  
+          commercialError.classList.remove('show');  
+        }  
+      } else {  
+        commercialError.classList.remove('show');  
+      }  
+  
+      // Consent required  
+      if (!consent.checked) {  
+        consentError.classList.add('show');  
+        isValid = false;  
+      } else {  
+        consentError.classList.remove('show');  
+      }  
+  
+      publishBtn.disabled = !isValid || publishInProgress;  
+      return isValid;  
+    }  
+  
+    // ✅ CORRECT: Direct Post flow with upload_url  
+    publishBtn.addEventListener('click', async () => {  
+      if (!validateForm() || publishInProgress) return;  
+  
+      publishInProgress = true;  
+      publishBtn.disabled = true;  
+      showStatus('Initializing publish...', 'processing');  
+  
+      try {  
+        // Step 1: Call init endpoint - NO video data, just metadata  
+        showStatus('Requesting upload URL...', 'processing');  
+          
+        const initResult = await new Promise((resolve, reject) => {  
+          google.script.run  
+            .withSuccessHandler(resolve)  
+            .withFailureHandler(reject)  
+            .initDirectPost({  
+              caption: caption.value.trim(),  
+              privacy: privacy.value,  
+              allowComment: allowComment.checked,  
+              allowDuet: allowDuet.checked,  
+              allowStitch: allowStitch.checked,  
+              commercialContent: commercialToggle.checked ? {  
+                yourBrand: commercialYourBrand.checked,  
+                branded: commercialBranded.checked  
+              } : null,  
+              fileSize: selectedFile.size,  
+              fileName: selectedFile.name  
+              // ⚠️ NO file data here - only metadata  
+            });  
+        });  
+  
+        if (!initResult || !initResult.publish_id || !initResult.upload_url) {  
+          throw new Error('Failed to initialize upload - missing upload_url');  
+        }  
+  
+        // Step 2: Upload video binary to upload_url via PUT  
+        showStatus('Uploading video...', 'processing');  
+          
+        const uploadResponse = await fetch(initResult.upload_url, {  
+          method: 'PUT',  
+          body: selectedFile,  
+          headers: {  
+            'Content-Type': 'video/mp4' // or detect from file  
+          }  
+        });  
+  
+        if (!uploadResponse.ok) {  
+          throw new Error('Video upload failed: ' + uploadResponse.status);  
+        }  
+  
+        // Step 3: Call complete endpoint  
+        showStatus('Finalizing publish...', 'processing');  
+          
+        const completeResult = await new Promise((resolve, reject) => {  
+          google.script.run  
+            .withSuccessHandler(resolve)  
+            .withFailureHandler(reject)  
+            .completeDirectPost(initResult.publish_id);  
+        });  
+  
+        // Success  
+        showStatus('Published successfully!', 'success');  
+          
+        // Reset form  
+        setTimeout(() => {  
+          resetForm();  
+        }, 2000);  
+  
+      } catch (error) {  
+        console.error('Publish error:', error);  
+        showStatus('Publish failed: ' + error.message, 'error');  
+      } finally {  
+        publishInProgress = false;  
+        validateForm();  
+      }  
+    });  
+  
+    function showStatus(message, type) {  
+      status.textContent = message;  
+      status.className = `status show ${type}`;  
+    }  
+  
+    function resetForm() {  
+      selectedFile = null;  
+      videoFile.value = '';  
+      fileInfo.style.display = 'none';  
+      videoPreview.style.display = 'none';  
+      videoPreview.src = '';  
+      caption.value = '';  
+      captionCount.textContent = '0';  
+        
+      // Reset to API values  
+      if (creatorInfo) {  
+        if (creatorInfo.privacy_level_options && creatorInfo.privacy_level_options.length) {  
+          privacy.value = creatorInfo.privacy_level_options[0];  
+        }  
+        applyInteractionSettings();  
+      }  
+        
+      commercialToggle.checked = false;  
+      commercialOptions.classList.remove('show');  
+      commercialYourBrand.checked = false;  
+      commercialBranded.checked = false;  
+      consent.checked = false;  
+      validateForm();  
+    }  
+  
+    // Initialize  
+    initializeFromCreatorInfo();  
+      
+    // Initial validation  
+    validateForm();  
+  </script>  
 </body>  
 </html>
