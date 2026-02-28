@@ -25,12 +25,18 @@
     header img {  
       width: 160px;  
       border-radius: 6px;  
-      margin-bottom: 15px;  
+      margin-bottom: 10px;  
     }  
     h1 {  
       color: #FFFFFF;  
       font-weight: 600;  
       font-size: 24px;  
+      margin-bottom: 5px;  
+    }  
+    .organization-tagline {  
+      color: #2A4A4A;  
+      font-size: 14px;  
+      letter-spacing: 1px;  
     }  
     .container {  
       max-width: 800px;  
@@ -76,6 +82,14 @@
     .creator-stats {  
       color: #2A4A4A;  
       font-size: 14px;  
+    }  
+    .section-title {  
+      color: #E8B65C;  
+      font-size: 18px;  
+      font-weight: 600;  
+      margin: 30px 0 15px 0;  
+      border-bottom: 1px solid #2A4A4A;  
+      padding-bottom: 5px;  
     }  
     .upload-area {  
       border: 2px dashed #2A4A4A;  
@@ -205,6 +219,18 @@
     .commercial-options.show {  
       display: block;  
     }  
+    .consent-text {  
+      font-size: 14px;  
+      color: #2A4A4A;  
+      margin-top: 5px;  
+    }  
+    .consent-text a {  
+      color: #E8B65C;  
+      text-decoration: none;  
+    }  
+    .consent-text a:hover {  
+      text-decoration: underline;  
+    }  
     .button {  
       background: #E8B65C;  
       color: #1A2838;  
@@ -275,6 +301,7 @@
   <header>  
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken">  
     <h1>AutoPublisher</h1>  
+    <p class="organization-tagline">by Historien Bakom Musiken</p>  
   </header>  
   <div class="container">  
     <div class="card">  
@@ -289,7 +316,8 @@
         </div>  
       </div>  
 
-      <!-- Upload Area -->  
+      <!-- Step 1: Select Video -->  
+      <h3 class="section-title">1. Select video</h3>  
       <div class="upload-area" id="uploadArea">  
         <div class="upload-icon">📁</div>  
         <p>Select video to publish</p>  
@@ -302,10 +330,10 @@
         <p><strong>Selected:</strong> <span id="fileName"></span></p>  
         <p style="color: #2A4A4A; font-size: 14px;">Size: <span id="fileSize"></span></p>  
       </div>  
-
       <video id="videoPreview" class="video-preview" controls style="display: none;"></video>  
 
-      <!-- Caption -->  
+      <!-- Step 2: Write caption -->  
+      <h3 class="section-title">2. Write caption</h3>  
       <div class="form-group">  
         <label for="caption">Caption</label>  
         <textarea id="caption" placeholder="Write your video caption..." maxlength="2200"></textarea>  
@@ -314,15 +342,16 @@
         </div>  
       </div>  
 
-      <!-- Privacy Level - Dynamically from creatorInfo -->  
+      <!-- Step 3: Choose privacy -->  
+      <h3 class="section-title">3. Choose privacy</h3>  
       <div class="form-group">  
         <label for="privacy">Privacy</label>  
         <select id="privacy"></select>  
       </div>  
 
-      <!-- Interaction Controls - Reflecting creatorInfo settings -->  
+      <!-- Step 4: Set interaction options -->  
+      <h3 class="section-title">4. Set interaction options</h3>  
       <div class="form-group">  
-        <label>Interaction Settings</label>  
         <div class="checkbox-group">  
           <div class="checkbox-item">  
             <input type="checkbox" id="allowComment">  
@@ -339,7 +368,8 @@
         </div>  
       </div>  
 
-      <!-- Commercial Content -->  
+      <!-- Step 5: Commercial content (optional) -->  
+      <h3 class="section-title">5. Commercial content (optional)</h3>  
       <div class="form-group">  
         <div class="commercial-section">  
           <div class="commercial-toggle">  
@@ -360,12 +390,14 @@
         <div class="error-message" id="commercialError">Select commercial content type</div>  
       </div>  
 
-      <!-- Consent -->  
+      <!-- Step 6: Consent and confirm -->  
+      <h3 class="section-title">6. Consent and confirm</h3>  
       <div class="form-group">  
         <div class="checkbox-item">  
           <input type="checkbox" id="consent">  
-          <label for="consent" id="consentLabel">By posting, you agree to TikTok's Music Usage Confirmation</label>  
+          <label for="consent" id="consentLabel"></label>  
         </div>  
+        <div class="consent-text" id="consentText"></div>  
         <div class="error-message" id="consentError">Consent required</div>  
       </div>  
 
@@ -402,6 +434,7 @@
     const commercialBranded = document.getElementById('commercialBranded');
     const consent = document.getElementById('consent');
     const consentLabel = document.getElementById('consentLabel');
+    const consentText = document.getElementById('consentText');
     const publishBtn = document.getElementById('publishBtn');
     const status = document.getElementById('status');
     const commercialError = document.getElementById('commercialError');
@@ -551,9 +584,11 @@
     --------------------------------*/
 
     function updateConsentLabel() {
-      const baseText = "By posting, you agree to TikTok's Music Usage Confirmation";
-      const brandedText = "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation";
-      consentLabel.textContent = commercialBranded.checked ? brandedText : baseText;
+      const baseText = 'By posting, you agree to TikTok\'s <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">Terms of Service</a> and <a href="https://www.tiktok.com/community-guidelines" target="_blank">Community Guidelines</a>, and confirm that you have the rights to the music used.';
+      const brandedText = 'By posting, you agree to TikTok\'s <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">Terms of Service</a>, <a href="https://www.tiktok.com/community-guidelines" target="_blank">Community Guidelines</a>, and <a href="https://www.tiktok.com/legal/branded-content" target="_blank">Branded Content Policy</a>, and confirm that you have the rights to the music used.';
+      
+      consentText.innerHTML = commercialBranded.checked ? brandedText : baseText;
+      consentLabel.textContent = ''; // Label is not used; we use consentText for rich content
     }
 
     /* -------------------------------
