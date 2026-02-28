@@ -197,14 +197,21 @@
       cursor: pointer;  
       color: #FFFFFF;  
       font-weight: normal;  
+      display: inline-block;  
     }  
     .checkbox-item label.disabled {  
       opacity: 0.5;  
       cursor: not-allowed;  
     }  
-    /* Explicit styling för consent-label för att garantera synlighet */  
+    /* Extremt stark styling för consent-label */  
     #consentLabel {  
       color: #FFFFFF !important;  
+      font-size: 16px !important;  
+      display: inline-block !important;  
+      visibility: visible !important;  
+      opacity: 1 !important;  
+      background: transparent !important;  
+      text-shadow: none !important;  
     }  
     .commercial-section {  
       background: rgba(216, 139, 92, 0.1);  
@@ -389,7 +396,7 @@
       <div class="form-group">  
         <div class="checkbox-item">  
           <input type="checkbox" id="consent">  
-          <label for="consent" id="consentLabel"></label>  
+          <label for="consent" id="consentLabel">Laddar...</label> <!-- Temporär text -->  
         </div>  
         <div class="error-message" id="consentError">Consent required</div>  
       </div>  
@@ -444,7 +451,6 @@
       renderPrivacyOptions();
       applyInteractionSettings();
       enforcePostingCap();
-      updateConsentLabel(); // set initial consent text
     }
 
     /* -------------------------------
@@ -591,6 +597,8 @@
         consentLabel.textContent =
           "By posting, you agree to TikTok's Music Usage Confirmation.";
       }
+      // Logga för felsökning (kan tas bort senare)
+      console.log('Consent label updated to:', consentLabel.textContent);
     }
 
     /* -------------------------------
@@ -697,9 +705,10 @@
       status.className = `status show ${type}`;
     }
 
+    // Initiera allt
     initializeFromCreatorInfo();
-    // Extra anrop för att säkerställa att consent-texten sätts direkt
-    updateConsentLabel();
+    // Uppdatera consent-texten direkt och efter varje ändring (redan gjort i event)
+    updateConsentLabel(); // Se till att texten sätts omedelbart
     validateForm();
   </script>
 </body>  
