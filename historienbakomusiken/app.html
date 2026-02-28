@@ -198,20 +198,25 @@
       color: #FFFFFF;  
       font-weight: normal;  
       display: inline-block;  
+      line-height: 1.4;  
     }  
     .checkbox-item label.disabled {  
       opacity: 0.5;  
       cursor: not-allowed;  
     }  
-    /* Extremt stark styling för consent-label */  
+    /* Consent label - SYNLIG OCH LÄSBAR */  
     #consentLabel {  
       color: #FFFFFF !important;  
-      font-size: 16px !important;  
+      font-size: 14px !important;  
+      font-weight: 400 !important;  
       display: inline-block !important;  
       visibility: visible !important;  
       opacity: 1 !important;  
       background: transparent !important;  
       text-shadow: none !important;  
+      line-height: 1.5 !important;  
+      max-width: 100% !important;  
+      word-wrap: break-word !important;  
     }  
     .commercial-section {  
       background: rgba(216, 139, 92, 0.1);  
@@ -396,7 +401,7 @@
       <div class="form-group">  
         <div class="checkbox-item">  
           <input type="checkbox" id="consent">  
-          <label for="consent" id="consentLabel">Laddar...</label> <!-- Temporär text -->  
+          <label for="consent" id="consentLabel">By posting, you agree to TikTok's Music Usage Confirmation.</label>  
         </div>  
         <div class="error-message" id="consentError">Consent required</div>  
       </div>  
@@ -451,6 +456,7 @@
       renderPrivacyOptions();
       applyInteractionSettings();
       enforcePostingCap();
+      updateConsentLabel(); // Uppdatera consent-texten omedelbart
     }
 
     /* -------------------------------
@@ -552,18 +558,18 @@
 
     commercialToggle.addEventListener('change', () => {
       commercialOptions.classList.toggle('show', commercialToggle.checked);
-      updateConsentLabel();  // Uppdatera text när kommersiellt aktiveras/inaktiveras
+      updateConsentLabel();
       validateForm();
     });
 
     commercialYourBrand.addEventListener('change', function() {
-      updateConsentLabel();  // Uppdatera om Your Brand ändras
+      updateConsentLabel();
       validateForm();
     });
 
     commercialBranded.addEventListener('change', function() {
       enforceBrandedPrivacy();
-      updateConsentLabel();  // Uppdatera om Branded Content ändras
+      updateConsentLabel();
       validateForm();
     });
 
@@ -586,7 +592,6 @@
 
     /* -------------------------------
        CONSENT LABEL DYNAMIC UPDATE
-       EXAKT ENLIGT INSTRUKTION
     --------------------------------*/
 
     function updateConsentLabel() {
@@ -597,8 +602,6 @@
         consentLabel.textContent =
           "By posting, you agree to TikTok's Music Usage Confirmation.";
       }
-      // Logga för felsökning (kan tas bort senare)
-      console.log('Consent label updated to:', consentLabel.textContent);
     }
 
     /* -------------------------------
@@ -707,8 +710,6 @@
 
     // Initiera allt
     initializeFromCreatorInfo();
-    // Uppdatera consent-texten direkt och efter varje ändring (redan gjort i event)
-    updateConsentLabel(); // Se till att texten sätts omedelbart
     validateForm();
   </script>
 </body>  
