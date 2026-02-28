@@ -219,17 +219,11 @@
     .commercial-options.show {  
       display: block;  
     }  
+    /* Ny enkel consent-text-stil */  
     .consent-text {  
       font-size: 14px;  
       color: #2A4A4A;  
       margin-top: 5px;  
-    }  
-    .consent-text a {  
-      color: #E8B65C;  
-      text-decoration: none;  
-    }  
-    .consent-text a:hover {  
-      text-decoration: underline;  
     }  
     .button {  
       background: #E8B65C;  
@@ -395,9 +389,9 @@
       <div class="form-group">  
         <div class="checkbox-item">  
           <input type="checkbox" id="consent">  
-          <label for="consent" id="consentLabel"></label>  
+          <label for="consent" id="consentLabel" style="display: none;"></label> <!-- Dolt, använder consentText istället -->  
+          <span class="consent-text" id="consentText"></span>  
         </div>  
-        <div class="consent-text" id="consentText"></div>  
         <div class="error-message" id="consentError">Consent required</div>  
       </div>  
 
@@ -433,7 +427,6 @@
     const commercialYourBrand = document.getElementById('commercialYourBrand');
     const commercialBranded = document.getElementById('commercialBranded');
     const consent = document.getElementById('consent');
-    const consentLabel = document.getElementById('consentLabel');
     const consentText = document.getElementById('consentText');
     const publishBtn = document.getElementById('publishBtn');
     const status = document.getElementById('status');
@@ -554,12 +547,19 @@
 
     commercialToggle.addEventListener('change', () => {
       commercialOptions.classList.toggle('show', commercialToggle.checked);
+      updateConsentLabel();  // Uppdatera text när kommersiellt aktiveras/inaktiveras
+      validateForm();
+    });
+
+    commercialYourBrand.addEventListener('change', function() {
+      updateConsentLabel();  // Uppdatera om Your Brand ändras
       validateForm();
     });
 
     commercialBranded.addEventListener('change', function() {
       enforceBrandedPrivacy();
-      updateConsentLabel(); // update consent text based on branded content
+      updateConsentLabel();  // Uppdatera om Branded Content ändras
+      validateForm();
     });
 
     function enforceBrandedPrivacy() {
@@ -581,14 +581,17 @@
 
     /* -------------------------------
        CONSENT LABEL DYNAMIC UPDATE
+       EXAKT ENLIGT INSTRUKTION
     --------------------------------*/
 
     function updateConsentLabel() {
-      const baseText = 'By posting, you agree to TikTok\'s <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">Terms of Service</a> and <a href="https://www.tiktok.com/community-guidelines" target="_blank">Community Guidelines</a>, and confirm that you have the rights to the music used.';
-      const brandedText = 'By posting, you agree to TikTok\'s <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">Terms of Service</a>, <a href="https://www.tiktok.com/community-guidelines" target="_blank">Community Guidelines</a>, and <a href="https://www.tiktok.com/legal/branded-content" target="_blank">Branded Content Policy</a>, and confirm that you have the rights to the music used.';
-      
-      consentText.innerHTML = commercialBranded.checked ? brandedText : baseText;
-      consentLabel.textContent = ''; // Label is not used; we use consentText for rich content
+      if (commercialBranded.checked || commercialYourBrand.checked) {
+        consentText.textContent =
+          "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation.";
+      } else {
+        consentText.textContent =
+          "By posting, you agree to TikTok's Music Usage Confirmation.";
+      }
     }
 
     /* -------------------------------
