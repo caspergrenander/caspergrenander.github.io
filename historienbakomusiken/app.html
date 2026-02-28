@@ -195,6 +195,8 @@
     .checkbox-item label {  
       margin: 0;  
       cursor: pointer;  
+      color: #FFFFFF; /* Säkerställer vit färg */  
+      font-weight: normal;  
     }  
     .checkbox-item label.disabled {  
       opacity: 0.5;  
@@ -218,12 +220,6 @@
     }  
     .commercial-options.show {  
       display: block;  
-    }  
-    /* Ny enkel consent-text-stil */  
-    .consent-text {  
-      font-size: 14px;  
-      color: #2A4A4A;  
-      margin-top: 5px;  
     }  
     .button {  
       background: #E8B65C;  
@@ -389,8 +385,7 @@
       <div class="form-group">  
         <div class="checkbox-item">  
           <input type="checkbox" id="consent">  
-          <label for="consent" id="consentLabel" style="display: none;"></label> <!-- Dolt, använder consentText istället -->  
-          <span class="consent-text" id="consentText"></span>  
+          <label for="consent" id="consentLabel"></label>  
         </div>  
         <div class="error-message" id="consentError">Consent required</div>  
       </div>  
@@ -427,7 +422,7 @@
     const commercialYourBrand = document.getElementById('commercialYourBrand');
     const commercialBranded = document.getElementById('commercialBranded');
     const consent = document.getElementById('consent');
-    const consentText = document.getElementById('consentText');
+    const consentLabel = document.getElementById('consentLabel');
     const publishBtn = document.getElementById('publishBtn');
     const status = document.getElementById('status');
     const commercialError = document.getElementById('commercialError');
@@ -586,10 +581,10 @@
 
     function updateConsentLabel() {
       if (commercialBranded.checked || commercialYourBrand.checked) {
-        consentText.textContent =
+        consentLabel.textContent =
           "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation.";
       } else {
-        consentText.textContent =
+        consentLabel.textContent =
           "By posting, you agree to TikTok's Music Usage Confirmation.";
       }
     }
