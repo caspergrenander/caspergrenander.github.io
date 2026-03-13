@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post to TikTok</title> <!-- ÄNDRING 1: Ny titel -->
+  <title>Post to TikTok</title>
   <style>
     * {
       margin: 0;
@@ -54,7 +54,7 @@
       border: 1px solid #E8B65C;
       border-radius: 8px;
       padding: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 20px;
@@ -87,16 +87,16 @@
       color: #E8B65C;
       font-size: 18px;
       font-weight: 600;
-      margin: 30px 0 15px 0;
+      margin: 25px 0 12px 0;
       border-bottom: 1px solid #2A4A4A;
       padding-bottom: 5px;
     }
     .upload-area {
       border: 2px dashed #2A4A4A;
       border-radius: 8px;
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
-      margin: 20px 0;
+      margin: 15px 0;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -107,31 +107,43 @@
     .upload-icon {
       font-size: 48px;
       color: #2A4A4A;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .file-info {
       background: rgba(42, 74, 74, 0.2);
       padding: 15px;
       border-radius: 6px;
-      margin: 20px 0;
+      margin: 15px 0;
       border-left: 4px solid #E8B65C;
+    }
+    .preview-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .preview-label {
+      text-align: center;
+      color: #2A4A4A;
+      font-size: 13px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
     }
     .video-preview {
       width: 100%;
       max-width: 400px;
-      margin: 20px auto;
+      margin: 0 auto;
       display: block;
       border-radius: 8px;
       border: 2px solid #2A4A4A;
     }
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #FFFFFF;
       font-weight: 500;
+      font-size: 15px;
     }
     input[type="text"] {
       width: 100%;
@@ -157,7 +169,7 @@
       font-family: inherit;
       font-size: 15px;
       resize: vertical;
-      min-height: 100px;
+      min-height: 90px;
     }
     textarea:focus {
       outline: none;
@@ -189,13 +201,13 @@
       background: rgba(42, 74, 74, 0.1);
       border: 1px solid #2A4A4A;
       border-radius: 6px;
-      padding: 15px;
+      padding: 12px;
     }
     .checkbox-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 10px 0;
+      margin: 8px 0;
     }
     .checkbox-item input[type="checkbox"] {
       width: 18px;
@@ -214,11 +226,7 @@
       display: inline-block;
       line-height: 1.4;
     }
-    .checkbox-item label.disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    /* Consent label - SYNLIG OCH LÄSBAR */
+    /* Consent label - extremt synlig */
     #consentLabel {
       color: #FFFFFF !important;
       font-size: 14px !important;
@@ -226,11 +234,7 @@
       display: inline-block !important;
       visibility: visible !important;
       opacity: 1 !important;
-      background: transparent !important;
-      text-shadow: none !important;
       line-height: 1.5 !important;
-      max-width: 100% !important;
-      word-wrap: break-word !important;
     }
     .commercial-section {
       background: rgba(216, 139, 92, 0.1);
@@ -242,7 +246,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     .commercial-options {
       margin-left: 28px;
@@ -250,6 +254,12 @@
     }
     .commercial-options.show {
       display: block;
+    }
+    .commercial-prompt {
+      margin-top: 10px;
+      color: #E8B65C;
+      font-size: 14px;
+      min-height: 20px;
     }
     .button {
       background: #E8B65C;
@@ -262,6 +272,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       width: 100%;
+      margin-top: 10px;
     }
     .button:hover:not(:disabled) {
       background: #F5C97C;
@@ -305,9 +316,17 @@
     .error-message.show {
       display: block;
     }
+    .user-control-text {
+      font-size: 13px;
+      color: #2A4A4A;
+      margin: 15px 0 10px 0;
+      text-align: center;
+      border-top: 1px solid #2A4A4A;
+      padding-top: 15px;
+    }
     .back-link {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 25px;
       color: #2A4A4A;
       text-decoration: none;
       font-size: 14px;
@@ -320,12 +339,13 @@
 <body>
   <header>
     <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken">
-    <h1>Post to TikTok</h1> <!-- ÄNDRING 1: Ny H1 -->
-    <p class="organization-tagline">via AutoPublisher by Historien Bakom Musiken</p> <!-- ÄNDRING 1: Ny tagline -->
+    <h1>Post to TikTok</h1>
+    <p class="organization-tagline">via AutoPublisher by Historien Bakom Musiken</p>
   </header>
+  
   <div class="container">
     <div class="card">
-      <!-- Creator Info - Dynamically populated from TikTok API -->
+      <!-- 1. CREATOR CONTEXT - Alltid först enligt guideline -->
       <div class="creator-section" id="creatorSection">
         <div class="creator-avatar" id="creatorAvatar">👤</div>
         <div class="creator-details">
@@ -336,131 +356,144 @@
         </div>
       </div>
 
-      <!-- ÄNDRING 2: Explicit posting context text -->
-      <p style="margin-bottom:20px;color:#E8B65C;">
-        Content will be posted to this TikTok account.
+      <!-- Bekräftelse på målkonto -->
+      <p style="margin-bottom:20px;color:#E8B65C; text-align:center;">
+        ⬆️ Content will be posted to this TikTok account ⬆️
       </p>
 
-      <!-- ÄNDRING 3: Nytt fält för titel -->
+      <!-- 2. TITLE (metadata först) -->
       <h3 class="section-title">1. Add title</h3>
       <div class="form-group">
-        <label for="title">Title</label>
-        <input id="title" type="text" maxlength="150"
-        style="width:100%;padding:12px;background:rgba(42,74,74,.2);border:1px solid #2A4A4A;color:#F5E5C8;">
+        <label for="title">Video title</label>
+        <input type="text" id="title" maxlength="150" placeholder="Enter a title for your video...">
+        <div style="text-align:right; font-size:12px; color:#2A4A4A; margin-top:4px;">
+          <span id="titleCount">0</span>/150
+        </div>
       </div>
 
-      <!-- Step 2: Select Video (tidigare steg 1) -->
-      <h3 class="section-title">2. Select video</h3>
-      <div class="upload-area" id="uploadArea">
-        <div class="upload-icon">📁</div>
-        <p>Select video to publish</p>
-        <p style="color: #2A4A4A; font-size: 14px; margin-top: 10px;">MP4, MOV, AVI (max 100MB)</p>
-      </div>
-      <input type="file" id="videoFile" accept="video/*" style="display: none">
-
-      <!-- File Info & Preview -->
-      <div id="fileInfo" class="file-info" style="display: none;">
-        <p><strong>Selected:</strong> <span id="fileName"></span></p>
-        <p style="color: #2A4A4A; font-size: 14px;">Size: <span id="fileSize"></span></p>
-      </div>
-      <video id="videoPreview" class="video-preview" controls style="display: none;"></video>
-
-      <!-- Step 3: Write caption (tidigare steg 2) -->
-      <h3 class="section-title">3. Write caption</h3>
+      <!-- 3. CAPTION (metadata) -->
+      <h3 class="section-title">2. Write caption</h3>
       <div class="form-group">
         <label for="caption">Caption</label>
-        <textarea id="caption" placeholder="Write your video caption..." maxlength="2200"></textarea>
-        <div style="text-align: right; font-size: 12px; color: #2A4A4A; margin-top: 5px;">
+        <textarea id="caption" placeholder="Describe your video... (optional)" maxlength="2200"></textarea>
+        <div style="text-align:right; font-size:12px; color:#2A4A4A; margin-top:4px;">
           <span id="captionCount">0</span>/2200
         </div>
       </div>
 
-      <!-- Step 4: Choose privacy (tidigare steg 3) -->
-      <h3 class="section-title">4. Choose privacy</h3>
-      <div class="form-group">
-        <label for="privacy">Privacy</label>
-        <select id="privacy"></select>
+      <!-- 4. SELECT VIDEO (efter metadata) -->
+      <h3 class="section-title">3. Select video</h3>
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <p>Click to select video file</p>
+        <p style="color:#2A4A4A; font-size:14px; margin-top:8px;">MP4, MOV (max 100MB)</p>
+      </div>
+      <input type="file" id="videoFile" accept="video/*" style="display:none">
+
+      <!-- Filinfo och preview med tydlig label -->
+      <div id="fileInfo" class="file-info" style="display:none;">
+        <p><strong>Selected:</strong> <span id="fileName"></span></p>
+        <p style="color:#2A4A4A; font-size:14px;">Size: <span id="fileSize"></span></p>
+      </div>
+      
+      <!-- ⚠️ VIKTIGT: Explicit preview label -->
+      <div id="previewContainer" class="preview-container" style="display:none;">
+        <div class="preview-label">⬇️ PREVIEW OF CONTENT TO BE POSTED ⬇️</div>
+        <video id="videoPreview" class="video-preview" controls></video>
       </div>
 
-      <!-- Step 5: Set interaction options (tidigare steg 4) -->
-      <h3 class="section-title">5. Set interaction options</h3>
+      <!-- 5. PRIVACY -->
+      <h3 class="section-title">4. Choose privacy</h3>
+      <div class="form-group">
+        <label for="privacy">Who can view this video?</label>
+        <select id="privacy">
+          <option value="" disabled selected>Select privacy level</option>
+        </select>
+      </div>
+
+      <!-- 6. INTERACTION OPTIONS -->
+      <h3 class="section-title">5. Interaction settings</h3>
       <div class="form-group">
         <div class="checkbox-group">
           <div class="checkbox-item">
             <input type="checkbox" id="allowComment">
-            <label for="allowComment" id="allowCommentLabel">Allow comments</label>
+            <label for="allowComment">Allow comments</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="allowDuet">
-            <label for="allowDuet" id="allowDuetLabel">Allow duet</label>
+            <label for="allowDuet">Allow duet</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="allowStitch">
-            <label for="allowStitch" id="allowStitchLabel">Allow stitch</label>
+            <label for="allowStitch">Allow stitch</label>
           </div>
         </div>
       </div>
 
-      <!-- Step 6: Commercial content (optional) (tidigare steg 5) -->
-      <h3 class="section-title">6. Commercial content (optional)</h3>
+      <!-- 7. COMMERCIAL CONTENT -->
+      <h3 class="section-title">6. Commercial content (if applicable)</h3>
       <div class="form-group">
         <div class="commercial-section">
           <div class="commercial-toggle">
             <input type="checkbox" id="commercialToggle">
-            <label for="commercialToggle">This contains commercial content</label>
+            <label for="commercialToggle">This video contains commercial content</label>
           </div>
           <div class="commercial-options" id="commercialOptions">
             <div class="checkbox-item">
               <input type="checkbox" id="commercialYourBrand">
-              <label for="commercialYourBrand">Your Brand</label>
+              <label for="commercialYourBrand">Promotional content (your own brand)</label>
             </div>
             <div class="checkbox-item">
               <input type="checkbox" id="commercialBranded">
-              <label for="commercialBranded">Branded Content</label>
+              <label for="commercialBranded">Paid partnership (branded content)</label>
             </div>
           </div>
-          <!-- ÄNDRING 4: Commercial label prompt -->
-          <div id="commercialPrompt" style="margin-top:10px;color:#E8B65C;font-size:14px;"></div>
+          <!-- Dynamisk prompt som visar label -->
+          <div id="commercialPrompt" class="commercial-prompt"></div>
         </div>
-        <div class="error-message" id="commercialError">Select commercial content type</div>
+        <div class="error-message" id="commercialError">Please select commercial content type</div>
       </div>
 
-      <!-- Step 7: Consent and confirm (tidigare steg 6) -->
-      <h3 class="section-title">7. Consent and confirm</h3>
+      <!-- 8. CONSENT -->
+      <h3 class="section-title">7. Confirm and consent</h3>
       <div class="form-group">
-        <div class="checkbox-item">
+        <div class="checkbox-item" style="background:rgba(232,182,92,0.05); padding:12px; border-radius:6px;">
           <input type="checkbox" id="consent">
           <label for="consent" id="consentLabel">By posting, you agree to TikTok's Music Usage Confirmation.</label>
         </div>
-        <div class="error-message" id="consentError">Consent required</div>
+        <div class="error-message" id="consentError">You must confirm to continue</div>
       </div>
 
-      <!-- ÄNDRING 6: Final user control text -->
-      <p style="font-size:13px;color:#2A4A4A;margin-bottom:10px;">
-        No content is uploaded until you press Publish. You fully control what is posted to your TikTok account.
-      </p>
-
-      <!-- Publish Button -->
+      <!-- 9. USER CONTROL TEXT + PUBLISH -->
+      <div class="user-control-text">
+        ⚠️ No content is uploaded until you press Publish. You fully control what is posted.
+      </div>
+      
       <button class="button" id="publishBtn" disabled>Publish to TikTok</button>
 
-      <!-- Status Message -->
+      <!-- Statusmeddelanden -->
       <div class="status" id="status"></div>
 
-      <!-- Back Link -->
-      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="back-link">← Back</a>
+      <!-- Back link -->
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="back-link">← Back to project</a>
     </div>
   </div>
 
   <script>
+    // State
     let selectedFile = null;
     let publishInProgress = false;
 
+    // DOM Elements
     const uploadArea = document.getElementById('uploadArea');
     const videoFile = document.getElementById('videoFile');
     const fileInfo = document.getElementById('fileInfo');
     const fileName = document.getElementById('fileName');
     const fileSize = document.getElementById('fileSize');
+    const previewContainer = document.getElementById('previewContainer');
     const videoPreview = document.getElementById('videoPreview');
+    const title = document.getElementById('title');
+    const titleCount = document.getElementById('titleCount');
     const caption = document.getElementById('caption');
     const captionCount = document.getElementById('captionCount');
     const privacy = document.getElementById('privacy');
@@ -471,7 +504,7 @@
     const commercialOptions = document.getElementById('commercialOptions');
     const commercialYourBrand = document.getElementById('commercialYourBrand');
     const commercialBranded = document.getElementById('commercialBranded');
-    const commercialPrompt = document.getElementById('commercialPrompt'); // ÄNDRING 4: Nytt element
+    const commercialPrompt = document.getElementById('commercialPrompt');
     const consent = document.getElementById('consent');
     const consentLabel = document.getElementById('consentLabel');
     const publishBtn = document.getElementById('publishBtn');
@@ -479,107 +512,170 @@
     const commercialError = document.getElementById('commercialError');
     const consentError = document.getElementById('consentError');
 
-    const creatorInfo = <?= JSON_encode(creatorInfo) ?>;
+    // Creator info från server
+    const creatorInfo = <?= json_encode($creatorInfo ?? null) ?> || {};
 
-    /* -------------------------------
-       INITIALIZATION
-    --------------------------------*/
-
-    function initializeFromCreatorInfo() {
+    // ------------------- INITIALISERING -------------------
+    function init() {
       if (!creatorInfo) return;
-
+      
       renderPrivacyOptions();
-      applyInteractionSettings();
-      enforcePostingCap();
-      updateConsentLabel(); // Uppdatera consent-texten omedelbart
+      applyInteractionDefaults();
+      checkPostingCap();
+      updateConsentLabel();
+      
+      // Event listeners
+      title.addEventListener('input', updateTitleCount);
+      caption.addEventListener('input', updateCaptionCount);
+      privacy.addEventListener('change', validateForm);
+      allowComment.addEventListener('change', validateForm);
+      allowDuet.addEventListener('change', validateForm);
+      allowStitch.addEventListener('change', validateForm);
+      consent.addEventListener('change', validateForm);
+      
+      commercialToggle.addEventListener('change', toggleCommercial);
+      commercialYourBrand.addEventListener('change', onCommercialChange);
+      commercialBranded.addEventListener('change', onCommercialChange);
+      
+      uploadArea.addEventListener('click', () => videoFile.click());
+      videoFile.addEventListener('change', handleFileSelect);
+      
+      validateForm();
     }
 
-    /* -------------------------------
-       PRIVACY (NO DEFAULT ALLOWED)
-    --------------------------------*/
-
+    // Privacy options från creatorInfo
     function renderPrivacyOptions() {
-      privacy.innerHTML = '';
-
-      const placeholder = document.createElement('option');
-      placeholder.value = '';
-      placeholder.textContent = 'Select privacy level';
-      placeholder.disabled = true;
-      placeholder.selected = true;
-      privacy.appendChild(placeholder);
-
-      (creatorInfo.privacy_level_options || []).forEach(level => {
+      privacy.innerHTML = '<option value="" disabled selected>Select privacy level</option>';
+      
+      const options = creatorInfo.privacy_level_options || ['PUBLIC', 'FRIENDS', 'PRIVATE'];
+      options.forEach(level => {
         const option = document.createElement('option');
         option.value = level;
-        option.textContent =
-          level === 'PUBLIC' ? 'Public' :
-          level === 'FRIENDS' ? 'Friends' :
-          level === 'PRIVATE' ? 'Private' : level;
+        option.textContent = 
+          level === 'PUBLIC' ? 'Public - Anyone can view' :
+          level === 'FRIENDS' ? 'Friends - Only friends can view' :
+          level === 'PRIVATE' ? 'Private - Only me' : level;
         privacy.appendChild(option);
       });
     }
 
-    /* -------------------------------
-       INTERACTION SETTINGS
-       NONE CHECKED BY DEFAULT
-    --------------------------------*/
-
-    function applyInteractionSettings() {
+    // Interaction settings - alla av som standard
+    function applyInteractionDefaults() {
       allowComment.checked = false;
       allowDuet.checked = false;
       allowStitch.checked = false;
-
-      allowComment.disabled = !!creatorInfo.comment_disabled;
-      allowDuet.disabled = !!creatorInfo.duet_disabled;
-      allowStitch.disabled = !!creatorInfo.stitch_disabled;
+      
+      // Disable om creatorInfo säger att de är forcerade
+      if (creatorInfo.comment_disabled) allowComment.disabled = true;
+      if (creatorInfo.duet_disabled) allowDuet.disabled = true;
+      if (creatorInfo.stitch_disabled) allowStitch.disabled = true;
     }
 
-    /* -------------------------------
-       POSTING CAP CONTROL
-    --------------------------------*/
-
-    function enforcePostingCap() {
-      if (creatorInfo?.can_post === false) {
-        showStatus('Posting limit reached. Please try again later.', 'error');
+    // Kolla posting cap
+    function checkPostingCap() {
+      if (creatorInfo.can_post === false) {
+        showStatus('Daily posting limit reached. Please try again tomorrow.', 'error');
         publishBtn.disabled = true;
       }
     }
 
-    /* -------------------------------
-       FILE HANDLING
-    --------------------------------*/
+    // Räkna tecken
+    function updateTitleCount() {
+      titleCount.textContent = title.value.length;
+      validateForm();
+    }
+    
+    function updateCaptionCount() {
+      captionCount.textContent = caption.value.length;
+      validateForm();
+    }
 
-    uploadArea.addEventListener('click', () => videoFile.click());
-    videoFile.addEventListener('change', handleFileSelect);
+    // ------------------- COMMERCIAL LOGIC -------------------
+    function toggleCommercial() {
+      commercialOptions.classList.toggle('show', commercialToggle.checked);
+      if (!commercialToggle.checked) {
+        commercialYourBrand.checked = false;
+        commercialBranded.checked = false;
+      }
+      updateCommercialPrompt();
+      updateConsentLabel();
+      validateForm();
+    }
 
+    function onCommercialChange() {
+      updateCommercialPrompt();
+      enforceBrandedPrivacy();
+      updateConsentLabel();
+      validateForm();
+    }
+
+    function updateCommercialPrompt() {
+      if (commercialBranded.checked) {
+        commercialPrompt.textContent = "🔔 Your video will be labeled as 'Paid partnership'";
+      } else if (commercialYourBrand.checked) {
+        commercialPrompt.textContent = "🔔 Your video will be labeled as 'Promotional content'";
+      } else {
+        commercialPrompt.textContent = "";
+      }
+    }
+
+    function enforceBrandedPrivacy() {
+      const privateOption = Array.from(privacy.options).find(o => o.value === 'PRIVATE');
+      if (!privateOption) return;
+      
+      if (commercialBranded.checked) {
+        privateOption.disabled = true;
+        if (privacy.value === 'PRIVATE') {
+          privacy.value = '';
+          alert('Branded content cannot be private. Privacy level updated.');
+        }
+      } else {
+        privateOption.disabled = false;
+      }
+    }
+
+    function updateConsentLabel() {
+      if (commercialBranded.checked || commercialYourBrand.checked) {
+        consentLabel.textContent = "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation.";
+      } else {
+        consentLabel.textContent = "By posting, you agree to TikTok's Music Usage Confirmation.";
+      }
+    }
+
+    // ------------------- FILE HANDLING -------------------
     function handleFileSelect() {
       if (!videoFile.files.length) return;
-
+      
       selectedFile = videoFile.files[0];
-
+      
+      // Validera storlek
       if (selectedFile.size > 100 * 1024 * 1024) {
         showStatus('File exceeds 100MB limit', 'error');
         selectedFile = null;
         return;
       }
-
+      
+      // Visa filinfo
       fileName.textContent = selectedFile.name;
       fileSize.textContent = formatFileSize(selectedFile.size);
       fileInfo.style.display = 'block';
-
+      
+      // Skapa preview
       const url = URL.createObjectURL(selectedFile);
       videoPreview.src = url;
-      videoPreview.style.display = 'block';
-
+      previewContainer.style.display = 'block';
+      
+      // Validera duration
       videoPreview.onloadedmetadata = () => {
-        if (creatorInfo?.max_video_post_duration_sec &&
-            videoPreview.duration > creatorInfo.max_video_post_duration_sec) {
-          showStatus('Video exceeds maximum allowed duration.', 'error');
+        const maxDuration = creatorInfo.max_video_post_duration_sec || 180;
+        if (videoPreview.duration > maxDuration) {
+          showStatus(`Video exceeds maximum duration (${maxDuration}s)`, 'error');
           selectedFile = null;
-          videoPreview.style.display = 'none';
+          previewContainer.style.display = 'none';
+          fileInfo.style.display = 'none';
         }
       };
-
+      
       validateForm();
     }
 
@@ -587,156 +683,52 @@
       return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
 
-    /* -------------------------------
-       COMMERCIAL LOGIC
-    --------------------------------*/
-
-    commercialToggle.addEventListener('change', () => {
-      commercialOptions.classList.toggle('show', commercialToggle.checked);
-      updateConsentLabel();
-      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
-      validateForm();
-    });
-
-    commercialYourBrand.addEventListener('change', function() {
-      updateConsentLabel();
-      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
-      validateForm();
-    });
-
-    commercialBranded.addEventListener('change', function() {
-      enforceBrandedPrivacy();
-      updateConsentLabel();
-      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
-      validateForm();
-    });
-
-    function enforceBrandedPrivacy() {
-      const privateOption = [...privacy.options].find(o => o.value === 'PRIVATE');
-
-      if (!privateOption) return;
-
-      if (commercialBranded.checked) {
-        privateOption.disabled = true;
-
-        if (privacy.value === 'PRIVATE') {
-          privacy.value = '';
-          alert('Branded content visibility cannot be private.');
-        }
-      } else {
-        privateOption.disabled = false;
-      }
-    }
-
-    /* -------------------------------
-       ÄNDRING 4: Uppdatera commercial prompt
-    --------------------------------*/
-    function updateCommercialPrompt() {
-      if (commercialBranded.checked) {
-        commercialPrompt.textContent = "Your video will be labeled as Paid partnership";
-      } else if (commercialYourBrand.checked) {
-        commercialPrompt.textContent = "Your video will be labeled as Promotional content";
-      } else {
-        commercialPrompt.textContent = "";
-      }
-    }
-
-    /* -------------------------------
-       CONSENT LABEL DYNAMIC UPDATE
-    --------------------------------*/
-
-    function updateConsentLabel() {
-      if (commercialBranded.checked || commercialYourBrand.checked) {
-        consentLabel.textContent =
-          "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation.";
-      } else {
-        consentLabel.textContent =
-          "By posting, you agree to TikTok's Music Usage Confirmation.";
-      }
-    }
-
-    /* -------------------------------
-       VALIDATION
-    --------------------------------*/
-
-    [privacy, allowComment, allowDuet, allowStitch,
-     commercialYourBrand, commercialBranded, consent]
-    .forEach(el => el.addEventListener('change', validateForm));
-
-    caption.addEventListener('input', () => {
-      captionCount.textContent = caption.value.length;
-      validateForm();
-    });
-
+    // ------------------- VALIDERING -------------------
     function validateForm() {
       let isValid = true;
-
+      
+      // Kräver: title, video, privacy, consent
+      if (!title.value.trim()) isValid = false;
       if (!selectedFile) isValid = false;
-      if (!caption.value.trim()) isValid = false;
       if (!privacy.value) isValid = false;
-
-      if (commercialToggle.checked &&
-         !commercialYourBrand.checked &&
-         !commercialBranded.checked) {
+      
+      // Kommersiell validering
+      if (commercialToggle.checked && !commercialYourBrand.checked && !commercialBranded.checked) {
         commercialError.classList.add('show');
         isValid = false;
       } else {
         commercialError.classList.remove('show');
       }
-
+      
+      // Consent
       if (!consent.checked) {
         consentError.classList.add('show');
         isValid = false;
       } else {
         consentError.classList.remove('show');
       }
-
+      
       publishBtn.disabled = !isValid || publishInProgress;
       return isValid;
     }
 
-    /* -------------------------------
-       ÄNDRING 5: Polling-funktion för status
-    --------------------------------*/
-    async function pollStatus(publishId) {
-      for (let i = 0; i < 12; i++) {
-        const res = await new Promise((resolve, reject) => {
-          google.script.run
-            .withSuccessHandler(resolve)
-            .withFailureHandler(reject)
-            .getDirectPostStatus(publishId);
-        });
-
-        if (res.status === "PUBLISHED") {
-          showStatus("Published successfully", "success");
-          return;
-        }
-
-        await new Promise(r => setTimeout(r, 4000));
-      }
-
-      showStatus("Still processing. Check TikTok profile.", "processing");
-    }
-
-    /* -------------------------------
-       PUBLISH FLOW
-    --------------------------------*/
-
+    // ------------------- PUBLISH FLOW -------------------
     publishBtn.addEventListener('click', async () => {
       if (!validateForm()) return;
-
+      
       publishInProgress = true;
       publishBtn.disabled = true;
-
-      // ÄNDRING 5: Mer detaljerad status
-      showStatus('Uploading video…', 'processing');
-
+      
+      showStatus('Uploading video...', 'processing');
+      
       try {
+        // Initiera med ALL data (inklusive title)
         const initResult = await new Promise((resolve, reject) => {
           google.script.run
             .withSuccessHandler(resolve)
             .withFailureHandler(reject)
             .initDirectPost({
+              title: title.value.trim(),
               caption: caption.value.trim(),
               privacy: privacy.value,
               allowComment: allowComment.checked,
@@ -750,45 +742,71 @@
               fileName: selectedFile.name
             });
         });
-
+        
+        // Upload till TikTok
         await fetch(initResult.upload_url, {
           method: 'PUT',
           body: selectedFile,
           headers: { 'Content-Type': 'video/mp4' }
         });
-
-        // ÄNDRING 5: Uppdaterad status efter uppladdning
-        showStatus('Processing on TikTok servers…', 'processing');
-
+        
+        showStatus('Processing on TikTok servers...', 'processing');
+        
+        // Complete
         await new Promise((resolve, reject) => {
           google.script.run
             .withSuccessHandler(resolve)
             .withFailureHandler(reject)
             .completeDirectPost(initResult.publish_id);
         });
-
-        // ÄNDRING 5: Starta polling
+        
+        // Polla status
         await pollStatus(initResult.publish_id);
-
-      } catch (e) {
-        showStatus('Publish failed: ' + e.message, 'error');
+        
+      } catch (error) {
+        showStatus('Publish failed: ' + error.message, 'error');
+        publishInProgress = false;
+        validateForm();
       }
-
-      publishInProgress = false;
-      validateForm();
     });
 
-    /* -------------------------------
-       STATUS
-    --------------------------------*/
+    // Polling för status
+    async function pollStatus(publishId) {
+      for (let i = 0; i < 12; i++) {
+        await new Promise(r => setTimeout(r, 4000));
+        
+        try {
+          const result = await new Promise((resolve, reject) => {
+            google.script.run
+              .withSuccessHandler(resolve)
+              .withFailureHandler(reject)
+              .getDirectPostStatus(publishId);
+          });
+          
+          if (result.status === 'PUBLISHED') {
+            showStatus('✅ Published successfully!', 'success');
+            publishInProgress = false;
+            validateForm();
+            return;
+          }
+        } catch (e) {
+          // Fortsätt polla
+        }
+      }
+      
+      showStatus('Still processing. Check your TikTok profile.', 'processing');
+      publishInProgress = false;
+      validateForm();
+    }
 
+    // Status display
     function showStatus(message, type) {
       status.textContent = message;
       status.className = `status show ${type}`;
     }
 
-    // Initiera allt
-    initializeFromCreatorInfo();
+    // Starta allt
+    init();
     validateForm();
   </script>
 </body>
