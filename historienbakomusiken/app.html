@@ -165,9 +165,6 @@
       outline: none;
       border-color: #E8B65C;
     }
-    input[type="text"]:invalid {
-      border-color: #D88B5C;
-    }
     textarea {
       width: 100%;
       padding: 12px;
@@ -183,9 +180,6 @@
     textarea:focus {
       outline: none;
       border-color: #E8B65C;
-    }
-    textarea:invalid {
-      border-color: #D88B5C;
     }
     select {
       width: 100%;
@@ -238,7 +232,6 @@
       display: inline-block;
       line-height: 1.4;
     }
-    /* Consent label - extremt synlig */
     #consentLabel {
       color: #FFFFFF !important;
       font-size: 14px !important;
@@ -363,7 +356,7 @@
   
   <div class="container">
     <div class="card">
-      <!-- 1. CREATOR CONTEXT - Alltid först enligt guideline -->
+      <!-- 1. CREATOR CONTEXT -->
       <div class="creator-section" id="creatorSection">
         <div class="creator-avatar" id="creatorAvatar">👤</div>
         <div class="creator-details">
@@ -374,12 +367,12 @@
         </div>
       </div>
 
-      <!-- Bekräftelse på målkonto - CRITISKT för review -->
+      <!-- Bekräftelse på målkonto -->
       <p style="margin-bottom:20px;color:#E8B65C; text-align:center; font-weight:500; border:1px solid #2A4A4A; padding:10px; border-radius:6px;">
         ⬆️ CONTENT WILL BE POSTED TO THIS TIKTOK ACCOUNT ⬆️
       </p>
 
-      <!-- 2. TITLE (metadata först) -->
+      <!-- 2. TITLE -->
       <h3 class="section-title">1. Add title <span class="required-star">*</span></h3>
       <div class="form-group">
         <label for="title">Video title <span class="required-star">(required)</span></label>
@@ -389,7 +382,7 @@
         </div>
       </div>
 
-      <!-- 3. CAPTION (metadata - nu OBLIGATORISK) -->
+      <!-- 3. CAPTION -->
       <h3 class="section-title">2. Write caption <span class="required-star">*</span></h3>
       <div class="form-group">
         <label for="caption">Caption <span class="required-star">(required)</span></label>
@@ -399,7 +392,7 @@
         </div>
       </div>
 
-      <!-- 4. SELECT VIDEO (efter metadata) -->
+      <!-- 4. SELECT VIDEO -->
       <h3 class="section-title">3. Select video <span class="required-star">*</span></h3>
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">📁</div>
@@ -408,13 +401,13 @@
       </div>
       <input type="file" id="videoFile" accept="video/*" style="display:none">
 
-      <!-- Filinfo och preview med tydlig label -->
+      <!-- Filinfo och preview -->
       <div id="fileInfo" class="file-info" style="display:none;">
         <p><strong>Selected:</strong> <span id="fileName"></span></p>
         <p style="color:#2A4A4A; font-size:14px;">Size: <span id="fileSize"></span></p>
       </div>
       
-      <!-- ⚠️ VIKTIGT: Explicit preview label - reviewer letar efter detta -->
+      <!-- Preview med explicit label -->
       <div id="previewContainer" class="preview-container" style="display:none;">
         <div class="preview-label">⬇️ PREVIEW OF CONTENT TO BE POSTED ⬇️</div>
         <video id="videoPreview" class="video-preview" controls></video>
@@ -466,7 +459,6 @@
               <label for="commercialBranded">Paid partnership (branded content)</label>
             </div>
           </div>
-          <!-- Dynamisk prompt som visar label - reviewer ser att användaren informeras -->
           <div id="commercialPrompt" class="commercial-prompt"></div>
         </div>
         <div class="error-message" id="commercialError">Please select commercial content type</div>
@@ -482,7 +474,7 @@
         <div class="error-message" id="consentError">You must confirm to continue</div>
       </div>
 
-      <!-- 9. USER CONTROL TEXT + PUBLISH -->
+      <!-- 9. USER CONTROL TEXT -->
       <div class="user-control-text">
         ⚠️ NO CONTENT IS UPLOADED UNTIL YOU PRESS PUBLISH. You fully control what is posted.
       </div>
@@ -530,7 +522,7 @@
     const commercialError = document.getElementById('commercialError');
     const consentError = document.getElementById('consentError');
 
-    // Creator info från server (ersätts med faktisk data)
+    // Creator info från server - med fallback för privacy options
     const creatorInfo = <?= json_encode($creatorInfo ?? null) ?> || {
       creator_nickname: 'testuser',
       followers_count: 1234,
@@ -565,27 +557,54 @@
       uploadArea.addEventListener('click', () => videoFile.click());
       videoFile.addEventListener('change', handleFileSelect);
       
-      // Initial validering
       validateForm();
     }
 
-    // Privacy options
+    // ------------------- PRIVACY OPTIONS - ROBUST FALLBACK -------------------
     function renderPrivacyOptions() {
+      // Behåll placeholder
       privacy.innerHTML = '<option value="" disabled selected>Select privacy level</option>';
       
-      const options = creatorInfo.privacy_level_options || ['PUBLIC', 'FRIENDS', 'PRIVATE'];
+      // EXTREMT ROBUST FALLBACK:
+      // Kolla om privacy_level_options finns OCH har innehåll
+      // Om inte -> använd standardvärden
+      let options = [];
+      
+      if (creatorInfo.privacy_level_options && 
+          Array.isArray(creatorInfo.privacy_level_options) && 
+          creatorInfo.privacy_level_options.length > 0) {
+        // Använd options från API
+        options = creatorInfo.privacy_level_options;
+      } else {
+        // FALLBACK: Standard privacy options (detta är review-safe)
+        options = ['PUBLIC', 'FRIENDS', 'PRIVATE'];
+      }
+      
+      // Skapa option elements
       options.forEach(level => {
         const option = document.createElement('option');
         option.value = level;
-        option.textContent = 
-          level === 'PUBLIC' ? 'Public - Anyone can view' :
-          level === 'FRIENDS' ? 'Friends - Only friends can view' :
-          level === 'PRIVATE' ? 'Private - Only me' : level;
+        
+        // Visa fin text baserat på level
+        switch(level) {
+          case 'PUBLIC':
+            option.textContent = 'Public - Anyone can view';
+            break;
+          case 'FRIENDS':
+            option.textContent = 'Friends - Only friends can view';
+            break;
+          case 'PRIVATE':
+            option.textContent = 'Private - Only me';
+            break;
+          default:
+            option.textContent = level; // Fallback för okända värden
+        }
+        
         privacy.appendChild(option);
       });
     }
 
-    // Interaction settings - alla av som standard
+    // Interaction settings
     function applyInteractionDefaults() {
       allowComment.checked = false;
       allowDuet.checked = false;
@@ -652,7 +671,7 @@
         privateOption.disabled = true;
         if (privacy.value === 'PRIVATE') {
           privacy.value = '';
-          alert('Branded content cannot be private. Privacy level updated to public.');
+          alert('Branded content cannot be private. Privacy level updated.');
         }
       } else {
         privateOption.disabled = false;
@@ -673,24 +692,20 @@
       
       selectedFile = videoFile.files[0];
       
-      // Validera storlek
       if (selectedFile.size > 100 * 1024 * 1024) {
         showStatus('File exceeds 100MB limit', 'error');
         selectedFile = null;
         return;
       }
       
-      // Visa filinfo
       fileName.textContent = selectedFile.name;
       fileSize.textContent = formatFileSize(selectedFile.size);
       fileInfo.style.display = 'block';
       
-      // Skapa preview
       const url = URL.createObjectURL(selectedFile);
       videoPreview.src = url;
       previewContainer.style.display = 'block';
       
-      // Validera duration
       videoPreview.onloadedmetadata = () => {
         const maxDuration = creatorInfo.max_video_post_duration_sec || 180;
         if (videoPreview.duration > maxDuration) {
@@ -712,13 +727,11 @@
     function validateForm() {
       let isValid = true;
       
-      // ALLA fält utom commercial är required
       if (!title.value.trim()) isValid = false;
-      if (!caption.value.trim()) isValid = false; // Caption är nu OBLIGATORISK
+      if (!caption.value.trim()) isValid = false;
       if (!selectedFile) isValid = false;
       if (!privacy.value) isValid = false;
       
-      // Kommersiell validering
       if (commercialToggle.checked && !commercialYourBrand.checked && !commercialBranded.checked) {
         commercialError.classList.add('show');
         isValid = false;
@@ -726,7 +739,6 @@
         commercialError.classList.remove('show');
       }
       
-      // Consent
       if (!consent.checked) {
         consentError.classList.add('show');
         isValid = false;
@@ -748,7 +760,6 @@
       showStatus('Uploading video...', 'processing');
       
       try {
-        // Initiera med ALL data (inklusive title och caption)
         const initResult = await new Promise((resolve, reject) => {
           google.script.run
             .withSuccessHandler(resolve)
@@ -769,7 +780,6 @@
             });
         });
         
-        // Upload till TikTok
         await fetch(initResult.upload_url, {
           method: 'PUT',
           body: selectedFile,
@@ -778,7 +788,6 @@
         
         showStatus('Processing on TikTok servers...', 'processing');
         
-        // Complete
         await new Promise((resolve, reject) => {
           google.script.run
             .withSuccessHandler(resolve)
@@ -786,7 +795,6 @@
             .completeDirectPost(initResult.publish_id);
         });
         
-        // Polla status
         await pollStatus(initResult.publish_id);
         
       } catch (error) {
