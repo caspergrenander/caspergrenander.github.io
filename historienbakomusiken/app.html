@@ -1,284 +1,795 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post to TikTok</title>
-
-<style>
-
-body{
-background:#111;
-color:white;
-font-family:Arial;
-max-width:700px;
-margin:auto;
-padding:30px;
-}
-
-h2{
-margin-bottom:5px;
-}
-
-.section{
-margin-top:35px;
-}
-
-input, textarea, select{
-width:100%;
-padding:12px;
-margin-top:8px;
-background:#1e1e1e;
-border:1px solid #333;
-color:white;
-}
-
-button{
-margin-top:30px;
-padding:14px;
-width:100%;
-background:#fe2c55;
-border:none;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-video{
-width:100%;
-margin-top:15px;
-border-radius:8px;
-}
-
-.note{
-color:#888;
-font-size:13px;
-margin-top:6px;
-}
-
-.prompt{
-margin-top:10px;
-color:#00ffa6;
-}
-
-.status{
-margin-top:20px;
-padding:12px;
-border:1px solid #444;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post to TikTok</title> <!-- ÄNDRING 1: Ny titel -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #1A2838;
+      color: #F5E5C8;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: #0D0F15;
+      border-bottom: 1px solid #2A4A4A;
+    }
+    header img {
+      width: 160px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .organization-tagline {
+      color: #2A4A4A;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: #0D0F15;
+      border: 1px solid #2A4A4A;
+      border-radius: 8px;
+      padding: 30px;
+    }
+    .creator-section {
+      background: rgba(232, 182, 92, 0.1);
+      border: 1px solid #E8B65C;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .creator-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #2A4A4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #FFFFFF;
+    }
+    .creator-details {
+      flex: 1;
+    }
+    .creator-username {
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 5px;
+    }
+    .creator-stats {
+      color: #2A4A4A;
+      font-size: 14px;
+    }
+    .section-title {
+      color: #E8B65C;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 30px 0 15px 0;
+      border-bottom: 1px solid #2A4A4A;
+      padding-bottom: 5px;
+    }
+    .upload-area {
+      border: 2px dashed #2A4A4A;
+      border-radius: 8px;
+      padding: 40px 20px;
+      text-align: center;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .upload-area:hover {
+      border-color: #E8B65C;
+      background: rgba(232, 182, 92, 0.05);
+    }
+    .upload-icon {
+      font-size: 48px;
+      color: #2A4A4A;
+      margin-bottom: 15px;
+    }
+    .file-info {
+      background: rgba(42, 74, 74, 0.2);
+      padding: 15px;
+      border-radius: 6px;
+      margin: 20px 0;
+      border-left: 4px solid #E8B65C;
+    }
+    .video-preview {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 8px;
+      border: 2px solid #2A4A4A;
+    }
+    .form-group {
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      background: rgba(42, 74, 74, 0.2);
+      border: 1px solid #2A4A4A;
+      border-radius: 6px;
+      color: #F5E5C8;
+      font-family: inherit;
+      font-size: 15px;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #E8B65C;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(42, 74, 74, 0.2);
+      border: 1px solid #2A4A4A;
+      border-radius: 6px;
+      color: #F5E5C8;
+      font-family: inherit;
+      font-size: 15px;
+      resize: vertical;
+      min-height: 100px;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #E8B65C;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(42, 74, 74, 0.2);
+      border: 1px solid #2A4A4A;
+      border-radius: 6px;
+      color: #F5E5C8;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    select:focus {
+      outline: none;
+      border-color: #E8B65C;
+    }
+    select option {
+      background: #0D0F15;
+      color: #F5E5C8;
+    }
+    select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .checkbox-group {
+      background: rgba(42, 74, 74, 0.1);
+      border: 1px solid #2A4A4A;
+      border-radius: 6px;
+      padding: 15px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .checkbox-item input[type="checkbox"]:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .checkbox-item label {
+      margin: 0;
+      cursor: pointer;
+      color: #FFFFFF;
+      font-weight: normal;
+      display: inline-block;
+      line-height: 1.4;
+    }
+    .checkbox-item label.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    /* Consent label - SYNLIG OCH LÄSBAR */
+    #consentLabel {
+      color: #FFFFFF !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background: transparent !important;
+      text-shadow: none !important;
+      line-height: 1.5 !important;
+      max-width: 100% !important;
+      word-wrap: break-word !important;
+    }
+    .commercial-section {
+      background: rgba(216, 139, 92, 0.1);
+      border: 1px solid #D88B5C;
+      border-radius: 6px;
+      padding: 15px;
+    }
+    .commercial-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .commercial-options {
+      margin-left: 28px;
+      display: none;
+    }
+    .commercial-options.show {
+      display: block;
+    }
+    .button {
+      background: #E8B65C;
+      color: #1A2838;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .button:hover:not(:disabled) {
+      background: #F5C97C;
+      transform: translateY(-1px);
+    }
+    .button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+    .status.show {
+      display: block;
+    }
+    .status.success {
+      background: rgba(232, 182, 92, 0.15);
+      border: 2px solid #E8B65C;
+      color: #E8B65C;
+    }
+    .status.error {
+      background: rgba(216, 139, 92, 0.15);
+      border: 2px solid #D88B5C;
+      color: #D88B5C;
+    }
+    .status.processing {
+      background: rgba(42, 74, 74, 0.3);
+      border: 2px solid #2A4A4A;
+      color: #F5E5C8;
+    }
+    .error-message {
+      color: #D88B5C;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    .error-message.show {
+      display: block;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #2A4A4A;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back-link:hover {
+      color: #E8B65C;
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- ACCOUNT CONTEXT -->
-<h2>Post to TikTok</h2>
-<p>You are posting as <strong id="creatorUsername">@loading</strong></p>
-
-<!-- TITLE -->
-<div class="section">
-<label>1. Add title</label>
-<input id="title" maxlength="150">
-</div>
-
-<!-- VIDEO -->
-<div class="section">
-<label>2. Select video</label>
-
-<input type="file" id="videoFile" accept="video/*">
-
-<p class="note">Preview of content to be posted</p>
-<video id="preview" controls style="display:none"></video>
-</div>
-
-<!-- CAPTION -->
-<div class="section">
-<label>3. Caption</label>
-<textarea id="caption" maxlength="2200"></textarea>
-</div>
-
-<!-- PRIVACY -->
-<div class="section">
-<label>4. Who can view this video?</label>
-<select id="privacy"></select>
-</div>
-
-<!-- INTERACTION -->
-<div class="section">
-<label>5. Interaction settings</label>
-
-<div>
-<input type="checkbox" id="comment">
-<label>Allow comments</label>
-</div>
-
-<div>
-<input type="checkbox" id="duet">
-<label>Allow duet</label>
-</div>
-
-<div>
-<input type="checkbox" id="stitch">
-<label>Allow stitch</label>
-</div>
-
-<p class="note">
-These settings follow your TikTok account permissions
-</p>
-
-</div>
-
-<!-- COMMERCIAL -->
-<div class="section">
-<label>6. Commercial content disclosure</label>
-
-<div>
-<input type="checkbox" id="commercialToggle">
-<label>This content promotes a brand / service</label>
-</div>
-
-<div id="commercialOptions" style="display:none">
-
-<div>
-<input type="checkbox" id="yourBrand">
-<label>Your brand</label>
-</div>
-
-<div>
-<input type="checkbox" id="branded">
-<label>Branded content</label>
-</div>
-
-</div>
-
-<div class="prompt" id="commercialPrompt"></div>
-
-</div>
-
-<!-- CONSENT -->
-<div class="section">
-
-<p id="consentText">
-By posting, you agree to TikTok's Music Usage Confirmation
-</p>
-
-<div>
-<input type="checkbox" id="consent">
-<label>I confirm</label>
-</div>
-
-<p class="note">
-You must confirm before uploading content to TikTok
-</p>
-
-</div>
-
-<button id="publish">Publish</button>
-
-<div class="status" id="status"></div>
-
-<script>
-
-let publishId;
-
-const videoFile = document.getElementById("videoFile");
-const preview = document.getElementById("preview");
-
-videoFile.onchange = () => {
-
-const file = videoFile.files[0];
-
-preview.src = URL.createObjectURL(file);
-preview.style.display="block";
-
-}
-
-document.getElementById("commercialToggle").onchange = e=>{
-document.getElementById("commercialOptions").style.display =
-e.target.checked ? "block" : "none";
-}
-
-document.getElementById("yourBrand").onchange =
-document.getElementById("branded").onchange = ()=>{
-
-const prompt = document.getElementById("commercialPrompt");
-
-if(document.getElementById("branded").checked){
-
-prompt.innerText =
-"Your video will be labeled as Paid partnership";
-
-document.getElementById("consentText").innerText =
-"By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation";
-
-}
-else if(document.getElementById("yourBrand").checked){
-
-prompt.innerText =
-"Your video will be labeled as Promotional content";
-
-document.getElementById("consentText").innerText =
-"By posting, you agree to TikTok's Music Usage Confirmation";
-
-}
-else{
-prompt.innerText="";
-}
-
-}
-
-document.getElementById("publish").onclick = async ()=>{
-
-document.getElementById("status").innerText =
-"Uploading video…";
-
-const init = await new Promise((resolve,reject)=>{
-google.script.run
-.withSuccessHandler(resolve)
-.withFailureHandler(reject)
-.initPost({});
-});
-
-publishId = init.publish_id;
-
-document.getElementById("status").innerText =
-"Processing on TikTok servers…";
-
-poll();
-
-}
-
-async function poll(){
-
-for(let i=0;i<12;i++){
-
-const res = await new Promise((resolve,reject)=>{
-google.script.run
-.withSuccessHandler(resolve)
-.withFailureHandler(reject)
-.getStatus(publishId);
-});
-
-if(res.status === "PUBLISHED"){
-
-document.getElementById("status").innerText =
-"Published successfully";
-
-return;
-
-}
-
-await new Promise(r=>setTimeout(r,4000));
-
-}
-
-document.getElementById("status").innerText =
-"Still processing. Please check your TikTok profile.";
-
-}
-
-</script>
-
+  <header>
+    <img src="/historienbakomusiken/historienbakomusiken/assets/logo.png" alt="Historien Bakom Musiken">
+    <h1>Post to TikTok</h1> <!-- ÄNDRING 1: Ny H1 -->
+    <p class="organization-tagline">via AutoPublisher by Historien Bakom Musiken</p> <!-- ÄNDRING 1: Ny tagline -->
+  </header>
+  <div class="container">
+    <div class="card">
+      <!-- Creator Info - Dynamically populated from TikTok API -->
+      <div class="creator-section" id="creatorSection">
+        <div class="creator-avatar" id="creatorAvatar">👤</div>
+        <div class="creator-details">
+          <div class="creator-username" id="creatorUsername"><?= creatorInfo?.creator_nickname ? '@' + creatorInfo.creator_nickname : 'Loading...' ?></div>
+          <div class="creator-stats" id="creatorStats">
+            <span id="creatorFollowers"><?= creatorInfo?.followers_count ?? '0' ?></span> followers
+          </div>
+        </div>
+      </div>
+
+      <!-- ÄNDRING 2: Explicit posting context text -->
+      <p style="margin-bottom:20px;color:#E8B65C;">
+        Content will be posted to this TikTok account.
+      </p>
+
+      <!-- ÄNDRING 3: Nytt fält för titel -->
+      <h3 class="section-title">1. Add title</h3>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" type="text" maxlength="150"
+        style="width:100%;padding:12px;background:rgba(42,74,74,.2);border:1px solid #2A4A4A;color:#F5E5C8;">
+      </div>
+
+      <!-- Step 2: Select Video (tidigare steg 1) -->
+      <h3 class="section-title">2. Select video</h3>
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <p>Select video to publish</p>
+        <p style="color: #2A4A4A; font-size: 14px; margin-top: 10px;">MP4, MOV, AVI (max 100MB)</p>
+      </div>
+      <input type="file" id="videoFile" accept="video/*" style="display: none">
+
+      <!-- File Info & Preview -->
+      <div id="fileInfo" class="file-info" style="display: none;">
+        <p><strong>Selected:</strong> <span id="fileName"></span></p>
+        <p style="color: #2A4A4A; font-size: 14px;">Size: <span id="fileSize"></span></p>
+      </div>
+      <video id="videoPreview" class="video-preview" controls style="display: none;"></video>
+
+      <!-- Step 3: Write caption (tidigare steg 2) -->
+      <h3 class="section-title">3. Write caption</h3>
+      <div class="form-group">
+        <label for="caption">Caption</label>
+        <textarea id="caption" placeholder="Write your video caption..." maxlength="2200"></textarea>
+        <div style="text-align: right; font-size: 12px; color: #2A4A4A; margin-top: 5px;">
+          <span id="captionCount">0</span>/2200
+        </div>
+      </div>
+
+      <!-- Step 4: Choose privacy (tidigare steg 3) -->
+      <h3 class="section-title">4. Choose privacy</h3>
+      <div class="form-group">
+        <label for="privacy">Privacy</label>
+        <select id="privacy"></select>
+      </div>
+
+      <!-- Step 5: Set interaction options (tidigare steg 4) -->
+      <h3 class="section-title">5. Set interaction options</h3>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="allowComment">
+            <label for="allowComment" id="allowCommentLabel">Allow comments</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="allowDuet">
+            <label for="allowDuet" id="allowDuetLabel">Allow duet</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="allowStitch">
+            <label for="allowStitch" id="allowStitchLabel">Allow stitch</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Commercial content (optional) (tidigare steg 5) -->
+      <h3 class="section-title">6. Commercial content (optional)</h3>
+      <div class="form-group">
+        <div class="commercial-section">
+          <div class="commercial-toggle">
+            <input type="checkbox" id="commercialToggle">
+            <label for="commercialToggle">This contains commercial content</label>
+          </div>
+          <div class="commercial-options" id="commercialOptions">
+            <div class="checkbox-item">
+              <input type="checkbox" id="commercialYourBrand">
+              <label for="commercialYourBrand">Your Brand</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="commercialBranded">
+              <label for="commercialBranded">Branded Content</label>
+            </div>
+          </div>
+          <!-- ÄNDRING 4: Commercial label prompt -->
+          <div id="commercialPrompt" style="margin-top:10px;color:#E8B65C;font-size:14px;"></div>
+        </div>
+        <div class="error-message" id="commercialError">Select commercial content type</div>
+      </div>
+
+      <!-- Step 7: Consent and confirm (tidigare steg 6) -->
+      <h3 class="section-title">7. Consent and confirm</h3>
+      <div class="form-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="consent">
+          <label for="consent" id="consentLabel">By posting, you agree to TikTok's Music Usage Confirmation.</label>
+        </div>
+        <div class="error-message" id="consentError">Consent required</div>
+      </div>
+
+      <!-- ÄNDRING 6: Final user control text -->
+      <p style="font-size:13px;color:#2A4A4A;margin-bottom:10px;">
+        No content is uploaded until you press Publish. You fully control what is posted to your TikTok account.
+      </p>
+
+      <!-- Publish Button -->
+      <button class="button" id="publishBtn" disabled>Publish to TikTok</button>
+
+      <!-- Status Message -->
+      <div class="status" id="status"></div>
+
+      <!-- Back Link -->
+      <a href="https://caspergrenander.github.io/historienbakomusiken/projekt-info/" class="back-link">← Back</a>
+    </div>
+  </div>
+
+  <script>
+    let selectedFile = null;
+    let publishInProgress = false;
+
+    const uploadArea = document.getElementById('uploadArea');
+    const videoFile = document.getElementById('videoFile');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const videoPreview = document.getElementById('videoPreview');
+    const caption = document.getElementById('caption');
+    const captionCount = document.getElementById('captionCount');
+    const privacy = document.getElementById('privacy');
+    const allowComment = document.getElementById('allowComment');
+    const allowDuet = document.getElementById('allowDuet');
+    const allowStitch = document.getElementById('allowStitch');
+    const commercialToggle = document.getElementById('commercialToggle');
+    const commercialOptions = document.getElementById('commercialOptions');
+    const commercialYourBrand = document.getElementById('commercialYourBrand');
+    const commercialBranded = document.getElementById('commercialBranded');
+    const commercialPrompt = document.getElementById('commercialPrompt'); // ÄNDRING 4: Nytt element
+    const consent = document.getElementById('consent');
+    const consentLabel = document.getElementById('consentLabel');
+    const publishBtn = document.getElementById('publishBtn');
+    const status = document.getElementById('status');
+    const commercialError = document.getElementById('commercialError');
+    const consentError = document.getElementById('consentError');
+
+    const creatorInfo = <?= JSON_encode(creatorInfo) ?>;
+
+    /* -------------------------------
+       INITIALIZATION
+    --------------------------------*/
+
+    function initializeFromCreatorInfo() {
+      if (!creatorInfo) return;
+
+      renderPrivacyOptions();
+      applyInteractionSettings();
+      enforcePostingCap();
+      updateConsentLabel(); // Uppdatera consent-texten omedelbart
+    }
+
+    /* -------------------------------
+       PRIVACY (NO DEFAULT ALLOWED)
+    --------------------------------*/
+
+    function renderPrivacyOptions() {
+      privacy.innerHTML = '';
+
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = 'Select privacy level';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      privacy.appendChild(placeholder);
+
+      (creatorInfo.privacy_level_options || []).forEach(level => {
+        const option = document.createElement('option');
+        option.value = level;
+        option.textContent =
+          level === 'PUBLIC' ? 'Public' :
+          level === 'FRIENDS' ? 'Friends' :
+          level === 'PRIVATE' ? 'Private' : level;
+        privacy.appendChild(option);
+      });
+    }
+
+    /* -------------------------------
+       INTERACTION SETTINGS
+       NONE CHECKED BY DEFAULT
+    --------------------------------*/
+
+    function applyInteractionSettings() {
+      allowComment.checked = false;
+      allowDuet.checked = false;
+      allowStitch.checked = false;
+
+      allowComment.disabled = !!creatorInfo.comment_disabled;
+      allowDuet.disabled = !!creatorInfo.duet_disabled;
+      allowStitch.disabled = !!creatorInfo.stitch_disabled;
+    }
+
+    /* -------------------------------
+       POSTING CAP CONTROL
+    --------------------------------*/
+
+    function enforcePostingCap() {
+      if (creatorInfo?.can_post === false) {
+        showStatus('Posting limit reached. Please try again later.', 'error');
+        publishBtn.disabled = true;
+      }
+    }
+
+    /* -------------------------------
+       FILE HANDLING
+    --------------------------------*/
+
+    uploadArea.addEventListener('click', () => videoFile.click());
+    videoFile.addEventListener('change', handleFileSelect);
+
+    function handleFileSelect() {
+      if (!videoFile.files.length) return;
+
+      selectedFile = videoFile.files[0];
+
+      if (selectedFile.size > 100 * 1024 * 1024) {
+        showStatus('File exceeds 100MB limit', 'error');
+        selectedFile = null;
+        return;
+      }
+
+      fileName.textContent = selectedFile.name;
+      fileSize.textContent = formatFileSize(selectedFile.size);
+      fileInfo.style.display = 'block';
+
+      const url = URL.createObjectURL(selectedFile);
+      videoPreview.src = url;
+      videoPreview.style.display = 'block';
+
+      videoPreview.onloadedmetadata = () => {
+        if (creatorInfo?.max_video_post_duration_sec &&
+            videoPreview.duration > creatorInfo.max_video_post_duration_sec) {
+          showStatus('Video exceeds maximum allowed duration.', 'error');
+          selectedFile = null;
+          videoPreview.style.display = 'none';
+        }
+      };
+
+      validateForm();
+    }
+
+    function formatFileSize(bytes) {
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    /* -------------------------------
+       COMMERCIAL LOGIC
+    --------------------------------*/
+
+    commercialToggle.addEventListener('change', () => {
+      commercialOptions.classList.toggle('show', commercialToggle.checked);
+      updateConsentLabel();
+      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
+      validateForm();
+    });
+
+    commercialYourBrand.addEventListener('change', function() {
+      updateConsentLabel();
+      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
+      validateForm();
+    });
+
+    commercialBranded.addEventListener('change', function() {
+      enforceBrandedPrivacy();
+      updateConsentLabel();
+      updateCommercialPrompt(); // ÄNDRING 4: Uppdatera prompt
+      validateForm();
+    });
+
+    function enforceBrandedPrivacy() {
+      const privateOption = [...privacy.options].find(o => o.value === 'PRIVATE');
+
+      if (!privateOption) return;
+
+      if (commercialBranded.checked) {
+        privateOption.disabled = true;
+
+        if (privacy.value === 'PRIVATE') {
+          privacy.value = '';
+          alert('Branded content visibility cannot be private.');
+        }
+      } else {
+        privateOption.disabled = false;
+      }
+    }
+
+    /* -------------------------------
+       ÄNDRING 4: Uppdatera commercial prompt
+    --------------------------------*/
+    function updateCommercialPrompt() {
+      if (commercialBranded.checked) {
+        commercialPrompt.textContent = "Your video will be labeled as Paid partnership";
+      } else if (commercialYourBrand.checked) {
+        commercialPrompt.textContent = "Your video will be labeled as Promotional content";
+      } else {
+        commercialPrompt.textContent = "";
+      }
+    }
+
+    /* -------------------------------
+       CONSENT LABEL DYNAMIC UPDATE
+    --------------------------------*/
+
+    function updateConsentLabel() {
+      if (commercialBranded.checked || commercialYourBrand.checked) {
+        consentLabel.textContent =
+          "By posting, you agree to TikTok's Branded Content Policy and Music Usage Confirmation.";
+      } else {
+        consentLabel.textContent =
+          "By posting, you agree to TikTok's Music Usage Confirmation.";
+      }
+    }
+
+    /* -------------------------------
+       VALIDATION
+    --------------------------------*/
+
+    [privacy, allowComment, allowDuet, allowStitch,
+     commercialYourBrand, commercialBranded, consent]
+    .forEach(el => el.addEventListener('change', validateForm));
+
+    caption.addEventListener('input', () => {
+      captionCount.textContent = caption.value.length;
+      validateForm();
+    });
+
+    function validateForm() {
+      let isValid = true;
+
+      if (!selectedFile) isValid = false;
+      if (!caption.value.trim()) isValid = false;
+      if (!privacy.value) isValid = false;
+
+      if (commercialToggle.checked &&
+         !commercialYourBrand.checked &&
+         !commercialBranded.checked) {
+        commercialError.classList.add('show');
+        isValid = false;
+      } else {
+        commercialError.classList.remove('show');
+      }
+
+      if (!consent.checked) {
+        consentError.classList.add('show');
+        isValid = false;
+      } else {
+        consentError.classList.remove('show');
+      }
+
+      publishBtn.disabled = !isValid || publishInProgress;
+      return isValid;
+    }
+
+    /* -------------------------------
+       ÄNDRING 5: Polling-funktion för status
+    --------------------------------*/
+    async function pollStatus(publishId) {
+      for (let i = 0; i < 12; i++) {
+        const res = await new Promise((resolve, reject) => {
+          google.script.run
+            .withSuccessHandler(resolve)
+            .withFailureHandler(reject)
+            .getDirectPostStatus(publishId);
+        });
+
+        if (res.status === "PUBLISHED") {
+          showStatus("Published successfully", "success");
+          return;
+        }
+
+        await new Promise(r => setTimeout(r, 4000));
+      }
+
+      showStatus("Still processing. Check TikTok profile.", "processing");
+    }
+
+    /* -------------------------------
+       PUBLISH FLOW
+    --------------------------------*/
+
+    publishBtn.addEventListener('click', async () => {
+      if (!validateForm()) return;
+
+      publishInProgress = true;
+      publishBtn.disabled = true;
+
+      // ÄNDRING 5: Mer detaljerad status
+      showStatus('Uploading video…', 'processing');
+
+      try {
+        const initResult = await new Promise((resolve, reject) => {
+          google.script.run
+            .withSuccessHandler(resolve)
+            .withFailureHandler(reject)
+            .initDirectPost({
+              caption: caption.value.trim(),
+              privacy: privacy.value,
+              allowComment: allowComment.checked,
+              allowDuet: allowDuet.checked,
+              allowStitch: allowStitch.checked,
+              commercialContent: commercialToggle.checked ? {
+                yourBrand: commercialYourBrand.checked,
+                branded: commercialBranded.checked
+              } : null,
+              fileSize: selectedFile.size,
+              fileName: selectedFile.name
+            });
+        });
+
+        await fetch(initResult.upload_url, {
+          method: 'PUT',
+          body: selectedFile,
+          headers: { 'Content-Type': 'video/mp4' }
+        });
+
+        // ÄNDRING 5: Uppdaterad status efter uppladdning
+        showStatus('Processing on TikTok servers…', 'processing');
+
+        await new Promise((resolve, reject) => {
+          google.script.run
+            .withSuccessHandler(resolve)
+            .withFailureHandler(reject)
+            .completeDirectPost(initResult.publish_id);
+        });
+
+        // ÄNDRING 5: Starta polling
+        await pollStatus(initResult.publish_id);
+
+      } catch (e) {
+        showStatus('Publish failed: ' + e.message, 'error');
+      }
+
+      publishInProgress = false;
+      validateForm();
+    });
+
+    /* -------------------------------
+       STATUS
+    --------------------------------*/
+
+    function showStatus(message, type) {
+      status.textContent = message;
+      status.className = `status show ${type}`;
+    }
+
+    // Initiera allt
+    initializeFromCreatorInfo();
+    validateForm();
+  </script>
 </body>
 </html>
